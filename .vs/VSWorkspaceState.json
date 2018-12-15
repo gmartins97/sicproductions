@@ -3,12 +3,12 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\login",
     "\\src\\app\\sign-up",
     "\\src\\app\\ui",
     "\\src\\app\\ui\\footer",
     "\\src\\app\\ui\\header",
     "\\src\\app\\ui\\layout"
   ],
-  "SelectedNode": "\\src\\app\\sign-up\\sign-up.component.html",
   "PreviewInSolutionExplorer": false
 }

@@ -9,27 +9,33 @@
 
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link waves-light" mdbWavesEffect>Página Inicial</a>
-      </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect>Catálogo</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect>Encomendas</a>
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/home" routerLinkActive="active">Página Inicial</a>
       </li>
 
       <!-- Dropdown -->
       <li class="nav-item dropdown" dropdown>
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-          Outros<span class="caret"></span>
+          BackOffice<span class="caret"></span>
         </a>
         <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="/surfaceFinishes">Acabamentos</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="/materials">Materiais</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="/categories">Categorias</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="/products">Produtos</a>
           <div class="divider dropdown-divider"></div>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="/collections">Coleções</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="/catalogues">Catálogos</a>
+        </div>
+      </li>
+      <!-- Dropdown -->
+      <li class="nav-item dropdown" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          Área de Cliente<span class="caret"></span>
+        </a>
+        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Encomendas</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Projetar e configurar produto</a>
         </div>
       </li>
 

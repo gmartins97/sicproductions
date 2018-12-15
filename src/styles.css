@@ -2,3 +2,25 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
+
+.example-container {
+  height: 515px;
+  overflow: auto;
+}
+
+.sic-row {
+  display: table;
+  width: 100%; /*Optional*/
+  table-layout: fixed; /*Optional*/
+  border-spacing: 10px; /*Optional*/
+}
+
+.sic-column {
+  display: table-cell;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
