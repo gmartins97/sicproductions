@@ -11,6 +11,7 @@ import { CategoryComponent } from './category/category.component';
 import { ProductComponent } from './product/product.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { CollectionComponent } from './collection/collection.component';
+import { CreateSurfaceFinishComponent } from './create-surface-finish/create-surface-finish.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CollectionComponent } from './collection/collection.component';
     CategoryComponent,
     ProductComponent,
     CatalogueComponent,
-    CollectionComponent
+    CollectionComponent,
+    CreateSurfaceFinishComponent
   ],
   imports: [
     BrowserModule,

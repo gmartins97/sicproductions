@@ -8,6 +8,15 @@
   overflow: auto;
 }
 
+.custom-container {
+  display: flex;
+  flex-direction: column;
+}
+
+  .custom-container > * {
+    width: 100%;
+  }
+
 .sic-row {
   display: table;
   width: 100%; /*Optional*/

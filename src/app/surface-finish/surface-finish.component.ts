@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
+import { Router } from '@angular/router';
 
 export interface SurfaceFinish {
   name: string;
@@ -28,7 +29,8 @@ const ELEMENT_DATA: SurfaceFinish[] = [
 export class SurfaceFinishComponent implements OnInit {
   displayedColumns = ['position', 'name', 'price', 'edit', 'remove'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
-  constructor() { }
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -47,6 +49,10 @@ export class SurfaceFinishComponent implements OnInit {
             duration: 2000,
           });
       }); */
+  }
+
+  addSurfaceFinish(): void {
+    this.router.navigateByUrl('/surfaceFinishes/new');
   }
 
   deleteSurfaceFinish(id: number): void {

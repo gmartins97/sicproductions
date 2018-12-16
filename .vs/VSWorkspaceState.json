@@ -5,10 +5,12 @@
     "\\src\\app",
     "\\src\\app\\login",
     "\\src\\app\\sign-up",
+    "\\src\\app\\surface-finish",
     "\\src\\app\\ui",
     "\\src\\app\\ui\\footer",
     "\\src\\app\\ui\\header",
     "\\src\\app\\ui\\layout"
   ],
+  "SelectedNode": "\\src\\index.html",
   "PreviewInSolutionExplorer": false
 }

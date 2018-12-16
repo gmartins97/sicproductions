@@ -382,6 +382,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _product_product_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./product/product.component */ "./src/app/product/product.component.ts");
 /* harmony import */ var _catalogue_catalogue_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./catalogue/catalogue.component */ "./src/app/catalogue/catalogue.component.ts");
 /* harmony import */ var _collection_collection_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./collection/collection.component */ "./src/app/collection/collection.component.ts");
+/* harmony import */ var _create_surface_finish_create_surface_finish_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./create-surface-finish/create-surface-finish.component */ "./src/app/create-surface-finish/create-surface-finish.component.ts");
+
 
 
 
@@ -411,7 +413,8 @@ var AppModule = /** @class */ (function () {
                 _category_category_component__WEBPACK_IMPORTED_MODULE_10__["CategoryComponent"],
                 _product_product_component__WEBPACK_IMPORTED_MODULE_11__["ProductComponent"],
                 _catalogue_catalogue_component__WEBPACK_IMPORTED_MODULE_12__["CatalogueComponent"],
-                _collection_collection_component__WEBPACK_IMPORTED_MODULE_13__["CollectionComponent"]
+                _collection_collection_component__WEBPACK_IMPORTED_MODULE_13__["CollectionComponent"],
+                _create_surface_finish_create_surface_finish_component__WEBPACK_IMPORTED_MODULE_14__["CreateSurfaceFinishComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -491,7 +494,7 @@ var CatalogueComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NhdGVnb3J5L2NhdGVnb3J5LmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "table {\r\n  width: 100%;\r\n}\r\n\r\n.mat-form-field {\r\n  font-size: 14px;\r\n  width: 100%;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2F0ZWdvcnkvY2F0ZWdvcnkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFlBQVk7Q0FDYjs7QUFFRDtFQUNFLGdCQUFnQjtFQUNoQixZQUFZO0NBQ2IiLCJmaWxlIjoic3JjL2FwcC9jYXRlZ29yeS9jYXRlZ29yeS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsidGFibGUge1xyXG4gIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG4ubWF0LWZvcm0tZmllbGQge1xyXG4gIGZvbnQtc2l6ZTogMTRweDtcclxuICB3aWR0aDogMTAwJTtcclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -502,7 +505,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  category works!\n</p>\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Categorias</h3>\r\n<div class=\"example-container container\">\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\r\n  </mat-form-field>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"description\">\r\n      <th mat-header-cell *matHeaderCellDef> Descrição </th>\r\n      <td mat-cell *matCellDef=\"let category\"> {{category.description}} </td>\r\n    </ng-container>\r\n    <!-- Parent Column -->\r\n    <ng-container matColumnDef=\"parent\">\r\n      <th mat-header-cell *matHeaderCellDef> Categoria Pai </th>\r\n      <td mat-cell *matCellDef=\"let category\"> {{category.parentDescription}}</td>\r\n    </ng-container>\r\n    <!-- Edit Column -->\r\n    <ng-container matColumnDef=\"edit\">\r\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\r\n      <td mat-cell *matCellDef=\"let category\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" matTooltip=\"Editar esta categoria\" class=\"btn btn-primary btn-sm\">Editar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Remove Column -->\r\n    <ng-container matColumnDef=\"remove\">\r\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" matTooltip=\"Remover esta categoria\" class=\"btn btn-danger btn-sm\">Remover</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"sic-row\">\r\n  <div class=\"sic-column\">\r\n    <button type=\"button\" (click)=\"addCategory()\" matTooltip=\"Criar uma nova categoria\" class=\"btn btn-primary btn-md\">Nova</button>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -518,12 +521,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoryComponent", function() { return CategoryComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 
 
+
+
+var ELEMENT_DATA = [{ description: "Armário", parentDescription: "" }, { description: "Armário de sala", parentDescription: "Armário" }];
 var CategoryComponent = /** @class */ (function () {
-    function CategoryComponent() {
+    function CategoryComponent(router) {
+        this.router = router;
+        this.displayedColumns = ['position', 'description', 'parent', 'edit', 'remove'];
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](ELEMENT_DATA);
     }
+    CategoryComponent.prototype.applyFilter = function (filterValue) {
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+    };
     CategoryComponent.prototype.ngOnInit = function () {
+    };
+    CategoryComponent.prototype.addCategory = function () {
     };
     CategoryComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -531,7 +547,7 @@ var CategoryComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./category.component.html */ "./src/app/category/category.component.html"),
             styles: [__webpack_require__(/*! ./category.component.css */ "./src/app/category/category.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], CategoryComponent);
     return CategoryComponent;
 }());
@@ -590,6 +606,70 @@ var CollectionComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], CollectionComponent);
     return CollectionComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/create-surface-finish/create-surface-finish.component.css":
+/*!***************************************************************************!*\
+  !*** ./src/app/create-surface-finish/create-surface-finish.component.css ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NyZWF0ZS1zdXJmYWNlLWZpbmlzaC9jcmVhdGUtc3VyZmFjZS1maW5pc2guY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/create-surface-finish/create-surface-finish.component.html":
+/*!****************************************************************************!*\
+  !*** ./src/app/create-surface-finish/create-surface-finish.component.html ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Novo acabamento</h3>\r\n<div class=\"custom-container\">\r\n  <mat-form-field>\r\n    <input matInput [(ngModel)]=\"surfaceFinishName\" placeholder=\"Nome do acabamento\" required>\r\n  </mat-form-field>\r\n  <mat-form-field>\r\n    <input matInput [(ngModel)]=\"price\" placeholder=\"Preço/m2\" required>\r\n  </mat-form-field>\r\n  <!--\r\n    <form class=\"md-form\">\r\n      <div class=\"file-field\">\r\n        <div (click)=\"fileInput.click()\" class=\"btn btn-primary btn-sm float-left\">\r\n          <span>Escolher textura</span>\r\n          <input hidden type=\"file\" #fileInput>\r\n        </div>\r\n        <div class=\"file-path-wrapper\">\r\n          <input class=\"file-path validate\" type=\"text\" placeholder=\"Enviar textura (.jpg)\">\r\n        </div>\r\n      </div>\r\n    </form>\r\n  -->\r\n</div>\r\n<div class=\"sic-row\">\r\n  <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n  <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/create-surface-finish/create-surface-finish.component.ts":
+/*!**************************************************************************!*\
+  !*** ./src/app/create-surface-finish/create-surface-finish.component.ts ***!
+  \**************************************************************************/
+/*! exports provided: CreateSurfaceFinishComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateSurfaceFinishComponent", function() { return CreateSurfaceFinishComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
+var CreateSurfaceFinishComponent = /** @class */ (function () {
+    function CreateSurfaceFinishComponent(router) {
+        this.router = router;
+    }
+    CreateSurfaceFinishComponent.prototype.ngOnInit = function () {
+    };
+    CreateSurfaceFinishComponent.prototype.confirm = function () {
+    };
+    CreateSurfaceFinishComponent.prototype.back = function () {
+        this.router.navigateByUrl('/surfaceFinishes');
+    };
+    CreateSurfaceFinishComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-create-surface-finish',
+            template: __webpack_require__(/*! ./create-surface-finish.component.html */ "./src/app/create-surface-finish/create-surface-finish.component.html"),
+            styles: [__webpack_require__(/*! ./create-surface-finish.component.css */ "./src/app/create-surface-finish/create-surface-finish.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], CreateSurfaceFinishComponent);
+    return CreateSurfaceFinishComponent;
 }());
 
 
@@ -894,7 +974,7 @@ module.exports = "/* Structure */\r\ntable {\r\n  width: 100%;\r\n}\r\n.mat-form
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Acabamentos</h3>\r\n<div class=\"example-container container\">\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\r\n  </mat-form-field>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"name\">\r\n      <th mat-header-cell *matHeaderCellDef> Nome </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish\"> {{surfaceFinish.name}} </td>\r\n    </ng-container>\r\n    <!-- Price Column -->\r\n    <ng-container matColumnDef=\"price\">\r\n      <th mat-header-cell *matHeaderCellDef> Preço/m2 </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish\"> {{surfaceFinish.price}}€/m2 </td>\r\n    </ng-container>\r\n    <!-- Edit Column -->\r\n    <ng-container matColumnDef=\"edit\">\r\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" matTooltip=\"Editar este acabamento\" class=\"btn btn-primary btn-sm\">Editar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Remove Column -->\r\n    <ng-container matColumnDef=\"remove\">\r\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" matTooltip=\"Remover este acabamento\" class=\"btn btn-danger btn-sm\">Remover</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"sic-row\">\r\n  <div class=\"sic-column\">\r\n    <button type=\"button\" matTooltip=\"Criar um novo acabamento\" class=\"btn btn-primary btn-md\">Novo</button>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Acabamentos</h3>\r\n<div class=\"example-container container\">\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\r\n  </mat-form-field>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"name\">\r\n      <th mat-header-cell *matHeaderCellDef> Nome </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish\"> {{surfaceFinish.name}} </td>\r\n    </ng-container>\r\n    <!-- Price Column -->\r\n    <ng-container matColumnDef=\"price\">\r\n      <th mat-header-cell *matHeaderCellDef> Preço/m2 </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish\"> {{surfaceFinish.price}}€/m2 </td>\r\n    </ng-container>\r\n    <!-- Edit Column -->\r\n    <ng-container matColumnDef=\"edit\">\r\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" matTooltip=\"Editar este acabamento\" class=\"btn btn-primary btn-sm\">Editar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Remove Column -->\r\n    <ng-container matColumnDef=\"remove\">\r\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" matTooltip=\"Remover este acabamento\" class=\"btn btn-danger btn-sm\">Remover</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"sic-row\">\r\n  <div class=\"sic-column\">\r\n    <button type=\"button\" (click)=\"addSurfaceFinish()\" matTooltip=\"Criar um novo acabamento\" class=\"btn btn-primary btn-md\">Novo</button>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -911,6 +991,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 
@@ -928,7 +1010,8 @@ var ELEMENT_DATA = [
     { name: 'Areado v3', price: 1.95 }
 ];
 var SurfaceFinishComponent = /** @class */ (function () {
-    function SurfaceFinishComponent() {
+    function SurfaceFinishComponent(router) {
+        this.router = router;
         this.displayedColumns = ['position', 'name', 'price', 'edit', 'remove'];
         this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](ELEMENT_DATA);
     }
@@ -947,6 +1030,9 @@ var SurfaceFinishComponent = /** @class */ (function () {
                 duration: 2000,
               });
           }); */
+    };
+    SurfaceFinishComponent.prototype.addSurfaceFinish = function () {
+        this.router.navigateByUrl('/surfaceFinishes/new');
     };
     SurfaceFinishComponent.prototype.deleteSurfaceFinish = function (id) {
         /*this.surfaceFinishSrv.deleteSurfaceFinish(id).subscribe(
@@ -969,7 +1055,7 @@ var SurfaceFinishComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./surface-finish.component.html */ "./src/app/surface-finish/surface-finish.component.html"),
             styles: [__webpack_require__(/*! ./surface-finish.component.css */ "./src/app/surface-finish/surface-finish.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], SurfaceFinishComponent);
     return SurfaceFinishComponent;
 }());
@@ -1159,26 +1245,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UiModule", function() { return UiModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _layout_layout_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./layout/layout.component */ "./src/app/ui/layout/layout.component.ts");
-/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./header/header.component */ "./src/app/ui/header/header.component.ts");
-/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/ui/footer/footer.component.ts");
-/* harmony import */ var angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! angular-bootstrap-md */ "./node_modules/angular-bootstrap-md/esm5/angular-bootstrap-md.es5.js");
-/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../login/login.component */ "./src/app/login/login.component.ts");
-/* harmony import */ var _material_material_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../material/material.component */ "./src/app/material/material.component.ts");
-/* harmony import */ var _category_category_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../category/category.component */ "./src/app/category/category.component.ts");
-/* harmony import */ var _product_product_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../product/product.component */ "./src/app/product/product.component.ts");
-/* harmony import */ var _catalogue_catalogue_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../catalogue/catalogue.component */ "./src/app/catalogue/catalogue.component.ts");
-/* harmony import */ var _collection_collection_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../collection/collection.component */ "./src/app/collection/collection.component.ts");
-/* harmony import */ var _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../home-page/home-page.component */ "./src/app/home-page/home-page.component.ts");
-/* harmony import */ var _surface_finish_surface_finish_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../surface-finish/surface-finish.component */ "./src/app/surface-finish/surface-finish.component.ts");
-/* harmony import */ var _sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../sign-up/sign-up.component */ "./src/app/sign-up/sign-up.component.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/material/checkbox */ "./node_modules/@angular/material/esm5/checkbox.es5.js");
-/* harmony import */ var _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/material/tooltip */ "./node_modules/@angular/material/esm5/tooltip.es5.js");
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm5/input.es5.js");
-/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm5/table.es5.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _layout_layout_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./layout/layout.component */ "./src/app/ui/layout/layout.component.ts");
+/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./header/header.component */ "./src/app/ui/header/header.component.ts");
+/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/ui/footer/footer.component.ts");
+/* harmony import */ var angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! angular-bootstrap-md */ "./node_modules/angular-bootstrap-md/esm5/angular-bootstrap-md.es5.js");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _material_material_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../material/material.component */ "./src/app/material/material.component.ts");
+/* harmony import */ var _category_category_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../category/category.component */ "./src/app/category/category.component.ts");
+/* harmony import */ var _product_product_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../product/product.component */ "./src/app/product/product.component.ts");
+/* harmony import */ var _catalogue_catalogue_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../catalogue/catalogue.component */ "./src/app/catalogue/catalogue.component.ts");
+/* harmony import */ var _collection_collection_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../collection/collection.component */ "./src/app/collection/collection.component.ts");
+/* harmony import */ var _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../home-page/home-page.component */ "./src/app/home-page/home-page.component.ts");
+/* harmony import */ var _surface_finish_surface_finish_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../surface-finish/surface-finish.component */ "./src/app/surface-finish/surface-finish.component.ts");
+/* harmony import */ var _create_surface_finish_create_surface_finish_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../create-surface-finish/create-surface-finish.component */ "./src/app/create-surface-finish/create-surface-finish.component.ts");
+/* harmony import */ var _sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../sign-up/sign-up.component */ "./src/app/sign-up/sign-up.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/material/checkbox */ "./node_modules/@angular/material/esm5/checkbox.es5.js");
+/* harmony import */ var _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/material/tooltip */ "./node_modules/@angular/material/esm5/tooltip.es5.js");
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm5/input.es5.js");
+/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm5/table.es5.js");
+
+
 
 
 
@@ -1203,15 +1293,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var appRoutes = [
-    { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_7__["LoginComponent"] },
-    { path: 'signup', component: _sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_15__["SignUpComponent"] },
-    { path: 'home', component: _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_13__["HomePageComponent"] },
-    { path: 'surfaceFinishes', component: _surface_finish_surface_finish_component__WEBPACK_IMPORTED_MODULE_14__["SurfaceFinishComponent"] },
-    { path: 'materials', component: _material_material_component__WEBPACK_IMPORTED_MODULE_8__["MaterialComponent"] },
-    { path: 'categories', component: _category_category_component__WEBPACK_IMPORTED_MODULE_9__["CategoryComponent"] },
-    { path: 'products', component: _product_product_component__WEBPACK_IMPORTED_MODULE_10__["ProductComponent"] },
-    { path: 'catalogues', component: _catalogue_catalogue_component__WEBPACK_IMPORTED_MODULE_11__["CatalogueComponent"] },
-    { path: 'collections', component: _collection_collection_component__WEBPACK_IMPORTED_MODULE_12__["CollectionComponent"] },
+    { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_8__["LoginComponent"] },
+    { path: 'signup', component: _sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_17__["SignUpComponent"] },
+    { path: 'home', component: _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_14__["HomePageComponent"] },
+    { path: 'surfaceFinishes', component: _surface_finish_surface_finish_component__WEBPACK_IMPORTED_MODULE_15__["SurfaceFinishComponent"] },
+    { path: 'surfaceFinishes/new', component: _create_surface_finish_create_surface_finish_component__WEBPACK_IMPORTED_MODULE_16__["CreateSurfaceFinishComponent"] },
+    { path: 'materials', component: _material_material_component__WEBPACK_IMPORTED_MODULE_9__["MaterialComponent"] },
+    { path: 'categories', component: _category_category_component__WEBPACK_IMPORTED_MODULE_10__["CategoryComponent"] },
+    { path: 'products', component: _product_product_component__WEBPACK_IMPORTED_MODULE_11__["ProductComponent"] },
+    { path: 'catalogues', component: _catalogue_catalogue_component__WEBPACK_IMPORTED_MODULE_12__["CatalogueComponent"] },
+    { path: 'collections', component: _collection_collection_component__WEBPACK_IMPORTED_MODULE_13__["CollectionComponent"] },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
@@ -1220,10 +1311,10 @@ var UiModule = /** @class */ (function () {
     }
     UiModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_layout_layout_component__WEBPACK_IMPORTED_MODULE_3__["LayoutComponent"], _header_header_component__WEBPACK_IMPORTED_MODULE_4__["HeaderComponent"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_5__["FooterComponent"]],
-            exports: [_layout_layout_component__WEBPACK_IMPORTED_MODULE_3__["LayoutComponent"], _angular_router__WEBPACK_IMPORTED_MODULE_16__["RouterModule"], angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_6__["MDBBootstrapModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_17__["BrowserAnimationsModule"], _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_18__["MatCheckboxModule"], _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_19__["MatTooltipModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_20__["MatInputModule"], _angular_material_table__WEBPACK_IMPORTED_MODULE_21__["MatTableModule"]],
-            imports: [angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_6__["MDBBootstrapModule"].forRoot(), _angular_router__WEBPACK_IMPORTED_MODULE_16__["RouterModule"].forRoot(appRoutes),
-                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_6__["CheckboxModule"], angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_6__["WavesModule"], angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_6__["ButtonsModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_17__["BrowserAnimationsModule"], _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_18__["MatCheckboxModule"], _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_19__["MatTooltipModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_20__["MatInputModule"], _angular_material_table__WEBPACK_IMPORTED_MODULE_21__["MatTableModule"]
+            declarations: [_layout_layout_component__WEBPACK_IMPORTED_MODULE_4__["LayoutComponent"], _header_header_component__WEBPACK_IMPORTED_MODULE_5__["HeaderComponent"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_6__["FooterComponent"]],
+            exports: [_layout_layout_component__WEBPACK_IMPORTED_MODULE_4__["LayoutComponent"], _angular_router__WEBPACK_IMPORTED_MODULE_18__["RouterModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["MDBBootstrapModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_19__["BrowserAnimationsModule"], _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_20__["MatCheckboxModule"], _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_21__["MatTooltipModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_22__["MatInputModule"], _angular_material_table__WEBPACK_IMPORTED_MODULE_23__["MatTableModule"]],
+            imports: [angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["MDBBootstrapModule"].forRoot(), _angular_router__WEBPACK_IMPORTED_MODULE_18__["RouterModule"].forRoot(appRoutes),
+                _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["CheckboxModule"], angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["WavesModule"], angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["ButtonsModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_19__["BrowserAnimationsModule"], _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_20__["MatCheckboxModule"], _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_21__["MatTooltipModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_22__["MatInputModule"], _angular_material_table__WEBPACK_IMPORTED_MODULE_23__["MatTableModule"]
             ]
         })
     ], UiModule);

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './header/header.component';
@@ -13,6 +14,7 @@ import { CatalogueComponent } from '../catalogue/catalogue.component';
 import { CollectionComponent } from '../collection/collection.component';
 import { HomePageComponent } from '../home-page/home-page.component';
 import { SurfaceFinishComponent } from '../surface-finish/surface-finish.component';
+import { CreateSurfaceFinishComponent } from '../create-surface-finish/create-surface-finish.component';
 import { SignUpComponent } from '../sign-up/sign-up.component';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,6 +27,7 @@ const appRoutes: Routes = [
   { path: 'signup', component: SignUpComponent },
   { path: 'home', component: HomePageComponent },
   { path: 'surfaceFinishes', component: SurfaceFinishComponent },
+  { path: 'surfaceFinishes/new', component: CreateSurfaceFinishComponent },
   { path: 'materials', component: MaterialComponent },
   { path: 'categories', component: CategoryComponent },
   { path: 'products', component: ProductComponent },
@@ -36,9 +39,9 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [LayoutComponent, HeaderComponent, FooterComponent],
-  exports: [LayoutComponent, RouterModule, MDBBootstrapModule, BrowserAnimationsModule, MatCheckboxModule, MatTooltipModule, MatInputModule, MatTableModule],
+  exports: [LayoutComponent, RouterModule, FormsModule, MDBBootstrapModule, BrowserAnimationsModule, MatCheckboxModule, MatTooltipModule, MatInputModule, MatTableModule],
   imports: [MDBBootstrapModule.forRoot(), RouterModule.forRoot(appRoutes),
-    CommonModule, CheckboxModule, WavesModule, ButtonsModule, BrowserAnimationsModule, MatCheckboxModule, MatTooltipModule, MatInputModule, MatTableModule
+    CommonModule, FormsModule, CheckboxModule, WavesModule, ButtonsModule, BrowserAnimationsModule, MatCheckboxModule, MatTooltipModule, MatInputModule, MatTableModule
   ]
 })
 export class UiModule { }
