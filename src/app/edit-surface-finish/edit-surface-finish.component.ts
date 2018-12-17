@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { SurfaceFinishService } from '../services/surface-finish.service';
+import { MatSnackBar } from '@angular/material';
+import { SurfaceFinish } from '../model/surface-finish';
 
 @Component({
   selector: 'app-edit-surface-finish',
@@ -10,15 +13,35 @@ import { Router } from '@angular/router';
 export class EditSurfaceFinishComponent implements OnInit {
 
   surfaceFinishName: string;
-  price: number;
+  surface: SurfaceFinish;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute, private service: SurfaceFinishService, private bar: MatSnackBar) { }
 
   ngOnInit() {
+    this.getSurfaceFinish();
+  }
+
+  getSurfaceFinish() {
+    let id: number;
+    this.route.params.subscribe(res => {
+      id = <number>res.id;
+    });
+    this.service.getSurfaceFinish(id).subscribe(res => {
+      this.surface = res;
+      this.surfaceFinishName = res.name;
+    }, e => {
+      this.bar.open(e.error, '', { duration: 2000 });
+    });
   }
 
   confirm(): void {
-
+    this.surface.name = this.surfaceFinishName;
+    this.service.updateSurfaceFinish(this.surface).subscribe(res => {
+      this.bar.open('Sucesso: o acabamento foi atualizado', '', { duration: 2000 });
+      this.back();
+    }, e => {
+      this.bar.open(e.error, '', { duration: 2000 });
+    });
   }
 
   back(): void {

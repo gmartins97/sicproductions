@@ -1,25 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
-
-export interface SurfaceFinish {
-  name: string;
-  price: number;
-}
-
-const ELEMENT_DATA: SurfaceFinish[] = [
-  { name: 'Polido', price: 1 },
-  { name: 'Amaciado', price: 1.5 },
-  { name: 'Serrado', price: 1.2 },
-  { name: 'Cortado', price: 1.85 },
-  { name: 'Envernizado', price: 2 },
-  { name: 'Verniz brilhante', price: 2.1 },
-  { name: 'Baço', price: 0.80 },
-  { name: 'Verniz baço', price: 1.90 },
-  { name: 'Areado', price: 1.90 },
-  { name: 'Areado v2', price: 1.92 },
-  { name: 'Areado v3', price: 1.95 }
-];
+import { SurfaceFinish } from '../model/surface-finish';
+import { SurfaceFinishService } from '../services/surface-finish.service';
 
 @Component({
   selector: 'app-surface-finish',
@@ -27,12 +10,14 @@ const ELEMENT_DATA: SurfaceFinish[] = [
   styleUrls: ['./surface-finish.component.css']
 })
 export class SurfaceFinishComponent implements OnInit {
-  displayedColumns = ['position', 'name', 'price', 'edit', 'remove'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns = ['position', 'name', 'edit', 'remove'];
+  surfaces: SurfaceFinish[] = [];
+  dataSource = new MatTableDataSource(this.surfaces);
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private service: SurfaceFinishService, private bar: MatSnackBar) { }
 
   ngOnInit() {
+    this.getSurfaceFinishes();
   }
 
   applyFilter(filterValue: string) {
@@ -40,15 +25,16 @@ export class SurfaceFinishComponent implements OnInit {
   }
 
   private getSurfaceFinishes(): void {
-    /*this.surfaceFinishSrv.getSurfaceFinishes().subscribe(
-      data => { this.dataSource = data; },
-      error => {
-        this.snackBar.open(
-          "Ocorreu um erro ao tentar obter os acabamentos do servidor...",
-          "", {
-            duration: 2000,
-          });
-      }); */
+    this.service.getSurfaceFinishes().subscribe(data => {
+      this.surfaces = <SurfaceFinish[]>data;
+      this.dataSource.data = this.surfaces;
+    }, e => {
+      this.bar.open(
+        'Ocorreu um erro ao tentar obter os acabamentos do servidor...',
+        '', {
+          duration: 2000,
+        });
+    });
   }
 
   addSurfaceFinish(): void {
@@ -56,24 +42,19 @@ export class SurfaceFinishComponent implements OnInit {
   }
 
   editSurfaceFinish(surfaceIndex): void {
-    //this.router.navigateByUrl('/surfaceFinishes/edit/' + surfaceIndex);
-    this.router.navigateByUrl('/surfaceFinishes/edit');
+    const sf = this.surfaces[surfaceIndex];
+    this.router.navigateByUrl('/surfaceFinishes/edit/' + sf.id);
   }
 
-  deleteSurfaceFinish(id: number): void {
-    /*this.surfaceFinishSrv.deleteSurfaceFinish(id).subscribe(
+  deleteSurfaceFinish(index: number): void {
+    this.service.deleteSurfaceFinish(this.surfaces[index].id).subscribe(
       sf => {
-        this.snackBar.open("Acabamento " + sf.name + " removido com sucesso",
-          "", {
-            duration: 1500,
-          });
+        this.bar.open(`Acabamento ${sf.name} removido com sucesso`, '', { duration: 2000 });
         this.getSurfaceFinishes();
       },
-      error => {
-        this.snackBar.open("Ocorreu um erro: " + error.error, "", {
-          duration: 2000,
-        });
-      }); */
+      e => {
+        this.bar.open('Ocorreu um erro: ' + e.error, '', { duration: 2000 });
+      });
   }
 
 }

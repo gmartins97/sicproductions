@@ -1,0 +1,18 @@
+<h3 class="card-header text-center font-weight-bold py-4">Nova categoria</h3>
+<div class="custom-container">
+  <mat-form-field>
+    <input matInput [(ngModel)]="categoryDescription" placeholder="Descrição" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select [(ngModel)]="parentCategoryId" placeholder="Categoria pai">
+      <mat-option [value]="0">Nenhuma</mat-option>
+      <mat-option *ngFor="let category of categories" [value]="category.id">
+        {{category.description}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="sic-row">
+  <button type="button" (click)="confirm()" matTooltip="Confirmar" class="btn btn-primary btn-md">OK</button>
+  <button type="button" (click)="back()" matTooltip="Cancelar" class="btn btn-light btn-md">Retroceder</button>
+</div>

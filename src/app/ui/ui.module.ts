@@ -15,6 +15,7 @@ import { CollectionComponent } from '../collection/collection.component';
 import { HomePageComponent } from '../home-page/home-page.component';
 import { SurfaceFinishComponent } from '../surface-finish/surface-finish.component';
 import { CreateSurfaceFinishComponent } from '../create-surface-finish/create-surface-finish.component';
+import { CreateCategoryComponent } from '../create-category/create-category.component';
 import { EditSurfaceFinishComponent } from '../edit-surface-finish/edit-surface-finish.component';
 import { SignUpComponent } from '../sign-up/sign-up.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -24,20 +25,23 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
+import { SurfaceFinishService } from '../services/surface-finish.service';
+import { MatSnackBarModule } from '@angular/material';
 import { CreateMaterialComponent } from '../create-material/create-material.component';
 import { EditMaterialComponent } from '../edit-material/edit-material.component';
-
+import {MatSelectModule} from '@angular/material/select';
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'home', component: HomePageComponent },
   { path: 'surfaceFinishes', component: SurfaceFinishComponent },
   { path: 'surfaceFinishes/new', component: CreateSurfaceFinishComponent },
-  { path: 'surfaceFinishes/edit', component: EditSurfaceFinishComponent },
+  { path: 'surfaceFinishes/edit/:id', component: EditSurfaceFinishComponent },
   { path: 'materials', component: MaterialComponent },
   { path: 'materials/new', component: CreateMaterialComponent },
   { path: 'materials/edit', component: EditMaterialComponent },
   { path: 'categories', component: CategoryComponent },
+  { path: 'categories/new', component: CreateCategoryComponent },
   { path: 'products', component: ProductComponent },
   { path: 'catalogues', component: CatalogueComponent },
   { path: 'collections', component: CollectionComponent },
@@ -48,18 +52,20 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [LayoutComponent, HeaderComponent, FooterComponent],
   exports: [
-    LayoutComponent, 
-    RouterModule, 
-    FormsModule, 
-    MDBBootstrapModule, 
-    BrowserAnimationsModule, 
+    LayoutComponent,
+    RouterModule,
+    FormsModule,
+    MDBBootstrapModule,
+    BrowserAnimationsModule,
     MatCheckboxModule,
-    MatTooltipModule, 
-    MatInputModule, 
-    MatTableModule
+    MatTooltipModule,
+    MatInputModule,
+    MatTableModule,
+    MatSnackBarModule,
+    MatSelectModule
   ],
   imports: [
-    MDBBootstrapModule.forRoot(), 
+    MDBBootstrapModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     CommonModule, 
     FormsModule, 
@@ -70,8 +76,22 @@ const appRoutes: Routes = [
     MatCheckboxModule, 
     MatTooltipModule, 
     MatInputModule, 
-    MatTableModule, 
+    MatTableModule,
+    MatSelectModule,
+    CommonModule,
+    FormsModule,
+    CheckboxModule,
+    WavesModule,
+    ButtonsModule,
+    BrowserAnimationsModule,
+    MatCheckboxModule,
+    MatTooltipModule,
+    MatInputModule,
+    MatTableModule,
     HttpClientModule
+  ],
+  providers: [
+    SurfaceFinishService
   ]
 })
 export class UiModule { }
