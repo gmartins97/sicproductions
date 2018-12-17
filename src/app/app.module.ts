@@ -12,6 +12,10 @@ import { ProductComponent } from './product/product.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { CollectionComponent } from './collection/collection.component';
 import { CreateSurfaceFinishComponent } from './create-surface-finish/create-surface-finish.component';
+import { EditSurfaceFinishComponent } from './edit-surface-finish/edit-surface-finish.component';
+import { CreateMaterialComponent } from './create-material/create-material.component';
+import { EditMaterialComponent } from './edit-material/edit-material.component';
+
 
 @NgModule({
   declarations: [
@@ -25,11 +29,15 @@ import { CreateSurfaceFinishComponent } from './create-surface-finish/create-sur
     ProductComponent,
     CatalogueComponent,
     CollectionComponent,
-    CreateSurfaceFinishComponent
+    CreateSurfaceFinishComponent,
+    EditSurfaceFinishComponent,
+    CreateMaterialComponent,
+    EditMaterialComponent
   ],
   imports: [
     BrowserModule,
-    UiModule],
+    UiModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

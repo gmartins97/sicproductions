@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\login",
-    "\\src\\app\\sign-up",
+    "\\src\\app\\category",
+    "\\src\\app\\create-surface-finish",
     "\\src\\app\\surface-finish",
     "\\src\\app\\ui",
     "\\src\\app\\ui\\footer",
     "\\src\\app\\ui\\header",
     "\\src\\app\\ui\\layout"
   ],
-  "SelectedNode": "\\src\\index.html",
+  "SelectedNode": "\\src\\app\\category\\category.component.css",
   "PreviewInSolutionExplorer": false
 }

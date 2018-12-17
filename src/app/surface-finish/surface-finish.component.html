@@ -22,9 +22,9 @@
     <!-- Edit Column -->
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef> Editar </th>
-      <td mat-cell *matCellDef="let surfaceFinish">
+      <td mat-cell *matCellDef="let surfaceFinish; let i = index">
         <span class="table-remove">
-          <button type="button" matTooltip="Editar este acabamento" class="btn btn-primary btn-sm">Editar</button>
+          <button type="button" (click)="editSurfaceFinish(i)" matTooltip="Editar este acabamento" class="btn btn-primary btn-sm">Editar</button>
         </span>
       </td>
     </ng-container>

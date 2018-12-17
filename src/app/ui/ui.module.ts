@@ -15,6 +15,7 @@ import { CollectionComponent } from '../collection/collection.component';
 import { HomePageComponent } from '../home-page/home-page.component';
 import { SurfaceFinishComponent } from '../surface-finish/surface-finish.component';
 import { CreateSurfaceFinishComponent } from '../create-surface-finish/create-surface-finish.component';
+import { EditSurfaceFinishComponent } from '../edit-surface-finish/edit-surface-finish.component';
 import { SignUpComponent } from '../sign-up/sign-up.component';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,13 +23,20 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { HttpClientModule } from '@angular/common/http';
+import { CreateMaterialComponent } from '../create-material/create-material.component';
+import { EditMaterialComponent } from '../edit-material/edit-material.component';
+
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'home', component: HomePageComponent },
   { path: 'surfaceFinishes', component: SurfaceFinishComponent },
   { path: 'surfaceFinishes/new', component: CreateSurfaceFinishComponent },
+  { path: 'surfaceFinishes/edit', component: EditSurfaceFinishComponent },
   { path: 'materials', component: MaterialComponent },
+  { path: 'materials/new', component: CreateMaterialComponent },
+  { path: 'materials/edit', component: EditMaterialComponent },
   { path: 'categories', component: CategoryComponent },
   { path: 'products', component: ProductComponent },
   { path: 'catalogues', component: CatalogueComponent },
@@ -39,9 +47,31 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [LayoutComponent, HeaderComponent, FooterComponent],
-  exports: [LayoutComponent, RouterModule, FormsModule, MDBBootstrapModule, BrowserAnimationsModule, MatCheckboxModule, MatTooltipModule, MatInputModule, MatTableModule],
-  imports: [MDBBootstrapModule.forRoot(), RouterModule.forRoot(appRoutes),
-    CommonModule, FormsModule, CheckboxModule, WavesModule, ButtonsModule, BrowserAnimationsModule, MatCheckboxModule, MatTooltipModule, MatInputModule, MatTableModule
+  exports: [
+    LayoutComponent, 
+    RouterModule, 
+    FormsModule, 
+    MDBBootstrapModule, 
+    BrowserAnimationsModule, 
+    MatCheckboxModule,
+    MatTooltipModule, 
+    MatInputModule, 
+    MatTableModule
+  ],
+  imports: [
+    MDBBootstrapModule.forRoot(), 
+    RouterModule.forRoot(appRoutes),
+    CommonModule, 
+    FormsModule, 
+    CheckboxModule, 
+    WavesModule, 
+    ButtonsModule, 
+    BrowserAnimationsModule, 
+    MatCheckboxModule, 
+    MatTooltipModule, 
+    MatInputModule, 
+    MatTableModule, 
+    HttpClientModule
   ]
 })
 export class UiModule { }

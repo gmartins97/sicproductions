@@ -1,0 +1,23 @@
+<h3 class="card-header text-center font-weight-bold py-4">Novo Material</h3>
+<div class="custom-container">
+  <mat-form-field>
+    <input matInput [(ngModel)]="materialName" placeholder="Nome do material" required>
+  </mat-form-field>
+  <!--
+    <form class="md-form">
+      <div class="file-field">
+        <div (click)="fileInput.click()" class="btn btn-primary btn-sm float-left">
+          <span>Escolher textura</span>
+          <input hidden type="file" #fileInput>
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" placeholder="Enviar textura (.jpg)">
+        </div>
+      </div>
+    </form>
+  -->
+</div>
+<div class="sic-row">
+  <button type="button" (click)="confirm()" matTooltip="Confirmar" class="btn btn-primary btn-md">OK</button>
+  <button type="button" (click)="back()" matTooltip="Cancelar" class="btn btn-light btn-md">Retroceder</button>
+</div>

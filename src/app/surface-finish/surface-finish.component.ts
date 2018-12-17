@@ -55,6 +55,11 @@ export class SurfaceFinishComponent implements OnInit {
     this.router.navigateByUrl('/surfaceFinishes/new');
   }
 
+  editSurfaceFinish(surfaceIndex): void {
+    //this.router.navigateByUrl('/surfaceFinishes/edit/' + surfaceIndex);
+    this.router.navigateByUrl('/surfaceFinishes/edit');
+  }
+
   deleteSurfaceFinish(id: number): void {
     /*this.surfaceFinishSrv.deleteSurfaceFinish(id).subscribe(
       sf => {
