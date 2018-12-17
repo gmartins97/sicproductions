@@ -383,6 +383,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _catalogue_catalogue_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./catalogue/catalogue.component */ "./src/app/catalogue/catalogue.component.ts");
 /* harmony import */ var _collection_collection_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./collection/collection.component */ "./src/app/collection/collection.component.ts");
 /* harmony import */ var _create_surface_finish_create_surface_finish_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./create-surface-finish/create-surface-finish.component */ "./src/app/create-surface-finish/create-surface-finish.component.ts");
+/* harmony import */ var _edit_surface_finish_edit_surface_finish_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./edit-surface-finish/edit-surface-finish.component */ "./src/app/edit-surface-finish/edit-surface-finish.component.ts");
+/* harmony import */ var _create_material_create_material_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./create-material/create-material.component */ "./src/app/create-material/create-material.component.ts");
+/* harmony import */ var _edit_material_edit_material_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./edit-material/edit-material.component */ "./src/app/edit-material/edit-material.component.ts");
+
+
+
 
 
 
@@ -414,7 +420,10 @@ var AppModule = /** @class */ (function () {
                 _product_product_component__WEBPACK_IMPORTED_MODULE_11__["ProductComponent"],
                 _catalogue_catalogue_component__WEBPACK_IMPORTED_MODULE_12__["CatalogueComponent"],
                 _collection_collection_component__WEBPACK_IMPORTED_MODULE_13__["CollectionComponent"],
-                _create_surface_finish_create_surface_finish_component__WEBPACK_IMPORTED_MODULE_14__["CreateSurfaceFinishComponent"]
+                _create_surface_finish_create_surface_finish_component__WEBPACK_IMPORTED_MODULE_14__["CreateSurfaceFinishComponent"],
+                _edit_surface_finish_edit_surface_finish_component__WEBPACK_IMPORTED_MODULE_15__["EditSurfaceFinishComponent"],
+                _create_material_create_material_component__WEBPACK_IMPORTED_MODULE_16__["CreateMaterialComponent"],
+                _edit_material_edit_material_component__WEBPACK_IMPORTED_MODULE_17__["EditMaterialComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -612,6 +621,70 @@ var CollectionComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/create-material/create-material.component.css":
+/*!***************************************************************!*\
+  !*** ./src/app/create-material/create-material.component.css ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NyZWF0ZS1tYXRlcmlhbC9jcmVhdGUtbWF0ZXJpYWwuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/create-material/create-material.component.html":
+/*!****************************************************************!*\
+  !*** ./src/app/create-material/create-material.component.html ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Novo Material</h3>\r\n<div class=\"custom-container\">\r\n  <mat-form-field>\r\n    <input matInput [(ngModel)]=\"materialName\" placeholder=\"Nome do material\" required>\r\n  </mat-form-field>\r\n  <!--\r\n    <form class=\"md-form\">\r\n      <div class=\"file-field\">\r\n        <div (click)=\"fileInput.click()\" class=\"btn btn-primary btn-sm float-left\">\r\n          <span>Escolher textura</span>\r\n          <input hidden type=\"file\" #fileInput>\r\n        </div>\r\n        <div class=\"file-path-wrapper\">\r\n          <input class=\"file-path validate\" type=\"text\" placeholder=\"Enviar textura (.jpg)\">\r\n        </div>\r\n      </div>\r\n    </form>\r\n  -->\r\n</div>\r\n<div class=\"sic-row\">\r\n  <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n  <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/create-material/create-material.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/create-material/create-material.component.ts ***!
+  \**************************************************************/
+/*! exports provided: CreateMaterialComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateMaterialComponent", function() { return CreateMaterialComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
+var CreateMaterialComponent = /** @class */ (function () {
+    function CreateMaterialComponent(router) {
+        this.router = router;
+    }
+    CreateMaterialComponent.prototype.ngOnInit = function () {
+    };
+    CreateMaterialComponent.prototype.confirm = function () {
+    };
+    CreateMaterialComponent.prototype.back = function () {
+        this.router.navigateByUrl('/materials');
+    };
+    CreateMaterialComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-create-material',
+            template: __webpack_require__(/*! ./create-material.component.html */ "./src/app/create-material/create-material.component.html"),
+            styles: [__webpack_require__(/*! ./create-material.component.css */ "./src/app/create-material/create-material.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], CreateMaterialComponent);
+    return CreateMaterialComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/create-surface-finish/create-surface-finish.component.css":
 /*!***************************************************************************!*\
   !*** ./src/app/create-surface-finish/create-surface-finish.component.css ***!
@@ -630,7 +703,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Novo acabamento</h3>\r\n<div class=\"custom-container\">\r\n  <mat-form-field>\r\n    <input matInput [(ngModel)]=\"surfaceFinishName\" placeholder=\"Nome do acabamento\" required>\r\n  </mat-form-field>\r\n  <mat-form-field>\r\n    <input matInput [(ngModel)]=\"price\" placeholder=\"Preço/m2\" required>\r\n  </mat-form-field>\r\n  <!--\r\n    <form class=\"md-form\">\r\n      <div class=\"file-field\">\r\n        <div (click)=\"fileInput.click()\" class=\"btn btn-primary btn-sm float-left\">\r\n          <span>Escolher textura</span>\r\n          <input hidden type=\"file\" #fileInput>\r\n        </div>\r\n        <div class=\"file-path-wrapper\">\r\n          <input class=\"file-path validate\" type=\"text\" placeholder=\"Enviar textura (.jpg)\">\r\n        </div>\r\n      </div>\r\n    </form>\r\n  -->\r\n</div>\r\n<div class=\"sic-row\">\r\n  <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n  <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n</div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Novo acabamento</h3>\r\n<div class=\"custom-container\">\r\n  <mat-form-field>\r\n    <input matInput [(ngModel)]=\"surfaceFinishName\" placeholder=\"Nome do acabamento\" required>\r\n  </mat-form-field>\r\n  <!--\r\n    <form class=\"md-form\">\r\n      <div class=\"file-field\">\r\n        <div (click)=\"fileInput.click()\" class=\"btn btn-primary btn-sm float-left\">\r\n          <span>Escolher textura</span>\r\n          <input hidden type=\"file\" #fileInput>\r\n        </div>\r\n        <div class=\"file-path-wrapper\">\r\n          <input class=\"file-path validate\" type=\"text\" placeholder=\"Enviar textura (.jpg)\">\r\n        </div>\r\n      </div>\r\n    </form>\r\n  -->\r\n</div>\r\n<div class=\"sic-row\">\r\n  <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n  <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -670,6 +743,126 @@ var CreateSurfaceFinishComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], CreateSurfaceFinishComponent);
     return CreateSurfaceFinishComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/edit-material/edit-material.component.css":
+/*!***********************************************************!*\
+  !*** ./src/app/edit-material/edit-material.component.css ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2VkaXQtbWF0ZXJpYWwvZWRpdC1tYXRlcmlhbC5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/edit-material/edit-material.component.html":
+/*!************************************************************!*\
+  !*** ./src/app/edit-material/edit-material.component.html ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n  edit-material works!\r\n</p>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/edit-material/edit-material.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/edit-material/edit-material.component.ts ***!
+  \**********************************************************/
+/*! exports provided: EditMaterialComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditMaterialComponent", function() { return EditMaterialComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var EditMaterialComponent = /** @class */ (function () {
+    function EditMaterialComponent() {
+    }
+    EditMaterialComponent.prototype.ngOnInit = function () {
+    };
+    EditMaterialComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-edit-material',
+            template: __webpack_require__(/*! ./edit-material.component.html */ "./src/app/edit-material/edit-material.component.html"),
+            styles: [__webpack_require__(/*! ./edit-material.component.css */ "./src/app/edit-material/edit-material.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], EditMaterialComponent);
+    return EditMaterialComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/edit-surface-finish/edit-surface-finish.component.css":
+/*!***********************************************************************!*\
+  !*** ./src/app/edit-surface-finish/edit-surface-finish.component.css ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2VkaXQtc3VyZmFjZS1maW5pc2gvZWRpdC1zdXJmYWNlLWZpbmlzaC5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/edit-surface-finish/edit-surface-finish.component.html":
+/*!************************************************************************!*\
+  !*** ./src/app/edit-surface-finish/edit-surface-finish.component.html ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Editar acabamento</h3>\r\n<div class=\"custom-container\">\r\n  <mat-form-field>\r\n    <input matInput [(ngModel)]=\"surfaceFinishName\" placeholder=\"Nome do acabamento\" required>\r\n  </mat-form-field>\r\n  <mat-form-field>\r\n    <input matInput [(ngModel)]=\"price\" placeholder=\"Preço/m2\" required>\r\n  </mat-form-field>\r\n  <!--\r\n    <form class=\"md-form\">\r\n      <div class=\"file-field\">\r\n        <div (click)=\"fileInput.click()\" class=\"btn btn-primary btn-sm float-left\">\r\n          <span>Escolher textura</span>\r\n          <input hidden type=\"file\" #fileInput>\r\n        </div>\r\n        <div class=\"file-path-wrapper\">\r\n          <input class=\"file-path validate\" type=\"text\" placeholder=\"Enviar textura (.jpg)\">\r\n        </div>\r\n      </div>\r\n    </form>\r\n  -->\r\n</div>\r\n<div class=\"sic-row\">\r\n  <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n  <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/edit-surface-finish/edit-surface-finish.component.ts":
+/*!**********************************************************************!*\
+  !*** ./src/app/edit-surface-finish/edit-surface-finish.component.ts ***!
+  \**********************************************************************/
+/*! exports provided: EditSurfaceFinishComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditSurfaceFinishComponent", function() { return EditSurfaceFinishComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
+var EditSurfaceFinishComponent = /** @class */ (function () {
+    function EditSurfaceFinishComponent(router) {
+        this.router = router;
+    }
+    EditSurfaceFinishComponent.prototype.ngOnInit = function () {
+    };
+    EditSurfaceFinishComponent.prototype.confirm = function () {
+    };
+    EditSurfaceFinishComponent.prototype.back = function () {
+        this.router.navigateByUrl('/surfaceFinishes');
+    };
+    EditSurfaceFinishComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-edit-surface-finish',
+            template: __webpack_require__(/*! ./edit-surface-finish.component.html */ "./src/app/edit-surface-finish/edit-surface-finish.component.html"),
+            styles: [__webpack_require__(/*! ./edit-surface-finish.component.css */ "./src/app/edit-surface-finish/edit-surface-finish.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], EditSurfaceFinishComponent);
+    return EditSurfaceFinishComponent;
 }());
 
 
@@ -795,7 +988,7 @@ var LoginComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21hdGVyaWFsL21hdGVyaWFsLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "/* Structure */\r\ntable {\r\n  width: 100%;\r\n}\r\n.mat-form-field {\r\n  font-size: 14px;\r\n  width: 100%;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWF0ZXJpYWwvbWF0ZXJpYWwuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxlQUFlO0FBQ2Y7RUFDRSxZQUFZO0NBQ2I7QUFFRDtFQUNFLGdCQUFnQjtFQUNoQixZQUFZO0NBQ2IiLCJmaWxlIjoic3JjL2FwcC9tYXRlcmlhbC9tYXRlcmlhbC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyogU3RydWN0dXJlICovXHJcbnRhYmxlIHtcclxuICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuLm1hdC1mb3JtLWZpZWxkIHtcclxuICBmb250LXNpemU6IDE0cHg7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbn1cclxuIl19 */"
 
 /***/ }),
 
@@ -806,7 +999,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  material works!\n</p>\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Materiais</h3>\r\n<div class=\"example-container container\">\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\r\n  </mat-form-field>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"name\">\r\n      <th mat-header-cell *matHeaderCellDef> Nome </th>\r\n      <td mat-cell *matCellDef=\"let material\"> {{material.name}} </td>\r\n    </ng-container>\r\n    <!-- Price Column -->\r\n    <ng-container matColumnDef=\"price\">\r\n      <th mat-header-cell *matHeaderCellDef> Preço/m2 </th>\r\n      <td mat-cell *matCellDef=\"let material\"> {{material.price}}€/m2 </td>\r\n    </ng-container>\r\n    <!-- Edit Column -->\r\n    <ng-container matColumnDef=\"edit\">\r\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\r\n      <td mat-cell *matCellDef=\"let material; let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"editMaterial(i)\" matTooltip=\"Editar este material\" class=\"btn btn-primary btn-sm\">Editar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Remove Column -->\r\n    <ng-container matColumnDef=\"remove\">\r\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\r\n      <td mat-cell *matCellDef=\"let material\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" matTooltip=\"Remover este material\" class=\"btn btn-danger btn-sm\">Remover</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"sic-row\">\r\n  <div class=\"sic-column\">\r\n    <button type=\"button\" (click)=\"addMaterial()\" matTooltip=\"Criar um novo material\" class=\"btn btn-primary btn-md\">Novo</button>\r\n  </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -822,12 +1015,63 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MaterialComponent", function() { return MaterialComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 
 
+
+
+var ELEMENT_DATA = [
+    { name: 'Madeira', price: 1 },
+    { name: 'Ferro', price: 1.5 },
+    { name: 'Plástico', price: 1.2 },
+    { name: 'Pedra', price: 1.85 },
+    { name: 'Vidro', price: 2 },
+    { name: 'Contraplacado', price: 2.1 },
+];
 var MaterialComponent = /** @class */ (function () {
-    function MaterialComponent() {
+    function MaterialComponent(router) {
+        this.router = router;
+        this.displayedColumns = ['position', 'name', 'price', 'edit', 'remove'];
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](ELEMENT_DATA);
     }
     MaterialComponent.prototype.ngOnInit = function () {
+    };
+    MaterialComponent.prototype.applyFilter = function (filterValue) {
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+    };
+    MaterialComponent.prototype.getMaterials = function () {
+        /*this.materialSrv.getMaterials().subscribe(
+          data => { this.dataSource = data; },
+          error => {
+            this.snackBar.open(
+              "Ocorreu um erro ao tentar obter os materiais do servidor...",
+              "", {
+                duration: 2000,
+              });
+          }); */
+    };
+    MaterialComponent.prototype.addMaterial = function () {
+        this.router.navigateByUrl('/materials/new');
+    };
+    MaterialComponent.prototype.editMaterial = function (materialIndex) {
+        //this.router.navigateByUrl('/materials/edit/' + materialIndex);
+        //this.router.navigateByUrl('/materials/edit');
+    };
+    MaterialComponent.prototype.deleteMaterial = function (id) {
+        /*this.surfaceFinishSrv.deleteSurfaceFinish(id).subscribe(
+          sf => {
+            this.snackBar.open("Acabamento " + sf.name + " removido com sucesso",
+              "", {
+                duration: 1500,
+              });
+            this.getSurfaceFinishes();
+          },
+          error => {
+            this.snackBar.open("Ocorreu um erro: " + error.error, "", {
+              duration: 2000,
+            });
+          }); */
     };
     MaterialComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -835,7 +1079,7 @@ var MaterialComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./material.component.html */ "./src/app/material/material.component.html"),
             styles: [__webpack_require__(/*! ./material.component.css */ "./src/app/material/material.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], MaterialComponent);
     return MaterialComponent;
 }());
@@ -974,7 +1218,7 @@ module.exports = "/* Structure */\r\ntable {\r\n  width: 100%;\r\n}\r\n.mat-form
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Acabamentos</h3>\r\n<div class=\"example-container container\">\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\r\n  </mat-form-field>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"name\">\r\n      <th mat-header-cell *matHeaderCellDef> Nome </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish\"> {{surfaceFinish.name}} </td>\r\n    </ng-container>\r\n    <!-- Price Column -->\r\n    <ng-container matColumnDef=\"price\">\r\n      <th mat-header-cell *matHeaderCellDef> Preço/m2 </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish\"> {{surfaceFinish.price}}€/m2 </td>\r\n    </ng-container>\r\n    <!-- Edit Column -->\r\n    <ng-container matColumnDef=\"edit\">\r\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" matTooltip=\"Editar este acabamento\" class=\"btn btn-primary btn-sm\">Editar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Remove Column -->\r\n    <ng-container matColumnDef=\"remove\">\r\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" matTooltip=\"Remover este acabamento\" class=\"btn btn-danger btn-sm\">Remover</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"sic-row\">\r\n  <div class=\"sic-column\">\r\n    <button type=\"button\" (click)=\"addSurfaceFinish()\" matTooltip=\"Criar um novo acabamento\" class=\"btn btn-primary btn-md\">Novo</button>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Acabamentos</h3>\r\n<div class=\"example-container container\">\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\r\n  </mat-form-field>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"name\">\r\n      <th mat-header-cell *matHeaderCellDef> Nome </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish\"> {{surfaceFinish.name}} </td>\r\n    </ng-container>\r\n    <!-- Price Column -->\r\n    <ng-container matColumnDef=\"price\">\r\n      <th mat-header-cell *matHeaderCellDef> Preço/m2 </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish\"> {{surfaceFinish.price}}€/m2 </td>\r\n    </ng-container>\r\n    <!-- Edit Column -->\r\n    <ng-container matColumnDef=\"edit\">\r\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish; let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"editSurfaceFinish(i)\" matTooltip=\"Editar este acabamento\" class=\"btn btn-primary btn-sm\">Editar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Remove Column -->\r\n    <ng-container matColumnDef=\"remove\">\r\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" matTooltip=\"Remover este acabamento\" class=\"btn btn-danger btn-sm\">Remover</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"sic-row\">\r\n  <div class=\"sic-column\">\r\n    <button type=\"button\" (click)=\"addSurfaceFinish()\" matTooltip=\"Criar um novo acabamento\" class=\"btn btn-primary btn-md\">Novo</button>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1033,6 +1277,10 @@ var SurfaceFinishComponent = /** @class */ (function () {
     };
     SurfaceFinishComponent.prototype.addSurfaceFinish = function () {
         this.router.navigateByUrl('/surfaceFinishes/new');
+    };
+    SurfaceFinishComponent.prototype.editSurfaceFinish = function (surfaceIndex) {
+        //this.router.navigateByUrl('/surfaceFinishes/edit/' + surfaceIndex);
+        this.router.navigateByUrl('/surfaceFinishes/edit');
     };
     SurfaceFinishComponent.prototype.deleteSurfaceFinish = function (id) {
         /*this.surfaceFinishSrv.deleteSurfaceFinish(id).subscribe(
@@ -1260,13 +1508,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../home-page/home-page.component */ "./src/app/home-page/home-page.component.ts");
 /* harmony import */ var _surface_finish_surface_finish_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../surface-finish/surface-finish.component */ "./src/app/surface-finish/surface-finish.component.ts");
 /* harmony import */ var _create_surface_finish_create_surface_finish_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../create-surface-finish/create-surface-finish.component */ "./src/app/create-surface-finish/create-surface-finish.component.ts");
-/* harmony import */ var _sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../sign-up/sign-up.component */ "./src/app/sign-up/sign-up.component.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/material/checkbox */ "./node_modules/@angular/material/esm5/checkbox.es5.js");
-/* harmony import */ var _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/material/tooltip */ "./node_modules/@angular/material/esm5/tooltip.es5.js");
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm5/input.es5.js");
-/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm5/table.es5.js");
+/* harmony import */ var _edit_surface_finish_edit_surface_finish_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../edit-surface-finish/edit-surface-finish.component */ "./src/app/edit-surface-finish/edit-surface-finish.component.ts");
+/* harmony import */ var _sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../sign-up/sign-up.component */ "./src/app/sign-up/sign-up.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/material/checkbox */ "./node_modules/@angular/material/esm5/checkbox.es5.js");
+/* harmony import */ var _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/material/tooltip */ "./node_modules/@angular/material/esm5/tooltip.es5.js");
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm5/input.es5.js");
+/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm5/table.es5.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _create_material_create_material_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../create-material/create-material.component */ "./src/app/create-material/create-material.component.ts");
+/* harmony import */ var _edit_material_edit_material_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../edit-material/edit-material.component */ "./src/app/edit-material/edit-material.component.ts");
+
+
+
+
 
 
 
@@ -1294,11 +1550,14 @@ __webpack_require__.r(__webpack_exports__);
 
 var appRoutes = [
     { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_8__["LoginComponent"] },
-    { path: 'signup', component: _sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_17__["SignUpComponent"] },
+    { path: 'signup', component: _sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_18__["SignUpComponent"] },
     { path: 'home', component: _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_14__["HomePageComponent"] },
     { path: 'surfaceFinishes', component: _surface_finish_surface_finish_component__WEBPACK_IMPORTED_MODULE_15__["SurfaceFinishComponent"] },
     { path: 'surfaceFinishes/new', component: _create_surface_finish_create_surface_finish_component__WEBPACK_IMPORTED_MODULE_16__["CreateSurfaceFinishComponent"] },
+    { path: 'surfaceFinishes/edit', component: _edit_surface_finish_edit_surface_finish_component__WEBPACK_IMPORTED_MODULE_17__["EditSurfaceFinishComponent"] },
     { path: 'materials', component: _material_material_component__WEBPACK_IMPORTED_MODULE_9__["MaterialComponent"] },
+    { path: 'materials/new', component: _create_material_create_material_component__WEBPACK_IMPORTED_MODULE_26__["CreateMaterialComponent"] },
+    { path: 'materials/edit', component: _edit_material_edit_material_component__WEBPACK_IMPORTED_MODULE_27__["EditMaterialComponent"] },
     { path: 'categories', component: _category_category_component__WEBPACK_IMPORTED_MODULE_10__["CategoryComponent"] },
     { path: 'products', component: _product_product_component__WEBPACK_IMPORTED_MODULE_11__["ProductComponent"] },
     { path: 'catalogues', component: _catalogue_catalogue_component__WEBPACK_IMPORTED_MODULE_12__["CatalogueComponent"] },
@@ -1312,9 +1571,31 @@ var UiModule = /** @class */ (function () {
     UiModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [_layout_layout_component__WEBPACK_IMPORTED_MODULE_4__["LayoutComponent"], _header_header_component__WEBPACK_IMPORTED_MODULE_5__["HeaderComponent"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_6__["FooterComponent"]],
-            exports: [_layout_layout_component__WEBPACK_IMPORTED_MODULE_4__["LayoutComponent"], _angular_router__WEBPACK_IMPORTED_MODULE_18__["RouterModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["MDBBootstrapModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_19__["BrowserAnimationsModule"], _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_20__["MatCheckboxModule"], _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_21__["MatTooltipModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_22__["MatInputModule"], _angular_material_table__WEBPACK_IMPORTED_MODULE_23__["MatTableModule"]],
-            imports: [angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["MDBBootstrapModule"].forRoot(), _angular_router__WEBPACK_IMPORTED_MODULE_18__["RouterModule"].forRoot(appRoutes),
-                _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["CheckboxModule"], angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["WavesModule"], angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["ButtonsModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_19__["BrowserAnimationsModule"], _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_20__["MatCheckboxModule"], _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_21__["MatTooltipModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_22__["MatInputModule"], _angular_material_table__WEBPACK_IMPORTED_MODULE_23__["MatTableModule"]
+            exports: [
+                _layout_layout_component__WEBPACK_IMPORTED_MODULE_4__["LayoutComponent"],
+                _angular_router__WEBPACK_IMPORTED_MODULE_19__["RouterModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
+                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["MDBBootstrapModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_20__["BrowserAnimationsModule"],
+                _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_21__["MatCheckboxModule"],
+                _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_22__["MatTooltipModule"],
+                _angular_material_input__WEBPACK_IMPORTED_MODULE_23__["MatInputModule"],
+                _angular_material_table__WEBPACK_IMPORTED_MODULE_24__["MatTableModule"]
+            ],
+            imports: [
+                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["MDBBootstrapModule"].forRoot(),
+                _angular_router__WEBPACK_IMPORTED_MODULE_19__["RouterModule"].forRoot(appRoutes),
+                _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
+                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["CheckboxModule"],
+                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["WavesModule"],
+                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["ButtonsModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_20__["BrowserAnimationsModule"],
+                _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_21__["MatCheckboxModule"],
+                _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_22__["MatTooltipModule"],
+                _angular_material_input__WEBPACK_IMPORTED_MODULE_23__["MatInputModule"],
+                _angular_material_table__WEBPACK_IMPORTED_MODULE_24__["MatTableModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_25__["HttpClientModule"]
             ]
         })
     ], UiModule);
