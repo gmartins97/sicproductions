@@ -29,6 +29,9 @@ import { SurfaceFinishService } from '../services/surface-finish.service';
 import { MatSnackBarModule } from '@angular/material';
 import { CreateMaterialComponent } from '../create-material/create-material.component';
 import { EditMaterialComponent } from '../edit-material/edit-material.component';
+import { EditCategoryComponent } from '../edit-category/edit-category.component';
+import { MaterialFinishComponent } from '../material-finish/material-finish.component';
+import { ProductConfiguratorComponent } from '../product-configurator/product-configurator.component';
 import {MatSelectModule} from '@angular/material/select';
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -39,12 +42,15 @@ const appRoutes: Routes = [
   { path: 'surfaceFinishes/edit/:id', component: EditSurfaceFinishComponent },
   { path: 'materials', component: MaterialComponent },
   { path: 'materials/new', component: CreateMaterialComponent },
-  { path: 'materials/edit', component: EditMaterialComponent },
+  { path: 'materials/edit/:id', component: EditMaterialComponent },
+  { path: 'materialfinishes', component: MaterialFinishComponent },
   { path: 'categories', component: CategoryComponent },
   { path: 'categories/new', component: CreateCategoryComponent },
+  { path: 'categories/edit/:id', component: EditCategoryComponent },
   { path: 'products', component: ProductComponent },
   { path: 'catalogues', component: CatalogueComponent },
   { path: 'collections', component: CollectionComponent },
+  { path: 'productConfigurator', component: ProductConfiguratorComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];

@@ -387,6 +387,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _create_material_create_material_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./create-material/create-material.component */ "./src/app/create-material/create-material.component.ts");
 /* harmony import */ var _edit_material_edit_material_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./edit-material/edit-material.component */ "./src/app/edit-material/edit-material.component.ts");
 /* harmony import */ var _create_category_create_category_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./create-category/create-category.component */ "./src/app/create-category/create-category.component.ts");
+/* harmony import */ var _edit_category_edit_category_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./edit-category/edit-category.component */ "./src/app/edit-category/edit-category.component.ts");
+/* harmony import */ var _material_finish_material_finish_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./material-finish/material-finish.component */ "./src/app/material-finish/material-finish.component.ts");
+/* harmony import */ var _product_configurator_product_configurator_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./product-configurator/product-configurator.component */ "./src/app/product-configurator/product-configurator.component.ts");
+
+
+
 
 
 
@@ -426,7 +432,10 @@ var AppModule = /** @class */ (function () {
                 _edit_surface_finish_edit_surface_finish_component__WEBPACK_IMPORTED_MODULE_15__["EditSurfaceFinishComponent"],
                 _create_material_create_material_component__WEBPACK_IMPORTED_MODULE_16__["CreateMaterialComponent"],
                 _edit_material_edit_material_component__WEBPACK_IMPORTED_MODULE_17__["EditMaterialComponent"],
-                _create_category_create_category_component__WEBPACK_IMPORTED_MODULE_18__["CreateCategoryComponent"]
+                _create_category_create_category_component__WEBPACK_IMPORTED_MODULE_18__["CreateCategoryComponent"],
+                _edit_category_edit_category_component__WEBPACK_IMPORTED_MODULE_19__["EditCategoryComponent"],
+                _material_finish_material_finish_component__WEBPACK_IMPORTED_MODULE_20__["MaterialFinishComponent"],
+                _product_configurator_product_configurator_component__WEBPACK_IMPORTED_MODULE_21__["ProductConfiguratorComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -517,7 +526,7 @@ module.exports = "table {\r\n  width: 100%;\r\n}\r\n\r\n.mat-form-field {\r\n  f
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Categorias</h3>\r\n<div class=\"example-container container\">\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\r\n  </mat-form-field>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"description\">\r\n      <th mat-header-cell *matHeaderCellDef> Descrição </th>\r\n      <td mat-cell *matCellDef=\"let category\"> {{category.description}} </td>\r\n    </ng-container>\r\n    <!-- Parent Column -->\r\n    <ng-container matColumnDef=\"parent\">\r\n      <th mat-header-cell *matHeaderCellDef> Categoria Pai </th>\r\n      <td mat-cell *matCellDef=\"let category\"> {{category.parentDescription}}</td>\r\n    </ng-container>\r\n    <!-- Edit Column -->\r\n    <ng-container matColumnDef=\"edit\">\r\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\r\n      <td mat-cell *matCellDef=\"let category\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" matTooltip=\"Editar esta categoria\" class=\"btn btn-primary btn-sm\">Editar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Remove Column -->\r\n    <ng-container matColumnDef=\"remove\">\r\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" matTooltip=\"Remover esta categoria\" class=\"btn btn-danger btn-sm\">Remover</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"sic-row\">\r\n  <div class=\"sic-column\">\r\n    <button type=\"button\" (click)=\"addCategory()\" matTooltip=\"Criar uma nova categoria\" class=\"btn btn-primary btn-md\">Nova</button>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Categorias</h3>\r\n<div class=\"example-container container\">\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\r\n  </mat-form-field>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"description\">\r\n      <th mat-header-cell *matHeaderCellDef> Descrição </th>\r\n      <td mat-cell *matCellDef=\"let category\"> {{category.description}} </td>\r\n    </ng-container>\r\n    <!-- Parent Column -->\r\n    <ng-container matColumnDef=\"parent\">\r\n      <th mat-header-cell *matHeaderCellDef> Categoria Pai </th>\r\n      <td mat-cell *matCellDef=\"let category\"> {{category.parentDescription}}</td>\r\n    </ng-container>\r\n    <!-- Edit Column -->\r\n    <ng-container matColumnDef=\"edit\">\r\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\r\n      <td mat-cell *matCellDef=\"let category; let in = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"editCategory(in)\" matTooltip=\"Editar esta categoria\" class=\"btn btn-primary btn-sm\">Editar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Remove Column -->\r\n    <ng-container matColumnDef=\"remove\">\r\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\r\n      <td mat-cell *matCellDef=\"let in = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"deleteCategory(in)\" matTooltip=\"Remover esta categoria\" class=\"btn btn-danger btn-sm\">Remover</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"container\">\r\n<div class=\"sic-row\">\r\n  <div class=\"sic-column\">\r\n    <button type=\"button\" (click)=\"addCategory()\" matTooltip=\"Criar uma nova categoria\" class=\"btn btn-primary btn-md\">Nova</button>\r\n  </div>\r\n</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -557,7 +566,8 @@ var CategoryComponent = /** @class */ (function () {
     CategoryComponent.prototype.getCategories = function () {
         var _this = this;
         this.service.getCategories().subscribe(function (data) {
-            _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
+            _this.categories = data;
+            _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](_this.categories);
         }, function (error) {
             _this.bar.open("Ocorreu um erro ao tentar obter as categorias do servidor: " + error.error, '', {
                 duration: 2000,
@@ -566,6 +576,24 @@ var CategoryComponent = /** @class */ (function () {
     };
     CategoryComponent.prototype.addCategory = function () {
         this.router.navigateByUrl("categories/new");
+    };
+    CategoryComponent.prototype.editCategory = function (index) {
+        var id = this.categories[index].id;
+        this.router.navigateByUrl("categories/edit/" + id);
+    };
+    CategoryComponent.prototype.deleteCategory = function (index) {
+        var _this = this;
+        var id = this.categories[index].id;
+        this.service.deleteCategory(id).subscribe(function (cat) {
+            _this.bar.open("Sucesso: a categoria foi eliminada.", '', {
+                duration: 2000,
+            });
+            _this.getCategories();
+        }, function (error) {
+            _this.bar.open("Ocorreu um erro ao tentar eliminar a categoria: " + error.error, '', {
+                duration: 2000,
+            });
+        });
     };
     CategoryComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -656,7 +684,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Nova categoria</h3>\n<div class=\"custom-container\">\n  <mat-form-field>\n    <input matInput [(ngModel)]=\"categoryDescription\" placeholder=\"Descrição\" required>\n  </mat-form-field>\n  <mat-form-field>\n    <mat-select [(ngModel)]=\"parentCategoryId\" placeholder=\"Categoria pai\">\n      <mat-option [value]=\"0\">Nenhuma</mat-option>\n      <mat-option *ngFor=\"let category of categories\" [value]=\"category.id\">\n        {{category.description}}\n      </mat-option>\n    </mat-select>\n  </mat-form-field>\n</div>\n<div class=\"sic-row\">\n  <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\n  <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\n</div>\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Nova categoria</h3>\n<div class=\"container\">\n<div class=\"custom-container\">\n  <mat-form-field>\n    <input matInput [(ngModel)]=\"categoryDescription\" placeholder=\"Descrição\" required>\n  </mat-form-field>\n  <mat-form-field>\n    <mat-select [(ngModel)]=\"parentCategoryId\" placeholder=\"Categoria pai\">\n      <mat-option [value]=\"0\">Nenhuma</mat-option>\n      <mat-option *ngFor=\"let category of categories\" [value]=\"category.id\">\n        {{category.description}}\n      </mat-option>\n    </mat-select>\n  </mat-form-field>\n</div>\n<div class=\"sic-row\">\n  <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\n  <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -687,6 +715,7 @@ var CreateCategoryComponent = /** @class */ (function () {
         this.router = router;
         this.bar = bar;
         this.service = service;
+        this.categoryDescription = "";
     }
     CreateCategoryComponent.prototype.ngOnInit = function () {
         this.getCategories();
@@ -695,14 +724,21 @@ var CreateCategoryComponent = /** @class */ (function () {
         var _this = this;
         this.service.getCategories().subscribe(function (data) {
             _this.categories = data;
+            _this.parentCategoryId = 0;
         }, function (error) {
-            _this.bar.open("Ocorreu um erro ao tentar obter as categorias do servidor: " + error.error, '', {
+            _this.bar.open("Ocorreu um erro ao tentar obter as categorias do servidor...", '', {
                 duration: 2000,
             });
         });
     };
     CreateCategoryComponent.prototype.confirm = function () {
         var _this = this;
+        if (this.categoryDescription.trim().length == 0) {
+            this.bar.open("Descri\u00E7\u00E3o da categoria n\u00E3o pode ser vazia.", '', {
+                duration: 2000,
+            });
+            return;
+        }
         var cat = new _model_category__WEBPACK_IMPORTED_MODULE_4__["Category"](this.categoryDescription, this.parentCategoryId);
         this.service.createCategory(cat).subscribe(function (cat) {
             _this.bar.open("Sucesso: a categoria foi criada.", '', {
@@ -751,7 +787,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Novo Material</h3>\r\n<div class=\"custom-container\">\r\n  <mat-form-field>\r\n    <input matInput [(ngModel)]=\"materialName\" placeholder=\"Nome do material\" required>\r\n  </mat-form-field>\r\n  <!--\r\n    <form class=\"md-form\">\r\n      <div class=\"file-field\">\r\n        <div (click)=\"fileInput.click()\" class=\"btn btn-primary btn-sm float-left\">\r\n          <span>Escolher textura</span>\r\n          <input hidden type=\"file\" #fileInput>\r\n        </div>\r\n        <div class=\"file-path-wrapper\">\r\n          <input class=\"file-path validate\" type=\"text\" placeholder=\"Enviar textura (.jpg)\">\r\n        </div>\r\n      </div>\r\n    </form>\r\n  -->\r\n</div>\r\n<div class=\"sic-row\">\r\n  <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n  <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n</div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Novo Material</h3>\r\n<div class=\"container\">\r\n<div class=\"custom-container\">\r\n  <br />\r\n  <mat-form-field>\r\n    <input matInput [(ngModel)]=\"materialName\" placeholder=\"Nome do material\" required>\r\n  </mat-form-field>\r\n  <mat-form-field>\r\n    <input type=\"number\" matInput [(ngModel)]=\"price\" placeholder=\"Preço por m2\" min=\"0\" required>\r\n  </mat-form-field>\r\n  <!--\r\n    <form class=\"md-form\">\r\n      <div class=\"file-field\">\r\n        <div (click)=\"fileInput.click()\" class=\"btn btn-primary btn-sm float-left\">\r\n          <span>Escolher textura</span>\r\n          <input hidden type=\"file\" #fileInput>\r\n        </div>\r\n        <div class=\"file-path-wrapper\">\r\n          <input class=\"file-path validate\" type=\"text\" placeholder=\"Enviar textura (.jpg)\">\r\n        </div>\r\n      </div>\r\n    </form>\r\n  -->\r\n</div>\r\n<div class=\"sic-row\">\r\n  <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n  <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -768,16 +804,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _model_Material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model/Material */ "./src/app/model/Material.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _services_material_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/material.service */ "./src/app/services/material.service.ts");
+
+
+
 
 
 
 var CreateMaterialComponent = /** @class */ (function () {
-    function CreateMaterialComponent(router) {
+    function CreateMaterialComponent(router, bar, service) {
         this.router = router;
+        this.bar = bar;
+        this.service = service;
+        this.materialName = "";
     }
     CreateMaterialComponent.prototype.ngOnInit = function () {
     };
     CreateMaterialComponent.prototype.confirm = function () {
+        var _this = this;
+        if (this.materialName.trim().length == 0) {
+            this.bar.open("Nome do material n\u00E3o pode estar vazio.", '', {
+                duration: 2000,
+            });
+            return;
+        }
+        if (this.price.toString().length == 0) {
+            this.bar.open("Pre\u00E7o do material n\u00E3o pode estar vazio.", '', {
+                duration: 2000,
+            });
+            return;
+        }
+        var mat = new _model_Material__WEBPACK_IMPORTED_MODULE_3__["Material"](this.materialName, this.price);
+        this.service.createMaterial(mat).subscribe(function (res) {
+            _this.bar.open('Sucesso, o material foi criado.', '', { duration: 2000 });
+            _this.back();
+        }, function (e) {
+            _this.bar.open("Erro: " + e.error, '', { duration: 2000 });
+        });
     };
     CreateMaterialComponent.prototype.back = function () {
         this.router.navigateByUrl('/materials');
@@ -788,7 +853,7 @@ var CreateMaterialComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./create-material.component.html */ "./src/app/create-material/create-material.component.html"),
             styles: [__webpack_require__(/*! ./create-material.component.css */ "./src/app/create-material/create-material.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSnackBar"], _services_material_service__WEBPACK_IMPORTED_MODULE_5__["MaterialService"]])
     ], CreateMaterialComponent);
     return CreateMaterialComponent;
 }());
@@ -815,7 +880,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Novo acabamento</h3>\r\n<div class=\"custom-container\">\r\n  <mat-form-field>\r\n    <input matInput [(ngModel)]=\"surfaceFinishName\" placeholder=\"Nome do acabamento\" required>\r\n  </mat-form-field>\r\n  <!--\r\n    <form class=\"md-form\">\r\n      <div class=\"file-field\">\r\n        <div (click)=\"fileInput.click()\" class=\"btn btn-primary btn-sm float-left\">\r\n          <span>Escolher textura</span>\r\n          <input hidden type=\"file\" #fileInput>\r\n        </div>\r\n        <div class=\"file-path-wrapper\">\r\n          <input class=\"file-path validate\" type=\"text\" placeholder=\"Enviar textura (.jpg)\">\r\n        </div>\r\n      </div>\r\n    </form>\r\n  -->\r\n</div>\r\n<div class=\"sic-row\">\r\n  <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n  <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n</div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Novo acabamento</h3>\r\n<div class=\"container\">\r\n<div class=\"custom-container\">\r\n  <mat-form-field id=\"input\">\r\n    <input matInput [(ngModel)]=\"surfaceFinishName\" placeholder=\"Nome do acabamento\" required>\r\n  </mat-form-field>\r\n  <div *ngIf=\"!minLengthValidation\">\r\n    <p>Tem que inserir o nome do acabamento</p>\r\n  </div>\r\n  <!--\r\n    <form class=\"md-form\">\r\n      <div class=\"file-field\">\r\n        <div (click)=\"fileInput.click()\" class=\"btn btn-primary btn-sm float-left\">\r\n          <span>Escolher textura</span>\r\n          <input hidden type=\"file\" #fileInput>\r\n        </div>\r\n        <div class=\"file-path-wrapper\">\r\n          <input class=\"file-path validate\" type=\"text\" placeholder=\"Enviar textura (.jpg)\">\r\n        </div>\r\n      </div>\r\n    </form>\r\n  -->\r\n</div>\r\n<div class=\"sic-row\">\r\n  <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n  <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -844,19 +909,25 @@ var CreateSurfaceFinishComponent = /** @class */ (function () {
         this.router = router;
         this.service = service;
         this.bar = bar;
+        this.surfaceFinishName = '';
+        this.minLengthValidation = true;
     }
     CreateSurfaceFinishComponent.prototype.ngOnInit = function () {
     };
     CreateSurfaceFinishComponent.prototype.confirm = function () {
         var _this = this;
-        this.service.createSurfaceFinish({ name: this.surfaceFinishName }).subscribe(function (res) {
-            _this.bar.open('Sucesso, o acabamento foi criado', '', { duration: 1000 });
-            console.log(res);
-            _this.back();
-        }, function (e) {
-            _this.bar.open("Error: " + e.error, '', { duration: 2000 });
-            console.log(e);
-        });
+        var sizeSurfaceFinishName = this.surfaceFinishName.trim().length;
+        if (sizeSurfaceFinishName > 0) {
+            this.service.createSurfaceFinish({ name: this.surfaceFinishName }).subscribe(function (res) {
+                _this.bar.open('Sucesso, o acabamento foi criado', '', { duration: 1000 });
+                _this.back();
+            }, function (e) {
+                _this.bar.open("Error: " + e.error, '', { duration: 2000 });
+            });
+        }
+        else {
+            this.minLengthValidation = false;
+        }
     };
     CreateSurfaceFinishComponent.prototype.back = function () {
         this.router.navigateByUrl('/surfaceFinishes');
@@ -870,6 +941,113 @@ var CreateSurfaceFinishComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_surface_finish_service__WEBPACK_IMPORTED_MODULE_3__["SurfaceFinishService"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSnackBar"]])
     ], CreateSurfaceFinishComponent);
     return CreateSurfaceFinishComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/edit-category/edit-category.component.css":
+/*!***********************************************************!*\
+  !*** ./src/app/edit-category/edit-category.component.css ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2VkaXQtY2F0ZWdvcnkvZWRpdC1jYXRlZ29yeS5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/edit-category/edit-category.component.html":
+/*!************************************************************!*\
+  !*** ./src/app/edit-category/edit-category.component.html ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Editar categoria</h3>\r\n<div class=\"container\">\r\n<div class=\"custom-container\">\r\n  <mat-form-field>\r\n    <input matInput [(ngModel)]=\"categoryDescription\" placeholder=\"Descrição\" required>\r\n  </mat-form-field>\r\n  <mat-form-field>\r\n    <mat-select [(ngModel)]=\"parentCategoryId\" placeholder=\"Categoria pai\">\r\n      <mat-option [value]=\"0\">Nenhuma</mat-option>\r\n      <mat-option *ngFor=\"let category of categories\" [value]=\"category.id\">\r\n        {{category.description}}\r\n      </mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n</div>\r\n<div class=\"sic-row\">\r\n  <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n  <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n</div>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/edit-category/edit-category.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/edit-category/edit-category.component.ts ***!
+  \**********************************************************/
+/*! exports provided: EditCategoryComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditCategoryComponent", function() { return EditCategoryComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_category_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/category.service */ "./src/app/services/category.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+
+
+
+
+
+var EditCategoryComponent = /** @class */ (function () {
+    function EditCategoryComponent(router, route, service, bar) {
+        this.router = router;
+        this.route = route;
+        this.service = service;
+        this.bar = bar;
+        this.categoryDescription = "";
+    }
+    EditCategoryComponent.prototype.ngOnInit = function () {
+        this.getCategories();
+    };
+    EditCategoryComponent.prototype.getCategories = function () {
+        var _this = this;
+        this.route.params.subscribe(function (res) {
+            _this.id = res.id;
+        });
+        this.service.getCategories().subscribe(function (data) {
+            var category = data.find(function (cat) { return cat.id == _this.id; });
+            _this.parentCategoryId = category.parentId;
+            _this.categoryDescription = category.description;
+            _this.categories = data.filter(function (cat) { return cat.id != _this.id; });
+        }, function (error) {
+            _this.bar.open("Ocorreu um erro ao tentar obter as categorias do servidor...", '', {
+                duration: 2000,
+            });
+        });
+    };
+    EditCategoryComponent.prototype.confirm = function () {
+        var _this = this;
+        if (this.categoryDescription.trim().length == 0) {
+            this.bar.open("Descri\u00E7\u00E3o da categoria n\u00E3o pode ser vazia.", '', {
+                duration: 2000,
+            });
+            return;
+        }
+        var cat = { id: this.id, description: this.categoryDescription, parentId: this.parentCategoryId };
+        this.service.updateCategory(this.id, cat).subscribe(function () {
+            _this.bar.open("Sucesso: a categoria foi editada.", '', {
+                duration: 2000,
+            });
+            _this.back();
+        }, function (error) {
+            _this.bar.open("Erro: " + error.error, '', {
+                duration: 2000,
+            });
+        });
+    };
+    EditCategoryComponent.prototype.back = function () {
+        this.router.navigateByUrl("/categories");
+    };
+    EditCategoryComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-edit-category',
+            template: __webpack_require__(/*! ./edit-category.component.html */ "./src/app/edit-category/edit-category.component.html"),
+            styles: [__webpack_require__(/*! ./edit-category.component.css */ "./src/app/edit-category/edit-category.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_category_service__WEBPACK_IMPORTED_MODULE_3__["CategoryService"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSnackBar"]])
+    ], EditCategoryComponent);
+    return EditCategoryComponent;
 }());
 
 
@@ -894,7 +1072,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  edit-material works!\r\n</p>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Editar material</h3>\r\n<div class=\"container\">\r\n<div class=\"custom-container\">\r\n  <br />\r\n  <mat-form-field>\r\n    <input matInput [(ngModel)]=\"materialName\" placeholder=\"Nome\" required>\r\n  </mat-form-field>\r\n  <mat-form-field>\r\n    <input type=\"number\" min=\"0\" matInput [(ngModel)]=\"price\" placeholder=\"Preço por m2\" required>\r\n  </mat-form-field>\r\n</div>\r\n<div class=\"sic-row\">\r\n  <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n  <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -910,12 +1088,64 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditMaterialComponent", function() { return EditMaterialComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _services_material_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/material.service */ "./src/app/services/material.service.ts");
+
+
+
 
 
 var EditMaterialComponent = /** @class */ (function () {
-    function EditMaterialComponent() {
+    function EditMaterialComponent(router, route, bar, service) {
+        this.router = router;
+        this.route = route;
+        this.bar = bar;
+        this.service = service;
+        this.materialName = "";
     }
     EditMaterialComponent.prototype.ngOnInit = function () {
+        this.getMaterial();
+    };
+    EditMaterialComponent.prototype.getMaterial = function () {
+        var _this = this;
+        this.route.params.subscribe(function (res) {
+            _this.id = res.id;
+        });
+        this.service.getMaterials().subscribe(function (data) {
+            _this.materials = data;
+            _this.materialName = _this.materials.find(function (m) { return m.id == _this.id; }).name;
+            _this.price = _this.materials.find(function (m) { return m.id == _this.id; }).price;
+        }, function (error) {
+            _this.bar.open("Ocorreu um erro ao tentar obter os materiais do servidor...", '', {
+                duration: 2000,
+            });
+        });
+    };
+    EditMaterialComponent.prototype.confirm = function () {
+        var _this = this;
+        if (this.materialName.trim().length == 0) {
+            this.bar.open("Nome do material n\u00E3o pode estar vazio.", '', {
+                duration: 2000,
+            });
+            return;
+        }
+        if (this.price.toString().length == 0) {
+            this.bar.open("Pre\u00E7o do material n\u00E3o pode estar vazio.", '', {
+                duration: 2000,
+            });
+            return;
+        }
+        var mat = { id: this.id, name: this.materialName, price: this.price };
+        this.service.updateMaterial(this.id, mat).subscribe(function (res) {
+            _this.bar.open('Sucesso, o material foi editado.', '', { duration: 2000 });
+            _this.back();
+        }, function (e) {
+            _this.bar.open("Erro: " + e.error, '', { duration: 2000 });
+        });
+    };
+    EditMaterialComponent.prototype.back = function () {
+        this.router.navigateByUrl('/materials');
     };
     EditMaterialComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -923,7 +1153,7 @@ var EditMaterialComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./edit-material.component.html */ "./src/app/edit-material/edit-material.component.html"),
             styles: [__webpack_require__(/*! ./edit-material.component.css */ "./src/app/edit-material/edit-material.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"], _services_material_service__WEBPACK_IMPORTED_MODULE_4__["MaterialService"]])
     ], EditMaterialComponent);
     return EditMaterialComponent;
 }());
@@ -950,7 +1180,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Editar acabamento</h3>\r\n<div class=\"custom-container\">\r\n  <mat-form-field>\r\n    <input matInput [(ngModel)]=\"surfaceFinishName\" placeholder=\"Nome do acabamento\" required>\r\n  </mat-form-field>\r\n  <!-- <mat-form-field>\r\n    <input matInput [(ngModel)]=\"price\" placeholder=\"Preço/m2\" required>\r\n  </mat-form-field> -->\r\n  <!--\r\n    <form class=\"md-form\">\r\n      <div class=\"file-field\">\r\n        <div (click)=\"fileInput.click()\" class=\"btn btn-primary btn-sm float-left\">\r\n          <span>Escolher textura</span>\r\n          <input hidden type=\"file\" #fileInput>\r\n        </div>\r\n        <div class=\"file-path-wrapper\">\r\n          <input class=\"file-path validate\" type=\"text\" placeholder=\"Enviar textura (.jpg)\">\r\n        </div>\r\n      </div>\r\n    </form>\r\n  -->\r\n</div>\r\n<div class=\"sic-row\">\r\n  <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n  <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n</div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Editar acabamento</h3>\r\n<div class=\"container\">\r\n<div class=\"custom-container\">\r\n  <mat-form-field>\r\n    <input matInput [(ngModel)]=\"surfaceFinishName\" placeholder=\"Nome do acabamento\" required>\r\n  </mat-form-field>\r\n  <div *ngIf=\"!minLengthValidation\">\r\n    <p>Tem que inserir o nome do acabamento</p>\r\n  </div>\r\n  <!-- <mat-form-field>\r\n    <input matInput [(ngModel)]=\"price\" placeholder=\"Preço/m2\" required>\r\n  </mat-form-field> -->\r\n  <!--\r\n    <form class=\"md-form\">\r\n      <div class=\"file-field\">\r\n        <div (click)=\"fileInput.click()\" class=\"btn btn-primary btn-sm float-left\">\r\n          <span>Escolher textura</span>\r\n          <input hidden type=\"file\" #fileInput>\r\n        </div>\r\n        <div class=\"file-path-wrapper\">\r\n          <input class=\"file-path validate\" type=\"text\" placeholder=\"Enviar textura (.jpg)\">\r\n        </div>\r\n      </div>\r\n    </form>\r\n  -->\r\n</div>\r\n<div class=\"sic-row\">\r\n  <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n  <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -980,6 +1210,8 @@ var EditSurfaceFinishComponent = /** @class */ (function () {
         this.route = route;
         this.service = service;
         this.bar = bar;
+        this.surfaceFinishName = '';
+        this.minLengthValidation = true;
     }
     EditSurfaceFinishComponent.prototype.ngOnInit = function () {
         this.getSurfaceFinish();
@@ -999,13 +1231,19 @@ var EditSurfaceFinishComponent = /** @class */ (function () {
     };
     EditSurfaceFinishComponent.prototype.confirm = function () {
         var _this = this;
-        this.surface.name = this.surfaceFinishName;
-        this.service.updateSurfaceFinish(this.surface).subscribe(function (res) {
-            _this.bar.open('Sucesso: o acabamento foi atualizado', '', { duration: 2000 });
-            _this.back();
-        }, function (e) {
-            _this.bar.open(e.error, '', { duration: 2000 });
-        });
+        var sizeSurfaceFinishName = this.surfaceFinishName.trim().length;
+        if (sizeSurfaceFinishName > 0) {
+            this.surface.name = this.surfaceFinishName;
+            this.service.updateSurfaceFinish(this.surface).subscribe(function (res) {
+                _this.bar.open('Sucesso: o acabamento foi atualizado', '', { duration: 2000 });
+                _this.back();
+            }, function (e) {
+                _this.bar.open(e.error, '', { duration: 2000 });
+            });
+        }
+        else {
+            this.minLengthValidation = false;
+        }
     };
     EditSurfaceFinishComponent.prototype.back = function () {
         this.router.navigateByUrl('/surfaceFinishes');
@@ -1032,7 +1270,7 @@ var EditSurfaceFinishComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hvbWUtcGFnZS9ob21lLXBhZ2UuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = ".vertical-center {\r\n  margin: 0;\r\n  position: absolute;\r\n  top: 50%;\r\n  -webkit-transform: translateY(-50%);\r\n          transform: translateY(-50%);\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS1wYWdlL2hvbWUtcGFnZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsVUFBVTtFQUNWLG1CQUFtQjtFQUNuQixTQUFTO0VBRVQsb0NBQTRCO1VBQTVCLDRCQUE0QjtDQUM3QiIsImZpbGUiOiJzcmMvYXBwL2hvbWUtcGFnZS9ob21lLXBhZ2UuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi52ZXJ0aWNhbC1jZW50ZXIge1xyXG4gIG1hcmdpbjogMDtcclxuICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgdG9wOiA1MCU7XHJcbiAgLW1zLXRyYW5zZm9ybTogdHJhbnNsYXRlWSgtNTAlKTtcclxuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoLTUwJSk7XHJcbn1cclxuIl19 */"
 
 /***/ }),
 
@@ -1043,7 +1281,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  home-page works!\n</p>\n"
+module.exports = "<div class=\"card card-image\" style=\"background-image: url(https://www.bradutch.com/wp-content/uploads/2018/09/videoblocks-blue-business-background-2_h3cvzluwb_thumbnail-full01.png); height: 93%; overflow-y: hidden\">\n  <div class=\"text-white text-center py-5 px-4 my-5 vertical-center\">\n    <div>\n      <h2 class=\"card-title h1-responsive pt-3 mb-5 font-bold\"><strong>Bem-vindo à SiCProductions</strong></h2>\n      <p class=\"mx-5 mb-5\">Comece a projetar e configurar produtos personalizados à sua medida.\n        Após a configuração pode fazer a sua encomenda e acompanhar o estado da mesma.\n        Comece já a projetar e configurar os seus produtos.\n      </p>\n      <a routerLink=\"/login\" class=\"btn btn-outline-white btn-md\"><i class=\"fa fa-sign-in\"></i> Iniciar sessão</a>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1099,7 +1337,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br />\r\n<h1 class=\"text-center\">Bem-vindo</h1>\r\n<!-- Extended material form grid -->\r\n<form class=\"form-group\">\r\n  <!-- Grid row -->\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-user prefix\"></i>\r\n        <input mdbInputDirective type=\"text\" class=\"form-control\" placeholder=\"Nome de utilizador\" required>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input mdbInputDirective type=\"password\" class=\"form-control\" placeholder=\"Palavra-passe\" required>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n  <!-- Grid row -->\r\n  <button type=\"submit\" matTooltip=\"Iniciar sessão\" class=\"btn btn-primary btn-md\">Entrar</button>\r\n  Não tem uma conta? <a routerLink=\"/signup\" routerLinkActive=\"active\">Crie uma.</a>\r\n</form>\r\n<!-- Extended material form grid -->\r\n"
+module.exports = "<div class=\"container\"><br />\r\n<h1 class=\"text-center\">Bem-vindo</h1>\r\n<!-- Extended material form grid -->\r\n<form class=\"form-group\">\r\n  <!-- Grid row -->\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-user prefix\"></i>\r\n        <input mdbInputDirective type=\"text\" class=\"form-control\" placeholder=\"Nome de utilizador\" required>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input mdbInputDirective type=\"password\" class=\"form-control\" placeholder=\"Palavra-passe\" required>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n  <!-- Grid row -->\r\n  <button type=\"submit\" matTooltip=\"Iniciar sessão\" class=\"btn btn-primary btn-md\">Entrar</button>\r\n  Não tem uma conta? <a routerLink=\"/signup\" routerLinkActive=\"active\">Crie uma.</a>\r\n</form>\r\n<!-- Extended material form grid -->\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1137,6 +1375,83 @@ var LoginComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/material-finish/material-finish.component.css":
+/*!***************************************************************!*\
+  !*** ./src/app/material-finish/material-finish.component.css ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/* Structure */\r\ntable {\r\n  width: 100%;\r\n}\r\n.mat-form-field {\r\n  font-size: 14px;\r\n  width: 100%;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWF0ZXJpYWwtZmluaXNoL21hdGVyaWFsLWZpbmlzaC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLGVBQWU7QUFDZjtFQUNFLFlBQVk7Q0FDYjtBQUVEO0VBQ0UsZ0JBQWdCO0VBQ2hCLFlBQVk7Q0FDYiIsImZpbGUiOiJzcmMvYXBwL21hdGVyaWFsLWZpbmlzaC9tYXRlcmlhbC1maW5pc2guY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIFN0cnVjdHVyZSAqL1xyXG50YWJsZSB7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcbi5tYXQtZm9ybS1maWVsZCB7XHJcbiAgZm9udC1zaXplOiAxNHB4O1xyXG4gIHdpZHRoOiAxMDAlO1xyXG59XHJcbiJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/material-finish/material-finish.component.html":
+/*!****************************************************************!*\
+  !*** ./src/app/material-finish/material-finish.component.html ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Materiais Acabamentos</h3>\n<div class=\"example-container container\">\n  <mat-form-field>\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\n  </mat-form-field>\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\n    <!-- Position Column -->\n    <ng-container matColumnDef=\"position\">\n      <th mat-header-cell *matHeaderCellDef> # </th>\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\n    </ng-container>\n    <!-- Material Column -->\n    <ng-container matColumnDef=\"materialName\">\n      <th mat-header-cell *matHeaderCellDef> Material </th>\n      <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.material.name}} </td>\n    </ng-container>\n    <!-- Finish Column -->\n    <ng-container matColumnDef=\"finishName\">\n      <th mat-header-cell *matHeaderCellDef> Acabamento </th>\n      <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.finish.name}} </td>\n    </ng-container>\n    <!-- Increment Column -->\n    <ng-container matColumnDef=\"increment\">\n      <th mat-header-cell *matHeaderCellDef> Incremento/m2 </th>\n      <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.increment}}€/m2 </td>\n    </ng-container>\n    <!-- Total price Column -->\n    <ng-container matColumnDef=\"totalPrice\">\n      <th mat-header-cell *matHeaderCellDef> Preço total/m2 </th>\n      <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.increment+materialFinish.material.price}}€/m2 </td>\n    </ng-container>\n    <!-- Texture Column -->\n    <ng-container matColumnDef=\"texture\">\n      <th mat-header-cell *matHeaderCellDef> Textura </th>\n      <td mat-cell *matCellDef=\"let materialFinish\"> <img src=\"{{materialFinish.texture}}\" width=\"64\" height=\"64\" alt=\"Textura\"> </td>\n    </ng-container>\n    <!-- Edit Column -->\n    <ng-container matColumnDef=\"edit\">\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\n      <td mat-cell *matCellDef=\"let i = index\">\n        <span class=\"table-remove\">\n          <button type=\"button\" (click)=\"editMaterialFinish(i)\" matTooltip=\"Editar este material acabamento\" class=\"btn btn-primary btn-sm\">Editar</button>\n        </span>\n      </td>\n    </ng-container>\n    <!-- Remove Column -->\n    <ng-container matColumnDef=\"remove\">\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\n      <td mat-cell *matCellDef=\"let i = index\">\n        <span class=\"table-remove\">\n          <button type=\"button\" (click)=\"deleteMaterialFinish(i)\" matTooltip=\"Remover este material acabamento\" class=\"btn btn-danger btn-sm\">Remover</button>\n        </span>\n      </td>\n    </ng-container>\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n  </table>\n</div>\n<div class=\"container\">\n  <div class=\"sic-row\">\n    <div class=\"sic-column\">\n      <button type=\"button\" (click)=\"addMaterialFinish()\" matTooltip=\"Criar um novo material acabamento\" class=\"btn btn-primary btn-md\">Novo</button>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/material-finish/material-finish.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/material-finish/material-finish.component.ts ***!
+  \**************************************************************/
+/*! exports provided: MaterialFinishComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MaterialFinishComponent", function() { return MaterialFinishComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _model_Material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model/Material */ "./src/app/model/Material.ts");
+/* harmony import */ var _model_surface_finish__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../model/surface-finish */ "./src/app/model/surface-finish.ts");
+
+
+
+
+
+var mat1 = new _model_Material__WEBPACK_IMPORTED_MODULE_3__["Material"]("Madeira", 3.89);
+var finish1 = new _model_surface_finish__WEBPACK_IMPORTED_MODULE_4__["SurfaceFinish"]("Serrado");
+var increment1 = 3.11;
+var texture1 = "https://www.sharecg.com/images/medium/24765.jpg";
+var mat2 = new _model_Material__WEBPACK_IMPORTED_MODULE_3__["Material"]("Granito", 60.5);
+var finish2 = new _model_surface_finish__WEBPACK_IMPORTED_MODULE_4__["SurfaceFinish"]("Polido");
+var increment2 = 5.5;
+var texture2 = "https://i.pinimg.com/736x/65/ac/06/65ac0600e9c46d59f14e58e1200acff3--granite-brazil.jpg";
+var MaterialFinishes = [{ material: mat1, finish: finish1, increment: increment1, texture: texture1 },
+    { material: mat2, finish: finish2, increment: increment2, texture: texture2 }];
+var MaterialFinishComponent = /** @class */ (function () {
+    function MaterialFinishComponent() {
+        this.displayedColumns = ['position', 'materialName', 'finishName', 'increment', 'totalPrice', 'texture', 'edit', 'remove'];
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](MaterialFinishes);
+    }
+    MaterialFinishComponent.prototype.ngOnInit = function () {
+    };
+    MaterialFinishComponent.prototype.applyFilter = function (filterValue) {
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+    };
+    MaterialFinishComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-material-finish',
+            template: __webpack_require__(/*! ./material-finish.component.html */ "./src/app/material-finish/material-finish.component.html"),
+            styles: [__webpack_require__(/*! ./material-finish.component.css */ "./src/app/material-finish/material-finish.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], MaterialFinishComponent);
+    return MaterialFinishComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/material/material.component.css":
 /*!*************************************************!*\
   !*** ./src/app/material/material.component.css ***!
@@ -1155,7 +1470,7 @@ module.exports = "/* Structure */\r\ntable {\r\n  width: 100%;\r\n}\r\n.mat-form
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Materiais</h3>\r\n<div class=\"example-container container\">\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\r\n  </mat-form-field>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"name\">\r\n      <th mat-header-cell *matHeaderCellDef> Nome </th>\r\n      <td mat-cell *matCellDef=\"let material\"> {{material.name}} </td>\r\n    </ng-container>\r\n    <!-- Price Column -->\r\n    <ng-container matColumnDef=\"price\">\r\n      <th mat-header-cell *matHeaderCellDef> Preço/m2 </th>\r\n      <td mat-cell *matCellDef=\"let material\"> {{material.price}}€/m2 </td>\r\n    </ng-container>\r\n    <!-- Edit Column -->\r\n    <ng-container matColumnDef=\"edit\">\r\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\r\n      <td mat-cell *matCellDef=\"let material; let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"editMaterial(i)\" matTooltip=\"Editar este material\" class=\"btn btn-primary btn-sm\">Editar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Remove Column -->\r\n    <ng-container matColumnDef=\"remove\">\r\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\r\n      <td mat-cell *matCellDef=\"let material\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" matTooltip=\"Remover este material\" class=\"btn btn-danger btn-sm\">Remover</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"sic-row\">\r\n  <div class=\"sic-column\">\r\n    <button type=\"button\" (click)=\"addMaterial()\" matTooltip=\"Criar um novo material\" class=\"btn btn-primary btn-md\">Novo</button>\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "\r\n<h3 class=\"card-header text-center font-weight-bold py-4\">Materiais</h3>\r\n<div class=\"example-container container\">\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\r\n  </mat-form-field>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"name\">\r\n      <th mat-header-cell *matHeaderCellDef> Nome </th>\r\n      <td mat-cell *matCellDef=\"let material\"> {{material.name}} </td>\r\n    </ng-container>\r\n    <!-- Price Column -->\r\n    <ng-container matColumnDef=\"price\">\r\n      <th mat-header-cell *matHeaderCellDef> Preço/m2 </th>\r\n      <td mat-cell *matCellDef=\"let material\"> {{material.price}}€/m2 </td>\r\n    </ng-container>\r\n    <!-- Edit Column -->\r\n    <ng-container matColumnDef=\"edit\">\r\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\r\n      <td mat-cell *matCellDef=\"let material; let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"editMaterial(i)\" matTooltip=\"Editar este material\" class=\"btn btn-primary btn-sm\">Editar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Remove Column -->\r\n    <ng-container matColumnDef=\"remove\">\r\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\r\n      <td mat-cell *matCellDef=\"let material; let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"deleteMaterial(i)\" matTooltip=\"Remover este material\" class=\"btn btn-danger btn-sm\">Remover</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"container\">\r\n<div class=\"sic-row\">\r\n  <div class=\"sic-column\">\r\n    <button type=\"button\" (click)=\"addMaterial()\" matTooltip=\"Criar um novo material\" class=\"btn btn-primary btn-md\">Novo</button>\r\n  </div>\r\n</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1173,61 +1488,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_material_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/material.service */ "./src/app/services/material.service.ts");
 
 
 
 
-var ELEMENT_DATA = [
-    { name: 'Madeira', price: 1 },
-    { name: 'Ferro', price: 1.5 },
-    { name: 'Plástico', price: 1.2 },
-    { name: 'Pedra', price: 1.85 },
-    { name: 'Vidro', price: 2 },
-    { name: 'Contraplacado', price: 2.1 },
-];
+
 var MaterialComponent = /** @class */ (function () {
-    function MaterialComponent(router) {
+    function MaterialComponent(router, service, bar) {
         this.router = router;
+        this.service = service;
+        this.bar = bar;
         this.displayedColumns = ['position', 'name', 'price', 'edit', 'remove'];
-        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](ELEMENT_DATA);
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
     }
     MaterialComponent.prototype.ngOnInit = function () {
+        this.getMaterials();
     };
     MaterialComponent.prototype.applyFilter = function (filterValue) {
         this.dataSource.filter = filterValue.trim().toLowerCase();
     };
     MaterialComponent.prototype.getMaterials = function () {
-        /*this.materialSrv.getMaterials().subscribe(
-          data => { this.dataSource = data; },
-          error => {
-            this.snackBar.open(
-              "Ocorreu um erro ao tentar obter os materiais do servidor...",
-              "", {
+        var _this = this;
+        this.service.getMaterials().subscribe(function (data) {
+            _this.materials = data;
+            _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](_this.materials);
+        }, function (error) {
+            _this.bar.open("Ocorreu um erro ao tentar obter os materiais do servidor: " + error.error, '', {
                 duration: 2000,
-              });
-          }); */
+            });
+        });
     };
     MaterialComponent.prototype.addMaterial = function () {
         this.router.navigateByUrl('/materials/new');
     };
-    MaterialComponent.prototype.editMaterial = function (materialIndex) {
-        //this.router.navigateByUrl('/materials/edit/' + materialIndex);
-        //this.router.navigateByUrl('/materials/edit');
+    MaterialComponent.prototype.editMaterial = function (index) {
+        var id = this.materials[index].id;
+        this.router.navigateByUrl("materials/edit/" + id);
     };
-    MaterialComponent.prototype.deleteMaterial = function (id) {
-        /*this.surfaceFinishSrv.deleteSurfaceFinish(id).subscribe(
-          sf => {
-            this.snackBar.open("Acabamento " + sf.name + " removido com sucesso",
-              "", {
-                duration: 1500,
-              });
-            this.getSurfaceFinishes();
-          },
-          error => {
-            this.snackBar.open("Ocorreu um erro: " + error.error, "", {
-              duration: 2000,
-            });
-          }); */
+    MaterialComponent.prototype.deleteMaterial = function (index) {
+        var _this = this;
+        this.service.deleteMaterial(this.materials[index].id).subscribe(function (m) {
+            _this.bar.open("Material " + m.name + " removido com sucesso", '', { duration: 2000 });
+            _this.getMaterials();
+        }, function (e) {
+            _this.bar.open('Ocorreu um erro: ' + e.error, '', { duration: 2000 });
+        });
     };
     MaterialComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1235,9 +1541,31 @@ var MaterialComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./material.component.html */ "./src/app/material/material.component.html"),
             styles: [__webpack_require__(/*! ./material.component.css */ "./src/app/material/material.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _services_material_service__WEBPACK_IMPORTED_MODULE_4__["MaterialService"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSnackBar"]])
     ], MaterialComponent);
     return MaterialComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/model/Material.ts":
+/*!***********************************!*\
+  !*** ./src/app/model/Material.ts ***!
+  \***********************************/
+/*! exports provided: Material */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Material", function() { return Material; });
+var Material = /** @class */ (function () {
+    function Material(name, price) {
+        this.name = name;
+        this.price = price;
+    }
+    return Material;
 }());
 
 
@@ -1288,6 +1616,62 @@ var SurfaceFinish = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/product-configurator/product-configurator.component.css":
+/*!*************************************************************************!*\
+  !*** ./src/app/product-configurator/product-configurator.component.css ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3Byb2R1Y3QtY29uZmlndXJhdG9yL3Byb2R1Y3QtY29uZmlndXJhdG9yLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/product-configurator/product-configurator.component.html":
+/*!**************************************************************************!*\
+  !*** ./src/app/product-configurator/product-configurator.component.html ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  product-configurator works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/product-configurator/product-configurator.component.ts":
+/*!************************************************************************!*\
+  !*** ./src/app/product-configurator/product-configurator.component.ts ***!
+  \************************************************************************/
+/*! exports provided: ProductConfiguratorComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductConfiguratorComponent", function() { return ProductConfiguratorComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var ProductConfiguratorComponent = /** @class */ (function () {
+    function ProductConfiguratorComponent() {
+    }
+    ProductConfiguratorComponent.prototype.ngOnInit = function () {
+    };
+    ProductConfiguratorComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-product-configurator',
+            template: __webpack_require__(/*! ./product-configurator.component.html */ "./src/app/product-configurator/product-configurator.component.html"),
+            styles: [__webpack_require__(/*! ./product-configurator.component.css */ "./src/app/product-configurator/product-configurator.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], ProductConfiguratorComponent);
+    return ProductConfiguratorComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/product/product.component.css":
 /*!***********************************************!*\
   !*** ./src/app/product/product.component.css ***!
@@ -1295,7 +1679,7 @@ var SurfaceFinish = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3Byb2R1Y3QvcHJvZHVjdC5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "/* Structure */\r\ntable {\r\n  width: 100%;\r\n}\r\n.mat-form-field {\r\n  font-size: 14px;\r\n  width: 100%;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHJvZHVjdC9wcm9kdWN0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsZUFBZTtBQUNmO0VBQ0UsWUFBWTtDQUNiO0FBRUQ7RUFDRSxnQkFBZ0I7RUFDaEIsWUFBWTtDQUNiIiwiZmlsZSI6InNyYy9hcHAvcHJvZHVjdC9wcm9kdWN0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKiBTdHJ1Y3R1cmUgKi9cclxudGFibGUge1xyXG4gIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG4ubWF0LWZvcm0tZmllbGQge1xyXG4gIGZvbnQtc2l6ZTogMTRweDtcclxuICB3aWR0aDogMTAwJTtcclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -1306,7 +1690,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  product works!\n</p>\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Produtos</h3>\n<div class=\"example-container container\">\n  <mat-form-field>\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\n  </mat-form-field>\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\n    <!-- Position Column -->\n    <ng-container matColumnDef=\"position\">\n      <th mat-header-cell *matHeaderCellDef> # </th>\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\n    </ng-container>\n    <!-- Name Column -->\n    <ng-container matColumnDef=\"name\">\n      <th mat-header-cell *matHeaderCellDef> Nome </th>\n      <td mat-cell *matCellDef=\"let product\"> {{product.name}} </td>\n    </ng-container>\n    <!-- Edit Column -->\n    <ng-container matColumnDef=\"info\">\n      <th mat-header-cell *matHeaderCellDef> Mais info </th>\n      <td mat-cell *matCellDef=\"let i = index\">\n        <span class=\"table-remove\">\n          <button type=\"button\" (click)=\"editProduct(i)\" matTooltip=\"Saber mais sobre este produto\" class=\"btn btn-info btn-sm\">Mais informações</button>\n        </span>\n      </td>\n    </ng-container>\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n  </table>\n</div>\n<div class=\"container\">\n  <div class=\"sic-row\">\n    <div class=\"sic-column\">\n      <button type=\"button\" (click)=\"addProduct()\" matTooltip=\"Criar um novo produto\" class=\"btn btn-primary btn-md\">Novo</button>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1322,12 +1706,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductComponent", function() { return ProductComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _model_category__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model/category */ "./src/app/model/category.ts");
+/* harmony import */ var _model_Material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../model/Material */ "./src/app/model/Material.ts");
+/* harmony import */ var _model_surface_finish__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../model/surface-finish */ "./src/app/model/surface-finish.ts");
 
 
+
+
+
+
+var name1 = "Armário XPTO";
+var name2 = "Armário XYZ";
+var category1 = new _model_category__WEBPACK_IMPORTED_MODULE_3__["Category"]("Armário", 0);
+var mat1 = new _model_Material__WEBPACK_IMPORTED_MODULE_4__["Material"]("Madeira", 3.89);
+var finish1 = new _model_surface_finish__WEBPACK_IMPORTED_MODULE_5__["SurfaceFinish"]("Serrado");
+var increment1 = 3.11;
+var texture1 = "https://www.sharecg.com/images/medium/24765.jpg";
+var materialFinishes1 = [{ material: mat1, finish: finish1, increment: increment1, texture: texture1 }];
+var dim1 = { min: 150, max: 300 };
+var dimensions1 = { width: dim1, height: dim1, depth: dim1 };
+var minOccupancyPercentage1 = 0;
+var maxOccupancyPercentage1 = 100;
+var prod1 = { name: name1, category: category1, materialFinishes: materialFinishes1, dimensions: dimensions1, parts: [], minOccupancyPercentage: minOccupancyPercentage1, maxOccupancyPercentage: maxOccupancyPercentage1 };
+var prod2 = { name: name2, category: category1, materialFinishes: materialFinishes1, dimensions: dimensions1, parts: [], minOccupancyPercentage: minOccupancyPercentage1, maxOccupancyPercentage: maxOccupancyPercentage1 };
 var ProductComponent = /** @class */ (function () {
     function ProductComponent() {
+        this.displayedColumns = ['position', 'name', 'info'];
+        this.products = [prod1, prod2];
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](this.products);
     }
     ProductComponent.prototype.ngOnInit = function () {
+    };
+    ProductComponent.prototype.applyFilter = function (filterValue) {
+        this.dataSource.filter = filterValue.trim().toLowerCase();
     };
     ProductComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1422,7 +1834,7 @@ var GenericService = /** @class */ (function () {
         return this.httpClient.post(this.url, obj);
     };
     GenericService.prototype.update = function (id, obj) {
-        return this.httpClient.put(this.url + '/' + id, obj);
+        return this.httpClient.put(this.url + "/" + id, obj);
     };
     GenericService.prototype.delete = function (id) {
         return this.httpClient.delete(this.url + '/' + id);
@@ -1436,6 +1848,54 @@ var GenericService = /** @class */ (function () {
     ], GenericService);
     return GenericService;
 }());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/material.service.ts":
+/*!**********************************************!*\
+  !*** ./src/app/services/material.service.ts ***!
+  \**********************************************/
+/*! exports provided: MaterialService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MaterialService", function() { return MaterialService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _generic_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./generic.service */ "./src/app/services/generic.service.ts");
+
+
+
+
+var MaterialService = /** @class */ (function (_super) {
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](MaterialService, _super);
+    function MaterialService(httpClient) {
+        return _super.call(this, 'https://siccatalogue.azurewebsites.net/api/Material', httpClient) || this;
+    }
+    MaterialService.prototype.getMaterials = function () {
+        return _super.prototype.getAll.call(this);
+    };
+    MaterialService.prototype.createMaterial = function (material) {
+        return _super.prototype.create.call(this, material);
+    };
+    MaterialService.prototype.updateMaterial = function (id, material) {
+        return _super.prototype.update.call(this, id, material);
+    };
+    MaterialService.prototype.deleteMaterial = function (id) {
+        return _super.prototype.delete.call(this, id);
+    };
+    MaterialService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], MaterialService);
+    return MaterialService;
+}(_generic_service__WEBPACK_IMPORTED_MODULE_3__["GenericService"]));
 
 
 
@@ -1511,7 +1971,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br />\r\n<h1 class=\"text-center\">Criar uma conta</h1>\r\n<!-- Extended material form grid -->\r\n<form class=\"form-group\">\r\n  <!-- Grid row -->\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-user prefix\"></i>\r\n        <input mdbInputDirective type=\"text\" class=\"form-control\" placeholder=\"Nome de utilizador\" required>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-mobile prefix\"></i>\r\n        <input mdbInputDirective type=\"text\" class=\"form-control\" placeholder=\"Nº telefone\" required>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input mdbInputDirective type=\"password\" class=\"form-control\" placeholder=\"Palavra-passe\" required>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input mdbInputDirective type=\"password\" class=\"form-control\" placeholder=\"Repetir palavra-passe\" required>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n\r\n  <mat-checkbox color=\"primary\">Aceito os <a href=\"/termsandconditions\">Termos e Condições</a></mat-checkbox>\r\n  <br />\r\n  <!-- Grid row -->\r\n  <button type=\"submit\" matTooltip=\"Criar uma conta\" class=\"btn btn-primary btn-md\">Registar</button>\r\n\r\n</form>\r\n\r\n"
+module.exports = "<div class=\"container\">\r\n<br />\r\n<h1 class=\"text-center\">Criar uma conta</h1>\r\n<!-- Extended material form grid -->\r\n<form class=\"form-group\">\r\n  <!-- Grid row -->\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-user prefix\"></i>\r\n        <input mdbInputDirective type=\"text\" class=\"form-control\" placeholder=\"Nome de utilizador\" required>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-mobile prefix\"></i>\r\n        <input mdbInputDirective type=\"text\" class=\"form-control\" placeholder=\"Nº telefone\" required>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input mdbInputDirective type=\"password\" class=\"form-control\" placeholder=\"Palavra-passe\" required>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input mdbInputDirective type=\"password\" class=\"form-control\" placeholder=\"Repetir palavra-passe\" required>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n\r\n  <mat-checkbox color=\"primary\">Aceito os <a href=\"/termsandconditions\">Termos e Condições</a></mat-checkbox>\r\n  <br />\r\n  <!-- Grid row -->\r\n  <button type=\"submit\" matTooltip=\"Criar uma conta\" class=\"btn btn-primary btn-md\">Registar</button>\r\n\r\n</form>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1567,7 +2027,7 @@ module.exports = "/* Structure */\r\ntable {\r\n  width: 100%;\r\n}\r\n.mat-form
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Acabamentos</h3>\r\n<div class=\"example-container container\">\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\r\n  </mat-form-field>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"name\">\r\n      <th mat-header-cell *matHeaderCellDef> Nome </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish\"> {{surfaceFinish.name}} </td>\r\n    </ng-container>\r\n    <!-- Edit Column -->\r\n    <ng-container matColumnDef=\"edit\">\r\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish; let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"editSurfaceFinish(i)\" matTooltip=\"Editar este acabamento\" class=\"btn btn-primary btn-sm\">Editar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Remove Column -->\r\n    <ng-container matColumnDef=\"remove\">\r\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish; let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"deleteSurfaceFinish(i)\" matTooltip=\"Remover este acabamento\" class=\"btn btn-danger btn-sm\">Remover</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"sic-row\">\r\n  <div class=\"sic-column\">\r\n    <button type=\"button\" (click)=\"addSurfaceFinish()\" matTooltip=\"Criar um novo acabamento\" class=\"btn btn-primary btn-md\">Novo</button>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Acabamentos</h3>\r\n<div class=\"example-container container\">\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\r\n  </mat-form-field>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"name\">\r\n      <th mat-header-cell *matHeaderCellDef> Nome </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish\"> {{surfaceFinish.name}} </td>\r\n    </ng-container>\r\n    <!-- Edit Column -->\r\n    <ng-container matColumnDef=\"edit\">\r\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish; let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"editSurfaceFinish(i)\" matTooltip=\"Editar este acabamento\" class=\"btn btn-primary btn-sm\">Editar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Remove Column -->\r\n    <ng-container matColumnDef=\"remove\">\r\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\r\n      <td mat-cell *matCellDef=\"let surfaceFinish; let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"deleteSurfaceFinish(i)\" matTooltip=\"Remover este acabamento\" class=\"btn btn-danger btn-sm\">Remover</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"container\">\r\n<div class=\"sic-row\">\r\n  <div class=\"sic-column\">\r\n    <button type=\"button\" (click)=\"addSurfaceFinish()\" matTooltip=\"Criar um novo acabamento\" class=\"btn btn-primary btn-md\">Novo</button>\r\n  </div>\r\n</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1722,7 +2182,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--Navbar-->\r\n<mdb-navbar SideClass=\"navbar navbar-expand-lg navbar-dark indigo\">\r\n\r\n  <!-- Navbar brand -->\r\n  <mdb-navbar-brand><a class=\"navbar-brand\" href=\"/sicproductions\">{{title}}</a></mdb-navbar-brand>\r\n\r\n  <!-- Collapsible content -->\r\n  <links>\r\n\r\n    <!-- Links -->\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link waves-light\" mdbWavesEffect routerLink=\"/home\" routerLinkActive=\"active\">Página Inicial</a>\r\n      </li>\r\n\r\n      <!-- Dropdown -->\r\n      <li class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          BackOffice<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/surfaceFinishes\">Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materials\">Materiais</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/categories\">Categorias</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/products\">Produtos</a>\r\n          <div class=\"divider dropdown-divider\"></div>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/collections\">Coleções</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/catalogues\">Catálogos</a>\r\n        </div>\r\n      </li>\r\n      <!-- Dropdown -->\r\n      <li class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          Área de Cliente<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect href=\"#\">Encomendas</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect href=\"#\">Projetar e configurar produto</a>\r\n        </div>\r\n      </li>\r\n\r\n    </ul>\r\n    <div class=\"navbar-expand ml-auto navbar-nav\">\r\n      <div class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\" routerLink=\"/signup\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-user-plus\"></i> Registar\r\n        </a>\r\n        <a class=\"nav-item nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-sign-in\"></i> Entrar\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <!-- Links -->\r\n  </links>\r\n  <!-- Collapsible content -->\r\n</mdb-navbar>\r\n<!--/.Navbar-->\r\n"
+module.exports = "<!--Navbar-->\r\n<mdb-navbar SideClass=\"navbar navbar-expand-lg navbar-dark indigo\">\r\n\r\n  <!-- Navbar brand -->\r\n  <mdb-navbar-brand><a class=\"navbar-brand\" href=\"/sicproductions\">{{title}}</a></mdb-navbar-brand>\r\n\r\n  <!-- Collapsible content -->\r\n  <links>\r\n\r\n    <!-- Links -->\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link waves-light\" mdbWavesEffect routerLink=\"/home\" routerLinkActive=\"active\">Página Inicial</a>\r\n      </li>\r\n\r\n      <!-- Dropdown -->\r\n      <li class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          BackOffice<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/surfaceFinishes\">Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materials\">Materiais</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materialfinishes\">Materiais Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/categories\">Categorias</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/products\">Produtos</a>\r\n          <div class=\"divider dropdown-divider\"></div>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/collections\">Coleções</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/catalogues\">Catálogos</a>\r\n        </div>\r\n      </li>\r\n      <!-- Dropdown -->\r\n      <li class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          Área de Cliente<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect href=\"#\">Encomendas</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/productConfigurator\">Projetar e configurar produto</a>\r\n        </div>\r\n      </li>\r\n\r\n    </ul>\r\n    <div class=\"navbar-expand ml-auto navbar-nav\">\r\n      <div class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\" routerLink=\"/signup\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-user-plus\"></i> Registar\r\n        </a>\r\n        <a class=\"nav-item nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-sign-in\"></i> Entrar\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <!-- Links -->\r\n  </links>\r\n  <!-- Collapsible content -->\r\n</mdb-navbar>\r\n<!--/.Navbar-->\r\n"
 
 /***/ }),
 
@@ -1779,7 +2239,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\r\n<div class=\"container\">\r\n  <ng-content></ng-content>\r\n</div>\r\n<app-footer></app-footer>\r\n\r\n\r\n\r\n"
+module.exports = "<app-header></app-header>\r\n<!--<div class=\"container\">-->\r\n  <ng-content></ng-content>\r\n<!--</div>-->\r\n<app-footer></app-footer>\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -1858,7 +2318,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _create_material_create_material_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../create-material/create-material.component */ "./src/app/create-material/create-material.component.ts");
 /* harmony import */ var _edit_material_edit_material_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../edit-material/edit-material.component */ "./src/app/edit-material/edit-material.component.ts");
-/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @angular/material/select */ "./node_modules/@angular/material/esm5/select.es5.js");
+/* harmony import */ var _edit_category_edit_category_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ../edit-category/edit-category.component */ "./src/app/edit-category/edit-category.component.ts");
+/* harmony import */ var _material_finish_material_finish_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../material-finish/material-finish.component */ "./src/app/material-finish/material-finish.component.ts");
+/* harmony import */ var _product_configurator_product_configurator_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ../product-configurator/product-configurator.component */ "./src/app/product-configurator/product-configurator.component.ts");
+/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! @angular/material/select */ "./node_modules/@angular/material/esm5/select.es5.js");
+
+
+
 
 
 
@@ -1901,12 +2367,15 @@ var appRoutes = [
     { path: 'surfaceFinishes/edit/:id', component: _edit_surface_finish_edit_surface_finish_component__WEBPACK_IMPORTED_MODULE_18__["EditSurfaceFinishComponent"] },
     { path: 'materials', component: _material_material_component__WEBPACK_IMPORTED_MODULE_9__["MaterialComponent"] },
     { path: 'materials/new', component: _create_material_create_material_component__WEBPACK_IMPORTED_MODULE_29__["CreateMaterialComponent"] },
-    { path: 'materials/edit', component: _edit_material_edit_material_component__WEBPACK_IMPORTED_MODULE_30__["EditMaterialComponent"] },
+    { path: 'materials/edit/:id', component: _edit_material_edit_material_component__WEBPACK_IMPORTED_MODULE_30__["EditMaterialComponent"] },
+    { path: 'materialfinishes', component: _material_finish_material_finish_component__WEBPACK_IMPORTED_MODULE_32__["MaterialFinishComponent"] },
     { path: 'categories', component: _category_category_component__WEBPACK_IMPORTED_MODULE_10__["CategoryComponent"] },
     { path: 'categories/new', component: _create_category_create_category_component__WEBPACK_IMPORTED_MODULE_17__["CreateCategoryComponent"] },
+    { path: 'categories/edit/:id', component: _edit_category_edit_category_component__WEBPACK_IMPORTED_MODULE_31__["EditCategoryComponent"] },
     { path: 'products', component: _product_product_component__WEBPACK_IMPORTED_MODULE_11__["ProductComponent"] },
     { path: 'catalogues', component: _catalogue_catalogue_component__WEBPACK_IMPORTED_MODULE_12__["CatalogueComponent"] },
     { path: 'collections', component: _collection_collection_component__WEBPACK_IMPORTED_MODULE_13__["CollectionComponent"] },
+    { path: 'productConfigurator', component: _product_configurator_product_configurator_component__WEBPACK_IMPORTED_MODULE_33__["ProductConfiguratorComponent"] },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
@@ -1927,7 +2396,7 @@ var UiModule = /** @class */ (function () {
                 _angular_material_input__WEBPACK_IMPORTED_MODULE_24__["MatInputModule"],
                 _angular_material_table__WEBPACK_IMPORTED_MODULE_25__["MatTableModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_28__["MatSnackBarModule"],
-                _angular_material_select__WEBPACK_IMPORTED_MODULE_31__["MatSelectModule"]
+                _angular_material_select__WEBPACK_IMPORTED_MODULE_34__["MatSelectModule"]
             ],
             imports: [
                 angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["MDBBootstrapModule"].forRoot(),
@@ -1942,7 +2411,7 @@ var UiModule = /** @class */ (function () {
                 _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_23__["MatTooltipModule"],
                 _angular_material_input__WEBPACK_IMPORTED_MODULE_24__["MatInputModule"],
                 _angular_material_table__WEBPACK_IMPORTED_MODULE_25__["MatTableModule"],
-                _angular_material_select__WEBPACK_IMPORTED_MODULE_31__["MatSelectModule"],
+                _angular_material_select__WEBPACK_IMPORTED_MODULE_34__["MatSelectModule"],
                 _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["CheckboxModule"],

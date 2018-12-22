@@ -1,7 +1,12 @@
 <h3 class="card-header text-center font-weight-bold py-4">Novo Material</h3>
+<div class="container">
 <div class="custom-container">
+  <br />
   <mat-form-field>
     <input matInput [(ngModel)]="materialName" placeholder="Nome do material" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input type="number" matInput [(ngModel)]="price" placeholder="Preço por m2" min="0" required>
   </mat-form-field>
   <!--
     <form class="md-form">
@@ -20,4 +25,5 @@
 <div class="sic-row">
   <button type="button" (click)="confirm()" matTooltip="Confirmar" class="btn btn-primary btn-md">OK</button>
   <button type="button" (click)="back()" matTooltip="Cancelar" class="btn btn-light btn-md">Retroceder</button>
+</div>
 </div>

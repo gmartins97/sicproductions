@@ -12,7 +12,7 @@ import {CategoryService} from "../services/category.service";
 export class CategoryComponent implements OnInit {
   displayedColumns = ['position', 'description', 'parent', 'edit', 'remove'];
   dataSource : MatTableDataSource<Category>;
-
+  categories: Category[];
   constructor(private router: Router, private service: CategoryService, private bar: MatSnackBar) { }
 
   applyFilter(filterValue: string) {
@@ -25,7 +25,8 @@ export class CategoryComponent implements OnInit {
 
   getCategories(): void {
     this.service.getCategories().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data);
+      this.categories = <Category[]>data;
+      this.dataSource = new MatTableDataSource(this.categories);
     }, error => {
       this.bar.open(
         `Ocorreu um erro ao tentar obter as categorias do servidor: ${error.error}`,
@@ -39,4 +40,26 @@ export class CategoryComponent implements OnInit {
     this.router.navigateByUrl("categories/new");
   }
 
+  editCategory(index: number) : void {
+    let id = this.categories[index].id;
+    this.router.navigateByUrl("categories/edit/" + id);
+  }
+
+  deleteCategory(index: number) {
+    let id = this.categories[index].id;
+    this.service.deleteCategory(id).subscribe(cat => {
+      this.bar.open(
+        `Sucesso: a categoria foi eliminada.`,
+        '', {
+          duration: 2000,
+        });
+      this.getCategories();
+    }, error => {
+      this.bar.open(
+        `Ocorreu um erro ao tentar eliminar a categoria: ${error.error}`,
+        '', {
+          duration: 2000,
+        });
+    });
+  }
 }

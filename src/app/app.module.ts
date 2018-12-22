@@ -16,6 +16,9 @@ import { EditSurfaceFinishComponent } from './edit-surface-finish/edit-surface-f
 import { CreateMaterialComponent } from './create-material/create-material.component';
 import { EditMaterialComponent } from './edit-material/edit-material.component';
 import { CreateCategoryComponent } from './create-category/create-category.component';
+import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { MaterialFinishComponent } from './material-finish/material-finish.component';
+import { ProductConfiguratorComponent } from './product-configurator/product-configurator.component';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
     EditSurfaceFinishComponent,
     CreateMaterialComponent,
     EditMaterialComponent,
-    CreateCategoryComponent
+    CreateCategoryComponent,
+    EditCategoryComponent,
+    MaterialFinishComponent,
+    ProductConfiguratorComponent
   ],
   imports: [
     BrowserModule,

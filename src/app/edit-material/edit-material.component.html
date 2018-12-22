@@ -1,3 +1,16 @@
-<p>
-  edit-material works!
-</p>
+<h3 class="card-header text-center font-weight-bold py-4">Editar material</h3>
+<div class="container">
+<div class="custom-container">
+  <br />
+  <mat-form-field>
+    <input matInput [(ngModel)]="materialName" placeholder="Nome" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input type="number" min="0" matInput [(ngModel)]="price" placeholder="Preço por m2" required>
+  </mat-form-field>
+</div>
+<div class="sic-row">
+  <button type="button" (click)="confirm()" matTooltip="Confirmar" class="btn btn-primary btn-md">OK</button>
+  <button type="button" (click)="back()" matTooltip="Cancelar" class="btn btn-light btn-md">Retroceder</button>
+</div>
+</div>

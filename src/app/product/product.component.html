@@ -1,3 +1,36 @@
-<p>
-  product works!
-</p>
+<h3 class="card-header text-center font-weight-bold py-4">Produtos</h3>
+<div class="example-container container">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> # </th>
+      <td mat-cell *matCellDef="let in = index;"> {{in+1}} </td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
+      <td mat-cell *matCellDef="let product"> {{product.name}} </td>
+    </ng-container>
+    <!-- Edit Column -->
+    <ng-container matColumnDef="info">
+      <th mat-header-cell *matHeaderCellDef> Mais info </th>
+      <td mat-cell *matCellDef="let i = index">
+        <span class="table-remove">
+          <button type="button" (click)="editProduct(i)" matTooltip="Saber mais sobre este produto" class="btn btn-info btn-sm">Mais informações</button>
+        </span>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<div class="container">
+  <div class="sic-row">
+    <div class="sic-column">
+      <button type="button" (click)="addProduct()" matTooltip="Criar um novo produto" class="btn btn-primary btn-md">Novo</button>
+    </div>
+  </div>
+</div>

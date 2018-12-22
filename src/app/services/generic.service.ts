@@ -21,7 +21,7 @@ export abstract class GenericService {
   }
 
   update(id: any, obj: Object) : Observable<any> {
-    return this.httpClient.put(this.url + '/' + id, obj);
+    return this.httpClient.put(`${this.url}/${id}`, obj);
   }
 
   delete(id: any) : Observable<any> {

@@ -1,20 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
-
-export interface Material {
-  name: string;
-  price: number;
-}
-
-const ELEMENT_DATA: Material[] = [
-  { name: 'Madeira', price: 1 },
-  { name: 'Ferro', price: 1.5 },
-  { name: 'Plástico', price: 1.2 },
-  { name: 'Pedra', price: 1.85 },
-  { name: 'Vidro', price: 2 },
-  { name: 'Contraplacado', price: 2.1 },
-];
+import { Material } from '../model/Material';
+import { MaterialService } from '../services/material.service';
 
 
 @Component({
@@ -25,11 +13,13 @@ const ELEMENT_DATA: Material[] = [
 export class MaterialComponent implements OnInit {
 
   displayedColumns = ['position', 'name', 'price', 'edit', 'remove'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<Material>();
+  materials: Material[];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private service: MaterialService, private bar: MatSnackBar) { }
 
   ngOnInit() {
+    this.getMaterials();
   }
 
   applyFilter(filterValue: string) {
@@ -37,40 +27,36 @@ export class MaterialComponent implements OnInit {
   }
 
   private getMaterials(): void {
-    /*this.materialSrv.getMaterials().subscribe(
-      data => { this.dataSource = data; },
-      error => {
-        this.snackBar.open(
-          "Ocorreu um erro ao tentar obter os materiais do servidor...",
-          "", {
-            duration: 2000,
-          });
-      }); */
+    this.service.getMaterials().subscribe(data => {
+      this.materials = <Material[]>data;
+      this.dataSource = new MatTableDataSource(this.materials);
+    }, error => {
+      this.bar.open(
+        `Ocorreu um erro ao tentar obter os materiais do servidor: ${error.error}`,
+        '', {
+          duration: 2000,
+        });
+    });
   }
 
   addMaterial(): void {
     this.router.navigateByUrl('/materials/new');
   }
 
-  editMaterial(materialIndex): void {
-    //this.router.navigateByUrl('/materials/edit/' + materialIndex);
-    //this.router.navigateByUrl('/materials/edit');
+  editMaterial(index: number): void {
+    let id = this.materials[index].id;
+    this.router.navigateByUrl("materials/edit/" + id);
   }
 
-  deleteMaterial(id: number): void {
-    /*this.surfaceFinishSrv.deleteSurfaceFinish(id).subscribe(
-      sf => {
-        this.snackBar.open("Acabamento " + sf.name + " removido com sucesso",
-          "", {
-            duration: 1500,
-          });
-        this.getSurfaceFinishes();
+  deleteMaterial(index: number): void {
+    this.service.deleteMaterial(this.materials[index].id).subscribe(
+      m => {
+        this.bar.open(`Material ${m.name} removido com sucesso`, '', { duration: 2000 });
+        this.getMaterials();
       },
-      error => {
-        this.snackBar.open("Ocorreu um erro: " + error.error, "", {
-          duration: 2000,
-        });
-      }); */
+      e => {
+        this.bar.open('Ocorreu um erro: ' + e.error, '', { duration: 2000 });
+      });
   }
 
 }

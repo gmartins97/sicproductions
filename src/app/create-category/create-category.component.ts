@@ -10,7 +10,7 @@ import {CategoryService} from "../services/category.service";
 })
 export class CreateCategoryComponent implements OnInit {
   categories: Category[];
-  categoryDescription: string;
+  categoryDescription: string = "";
   parentCategoryId: number;
   constructor(private router: Router, private bar: MatSnackBar, private service: CategoryService) { }
 
@@ -21,9 +21,10 @@ export class CreateCategoryComponent implements OnInit {
   getCategories(): void {
     this.service.getCategories().subscribe(data => {
       this.categories = data;
+      this.parentCategoryId = 0;
     }, error => {
       this.bar.open(
-        `Ocorreu um erro ao tentar obter as categorias do servidor: ${error.error}`,
+        `Ocorreu um erro ao tentar obter as categorias do servidor...`,
         '', {
           duration: 2000,
         });
@@ -31,6 +32,16 @@ export class CreateCategoryComponent implements OnInit {
   }
 
   confirm(): void {
+      if (this.categoryDescription.trim().length == 0) {
+        this.bar.open(
+          `Descrição da categoria não pode ser vazia.`,
+          '', {
+            duration: 2000,
+          });
+        return;
+      }
+
+
     let cat = new Category(this.categoryDescription, this.parentCategoryId);
     this.service.createCategory(cat).subscribe(cat => {
       this.bar.open(

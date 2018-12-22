@@ -1,8 +1,12 @@
 <h3 class="card-header text-center font-weight-bold py-4">Novo acabamento</h3>
+<div class="container">
 <div class="custom-container">
-  <mat-form-field>
+  <mat-form-field id="input">
     <input matInput [(ngModel)]="surfaceFinishName" placeholder="Nome do acabamento" required>
   </mat-form-field>
+  <div *ngIf="!minLengthValidation">
+    <p>Tem que inserir o nome do acabamento</p>
+  </div>
   <!--
     <form class="md-form">
       <div class="file-field">
@@ -20,4 +24,5 @@
 <div class="sic-row">
   <button type="button" (click)="confirm()" matTooltip="Confirmar" class="btn btn-primary btn-md">OK</button>
   <button type="button" (click)="back()" matTooltip="Cancelar" class="btn btn-light btn-md">Retroceder</button>
+</div>
 </div>

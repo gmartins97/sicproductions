@@ -12,8 +12,9 @@ import { SurfaceFinish } from '../model/surface-finish';
 
 export class EditSurfaceFinishComponent implements OnInit {
 
-  surfaceFinishName: string;
+  surfaceFinishName = '';
   surface: SurfaceFinish;
+  minLengthValidation = true;
 
   constructor(private router: Router, private route: ActivatedRoute, private service: SurfaceFinishService, private bar: MatSnackBar) { }
 
@@ -35,13 +36,19 @@ export class EditSurfaceFinishComponent implements OnInit {
   }
 
   confirm(): void {
-    this.surface.name = this.surfaceFinishName;
-    this.service.updateSurfaceFinish(this.surface).subscribe(res => {
-      this.bar.open('Sucesso: o acabamento foi atualizado', '', { duration: 2000 });
-      this.back();
-    }, e => {
-      this.bar.open(e.error, '', { duration: 2000 });
-    });
+    const sizeSurfaceFinishName = this.surfaceFinishName.trim().length;
+
+    if (sizeSurfaceFinishName > 0) {
+      this.surface.name = this.surfaceFinishName;
+      this.service.updateSurfaceFinish(this.surface).subscribe(res => {
+        this.bar.open('Sucesso: o acabamento foi atualizado', '', { duration: 2000 });
+        this.back();
+      }, e => {
+        this.bar.open(e.error, '', { duration: 2000 });
+      });
+    } else {
+      this.minLengthValidation = false;
+    }
   }
 
   back(): void {

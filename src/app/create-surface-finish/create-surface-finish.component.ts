@@ -11,7 +11,8 @@ import { MatSnackBar } from '@angular/material';
 })
 export class CreateSurfaceFinishComponent implements OnInit {
 
-  surfaceFinishName: string;
+  surfaceFinishName = '';
+  minLengthValidation = true;
 
   constructor(private router: Router, private service: SurfaceFinishService, private bar: MatSnackBar) { }
 
@@ -19,14 +20,18 @@ export class CreateSurfaceFinishComponent implements OnInit {
   }
 
   confirm(): void {
-    this.service.createSurfaceFinish({ name: this.surfaceFinishName }).subscribe(res => {
-      this.bar.open('Sucesso, o acabamento foi criado', '', { duration: 1000 });
-      console.log(res);
-      this.back();
-    }, e => {
-      this.bar.open(`Error: ${e.error}`, '', { duration: 2000 });
-      console.log(e);
-    });
+    const sizeSurfaceFinishName = this.surfaceFinishName.trim().length;
+
+    if (sizeSurfaceFinishName > 0) {
+      this.service.createSurfaceFinish({ name: this.surfaceFinishName }).subscribe(res => {
+        this.bar.open('Sucesso, o acabamento foi criado', '', { duration: 1000 });
+        this.back();
+      }, e => {
+        this.bar.open(`Error: ${e.error}`, '', { duration: 2000 });
+      });
+    } else {
+      this.minLengthValidation = false;
+    }
   }
 
   back(): void {
