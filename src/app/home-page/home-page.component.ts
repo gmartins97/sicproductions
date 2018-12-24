@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-home-page',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-
-  constructor() { }
+  authenticated : boolean;
+  constructor(private authSrv : AuthService) { }
 
   ngOnInit() {
+    this.authenticated = this.authSrv.isAuthenticated();
   }
 
 }

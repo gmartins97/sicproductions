@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MatSnackBar} from "@angular/material";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   title = "SiCProductions";
-  constructor() { }
+  authenticated : boolean = false;
+  constructor(private bar: MatSnackBar,private authSrv : AuthService) { }
 
   ngOnInit() {
+    this.authenticated = this.authSrv.isAuthenticated();
   }
 
+  logout() : void {
+    this.authSrv.logout();
+  }
 }

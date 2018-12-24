@@ -33,24 +33,25 @@ import { EditCategoryComponent } from '../edit-category/edit-category.component'
 import { MaterialFinishComponent } from '../material-finish/material-finish.component';
 import { ProductConfiguratorComponent } from '../product-configurator/product-configurator.component';
 import {MatSelectModule} from '@angular/material/select';
+import {AuthGuard} from "../guards/auth.guard";
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'home', component: HomePageComponent },
-  { path: 'surfaceFinishes', component: SurfaceFinishComponent },
-  { path: 'surfaceFinishes/new', component: CreateSurfaceFinishComponent },
-  { path: 'surfaceFinishes/edit/:id', component: EditSurfaceFinishComponent },
-  { path: 'materials', component: MaterialComponent },
-  { path: 'materials/new', component: CreateMaterialComponent },
-  { path: 'materials/edit/:id', component: EditMaterialComponent },
-  { path: 'materialfinishes', component: MaterialFinishComponent },
-  { path: 'categories', component: CategoryComponent },
-  { path: 'categories/new', component: CreateCategoryComponent },
-  { path: 'categories/edit/:id', component: EditCategoryComponent },
-  { path: 'products', component: ProductComponent },
-  { path: 'catalogues', component: CatalogueComponent },
-  { path: 'collections', component: CollectionComponent },
-  { path: 'productConfigurator', component: ProductConfiguratorComponent },
+  { path: 'surfaceFinishes', component: SurfaceFinishComponent, canActivate:[AuthGuard] },
+  { path: 'surfaceFinishes/new', component: CreateSurfaceFinishComponent, canActivate:[AuthGuard] },
+  { path: 'surfaceFinishes/edit/:id', component: EditSurfaceFinishComponent, canActivate:[AuthGuard] },
+  { path: 'materials', component: MaterialComponent, canActivate:[AuthGuard] },
+  { path: 'materials/new', component: CreateMaterialComponent, canActivate:[AuthGuard] },
+  { path: 'materials/edit/:id', component: EditMaterialComponent, canActivate:[AuthGuard] },
+  { path: 'materialfinishes', component: MaterialFinishComponent, canActivate:[AuthGuard] },
+  { path: 'categories', component: CategoryComponent, canActivate:[AuthGuard] },
+  { path: 'categories/new', component: CreateCategoryComponent, canActivate:[AuthGuard] },
+  { path: 'categories/edit/:id', component: EditCategoryComponent, canActivate:[AuthGuard] },
+  { path: 'products', component: ProductComponent, canActivate:[AuthGuard] },
+  { path: 'catalogues', component: CatalogueComponent, canActivate:[AuthGuard] },
+  { path: 'collections', component: CollectionComponent, canActivate:[AuthGuard] },
+  { path: 'productConfigurator', component: ProductConfiguratorComponent, canActivate:[AuthGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];

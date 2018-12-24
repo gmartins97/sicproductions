@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatSnackBar} from "@angular/material";
 
 @Component({
   selector: 'app-sign-up',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bar: MatSnackBar) { }
 
   ngOnInit() {
+  }
+
+  signUp() : void {
+    this.bar.open("Não implementado ainda...", "", {duration: 3000});
   }
 
 }

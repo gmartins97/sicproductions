@@ -9,7 +9,7 @@
       <!-- Material input -->
       <div class="md-form form-group">
         <i class="fa fa-user prefix"></i>
-        <input mdbInputDirective type="text" class="form-control" placeholder="Nome de utilizador" required>
+        <input [(ngModel)]="_username" name="username" mdbInputDirective type="text" class="form-control" placeholder="Nome de utilizador" required>
       </div>
     </div>
   </div>
@@ -19,14 +19,27 @@
       <!-- Material input -->
       <div class="md-form form-group">
         <i class="fa fa-lock prefix"></i>
-        <input mdbInputDirective type="password" class="form-control" placeholder="Palavra-passe" required>
+        <input [(ngModel)]="_password" name="password" mdbInputDirective type="password" class="form-control" placeholder="Palavra-passe" required>
       </div>
     </div>
     <!-- Grid column -->
   </div>
   <!-- Grid row -->
-  <button type="submit" matTooltip="Iniciar sessão" class="btn btn-primary btn-md">Entrar</button>
-  Não tem uma conta? <a routerLink="/signup" routerLinkActive="active">Crie uma.</a>
+  <div *ngIf="isValidUser">
+    <div class="form-row">
+      <!-- Grid column -->
+      <div class="col-md-6">
+        <!-- Material input -->
+        <div class="md-form form-group">
+          <i class="fas fa-key prefix"></i>
+          <input mdbInputDirective type="password" class="form-control" placeholder="Código de 4 dígitos recebido no e-mail" required>
+        </div>
+      </div>
+      <!-- Grid column -->
+    </div>
+  </div>
+  <button type="submit" (click)="login()" matTooltip="Iniciar sessão" class="btn btn-primary btn-md">Entrar</button>
+  Não tem uma conta? <a routerLink="/signup">Crie uma.</a>
 </form>
 <!-- Extended material form grid -->
 </div>

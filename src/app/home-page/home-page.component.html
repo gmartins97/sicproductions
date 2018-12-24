@@ -6,7 +6,8 @@
         Após a configuração pode fazer a sua encomenda e acompanhar o estado da mesma.
         Comece já a projetar e configurar os seus produtos.
       </p>
-      <a routerLink="/login" class="btn btn-outline-white btn-md"><i class="fa fa-sign-in"></i> Iniciar sessão</a>
+      <a *ngIf="!authenticated" routerLink="/login" class="btn btn-outline-white btn-md"><i class="fa fa-sign-in"></i> Iniciar sessão</a>
+      <a *ngIf="authenticated" routerLink="/productConfigurator" class="btn btn-outline-white btn-md"><i class="fas fa-cube"></i> Começar</a>
     </div>
   </div>
 </div>

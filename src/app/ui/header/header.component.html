@@ -14,7 +14,7 @@
       </li>
 
       <!-- Dropdown -->
-      <li class="nav-item dropdown" dropdown>
+      <li *ngIf="authenticated" class="nav-item dropdown" dropdown>
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
           BackOffice<span class="caret"></span>
         </a>
@@ -30,7 +30,7 @@
         </div>
       </li>
       <!-- Dropdown -->
-      <li class="nav-item dropdown" dropdown>
+      <li *ngIf="authenticated" class="nav-item dropdown" dropdown>
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
           Área de Cliente<span class="caret"></span>
         </a>
@@ -42,12 +42,17 @@
 
     </ul>
     <div class="navbar-expand ml-auto navbar-nav">
-      <div class="navbar-nav">
+      <div *ngIf="!authenticated" class="navbar-nav">
         <a class="nav-item nav-link" routerLink="/signup" routerLinkActive="active">
           <i class="fa fa-user-plus"></i> Registar
         </a>
         <a class="nav-item nav-link" routerLink="/login" routerLinkActive="active">
           <i class="fa fa-sign-in"></i> Entrar
+        </a>
+      </div>
+      <div *ngIf="authenticated" class="navbar-nav">
+        <a class="nav-item nav-link" (click)="logout()" routerLinkActive="active">
+          <i class="fas fa-sign-out-alt"></i>Terminar Sessão
         </a>
       </div>
     </div>
