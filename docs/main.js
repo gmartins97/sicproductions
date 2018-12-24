@@ -1263,6 +1263,49 @@ var EditSurfaceFinishComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/guards/auth.guard.ts":
+/*!**************************************!*\
+  !*** ./src/app/guards/auth.guard.ts ***!
+  \**************************************/
+/*! exports provided: AuthGuard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthGuard", function() { return AuthGuard; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+
+
+
+
+var AuthGuard = /** @class */ (function () {
+    function AuthGuard(router, authSrv) {
+        this.router = router;
+        this.authSrv = authSrv;
+    }
+    AuthGuard.prototype.canActivate = function (next, state) {
+        if (this.authSrv.isAuthenticated()) {
+            return true;
+        }
+        this.router.navigate(['/login']);
+        return false;
+    };
+    AuthGuard = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]])
+    ], AuthGuard);
+    return AuthGuard;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/home-page/home-page.component.css":
 /*!***************************************************!*\
   !*** ./src/app/home-page/home-page.component.css ***!
@@ -1281,7 +1324,7 @@ module.exports = ".vertical-center {\r\n  margin: 0;\r\n  position: absolute;\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card card-image\" style=\"background-image: url(https://www.bradutch.com/wp-content/uploads/2018/09/videoblocks-blue-business-background-2_h3cvzluwb_thumbnail-full01.png); height: 93%; overflow-y: hidden\">\n  <div class=\"text-white text-center py-5 px-4 my-5 vertical-center\">\n    <div>\n      <h2 class=\"card-title h1-responsive pt-3 mb-5 font-bold\"><strong>Bem-vindo à SiCProductions</strong></h2>\n      <p class=\"mx-5 mb-5\">Comece a projetar e configurar produtos personalizados à sua medida.\n        Após a configuração pode fazer a sua encomenda e acompanhar o estado da mesma.\n        Comece já a projetar e configurar os seus produtos.\n      </p>\n      <a routerLink=\"/login\" class=\"btn btn-outline-white btn-md\"><i class=\"fa fa-sign-in\"></i> Iniciar sessão</a>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"card card-image\" style=\"background-image: url(https://www.bradutch.com/wp-content/uploads/2018/09/videoblocks-blue-business-background-2_h3cvzluwb_thumbnail-full01.png); height: 93%; overflow-y: hidden\">\n  <div class=\"text-white text-center py-5 px-4 my-5 vertical-center\">\n    <div>\n      <h2 class=\"card-title h1-responsive pt-3 mb-5 font-bold\"><strong>Bem-vindo à SiCProductions</strong></h2>\n      <p class=\"mx-5 mb-5\">Comece a projetar e configurar produtos personalizados à sua medida.\n        Após a configuração pode fazer a sua encomenda e acompanhar o estado da mesma.\n        Comece já a projetar e configurar os seus produtos.\n      </p>\n      <a *ngIf=\"!authenticated\" routerLink=\"/login\" class=\"btn btn-outline-white btn-md\"><i class=\"fa fa-sign-in\"></i> Iniciar sessão</a>\n      <a *ngIf=\"authenticated\" routerLink=\"/productConfigurator\" class=\"btn btn-outline-white btn-md\"><i class=\"fas fa-cube\"></i> Começar</a>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1297,12 +1340,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageComponent", function() { return HomePageComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+
 
 
 var HomePageComponent = /** @class */ (function () {
-    function HomePageComponent() {
+    function HomePageComponent(authSrv) {
+        this.authSrv = authSrv;
     }
     HomePageComponent.prototype.ngOnInit = function () {
+        this.authenticated = this.authSrv.isAuthenticated();
     };
     HomePageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1310,7 +1357,7 @@ var HomePageComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./home-page.component.html */ "./src/app/home-page/home-page.component.html"),
             styles: [__webpack_require__(/*! ./home-page.component.css */ "./src/app/home-page/home-page.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
     ], HomePageComponent);
     return HomePageComponent;
 }());
@@ -1337,7 +1384,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\"><br />\r\n<h1 class=\"text-center\">Bem-vindo</h1>\r\n<!-- Extended material form grid -->\r\n<form class=\"form-group\">\r\n  <!-- Grid row -->\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-user prefix\"></i>\r\n        <input mdbInputDirective type=\"text\" class=\"form-control\" placeholder=\"Nome de utilizador\" required>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input mdbInputDirective type=\"password\" class=\"form-control\" placeholder=\"Palavra-passe\" required>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n  <!-- Grid row -->\r\n  <button type=\"submit\" matTooltip=\"Iniciar sessão\" class=\"btn btn-primary btn-md\">Entrar</button>\r\n  Não tem uma conta? <a routerLink=\"/signup\" routerLinkActive=\"active\">Crie uma.</a>\r\n</form>\r\n<!-- Extended material form grid -->\r\n</div>\r\n"
+module.exports = "<div class=\"container\"><br />\r\n<h1 class=\"text-center\">Bem-vindo</h1>\r\n<!-- Extended material form grid -->\r\n<form class=\"form-group\">\r\n  <!-- Grid row -->\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-user prefix\"></i>\r\n        <input [(ngModel)]=\"_username\" name=\"username\" mdbInputDirective type=\"text\" class=\"form-control\" placeholder=\"Nome de utilizador\" required>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input [(ngModel)]=\"_password\" name=\"password\" mdbInputDirective type=\"password\" class=\"form-control\" placeholder=\"Palavra-passe\" required>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n  <!-- Grid row -->\r\n  <div *ngIf=\"isValidUser\">\r\n    <div class=\"form-row\">\r\n      <!-- Grid column -->\r\n      <div class=\"col-md-6\">\r\n        <!-- Material input -->\r\n        <div class=\"md-form form-group\">\r\n          <i class=\"fas fa-key prefix\"></i>\r\n          <input mdbInputDirective type=\"password\" class=\"form-control\" placeholder=\"Código de 4 dígitos recebido no e-mail\" required>\r\n        </div>\r\n      </div>\r\n      <!-- Grid column -->\r\n    </div>\r\n  </div>\r\n  <button type=\"submit\" (click)=\"login()\" matTooltip=\"Iniciar sessão\" class=\"btn btn-primary btn-md\">Entrar</button>\r\n  Não tem uma conta? <a routerLink=\"/signup\">Crie uma.</a>\r\n</form>\r\n<!-- Extended material form grid -->\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1353,12 +1400,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
 
 
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent() {
+    function LoginComponent(bar, authSrv, router) {
+        this.bar = bar;
+        this.authSrv = authSrv;
+        this.router = router;
+        this.isValidUser = false;
+        this._username = "";
+        this._password = "";
     }
     LoginComponent.prototype.ngOnInit = function () {
+    };
+    LoginComponent.prototype.login = function () {
+        var _this = this;
+        this.authSrv.login(this._username, this._password).subscribe(function (data) {
+            localStorage.setItem("access_token", data.access_token);
+            localStorage.setItem("expiryDate", data.expiration);
+            window.location.href = "/home";
+            _this.bar.open("Login com sucesso.", "", { duration: 1500 });
+            //this.router.navigate(['/categories']);
+        }, function (error) {
+            _this.bar.open("Ocorreu um erro...", "", { duration: 3000 });
+        });
     };
     LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1366,7 +1437,7 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./login.component.html */ "./src/app/login/login.component.html"),
             styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/login/login.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSnackBar"], _services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -1756,6 +1827,62 @@ var ProductComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/auth.service.ts":
+/*!******************************************!*\
+  !*** ./src/app/services/auth.service.ts ***!
+  \******************************************/
+/*! exports provided: AuthService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return AuthService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
+
+var AuthService = /** @class */ (function () {
+    function AuthService(httpClient, router) {
+        this.httpClient = httpClient;
+        this.router = router;
+        this.AUTH_URL = "https://siccatalogue.azurewebsites.net/api/Auth";
+    }
+    AuthService.prototype.signUp = function (username, email, password) {
+        return this.httpClient.post(this.AUTH_URL + "/SignUp", { Username: username, Email: email, Password: password });
+    };
+    AuthService.prototype.login = function (username, password) {
+        return this.httpClient.post(this.AUTH_URL + "/Login", { Username: username, Password: password });
+    };
+    AuthService.prototype.isAuthenticated = function () {
+        var token = localStorage.getItem("access_token");
+        var expiryDate = localStorage.getItem("expiryDate");
+        if (token != null && expiryDate != null) {
+            return Date.now() < Date.parse(expiryDate);
+        }
+        return false;
+    };
+    AuthService.prototype.logout = function () {
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('expiryDate');
+        window.location.href = "/login";
+    };
+    AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+    ], AuthService);
+    return AuthService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/category.service.ts":
 /*!**********************************************!*\
   !*** ./src/app/services/category.service.ts ***!
@@ -1971,7 +2098,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n<br />\r\n<h1 class=\"text-center\">Criar uma conta</h1>\r\n<!-- Extended material form grid -->\r\n<form class=\"form-group\">\r\n  <!-- Grid row -->\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-user prefix\"></i>\r\n        <input mdbInputDirective type=\"text\" class=\"form-control\" placeholder=\"Nome de utilizador\" required>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-mobile prefix\"></i>\r\n        <input mdbInputDirective type=\"text\" class=\"form-control\" placeholder=\"Nº telefone\" required>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input mdbInputDirective type=\"password\" class=\"form-control\" placeholder=\"Palavra-passe\" required>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input mdbInputDirective type=\"password\" class=\"form-control\" placeholder=\"Repetir palavra-passe\" required>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n\r\n  <mat-checkbox color=\"primary\">Aceito os <a href=\"/termsandconditions\">Termos e Condições</a></mat-checkbox>\r\n  <br />\r\n  <!-- Grid row -->\r\n  <button type=\"submit\" matTooltip=\"Criar uma conta\" class=\"btn btn-primary btn-md\">Registar</button>\r\n\r\n</form>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n<br />\r\n<h1 class=\"text-center\">Criar uma conta</h1>\r\n<!-- Extended material form grid -->\r\n<form class=\"form-group\">\r\n  <!-- Grid row -->\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-user prefix\"></i>\r\n        <input mdbInputDirective type=\"text\" class=\"form-control\" placeholder=\"Nome de utilizador\" required>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-envelope prefix\"></i>\r\n        <input mdbInputDirective type=\"text\" class=\"form-control\" placeholder=\"E-mail\" aria-describedby=\"emailHelpBlock\" required>\r\n        <small id=\"emailHelpBlock\" class=\"form-text text-muted\">\r\n          Para autenticação de dois fatores.\r\n        </small>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input mdbInputDirective type=\"password\" class=\"form-control\" placeholder=\"Palavra-passe\" required>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input mdbInputDirective type=\"password\" class=\"form-control\" placeholder=\"Repetir palavra-passe\" aria-describedby=\"pwdHelpBlock\" required>\r\n        <small id=\"pwdHelpBlock\" class=\"form-text text-muted\">\r\n          A sua palavra-passe deverá conter pelo menos 6 caracteres, uma maiúscula, uma minúscula e um dígito.\r\n        </small>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n\r\n  <mat-checkbox color=\"primary\">Aceito os <a routerLink=\"/TermsAndConditions\">Termos e Condições</a>.</mat-checkbox>\r\n  <br />\r\n  <!-- Grid row -->\r\n  <button type=\"submit\" (click)=\"signUp()\" matTooltip=\"Criar uma conta\" class=\"btn btn-primary btn-md\">Registar</button>\r\n\r\n</form>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1987,12 +2114,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignUpComponent", function() { return SignUpComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+
 
 
 var SignUpComponent = /** @class */ (function () {
-    function SignUpComponent() {
+    function SignUpComponent(bar) {
+        this.bar = bar;
     }
     SignUpComponent.prototype.ngOnInit = function () {
+    };
+    SignUpComponent.prototype.signUp = function () {
+        this.bar.open("Não implementado ainda...", "", { duration: 3000 });
     };
     SignUpComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2000,7 +2133,7 @@ var SignUpComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./sign-up.component.html */ "./src/app/sign-up/sign-up.component.html"),
             styles: [__webpack_require__(/*! ./sign-up.component.css */ "./src/app/sign-up/sign-up.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSnackBar"]])
     ], SignUpComponent);
     return SignUpComponent;
 }());
@@ -2182,7 +2315,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--Navbar-->\r\n<mdb-navbar SideClass=\"navbar navbar-expand-lg navbar-dark indigo\">\r\n\r\n  <!-- Navbar brand -->\r\n  <mdb-navbar-brand><a class=\"navbar-brand\" href=\"/sicproductions\">{{title}}</a></mdb-navbar-brand>\r\n\r\n  <!-- Collapsible content -->\r\n  <links>\r\n\r\n    <!-- Links -->\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link waves-light\" mdbWavesEffect routerLink=\"/home\" routerLinkActive=\"active\">Página Inicial</a>\r\n      </li>\r\n\r\n      <!-- Dropdown -->\r\n      <li class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          BackOffice<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/surfaceFinishes\">Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materials\">Materiais</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materialfinishes\">Materiais Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/categories\">Categorias</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/products\">Produtos</a>\r\n          <div class=\"divider dropdown-divider\"></div>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/collections\">Coleções</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/catalogues\">Catálogos</a>\r\n        </div>\r\n      </li>\r\n      <!-- Dropdown -->\r\n      <li class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          Área de Cliente<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect href=\"#\">Encomendas</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/productConfigurator\">Projetar e configurar produto</a>\r\n        </div>\r\n      </li>\r\n\r\n    </ul>\r\n    <div class=\"navbar-expand ml-auto navbar-nav\">\r\n      <div class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\" routerLink=\"/signup\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-user-plus\"></i> Registar\r\n        </a>\r\n        <a class=\"nav-item nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-sign-in\"></i> Entrar\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <!-- Links -->\r\n  </links>\r\n  <!-- Collapsible content -->\r\n</mdb-navbar>\r\n<!--/.Navbar-->\r\n"
+module.exports = "<!--Navbar-->\r\n<mdb-navbar SideClass=\"navbar navbar-expand-lg navbar-dark indigo\">\r\n\r\n  <!-- Navbar brand -->\r\n  <mdb-navbar-brand><a class=\"navbar-brand\" href=\"/sicproductions\">{{title}}</a></mdb-navbar-brand>\r\n\r\n  <!-- Collapsible content -->\r\n  <links>\r\n\r\n    <!-- Links -->\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link waves-light\" mdbWavesEffect routerLink=\"/home\" routerLinkActive=\"active\">Página Inicial</a>\r\n      </li>\r\n\r\n      <!-- Dropdown -->\r\n      <li *ngIf=\"authenticated\" class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          BackOffice<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/surfaceFinishes\">Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materials\">Materiais</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materialfinishes\">Materiais Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/categories\">Categorias</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/products\">Produtos</a>\r\n          <div class=\"divider dropdown-divider\"></div>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/collections\">Coleções</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/catalogues\">Catálogos</a>\r\n        </div>\r\n      </li>\r\n      <!-- Dropdown -->\r\n      <li *ngIf=\"authenticated\" class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          Área de Cliente<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect href=\"#\">Encomendas</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/productConfigurator\">Projetar e configurar produto</a>\r\n        </div>\r\n      </li>\r\n\r\n    </ul>\r\n    <div class=\"navbar-expand ml-auto navbar-nav\">\r\n      <div *ngIf=\"!authenticated\" class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\" routerLink=\"/signup\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-user-plus\"></i> Registar\r\n        </a>\r\n        <a class=\"nav-item nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-sign-in\"></i> Entrar\r\n        </a>\r\n      </div>\r\n      <div *ngIf=\"authenticated\" class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\" (click)=\"logout()\" routerLinkActive=\"active\">\r\n          <i class=\"fas fa-sign-out-alt\"></i>Terminar Sessão\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <!-- Links -->\r\n  </links>\r\n  <!-- Collapsible content -->\r\n</mdb-navbar>\r\n<!--/.Navbar-->\r\n"
 
 /***/ }),
 
@@ -2198,13 +2331,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeaderComponent", function() { return HeaderComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
+
+
 
 
 var HeaderComponent = /** @class */ (function () {
-    function HeaderComponent() {
+    function HeaderComponent(bar, authSrv) {
+        this.bar = bar;
+        this.authSrv = authSrv;
         this.title = "SiCProductions";
+        this.authenticated = false;
     }
     HeaderComponent.prototype.ngOnInit = function () {
+        this.authenticated = this.authSrv.isAuthenticated();
+    };
+    HeaderComponent.prototype.logout = function () {
+        this.authSrv.logout();
     };
     HeaderComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2212,7 +2356,7 @@ var HeaderComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./header.component.html */ "./src/app/ui/header/header.component.html"),
             styles: [__webpack_require__(/*! ./header.component.css */ "./src/app/ui/header/header.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSnackBar"], _services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]])
     ], HeaderComponent);
     return HeaderComponent;
 }());
@@ -2322,6 +2466,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_finish_material_finish_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../material-finish/material-finish.component */ "./src/app/material-finish/material-finish.component.ts");
 /* harmony import */ var _product_configurator_product_configurator_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ../product-configurator/product-configurator.component */ "./src/app/product-configurator/product-configurator.component.ts");
 /* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! @angular/material/select */ "./node_modules/@angular/material/esm5/select.es5.js");
+/* harmony import */ var _guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ../guards/auth.guard */ "./src/app/guards/auth.guard.ts");
+
 
 
 
@@ -2362,20 +2508,20 @@ var appRoutes = [
     { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_8__["LoginComponent"] },
     { path: 'signup', component: _sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_19__["SignUpComponent"] },
     { path: 'home', component: _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_14__["HomePageComponent"] },
-    { path: 'surfaceFinishes', component: _surface_finish_surface_finish_component__WEBPACK_IMPORTED_MODULE_15__["SurfaceFinishComponent"] },
-    { path: 'surfaceFinishes/new', component: _create_surface_finish_create_surface_finish_component__WEBPACK_IMPORTED_MODULE_16__["CreateSurfaceFinishComponent"] },
-    { path: 'surfaceFinishes/edit/:id', component: _edit_surface_finish_edit_surface_finish_component__WEBPACK_IMPORTED_MODULE_18__["EditSurfaceFinishComponent"] },
-    { path: 'materials', component: _material_material_component__WEBPACK_IMPORTED_MODULE_9__["MaterialComponent"] },
-    { path: 'materials/new', component: _create_material_create_material_component__WEBPACK_IMPORTED_MODULE_29__["CreateMaterialComponent"] },
-    { path: 'materials/edit/:id', component: _edit_material_edit_material_component__WEBPACK_IMPORTED_MODULE_30__["EditMaterialComponent"] },
-    { path: 'materialfinishes', component: _material_finish_material_finish_component__WEBPACK_IMPORTED_MODULE_32__["MaterialFinishComponent"] },
-    { path: 'categories', component: _category_category_component__WEBPACK_IMPORTED_MODULE_10__["CategoryComponent"] },
-    { path: 'categories/new', component: _create_category_create_category_component__WEBPACK_IMPORTED_MODULE_17__["CreateCategoryComponent"] },
-    { path: 'categories/edit/:id', component: _edit_category_edit_category_component__WEBPACK_IMPORTED_MODULE_31__["EditCategoryComponent"] },
-    { path: 'products', component: _product_product_component__WEBPACK_IMPORTED_MODULE_11__["ProductComponent"] },
-    { path: 'catalogues', component: _catalogue_catalogue_component__WEBPACK_IMPORTED_MODULE_12__["CatalogueComponent"] },
-    { path: 'collections', component: _collection_collection_component__WEBPACK_IMPORTED_MODULE_13__["CollectionComponent"] },
-    { path: 'productConfigurator', component: _product_configurator_product_configurator_component__WEBPACK_IMPORTED_MODULE_33__["ProductConfiguratorComponent"] },
+    { path: 'surfaceFinishes', component: _surface_finish_surface_finish_component__WEBPACK_IMPORTED_MODULE_15__["SurfaceFinishComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
+    { path: 'surfaceFinishes/new', component: _create_surface_finish_create_surface_finish_component__WEBPACK_IMPORTED_MODULE_16__["CreateSurfaceFinishComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
+    { path: 'surfaceFinishes/edit/:id', component: _edit_surface_finish_edit_surface_finish_component__WEBPACK_IMPORTED_MODULE_18__["EditSurfaceFinishComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
+    { path: 'materials', component: _material_material_component__WEBPACK_IMPORTED_MODULE_9__["MaterialComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
+    { path: 'materials/new', component: _create_material_create_material_component__WEBPACK_IMPORTED_MODULE_29__["CreateMaterialComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
+    { path: 'materials/edit/:id', component: _edit_material_edit_material_component__WEBPACK_IMPORTED_MODULE_30__["EditMaterialComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
+    { path: 'materialfinishes', component: _material_finish_material_finish_component__WEBPACK_IMPORTED_MODULE_32__["MaterialFinishComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
+    { path: 'categories', component: _category_category_component__WEBPACK_IMPORTED_MODULE_10__["CategoryComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
+    { path: 'categories/new', component: _create_category_create_category_component__WEBPACK_IMPORTED_MODULE_17__["CreateCategoryComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
+    { path: 'categories/edit/:id', component: _edit_category_edit_category_component__WEBPACK_IMPORTED_MODULE_31__["EditCategoryComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
+    { path: 'products', component: _product_product_component__WEBPACK_IMPORTED_MODULE_11__["ProductComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
+    { path: 'catalogues', component: _catalogue_catalogue_component__WEBPACK_IMPORTED_MODULE_12__["CatalogueComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
+    { path: 'collections', component: _collection_collection_component__WEBPACK_IMPORTED_MODULE_13__["CollectionComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
+    { path: 'productConfigurator', component: _product_configurator_product_configurator_component__WEBPACK_IMPORTED_MODULE_33__["ProductConfiguratorComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
