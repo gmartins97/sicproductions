@@ -1,0 +1,10 @@
+.fixed {
+  position: fixed;
+  top: 80px;
+  left: 30px;
+  z-index: 1;
+}
+
+.button5 {
+  border-radius: 70%;
+}

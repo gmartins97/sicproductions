@@ -35,8 +35,9 @@
           Área de Cliente<span class="caret"></span>
         </a>
         <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Encomendas</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/orders">Encomendas</a>
           <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/productConfigurator">Projetar e configurar produto</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/clientCatalogue">Catálogo de Produtos Disponiveis</a>
         </div>
       </li>
 
@@ -51,7 +52,7 @@
         </a>
       </div>
       <div *ngIf="authenticated" class="navbar-nav">
-        <a class="nav-item nav-link" (click)="logout()" routerLinkActive="active">
+        <a class="nav-item nav-link" (click)="logout()">
           <i class="fas fa-sign-out-alt"></i>Terminar Sessão
         </a>
       </div>

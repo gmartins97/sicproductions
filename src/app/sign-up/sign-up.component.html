@@ -10,20 +10,7 @@
       <!-- Material input -->
       <div class="md-form form-group">
         <i class="fa fa-user prefix"></i>
-        <input mdbInputDirective type="text" class="form-control" placeholder="Nome de utilizador" required>
-      </div>
-    </div>
-  </div>
-  <div class="form-row">
-    <!-- Grid column -->
-    <div class="col-md-6">
-      <!-- Material input -->
-      <div class="md-form form-group">
-        <i class="fa fa-envelope prefix"></i>
-        <input mdbInputDirective type="text" class="form-control" placeholder="E-mail" aria-describedby="emailHelpBlock" required>
-        <small id="emailHelpBlock" class="form-text text-muted">
-          Para autenticação de dois fatores.
-        </small>
+        <input [(ngModel)]="_username" mdbInputDirective type="text" name="username" class="form-control" placeholder="Nome de utilizador" required>
       </div>
     </div>
   </div>
@@ -33,7 +20,7 @@
       <!-- Material input -->
       <div class="md-form form-group">
         <i class="fa fa-lock prefix"></i>
-        <input mdbInputDirective type="password" class="form-control" placeholder="Palavra-passe" required>
+        <input [(ngModel)]="_password" mdbInputDirective type="password" name="password" class="form-control" placeholder="Palavra-passe" required>
       </div>
     </div>
     <!-- Grid column -->
@@ -44,7 +31,7 @@
       <!-- Material input -->
       <div class="md-form form-group">
         <i class="fa fa-lock prefix"></i>
-        <input mdbInputDirective type="password" class="form-control" placeholder="Repetir palavra-passe" aria-describedby="pwdHelpBlock" required>
+        <input [(ngModel)]="_retypePassword" mdbInputDirective type="password" name="password" class="form-control" placeholder="Repetir palavra-passe" aria-describedby="pwdHelpBlock" required>
         <small id="pwdHelpBlock" class="form-text text-muted">
           A sua palavra-passe deverá conter pelo menos 6 caracteres, uma maiúscula, uma minúscula e um dígito.
         </small>
@@ -53,7 +40,7 @@
     <!-- Grid column -->
   </div>
 
-  <mat-checkbox color="primary">Aceito os <a routerLink="/TermsAndConditions">Termos e Condições</a>.</mat-checkbox>
+  <mat-checkbox [(ngModel)]="_checked" name="checkedTermsAndConditions" color="primary">Aceito os <a routerLink="/TermsAndConditions">Termos e Condições</a>.</mat-checkbox>
   <br />
   <!-- Grid row -->
   <button type="submit" (click)="signUp()" matTooltip="Criar uma conta" class="btn btn-primary btn-md">Registar</button>

@@ -28,11 +28,19 @@ export class CategoryComponent implements OnInit {
       this.categories = <Category[]>data;
       this.dataSource = new MatTableDataSource(this.categories);
     }, error => {
-      this.bar.open(
-        `Ocorreu um erro ao tentar obter as categorias do servidor: ${error.error}`,
-        '', {
-          duration: 2000,
-        });
+      if(error.status == 401) {
+        this.bar.open(
+          'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
+          '', {
+            duration: 2000,
+          });
+      } else {
+        this.bar.open(
+          'Ocorreu um erro ao tentar obter as categorias do servidor...',
+          '', {
+            duration: 2000,
+          });
+      }
     });
   }
 
@@ -55,11 +63,19 @@ export class CategoryComponent implements OnInit {
         });
       this.getCategories();
     }, error => {
-      this.bar.open(
-        `Ocorreu um erro ao tentar eliminar a categoria: ${error.error}`,
-        '', {
-          duration: 2000,
-        });
+      if(error.status == 401) {
+        this.bar.open(
+          'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
+          '', {
+            duration: 2000,
+          });
+      } else {
+        this.bar.open(
+          `Ocorreu um erro ao tentar eliminar a categoria: ${error.error}`,
+          '', {
+            duration: 2000,
+          });
+      }
     });
   }
 }

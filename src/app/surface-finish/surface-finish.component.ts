@@ -29,11 +29,20 @@ export class SurfaceFinishComponent implements OnInit {
       this.surfaces = <SurfaceFinish[]>data;
       this.dataSource.data = this.surfaces;
     }, e => {
-      this.bar.open(
-        'Ocorreu um erro ao tentar obter os acabamentos do servidor...',
-        '', {
-          duration: 2000,
-        });
+      if(e.status == 401) {
+        this.bar.open(
+          'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
+          '', {
+            duration: 2000,
+          });
+      } else {
+        this.bar.open(
+          'Ocorreu um erro ao tentar obter os acabamentos do servidor...',
+          '', {
+            duration: 2000,
+          });
+      }
+
     });
   }
 

@@ -1,0 +1,63 @@
+<h3 class="card-header text-center font-weight-bold py-4">Novo Produto</h3>
+<div class="container">
+  <div class="custom-container">
+    <br />
+
+    <!-- Nome -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="productName" placeholder="Nome do produto" required>
+    </mat-form-field>
+
+    <!-- Categoria -->
+    <mat-form-field>
+      <mat-select required [(ngModel)]="productCategory" placeholder="Categoria">
+        <mat-option *ngFor="let category of categories" [value]="category.id">
+          {{category.description}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Materiais Acabamentos -->
+    <div >
+      <mat-form-field id="formpequena">
+        <mat-select [(ngModel)]="productMaterialFinishes" placeholder="Material Acabamento">
+          <mat-option *ngFor="let materialfinish of materialfinishes" [value]="materialfinish.id">
+            {{materialfinish.material.name}} + {{materialfinish.finish.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button id="butpequeno" mat-button (click)="chooseMaterialFinishes()" matTooltip="Escolher Materiais Acabamentos" class="btn btn-primary btn-md">Escolher</button>
+    </div>
+
+    <!-- Alturas -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="productHeights" placeholder="Alturas" required matTooltip="Separar por ;" matTooltipPosition="left">
+    </mat-form-field>
+
+
+    <!-- Larguras -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="productWidths" placeholder="Larguras" required matTooltip="Separar por ;" matTooltipPosition="left">
+    </mat-form-field>
+
+    <!-- Profundidades -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="productDepths" placeholder="Profundidades" required matTooltip="Separar por ;" matTooltipPosition="left">
+    </mat-form-field>
+
+    <!-- Min ocupacao -->
+    <mat-form-field>
+      <input matInput type="number" min="0" max="100" [(ngModel)]="productMinOccup" placeholder="% Mínima Ocupação" required>
+    </mat-form-field>
+
+    <!-- Max ocupacao -->
+    <mat-form-field>
+      <input matInput type="number" min="0" max="100" [(ngModel)]="productMaxOccup" placeholder="% Máxima Ocupação" required>
+    </mat-form-field>
+
+  </div>
+    <div class="sic-row">
+      <button type="button" (click)="confirm()" matTooltip="Confirmar" class="btn btn-primary btn-md">OK</button>
+      <button type="button" (click)="back()" matTooltip="Cancelar" class="btn btn-light btn-md">Retroceder</button>
+    </div>
+  </div>

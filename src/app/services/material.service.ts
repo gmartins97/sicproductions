@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Material } from '../model/Material';
 import { GenericService } from './generic.service';
+import {AuthService} from "./auth.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MaterialService extends GenericService{
 
-  constructor(httpClient: HttpClient) { super('https://siccatalogue.azurewebsites.net/api/Material', httpClient); }
+  constructor(httpClient: HttpClient, authSrv : AuthService) { super('https://siccatalogue.azurewebsites.net/api/Material', httpClient, authSrv); }
 
   getMaterials(): Observable<any> {
     return super.getAll();

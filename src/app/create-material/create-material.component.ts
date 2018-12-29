@@ -43,7 +43,19 @@ export class CreateMaterialComponent implements OnInit {
       this.bar.open('Sucesso, o material foi criado.', '', { duration: 2000 });
       this.back();
     }, e => {
-      this.bar.open(`Erro: ${e.error}`, '', { duration: 2000 });
+      if(e.status == 401) {
+        this.bar.open(
+          'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
+          '', {
+            duration: 2000,
+          });
+      } else {
+        this.bar.open(
+          `Erro: ${e.error}`,
+          '', {
+            duration: 2000,
+          });
+      }
     });
   }
 

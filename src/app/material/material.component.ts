@@ -31,11 +31,19 @@ export class MaterialComponent implements OnInit {
       this.materials = <Material[]>data;
       this.dataSource = new MatTableDataSource(this.materials);
     }, error => {
-      this.bar.open(
-        `Ocorreu um erro ao tentar obter os materiais do servidor: ${error.error}`,
-        '', {
-          duration: 2000,
-        });
+      if(error.status == 401) {
+        this.bar.open(
+          'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
+          '', {
+            duration: 2000,
+          });
+      } else {
+        this.bar.open(
+          'Ocorreu um erro ao tentar obter os materiais do servidor...',
+          '', {
+            duration: 2000,
+          });
+      }
     });
   }
 

@@ -3,12 +3,13 @@ import {Injectable} from '@angular/core';
 import {GenericService} from './generic.service';
 import {Observable} from "rxjs";
 import {Category} from "../model/category";
+import {AuthService} from "./auth.service";
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService extends GenericService {
 
-  constructor(httpClient: HttpClient) { super('https://siccatalogue.azurewebsites.net/api/category', httpClient);}
+  constructor(httpClient: HttpClient, authSrv : AuthService) { super('https://siccatalogue.azurewebsites.net/api/category', httpClient, authSrv);}
 
   getCategories(): Observable<any> {
     return super.getAll();

@@ -1,0 +1,60 @@
+<h3 class="card-header text-center font-weight-bold py-4">Ver Produto</h3>
+<div class="container">
+  <div class="custom-container">
+    <br />
+
+    <!-- Nome -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="name" placeholder="Nome do produto" value="name" readonly>
+    </mat-form-field>
+
+    <!-- Categoria -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="category.description"  placeholder="Categoria" value="category" readonly>
+    </mat-form-field>
+
+    <!-- Materiais Acabamentos -->
+    <div>
+      <mat-form-field id="formpequena">
+        <mat-select [(ngModel)]="materialfinishes" placeholder="Material Acabamento">
+          <mat-option *ngFor="let materialfinish of materialfinishes" [value]="materialfinish.id">
+            {{materialfinish.material.name}} + {{materialfinish.finish.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Alturas -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="height.discrete ||  height.min + '-' + height.max" placeholder="Alturas" readonly>
+
+    </mat-form-field>
+
+
+    <!-- Larguras -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="width.discrete|| width.min+ '-' + width.max" placeholder="Larguras" readonly>
+    </mat-form-field>
+
+    <!-- Profundidades -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="depth.discrete || depth.min + '-' + depth.max " placeholder="Profundidades" readonly>
+    </mat-form-field>
+
+    <!-- Min ocupacao -->
+    <mat-form-field>
+      <input matInput placeholder="% Minima Ocupação" [value]="minOccup" readonly>
+    </mat-form-field>
+
+    <!-- Max ocupacao -->
+    <mat-form-field>
+      <input matInput placeholder="% Máxima Ocupação" [value]="maxOccup" readonly>
+    </mat-form-field>
+
+  </div>
+  <div class="sic-row">
+    <button type="button" (click)="editProduct()" matTooltip="Editar" class="btn btn-primary btn-md">Editar</button>
+    <button type="button" (click)="deleteProduct()" matTooltip="Apagar este Produto" class="btn btn-primary btn-md">Apagar</button>
+    <button type="button" (click)="back()" matTooltip="Cancelar" class="btn btn-light btn-md">Retroceder</button>
+  </div>
+</div>

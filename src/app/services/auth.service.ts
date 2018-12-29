@@ -1,23 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import {Router} from "@angular/router";
+import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  public isLoggedIn : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   private readonly AUTH_URL : string = "https://siccatalogue.azurewebsites.net/api/Auth";
 
-  constructor(private httpClient: HttpClient, private router : Router) { }
+  constructor(private httpClient: HttpClient) { }
 
-  signUp(username: string, email: string, password: string) : Observable<any> {
-    return this.httpClient.post(`${this.AUTH_URL}/SignUp`, {Username: username, Email: email, Password : password});
+  signUp(username: string, password: string, confirmPassword : string) : Observable<any> {
+    return this.httpClient.post(`${this.AUTH_URL}/SignUp`, {Username: username, Password : password, ConfirmPassword : confirmPassword});
   }
 
   login(username: string, password : string) : Observable<any> {
     return this.httpClient.post(`${this.AUTH_URL}/Login`, {Username: username, Password: password});
+  }
+
+  loginSucceeded(data) : void {
+    localStorage.setItem("access_token", data.access_token);
+    localStorage.setItem("expiryDate", data.expiration);
+    this.isLoggedIn.next(this.isAuthenticated());
   }
 
   isAuthenticated() : boolean {
@@ -29,9 +36,13 @@ export class AuthService {
     return false;
   }
 
+  getToken() : string {
+    return localStorage.getItem("access_token");
+  }
+
   logout() {
     localStorage.removeItem('access_token');
     localStorage.removeItem('expiryDate');
-    window.location.href = "/login";
+    this.isLoggedIn.next(this.isAuthenticated());
   }
 }

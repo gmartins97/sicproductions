@@ -19,6 +19,14 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { MaterialFinishComponent } from './material-finish/material-finish.component';
 import { ProductConfiguratorComponent } from './product-configurator/product-configurator.component';
+import { ClientCatalogueComponent } from './client-catalogue/client-catalogue.component';
+import { CreateMaterialFinishComponent } from './create-material-finish/create-material-finish.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CreateProductComponent } from './create-product/create-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { MatDialog } from '@angular/material/dialog';
+import { EditMaterialFinishComponent } from './edit-material-finish/edit-material-finish.component';
+import { ShowProductInfoComponent } from './show-product-info/show-product-info.component';
 
 
 @NgModule({
@@ -40,13 +48,20 @@ import { ProductConfiguratorComponent } from './product-configurator/product-con
     CreateCategoryComponent,
     EditCategoryComponent,
     MaterialFinishComponent,
-    ProductConfiguratorComponent
+    ProductConfiguratorComponent,
+    ClientCatalogueComponent,
+    CreateMaterialFinishComponent,
+    CreateProductComponent,
+    EditProductComponent,
+    EditMaterialFinishComponent,
+    ShowProductInfoComponent
   ],
   imports: [
     BrowserModule,
-    UiModule
+    UiModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [MatDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

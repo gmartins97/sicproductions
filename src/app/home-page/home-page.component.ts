@@ -8,10 +8,13 @@ import {AuthService} from "../services/auth.service";
 })
 export class HomePageComponent implements OnInit {
   authenticated : boolean;
-  constructor(private authSrv : AuthService) { }
+  constructor(private authSrv : AuthService) {
+    this.authSrv.isLoggedIn.subscribe( value => {
+      this.authenticated = value;
+    });
+  }
 
   ngOnInit() {
-    this.authenticated = this.authSrv.isAuthenticated();
   }
 
 }

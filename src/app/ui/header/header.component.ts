@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatSnackBar} from "@angular/material";
 import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -10,13 +11,20 @@ import {AuthService} from "../../services/auth.service";
 export class HeaderComponent implements OnInit {
   title = "SiCProductions";
   authenticated : boolean = false;
-  constructor(private bar: MatSnackBar,private authSrv : AuthService) { }
+
+  constructor(private bar: MatSnackBar,private authSrv : AuthService, private router : Router) {
+    // Subscribe here, this will automatically update
+    // "isUserLoggedIn" whenever a change to the subject is made.
+    this.authSrv.isLoggedIn.subscribe( value => {
+      this.authenticated = value;
+    });
+  }
 
   ngOnInit() {
-    this.authenticated = this.authSrv.isAuthenticated();
   }
 
   logout() : void {
     this.authSrv.logout();
+    this.router.navigate(["/home"]);
   }
 }

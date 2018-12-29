@@ -23,11 +23,19 @@ export class CreateCategoryComponent implements OnInit {
       this.categories = data;
       this.parentCategoryId = 0;
     }, error => {
-      this.bar.open(
-        `Ocorreu um erro ao tentar obter as categorias do servidor...`,
-        '', {
-          duration: 2000,
-        });
+      if(error.status == 401) {
+        this.bar.open(
+          'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
+          '', {
+            duration: 2000,
+          });
+      } else {
+        this.bar.open(
+          'Ocorreu um erro ao tentar obter as categorias do servidor...',
+          '', {
+            duration: 2000,
+          });
+      }
     });
   }
 
@@ -51,11 +59,19 @@ export class CreateCategoryComponent implements OnInit {
         });
       this.back();
     }, error => {
+      if(error.status == 401) {
+        this.bar.open(
+          'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
+          '', {
+            duration: 2000,
+          });
+      } else {
       this.bar.open(
         `Erro: ${error.error}`,
         '', {
           duration: 2000,
         });
+      }
     });
   }
 

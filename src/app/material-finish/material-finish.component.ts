@@ -1,26 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {MatTableDataSource} from "@angular/material";
-import {Material} from "../model/Material";
-import {SurfaceFinish} from "../model/surface-finish";
+import { MatTableDataSource, MatSnackBar } from "@angular/material";
+import { Material } from "../model/Material";
+import { SurfaceFinish } from "../model/surface-finish";
+import { Router } from '@angular/router';
+import { MaterialFinishService } from '../services/material-finish.service';
+import { MaterialFinish } from '../model/material-finish';
 
-export interface MaterialFinish {
-  material: Material;
-  finish : SurfaceFinish;
-  increment: number;
-  texture: string;
-}
-
-const mat1 = new Material("Madeira", 3.89);
-const finish1 = new SurfaceFinish("Serrado");
-const increment1 = 3.11;
-const texture1 = "https://www.sharecg.com/images/medium/24765.jpg";
-const mat2 = new Material("Granito", 60.5);
-const finish2 = new SurfaceFinish("Polido");
-const increment2 = 5.5;
-const texture2 = "https://i.pinimg.com/736x/65/ac/06/65ac0600e9c46d59f14e58e1200acff3--granite-brazil.jpg";
-
-const MaterialFinishes: MaterialFinish[] = [{material: mat1, finish: finish1, increment: increment1, texture: texture1},
-  {material: mat2, finish: finish2, increment: increment2, texture: texture2}];
 
 @Component({
   selector: 'app-material-finish',
@@ -28,16 +13,65 @@ const MaterialFinishes: MaterialFinish[] = [{material: mat1, finish: finish1, in
   styleUrls: ['./material-finish.component.css']
 })
 export class MaterialFinishComponent implements OnInit {
-  displayedColumns = ['position', 'materialName','finishName','increment', 'totalPrice', 'texture', 'edit', 'remove'];
-  dataSource = new MatTableDataSource(MaterialFinishes);
+  materialFinishes: MaterialFinish[]
+  displayedColumns = ['position', 'materialName', 'finishName', 'increment', 'totalPrice', 'texture', 'edit', 'remove'];
+  dataSource = new MatTableDataSource(this.materialFinishes);
 
-  constructor() { }
+  constructor(private router: Router, private service: MaterialFinishService, private bar: MatSnackBar) { }
 
   ngOnInit() {
+    this.getMaterialFinishes();
+  }
+
+  private getMaterialFinishes(): void {
+    this.service.getMaterialFinishes().subscribe(data => {
+      this.materialFinishes = <MaterialFinish[]>data;
+      this.dataSource.data = this.materialFinishes;
+    }, e => {
+      if(e.status == 401) {
+        this.bar.open(
+          'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
+          '', {
+            duration: 2000,
+          });
+      } else {
+        this.bar.open(
+          `Ocorreu um erro ao tentar obter os materiais-acabamentos do servidor...`,
+          '', {
+            duration: 2000,
+          });
+      }
+    });
   }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  addMaterialFinish() {
+    this.router.navigateByUrl('materialfinishes/new');
+  }
+
+  editMaterialFinish(i: number){
+    const mf = this.materialFinishes[i];
+    this.router.navigateByUrl('materialfinishes/edit/' + mf.id);
+  }
+
+  deleteMaterialFinish(i: number) {
+    this.service.deleteMaterialFinish(this.materialFinishes[i].id).subscribe(() => {
+      this.bar.open(
+        'Material-Acabamento eliminado com sucesso.',
+        '', {
+          duration: 2000,
+        });
+        this.getMaterialFinishes();
+    }, e => {
+      this.bar.open(
+        e.error,
+        '', {
+          duration: 2000,
+        });
+    });
   }
 
 }

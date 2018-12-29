@@ -34,6 +34,20 @@ import { MaterialFinishComponent } from '../material-finish/material-finish.comp
 import { ProductConfiguratorComponent } from '../product-configurator/product-configurator.component';
 import {MatSelectModule} from '@angular/material/select';
 import {AuthGuard} from "../guards/auth.guard";
+import { ClientCatalogueComponent } from '../client-catalogue/client-catalogue.component';
+import { CreateMaterialFinishComponent } from '../create-material-finish/create-material-finish.component';
+import { MaterialFinishService } from '../services/material-finish.service';
+import { MaterialService } from '../services/material.service';
+import { CreateProductComponent } from '../create-product/create-product.component';
+import { EditProductComponent } from '../edit-product/edit-product.component';
+import { MatDialogModule, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatProgressSpinnerModule,  MatButtonModule } from '@angular/material';
+import { SelectMaterialFinishesDialog } from '../create-product/select-material-finish-dialog';
+import { EditMaterialFinishComponent } from '../edit-material-finish/edit-material-finish.component';
+import { ShowProductInfoComponent } from '../show-product-info/show-product-info.component';
+import { ProductService } from '../services/product.service';
+
+
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
@@ -45,19 +59,25 @@ const appRoutes: Routes = [
   { path: 'materials/new', component: CreateMaterialComponent, canActivate:[AuthGuard] },
   { path: 'materials/edit/:id', component: EditMaterialComponent, canActivate:[AuthGuard] },
   { path: 'materialfinishes', component: MaterialFinishComponent, canActivate:[AuthGuard] },
+  { path: 'materialfinishes/new', component: CreateMaterialFinishComponent, canActivate:[AuthGuard] },
+  { path: 'materialfinishes/edit/:id', component: EditMaterialFinishComponent, canActivate:[AuthGuard] },
   { path: 'categories', component: CategoryComponent, canActivate:[AuthGuard] },
   { path: 'categories/new', component: CreateCategoryComponent, canActivate:[AuthGuard] },
   { path: 'categories/edit/:id', component: EditCategoryComponent, canActivate:[AuthGuard] },
-  { path: 'products', component: ProductComponent, canActivate:[AuthGuard] },
+  { path: 'products', component: ProductComponent, canActivate: [AuthGuard] },
+  { path: 'products/new', component: CreateProductComponent, canActivate: [AuthGuard] },
+  { path: 'products/edit/:id', component: EditProductComponent, canActivate: [AuthGuard] },
+  { path: 'products/show/:id', component: ShowProductInfoComponent, canActivate: [AuthGuard] },
   { path: 'catalogues', component: CatalogueComponent, canActivate:[AuthGuard] },
   { path: 'collections', component: CollectionComponent, canActivate:[AuthGuard] },
   { path: 'productConfigurator', component: ProductConfiguratorComponent, canActivate:[AuthGuard] },
+  { path: 'clientCatalogue', component: ClientCatalogueComponent, canActivate:[AuthGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({
-  declarations: [LayoutComponent, HeaderComponent, FooterComponent],
+  declarations: [LayoutComponent, HeaderComponent, FooterComponent, SelectMaterialFinishesDialog],
   exports: [
     LayoutComponent,
     RouterModule,
@@ -95,10 +115,17 @@ const appRoutes: Routes = [
     MatTooltipModule,
     MatInputModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
-    SurfaceFinishService
-  ]
+    SurfaceFinishService,
+    MaterialFinishService,
+    MaterialService,
+    ProductService,
+    MatDialog
+  ],
+  entryComponents: [SelectMaterialFinishesDialog]
 })
 export class UiModule { }

@@ -12,22 +12,22 @@
     <!-- Material Column -->
     <ng-container matColumnDef="materialName">
       <th mat-header-cell *matHeaderCellDef> Material </th>
-      <td mat-cell *matCellDef="let materialFinish"> {{materialFinish.material.name}} </td>
+      <td mat-cell *matCellDef="let materialFinish"> {{materialFinish.materialDTO.name}} </td>
     </ng-container>
     <!-- Finish Column -->
     <ng-container matColumnDef="finishName">
       <th mat-header-cell *matHeaderCellDef> Acabamento </th>
-      <td mat-cell *matCellDef="let materialFinish"> {{materialFinish.finish.name}} </td>
+      <td mat-cell *matCellDef="let materialFinish"> {{materialFinish.surfaceFinishDTO.name}} </td>
     </ng-container>
     <!-- Increment Column -->
     <ng-container matColumnDef="increment">
       <th mat-header-cell *matHeaderCellDef> Incremento/m2 </th>
-      <td mat-cell *matCellDef="let materialFinish"> {{materialFinish.increment}}€/m2 </td>
+      <td mat-cell *matCellDef="let materialFinish"> {{materialFinish.price}}€/m2 </td>
     </ng-container>
     <!-- Total price Column -->
     <ng-container matColumnDef="totalPrice">
       <th mat-header-cell *matHeaderCellDef> Preço total/m2 </th>
-      <td mat-cell *matCellDef="let materialFinish"> {{materialFinish.increment+materialFinish.material.price}}€/m2 </td>
+      <td mat-cell *matCellDef="let materialFinish"> {{materialFinish.price+materialFinish.materialDTO.price}}€/m2 </td>
     </ng-container>
     <!-- Texture Column -->
     <ng-container matColumnDef="texture">

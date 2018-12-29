@@ -1,0 +1,30 @@
+<h3 class="card-header text-center font-weight-bold py-4">Editar Material Acabamento</h3>
+<div style="height: 10px"></div>
+<div class="container">
+  <div [formGroup]="form" class="custom-container">
+    <mat-form-field>
+      <mat-select [(ngModel)]="material" [ngModelOptions]="{standalone: true}" placeholder="Material">
+        <mat-option *ngFor="let mat of materials" [value]="mat.id">
+          {{mat.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select [(ngModel)]="surfaceFinish" [ngModelOptions]="{standalone: true}" placeholder="Acabamento">
+        <mat-option *ngFor="let sf of surfaceFinishes" [value]="sf.id">
+          {{sf.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="price" placeholder="Incremento" required pattern="[0-9]+(.[0-9]{1,2})?">
+    </mat-form-field>
+    <p *ngIf="!form.valid && form.touched" id="price">
+      O preço tem que ser um número inteiro ou decimal com apenas duas casas décimais.
+    </p>
+  </div>
+  <div class="sic-row">
+    <button type="button" (click)="confirm()" matTooltip="Confirmar" class="btn btn-primary btn-md">OK</button>
+    <button type="button" (click)="back()" matTooltip="Cancelar" class="btn btn-light btn-md">Retroceder</button>
+  </div>
+</div>

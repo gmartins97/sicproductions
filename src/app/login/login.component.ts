@@ -24,11 +24,9 @@ export class LoginComponent implements OnInit {
 
   login() : void {
     this.authSrv.login(this._username, this._password).subscribe(data => {
-      localStorage.setItem("access_token", data.access_token);
-      localStorage.setItem("expiryDate", data.expiration);
-      window.location.href = "/home";
+      this.authSrv.loginSucceeded(data);
       this.bar.open("Login com sucesso.", "", {duration: 1500});
-      //this.router.navigate(['/categories']);
+      this.router.navigate(['/home']);
     }, error => {
       this.bar.open("Ocorreu um erro...", "", {duration: 3000});
     });

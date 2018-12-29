@@ -1,0 +1,57 @@
+<h3 class="card-header text-center font-weight-bold py-4">Editar Produto</h3>
+<div class="container">
+  <div class="custom-container">
+    <br />
+
+    <!-- Nome -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="name" placeholder="Nome do produto" value="name">
+    </mat-form-field>
+
+    <!-- Categoria -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="category.description" placeholder="Categoria" value="category" >
+    </mat-form-field>
+
+    <!-- Materiais Acabamentos -->
+    <div>
+      <mat-form-field id="formpequena">
+        <mat-select [(ngModel)]="materialfinishes" placeholder="Material Acabamento">
+          <mat-option *ngFor="let materialfinish of materialfinishes" [value]="materialfinish.id">
+            {{materialfinish.material.name}} + {{materialfinish.finish.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Alturas -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="height.discrete ||  height.min + '-' + height.max" placeholder="Alturas">
+    </mat-form-field>
+
+    <!-- Larguras -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="width.discrete|| width.min+ '-' + width.max" placeholder="Larguras">
+    </mat-form-field>
+
+    <!-- Profundidades -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="depth.discrete || depth.min + '-' + depth.max " placeholder="Profundidades">
+    </mat-form-field>
+
+    <!-- Min ocupacao -->
+    <mat-form-field>
+      <input matInput placeholder="% Minima Ocupação" [value]="minOccup">
+    </mat-form-field>
+
+    <!-- Max ocupacao -->
+    <mat-form-field>
+      <input matInput placeholder="% Máxima Ocupação" [value]="maxOccup">
+    </mat-form-field>
+  </div>
+
+  <div class="sic-row">
+    <button type="button" (click)="confirm()" matTooltip="Confirmar Alterações" class="btn btn-primary btn-md">Confirmar</button>
+    <button type="button" (click)="back()" matTooltip="Cancelar" class="btn btn-light btn-md">Cancelar</button>
+  </div>
+</div>
