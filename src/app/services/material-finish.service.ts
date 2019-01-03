@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MaterialFinish } from '../model/material-finish';
 import { Observable } from 'rxjs';
-
+import { GenericService } from './generic.service';
+import { AuthService } from "./auth.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class MaterialFinishService {
+export class MaterialFinishService extends GenericService{
 
-  private url = 'https://siccatalogue.azurewebsites.net/api/materialfinish';
 
-  constructor(private http: HttpClient) { }
+  constructor(httpClient: HttpClient, authSrv: AuthService) { super('https://siccatalogue.azurewebsites.net/api/materialfinish', httpClient, authSrv); }
 
   createMaterialFinish(obj: MaterialFinish): Observable<MaterialFinish> {
 
@@ -22,10 +22,11 @@ export class MaterialFinishService {
       surfaceFinishDTO: {
         id: obj.surface.id
       },
-      price: obj.price
+      price: obj.price,
+      textureUrl: obj.textureUrl
     };
 
-    return this.http.post<MaterialFinish>(this.url, mf);
+    return super.create(mf);
   }
 
   updateMaterialFinish(obj: MaterialFinish) {
@@ -37,21 +38,22 @@ export class MaterialFinishService {
       surfaceFinishDTO: {
         id: obj.surface.id
       },
-      price: obj.price
+      price: obj.price,
+      textureUrl: obj.textureUrl
     };
 
-    return this.http.put(this.url + `/${mf.id}`, mf);
+    return super.update(mf.id, mf);
   }
 
   getMaterialFinishes(): Observable<MaterialFinish[]> {
-    return this.http.get<MaterialFinish[]>(this.url);
+    return super.getAll();
   }
 
   getMaterialFinish(id: number): Observable<MaterialFinish> {
-    return this.http.get<MaterialFinish>(this.url + `/${id}`);
+    return super.getById(id);
   }
 
   deleteMaterialFinish(id: number): Observable<MaterialFinish> {
-    return this.http.delete<MaterialFinish>(this.url + `/${id}`);
+    return super.delete(id);
   }
 }

@@ -1,27 +1,38 @@
 import { Component, ViewChild, ElementRef, OnInit, OnDestroy } from '@angular/core';
 import * as THREE from 'three';
-import { Scene } from 'three';
+import { ActivatedRoute, Router } from "@angular/router";
+import { ProductService } from "../services/product.service";
+import { orderService } from "../services/order.service";
+import { MatSnackBar } from "@angular/material";
+import { Product } from '../model/product';
+import { ContinuousDimension } from '../model/continuous-dimension';
+import { DiscreteDimension } from '../model/discrete-dimension';
+import { Category } from '../model/category';
+import { order } from '../model/order';
+import { orderItem } from '../model/orderItem';
+import { Item } from '../model/Item';
+import { SurfaceFinish } from '../model/surface-finish';
+import { Material } from '../model/Material';
+import { MaterialFinish } from '../model/material-finish';
+import { MaterialFinishDTO } from '../model/material-finish-dto';
+import { AuthService } from '../services/auth.service';
+
 declare const require: (moduleId: string) => any; /*for require function below*/
 var OrbitControls = require('three-orbit-controls')(THREE) /*import orbit controls*/
 var dat = require('dat.gui');
+
 var datGUI = null;
 var guiControls = null;
-//Substituir com as do produto
-var minAltura=200;
-var	maxAltura=1000;
-var	minLargura=200;
-var	maxLargura=1000;
-var	minProfundidade=100;
-var	maxProfundidade=500;
 
 @Component({
 	selector: 'app-product-configurator',
 	templateUrl: './product-configurator.component.html',
 	styleUrls: ['./product-configurator.component.css']
-})	
+})
 
 
 export class ProductConfiguratorComponent implements OnInit, OnDestroy {
+
 
 	ngOnDestroy(): void {
 		if (datGUI != null) {
@@ -40,41 +51,76 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 	mouse = new THREE.Vector2();
 	selectedMove = null;
 	selectedScale = null;
+	categoria = "Armario";
 	parts = [];
+	product: Product;
+	id: number;
 
 
 	updateSize() {
 		this.scene.remove(this.mesh);
 		const material = new THREE.MeshLambertMaterial({ color: 0xff0000, wireframe: false });
-		this.mesh = this.closet(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
+		if (this.categoria == "Armário") {
+			this.mesh = this.closet(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+		} else if (this.categoria == "Gaveta") {
+			this.mesh = this.drawer(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+		} else if (this.categoria == "Prateleira") {
+			this.mesh = this.drawer(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+		} else {
+			this.mesh = this.closet(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+		}
 		this.scene.add(this.mesh);
 	}
-	constructor() {
+
+	getProduct(): void {
+		this.route.params.subscribe(res => {
+			this.id = <number>res.id;
+		});
+		console.log("id  " + this.id);
+		this.service.getProduct(this.id).subscribe(data => {
+			this.product = (<Product>data)
+			guiControls.name = this.product.name;
+			
+			this.createDatGui();
+		}, error => {
+			if (error.status == 401) {
+				this.bar.open(
+					'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
+					'', {
+						duration: 2000,
+					});
+			} else {
+				this.bar.open(
+					`Ocorreu um erro ao tentar obter o producto do servidor...`,
+					'', {
+						duration: 2000,
+					});
+			}
+		});
+	}
+
+	constructor(private route: ActivatedRoute, private service: ProductService, private bar: MatSnackBar, private serviceorder: orderService, private authservice: AuthService) {
 		this.scene = new THREE.Scene();
 		this.scene.background = null;
 
 		guiControls = new function () {
-			this.largura = minLargura;
-			this.altura = minAltura;
-			this.profundidade = minProfundidade;
+			this.name = "";
+			this.largura = 0;
+			this.altura = 0;
+			this.profundidade = 0;
 			this.material = "";
-			this.acabamento = "";
+			this.produtoExtra = [];
+			this.materialExtra = [];
+			this.cidade = "";
+			this.latitude = "0000";
+			this.longitude = "0000";
+			this.encomendar = function () {
+			}
+			this.adicionar = function () {
+			}
 		}
 
-		//this.scene.add(new THREE.AmbientLight(0xffffff), 0.5);
 
-		datGUI = new dat.default.GUI({ width: 300 });
-		datGUI.add(guiControls, 'altura', minAltura, maxAltura, 1).name('Altura').listen().onChange(() => { this.updateSize() });
-		datGUI.add(guiControls, 'largura', minLargura, maxAltura, 1).name('Largura').listen().onChange(() => { this.updateSize() });
-		datGUI.add(guiControls, 'profundidade', minProfundidade, maxProfundidade, 1).name('Profundidade').listen().onChange(() => { this.updateSize() });
-		datGUI.add(guiControls, 'material',
-			['Material 1', 'Material 2'])
-			.name('Material').onChange(() => { this.updateSize() });
-		datGUI.add(guiControls, 'acabamento',
-			['Acabamento 1', 'Acabamento 2'])
-			.name('Acabamento').onChange(() => { this.updateSize() });
-		//var modulos = datGUI.addFolder('Modulos');
-		//var modulo1 = modulos.addFolder('Modulo 1');
 		this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
 		this.camera.position.z = 1000;
 
@@ -86,7 +132,15 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 
 		const material = new THREE.MeshLambertMaterial({ color: 0xff0000, wireframe: false });
 
-		this.mesh = this.closet(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+		if (this.categoria == "Armário") {
+			this.mesh = this.closet(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+		} else if (this.categoria == "Gaveta") {
+			this.mesh = this.drawer(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+		} else if (this.categoria == "Prateleira") {
+			this.mesh = this.drawer(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+		} else {
+			this.mesh = this.closet(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+		}
 
 		this.scene.add(this.mesh);
 
@@ -97,7 +151,7 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit() {
-
+		this.getProduct();
 	}
 
 	ngAfterViewInit() {
@@ -106,12 +160,52 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 		this.animate();
 	}
 
+	createDatGui() {
+		datGUI = new dat.default.GUI({ width: 300 });
+		datGUI.add(guiControls, 'name').name('Name').listen().onChange(() => { this.updateSize() });
+		if (((<DiscreteDimension>this.product.dimensions.height).discrete) == null) {
+			datGUI.add(guiControls, 'altura', (<ContinuousDimension>this.product.dimensions.height).min, (<ContinuousDimension>this.product.dimensions.height).max, 1).name('Altura').listen().onChange(() => { this.updateSize() });
+		} else {
+			datGUI.add(guiControls, 'altura',
+				this.convertDimensions(((<DiscreteDimension>this.product.dimensions.height).discrete)))
+				.name('Altura').onChange(() => { this.updateSize() });
+		}
+		if (((<DiscreteDimension>this.product.dimensions.width).discrete) == null) {
+			datGUI.add(guiControls, 'largura', (<ContinuousDimension>this.product.dimensions.width).min, (<ContinuousDimension>this.product.dimensions.width).max, 1).name('Largura').listen().onChange(() => { this.updateSize() });
+		} else {
+			datGUI.add(guiControls, 'largura',
+				this.convertDimensions(((<DiscreteDimension>this.product.dimensions.width).discrete)))
+				.name('Largura').onChange(() => { this.updateSize() });
+		}
+		if (((<DiscreteDimension>this.product.dimensions.depth).discrete) == null) {
+			datGUI.add(guiControls, 'profundidade', (<ContinuousDimension>this.product.dimensions.depth).min, (<ContinuousDimension>this.product.dimensions.depth).max, 1).name('Profundidade').listen().onChange(() => { this.updateSize() });
+		} else {
+			datGUI.add(guiControls, 'profundidade',
+				this.convertDimensions(((<DiscreteDimension>this.product.dimensions.depth).discrete)))
+				.name('Profundidade').onChange(() => { this.updateSize() });
+		}
+
+		
+
+		datGUI.add(guiControls, 'material',
+		this.getMaterialFinish((<MaterialFinish[]> this.product.materialFinishes)))
+			.name('Material Acabamento').onChange(() => { this.updateSize() });
+		datGUI.add(guiControls, 'produtoExtra',["Armario", "Gaveta"])
+			.name('SubProdutos').onChange(() => { this.updateSize() });
+		datGUI.add(guiControls, 'materialExtra',[])
+			.name('SubProdutos').onChange(() => { this.updateSize() });
+		datGUI.add(guiControls, 'cidade').name('cidade');
+		datGUI.add(guiControls, 'latitude').name('latitude');
+		datGUI.add(guiControls, 'longitude').name('longitude');
+		datGUI.add(guiControls, 'adicionar').name("Adicionar Produto").onChange(() => { });
+		datGUI.add(guiControls, 'encomendar').name("Encomendar Produto").onChange(() => { this.encomenda(guiControls.name, guiControls.material, guiControls.altura, guiControls.profundidade, guiControls.largura, guiControls.latitude, guiControls.longitude,guiControls.cidade) });
+	}
 	animate() {
 		window.requestAnimationFrame(() => this.animate());
 		this.renderer.render(this.scene, this.camera);
 	}
 
-	// create closet
+	//Create Closet
 	closet(width, height, depth, material): THREE.Mesh {
 		const thickness = height * 0.05;
 		const closetG = new THREE.BoxGeometry(width, height, depth);
@@ -148,6 +242,8 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 
 		return closet;
 	}
+
+	//Create Drawer
 	drawer(width, height, depth, material): THREE.Mesh {
 		const thickness = height * 0.05;
 		const drawerG = new THREE.BoxGeometry(width, height, depth);
@@ -176,7 +272,7 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 		const bottomWall = new THREE.Mesh(bottomWallG, material);
 		bottomWall.position.y = -height * .5 + thickness * .5;
 
-		const pullG = new THREE.BoxGeometry(width/5, height/7, thickness);
+		const pullG = new THREE.BoxGeometry(width / 5, height / 7, thickness);
 		const pull = new THREE.Mesh(pullG, material);
 		pull.position.z = depth * .51;
 
@@ -189,7 +285,15 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 		drawer.add(pull);
 		return drawer;
 	}
-	
+
+	//Create Shelf
+	shelf(width, height, depth, material): THREE.Mesh {
+		const shelfM = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
+		const shelfG = new THREE.BoxGeometry(width, height, depth);
+		const shelf = new THREE.Mesh(shelfG, shelfM);
+		return shelf;
+	}
+
 
 	onMouseDown(event) {
 		if (event.which == 1) {
@@ -229,11 +333,12 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 		}*/
 	}
 
+	convertDimensions(dimensoes) {
+		return dimensoes.split(";");
+	}
 	onMouseMove(event) {
 		if (this.selectedMove != null) {
-
 			this.mouse.set((event.offsetX / this.renderer.getSize().width) * 2 - 1, -(event.offsetY / this.renderer.getSize().height) * 2 + 1);
-
 			this.raycaster.setFromCamera(this.mouse, this.camera);
 
 			//transform mouse coordinates to real world coordinates
@@ -259,13 +364,8 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 			vector.unproject(this.camera);
 			const dir = vector.sub(this.camera.position).normalize();
 			const distance = - this.camera.position.z / dir.z;
-			const pos = this.camera.position.clone().add(dir.multiplyScalar(distance));
 
-			//scale
-
-			//this.selectedScale.scale.x += x * this.camera.position.z * .005;
-			//this.selectedScale.scale.y += y * this.camera.position.z * .005;
-
+			//update dimensions
 			guiControls.largura += x * this.camera.position.z * .5;
 			guiControls.altura += y * this.camera.position.z * .5;
 
@@ -291,4 +391,39 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 		}*/
 	}
 
+	adicionar() {
+		if (guiControls.produtoExtra == "Armário") {
+			this.mesh.add(guiControls.altura, guiControls.largura, guiControls.profundidade, guiControls.materialExtra);
+		} else if (guiControls.produtoExtra == "Gaveta") {
+			this.mesh.add(guiControls.altura, guiControls.largura, guiControls.profundidade, guiControls.materialExtra);
+		} else if (guiControls.produtoExtra == "Prateleira") {
+			this.mesh.add(guiControls.altura, guiControls.largura, guiControls.profundidade, guiControls.materialExtra);
+		}
+	}
+
+	encomenda(name: string, material: string,  altura: number, profundidade: number, largura: number,  latitude: number, longitude: number,  cidade: string) {
+		console.log(this.product)
+		const category: string = this.product.category.description;
+		const list: orderItem[] = [];
+		const mataca  = material.split(" / ");
+		const productI: orderItem = new orderItem(name, category, mataca[0], mataca[1], list, altura, profundidade, largura);
+		const it: Item = new Item(productI,  parseInt(mataca[2]) );
+		const items: Item[] = [];
+		items.push(it);
+		const ord: order = new order(items, parseInt(mataca[2]) , latitude, longitude, cidade, this.authservice.getLoggedInUsername());
+		this.serviceorder.createEncomenda(ord).subscribe();
+	}
+
+
+	getMaterialFinish(matsFinish: MaterialFinish[]) : string[] {
+		const ret : string[] = [];
+		
+		console.log(matsFinish);
+		for(let key in matsFinish){
+			const matFinish = (<MaterialFinishDTO> (<unknown> matsFinish[key]));
+			ret.push( matFinish.materialDTO.name+" / "+  matFinish.surfaceFinishDTO.name+" / "+ (matsFinish[key].price+matFinish.materialDTO.price));
+		}
+		return ret;
+	}
+	
 }

@@ -7,23 +7,36 @@ import {BehaviorSubject, Observable} from 'rxjs';
 })
 export class AuthService {
 
-  public isLoggedIn : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public isLoggedIn : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.isAuthenticated());
 
-  private readonly AUTH_URL : string = "https://siccatalogue.azurewebsites.net/api/Auth";
+  public isClient : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.isAClient());
+
+  private readonly MANAGER_AUTH_URL : string = "https://siccatalogue.azurewebsites.net/api/Auth";
+
+  private readonly CLIENT_AUTH_URL : string = "https://sicproductions.herokuapp.com/api/auth";
 
   constructor(private httpClient: HttpClient) { }
 
-  signUp(username: string, password: string, confirmPassword : string) : Observable<any> {
-    return this.httpClient.post(`${this.AUTH_URL}/SignUp`, {Username: username, Password : password, ConfirmPassword : confirmPassword});
+  managerSignUp(username: string, password: string, confirmPassword : string, companyPassword: string) : Observable<any> {
+    return this.httpClient.post(`${this.MANAGER_AUTH_URL}/SignUp`, {Username: username, Password : password, ConfirmPassword : confirmPassword, CompanyPassword: companyPassword});
   }
 
-  login(username: string, password : string) : Observable<any> {
-    return this.httpClient.post(`${this.AUTH_URL}/Login`, {Username: username, Password: password});
+  clientSignUp(username: string, password: string, confirmPassword : string) : Observable<any> {
+    return this.httpClient.post(`${this.CLIENT_AUTH_URL}/signup`, {username: username, password : password, confirmPassword : confirmPassword});
+  }
+
+  managerLogin(username: string, password : string) : Observable<any> {
+    return this.httpClient.post(`${this.MANAGER_AUTH_URL}/Login`, {Username: username, Password: password});
+  }
+
+  clientLogin(username: string, password : string) : Observable<any> {
+    return this.httpClient.post(`${this.CLIENT_AUTH_URL}/login`, {username: username, password: password});
   }
 
   loginSucceeded(data) : void {
     localStorage.setItem("access_token", data.access_token);
     localStorage.setItem("expiryDate", data.expiration);
+    localStorage.setItem("username", data.username);
     this.isLoggedIn.next(this.isAuthenticated());
   }
 
@@ -36,13 +49,28 @@ export class AuthService {
     return false;
   }
 
+  isAClient() : boolean {
+    return localStorage.getItem("isClient") == "true";
+  }
+
+  setClient(value : boolean) {
+    localStorage.setItem("isClient", `${value}`);
+    this.isClient.next(this.isAClient());
+  }
+
   getToken() : string {
     return localStorage.getItem("access_token");
+  }
+
+  getLoggedInUsername() : string {
+    return localStorage.getItem("username");
   }
 
   logout() {
     localStorage.removeItem('access_token');
     localStorage.removeItem('expiryDate');
+    localStorage.removeItem('username');
+    localStorage.removeItem('isClient');
     this.isLoggedIn.next(this.isAuthenticated());
   }
 }

@@ -10,13 +10,18 @@ import {Router} from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
   title = "SiCProductions";
+  username : string = "";
   authenticated : boolean = false;
-
+  isClient : boolean;
   constructor(private bar: MatSnackBar,private authSrv : AuthService, private router : Router) {
     // Subscribe here, this will automatically update
     // "isUserLoggedIn" whenever a change to the subject is made.
     this.authSrv.isLoggedIn.subscribe( value => {
       this.authenticated = value;
+      this.username = this.authSrv.getLoggedInUsername();
+    });
+    this.authSrv.isClient.subscribe(value => {
+      this.isClient = value;
     });
   }
 

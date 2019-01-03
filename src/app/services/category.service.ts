@@ -12,6 +12,7 @@ export class CategoryService extends GenericService {
   constructor(httpClient: HttpClient, authSrv : AuthService) { super('https://siccatalogue.azurewebsites.net/api/category', httpClient, authSrv);}
 
   getCategories(): Observable<any> {
+    console.log(localStorage.getItem("access_token"));
     return super.getAll();
   }
 

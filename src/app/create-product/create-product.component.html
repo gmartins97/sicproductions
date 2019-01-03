@@ -1,6 +1,6 @@
 <h3 class="card-header text-center font-weight-bold py-4">Novo Produto</h3>
 <div class="container">
-  <div class="custom-container">
+  <div>
     <br />
 
     <!-- Nome -->
@@ -10,39 +10,11 @@
 
     <!-- Categoria -->
     <mat-form-field>
-      <mat-select required [(ngModel)]="productCategory" placeholder="Categoria">
-        <mat-option *ngFor="let category of categories" [value]="category.id">
+      <mat-select required [(ngModel)]="category" placeholder="Categoria">
+        <mat-option *ngFor="let category of categories" [value]="category">
           {{category.description}}
         </mat-option>
       </mat-select>
-    </mat-form-field>
-
-    <!-- Materiais Acabamentos -->
-    <div >
-      <mat-form-field id="formpequena">
-        <mat-select [(ngModel)]="productMaterialFinishes" placeholder="Material Acabamento">
-          <mat-option *ngFor="let materialfinish of materialfinishes" [value]="materialfinish.id">
-            {{materialfinish.material.name}} + {{materialfinish.finish.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <button id="butpequeno" mat-button (click)="chooseMaterialFinishes()" matTooltip="Escolher Materiais Acabamentos" class="btn btn-primary btn-md">Escolher</button>
-    </div>
-
-    <!-- Alturas -->
-    <mat-form-field>
-      <input matInput [(ngModel)]="productHeights" placeholder="Alturas" required matTooltip="Separar por ;" matTooltipPosition="left">
-    </mat-form-field>
-
-
-    <!-- Larguras -->
-    <mat-form-field>
-      <input matInput [(ngModel)]="productWidths" placeholder="Larguras" required matTooltip="Separar por ;" matTooltipPosition="left">
-    </mat-form-field>
-
-    <!-- Profundidades -->
-    <mat-form-field>
-      <input matInput [(ngModel)]="productDepths" placeholder="Profundidades" required matTooltip="Separar por ;" matTooltipPosition="left">
     </mat-form-field>
 
     <!-- Min ocupacao -->
@@ -52,8 +24,120 @@
 
     <!-- Max ocupacao -->
     <mat-form-field>
-      <input matInput type="number" min="0" max="100" [(ngModel)]="productMaxOccup" placeholder="% Máxima Ocupação" required>
+      <input matInput type="number" min="{{productMinOccup}}" max="100" [(ngModel)]="productMaxOccup" placeholder="% Máxima Ocupação" required>
     </mat-form-field>
+
+    <!-- Partes -->
+    <button id="butpequeno" mat-button (click)="chooseParts()" matTooltip="Escolher Produtos Opcionais" class="btn btn-primary btn-md">Escolher</button>
+    <mat-form-field id="formpequena">
+      <mat-select [(ngModel)]="partes" placeholder="Produtos Opcionais" (click)="updateParts()">
+        <mat-option *ngFor="let product of parts" [value]="product">
+          {{product.part.name}} (<label id="{{product.part.name}}" style="display:inline-block;">{{product.isOptional}}</label>)
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <br />
+    <!-- Materiais Acabamentos -->
+    <button mat-button (click)="chooseMaterialFinishes()" matTooltip="Escolher Materiais Acabamentos" class="btn btn-primary btn-md">Escolher Materiais Acabamentos</button>
+    <div>
+      <mat-card *ngFor="let materialfinish of materialfinishes" class="example-card" style="width:200px;float:left;margin-top:30px;margin-right: 30px;">
+        <mat-card-header style="text-align:left;">
+          <mat-card-title style="font-size:medium;">{{materialfinish.materialDTO.name}}</mat-card-title>
+          <mat-card-subtitle>{{materialfinish.surfaceFinishDTO.name}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{materialfinish.textureUrl}}">
+        <mat-card-actions>
+          <button mat-button (click)="removeFromMaterialList(materialfinish)">Remover</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <br />
+
+    <!-- Alturas -->
+    <mat-card class="result" style="clear:both;margin-top:30px;">
+      <mat-card-content>
+        <h2 class="example-h2">Alturas</h2>
+        <br />
+        <section class="example-section">
+          <mat-radio-group required>
+            <mat-radio-button name="myHeight" (click)="showDivNewAlturaDiscreta()" value="HeightDiscrete">Discreta</mat-radio-button>&ensp;
+            <mat-radio-button name="myHeight" (click)="showDivNewAlturaContinua()" value="HeightContinuous" style="float:right;padding-right:40px;">Contínua</mat-radio-button>
+          </mat-radio-group>
+          <div id="newAlturaContinua" style="display:none;">
+            <mat-form-field>
+              <input id="hcmin" matInput [(ngModel)]="heightMin" type="number" placeholder="min" min="0">
+            </mat-form-field>
+            <mat-form-field>
+              <input id="hcmax" matInput [(ngModel)]="heightMax" type="number" placeholder="max" min="{{heightMin}}"> <br />
+            </mat-form-field>
+          </div>
+          <div id="newAlturaDiscreta" style="display:none;">
+            <mat-form-field>
+              <input id="hdiscrete" matInput [(ngModel)]="heightDiscrete" pattern="{{discretePattern}}" type="text" matTooltip="Separar por ;" placeholder="Valores Discretos"><br />
+            </mat-form-field>
+          </div>
+        </section>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Larguras -->
+    <mat-card class="result" style="margin-left: 30px;margin-top:30px;">
+      <mat-card-content>
+        <h2 class="example-h2">Larguras</h2>
+        <br />
+        <section class="example-section">
+          <mat-radio-group required>
+            <mat-radio-button name="myWidth" (click)="showDivNewLarguraDiscreta()" value="WidthDiscrete">Discreta</mat-radio-button>
+            <mat-radio-button name="myWidth" (click)="showDivNewLarguraContinua()" value="WidthContinuous" style="float:right;padding-right:40px;">Contínua</mat-radio-button>
+          </mat-radio-group>
+          <br />
+          <div id="newLarguraContinua" style="display:none;">
+            <mat-form-field>
+              <input id="wcmin" matInput [(ngModel)]="widthMin" type="number" placeholder="min" min="0">
+            </mat-form-field>
+            <mat-form-field>
+              <input id="wcmax" matInput [(ngModel)]="widthMax" type="number" placeholder="max" min="{{widthMin}}"> <br />
+            </mat-form-field>
+          </div>
+          <div id="newLarguraDiscreta" style="display:none;">
+            <mat-form-field>
+              <input id="wdiscrete" matInput [(ngModel)]="widthDiscrete" pattern="{{discretePattern}}" type="text" matTooltip="Separar por ;" placeholder="Valores Discretos"><br />
+            </mat-form-field>
+          </div>
+        </section>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Profundidades -->
+    <mat-card class="result" style="margin-left: 30px;margin-top:30px;">
+      <mat-card-content>
+        <h2 class="example-h2">Profundidades</h2>
+        <br />
+        <section class="example-section">
+          <mat-radio-group id="profgroup">
+            <mat-radio-button name="myDepth" (click)="showDivNewProfundidadeDiscreta()" value="DepthDiscrete">Discreta</mat-radio-button>
+            <mat-radio-button name="myDepth" (click)="showDivNewProfundidadeContinua()" value="DepthContinuous" style="float:right;padding-right:40px;">Contínua</mat-radio-button>
+          </mat-radio-group>
+          <br />
+          <div id="newProfundidadeContinua" style="display:none;">
+            <mat-form-field>
+              <input id="dcmin" matInput [(ngModel)]="depthMin" type="number" placeholder="min" min="0">
+            </mat-form-field>
+            <mat-form-field>
+              <input id="dcmax" matInput [(ngModel)]="depthMax" type="number" placeholder="max" min="0"> <br />
+            </mat-form-field>
+          </div>
+          <div id="newProfundidadeDiscreta" style="display:none;">
+            <mat-form-field>
+              <input id="ddiscrete" matInput [(ngModel)]="depthDiscrete" pattern="{{discretePattern}}" type="text" matTooltip="Separar por ;" placeholder="Valores Discretos"><br />
+            </mat-form-field>
+          </div>
+        </section>
+      </mat-card-content>
+    </mat-card>
+
+
 
   </div>
     <div class="sic-row">

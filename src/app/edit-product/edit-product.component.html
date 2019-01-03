@@ -5,16 +5,20 @@
 
     <!-- Nome -->
     <mat-form-field>
-      <input matInput [(ngModel)]="name" placeholder="Nome do produto" value="name">
+      <input matInput placeholder="Nome do produto" [(ngModel)]="name" required>
     </mat-form-field>
 
     <!-- Categoria -->
     <mat-form-field>
-      <input matInput [(ngModel)]="category.description" placeholder="Categoria" value="category" >
+      <mat-select required [(ngModel)]="category" placeholder="Categoria">
+        <mat-option *ngFor="let category of categories" [value]="category.id">
+          {{category.description}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
     <!-- Materiais Acabamentos -->
-    <div>
+    <!--<div>
       <mat-form-field id="formpequena">
         <mat-select [(ngModel)]="materialfinishes" placeholder="Material Acabamento">
           <mat-option *ngFor="let materialfinish of materialfinishes" [value]="materialfinish.id">
@@ -22,31 +26,31 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </div>
+    </div>-->
 
     <!-- Alturas -->
     <mat-form-field>
-      <input matInput [(ngModel)]="height.discrete ||  height.min + '-' + height.max" placeholder="Alturas">
+      <input matInput placeholder="Alturas" [(ngModel)]="height_disc||  height_min + '-' + height_max" required>
     </mat-form-field>
 
     <!-- Larguras -->
     <mat-form-field>
-      <input matInput [(ngModel)]="width.discrete|| width.min+ '-' + width.max" placeholder="Larguras">
+      <input matInput placeholder="Larguras" [(ngModel)]="width_disc|| width_min + '-' + width_max" required>
     </mat-form-field>
 
     <!-- Profundidades -->
     <mat-form-field>
-      <input matInput [(ngModel)]="depth.discrete || depth.min + '-' + depth.max " placeholder="Profundidades">
+      <input matInput placeholder="Profundidades" [(ngModel)]="depth_disc || depth_min + '-' + depth_max " required>
     </mat-form-field>
 
     <!-- Min ocupacao -->
     <mat-form-field>
-      <input matInput placeholder="% Minima Ocupação" [value]="minOccup">
+      <input matInput placeholder="% Minima Ocupação" [value]="minOccup" required>
     </mat-form-field>
 
     <!-- Max ocupacao -->
     <mat-form-field>
-      <input matInput placeholder="% Máxima Ocupação" [value]="maxOccup">
+      <input matInput placeholder="% Máxima Ocupação" [value]="maxOccup" required>
     </mat-form-field>
   </div>
 

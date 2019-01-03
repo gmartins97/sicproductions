@@ -6,6 +6,8 @@ import { MaterialFinish } from '../model/material-finish';
 import { Product } from '../model/product';
 import { ProductService } from '../services/product.service';
 import { Dimension } from '../model/dimension';
+import { ContinuousDimension } from '../model/continuous-dimension';
+import { DiscreteDimension } from '../model/discrete-dimension';
 
 @Component({
   selector: 'app-show-product-info',
@@ -16,11 +18,24 @@ export class ShowProductInfoComponent implements OnInit {
   idroute: number;
   product: Product;
   name: string;
-  category: Category;
+  categoryName: string;
   materialfinishes: MaterialFinish[];
+
   height: Dimension;
+  height_min: number;
+  height_max: number;
+  height_disc: number[];
+
   width: Dimension;
+  width_min: number;
+  width_max: number;
+  width_disc: number[];
+
   depth: Dimension;
+  depth_min: number;
+  depth_max: number;
+  depth_disc: number[];
+
   minOccup: number;
   maxOccup: number;
 
@@ -37,17 +52,51 @@ export class ShowProductInfoComponent implements OnInit {
     });
     this.idroute = id;
     this.service.getProduct(id).subscribe(res => {
-      this.product = res;
-      this.name = res.name;
-      this.category = res.category;
-      this.materialfinishes = res.materialFinishes;
-      this.height = res.dimensions.height;
-      this.width = res.dimensions.width;
-      this.depth = res.dimensions.depth;
-      this.minOccup = res.minOccupancyPercentage;
-      this.maxOccup = res.maxOccupancyPercentage;
+      this.product = <Product>res;
+      this.name = this.product.name;
+      this.categoryName = this.product.category.description;
+      this.materialfinishes = this.product.materialFinishes;
+
+      let heightDisc = (<DiscreteDimension>this.product.dimensions.height);
+      if (heightDisc.discrete == null) {   
+        this.height_max = (<ContinuousDimension>this.product.dimensions.height).max;
+        this.height_min = (<ContinuousDimension>this.product.dimensions.height).min;
+      } else {
+        //this.height_disc = (<DiscreteDimension>this.product.dimensions.height).discrete;
+      }
+
+      let widthDisc = (<DiscreteDimension>this.product.dimensions.width);
+      if (widthDisc.discrete == null) {
+        this.width_max = (<ContinuousDimension>this.product.dimensions.width).max;
+        this.width_min = (<ContinuousDimension>this.product.dimensions.width).min;
+      } else {
+        //this.width_disc = (<DiscreteDimension>this.product.dimensions.width).discrete;
+      }
+
+      let depthDisc = (<DiscreteDimension>this.product.dimensions.depth);
+      if (depthDisc.discrete == null) {
+        this.depth_max = (<ContinuousDimension>this.product.dimensions.depth).max;
+        this.depth_min = (<ContinuousDimension>this.product.dimensions.depth).min;
+      } else {
+        //this.depth_disc = (<DiscreteDimension>this.product.dimensions.depth).discrete;
+      }
+
+      this.minOccup = this.product.minOccupancyPercentage;
+      this.maxOccup = this.product.maxOccupancyPercentage;
     }, e => {
-      this.bar.open(e.error, '', { duration: 2000 });
+      if (e.status == 401) {
+        this.bar.open(
+          'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
+          '', {
+            duration: 2000,
+          });
+      } else {
+        this.bar.open(
+          `Ocorreu um erro ao tentar obter o produto escolhido do servidor...`,
+          '', {
+            duration: 2000,
+          });
+      }
     });
   }
 

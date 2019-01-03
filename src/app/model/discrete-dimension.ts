@@ -1,5 +1,9 @@
 import { Dimension } from './dimension';
 
-export interface DiscreteDimension extends Dimension{
-  values: number[];
+export class DiscreteDimension implements Dimension{
+  discrete: string;
+
+  constructor(discrete: string) {
+    this.discrete = discrete;
+  }
 }

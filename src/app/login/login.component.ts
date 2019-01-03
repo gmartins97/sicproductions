@@ -10,8 +10,6 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  isValidUser: boolean = false;
-
   _username: string = "";
 
   _password : string = "";
@@ -23,12 +21,20 @@ export class LoginComponent implements OnInit {
   }
 
   login() : void {
-    this.authSrv.login(this._username, this._password).subscribe(data => {
+    this.authSrv.managerLogin(this._username, this._password).subscribe(data => {
       this.authSrv.loginSucceeded(data);
+      this.authSrv.setClient(false);
       this.bar.open("Login com sucesso.", "", {duration: 1500});
       this.router.navigate(['/home']);
-    }, error => {
-      this.bar.open("Ocorreu um erro...", "", {duration: 3000});
+    }, () => {
+      this.authSrv.clientLogin(this._username, this._password).subscribe(data => {
+        this.authSrv.loginSucceeded(data);
+        this.authSrv.setClient(true);
+        this.bar.open("Login com sucesso.", "", {duration: 1500});
+        this.router.navigate(['/home']);
+      }, () => {
+        this.bar.open("Combinação de utilizador ou palavra-passe incorreta.", "", {duration: 3000});
+      });
     });
   }
 }

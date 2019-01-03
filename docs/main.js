@@ -398,6 +398,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm5/dialog.es5.js");
 /* harmony import */ var _edit_material_finish_edit_material_finish_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./edit-material-finish/edit-material-finish.component */ "./src/app/edit-material-finish/edit-material-finish.component.ts");
 /* harmony import */ var _show_product_info_show_product_info_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./show-product-info/show-product-info.component */ "./src/app/show-product-info/show-product-info.component.ts");
+/* harmony import */ var _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./terms-and-conditions/terms-and-conditions.component */ "./src/app/terms-and-conditions/terms-and-conditions.component.ts");
+
 
 
 
@@ -457,7 +459,8 @@ var AppModule = /** @class */ (function () {
                 _create_product_create_product_component__WEBPACK_IMPORTED_MODULE_25__["CreateProductComponent"],
                 _edit_product_edit_product_component__WEBPACK_IMPORTED_MODULE_26__["EditProductComponent"],
                 _edit_material_finish_edit_material_finish_component__WEBPACK_IMPORTED_MODULE_28__["EditMaterialFinishComponent"],
-                _show_product_info_show_product_info_component__WEBPACK_IMPORTED_MODULE_29__["ShowProductInfoComponent"]
+                _show_product_info_show_product_info_component__WEBPACK_IMPORTED_MODULE_29__["ShowProductInfoComponent"],
+                _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_30__["TermsAndConditionsComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -654,7 +657,7 @@ var CategoryComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NsaWVudC1jYXRhbG9ndWUvY2xpZW50LWNhdGFsb2d1ZS5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "#test {\r\n  display: inline-block;\r\n  margin: 30px 30px;\r\n}\r\n\r\n.div-sic {\r\n  width: 225px;\r\n}\r\n\r\n.button-front {\r\n  z-index: 10;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2xpZW50LWNhdGFsb2d1ZS9jbGllbnQtY2F0YWxvZ3VlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxzQkFBc0I7RUFDdEIsa0JBQWtCO0NBQ25COztBQUVEO0VBQ0UsYUFBYTtDQUNkOztBQUVEO0VBQ0UsWUFBWTtDQUNiIiwiZmlsZSI6InNyYy9hcHAvY2xpZW50LWNhdGFsb2d1ZS9jbGllbnQtY2F0YWxvZ3VlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjdGVzdCB7XHJcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gIG1hcmdpbjogMzBweCAzMHB4O1xyXG59XHJcblxyXG4uZGl2LXNpYyB7XHJcbiAgd2lkdGg6IDIyNXB4O1xyXG59XHJcblxyXG4uYnV0dG9uLWZyb250IHtcclxuICB6LWluZGV4OiAxMDtcclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -665,7 +668,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"sic-row\">\r\n    <div class=\"sic-column\">\r\n      <!-- Card -->\r\n      <mdb-card style=\"max-width: 20%\">\r\n        <div class=\"view rgba-white-slight waves-light\" mdbWavesEffect>\r\n          <!-- Card img -->\r\n          <mdb-card-img src=\"https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg\" alt=\"Card image cap\"></mdb-card-img>\r\n          <a>\r\n            <div class=\"mask\"></div>\r\n          </a>\r\n        </div>\r\n        <!--Card content-->\r\n        <mdb-card-body>\r\n          <!--Title-->\r\n          <div style=\"text-align: center\">\r\n            <mdb-card-title>\r\n              <h4>{{productName}}</h4>\r\n            </mdb-card-title>\r\n            <!--Text-->\r\n\r\n            <mdb-card-text>\r\n              {{collection}}\r\n            </mdb-card-text>\r\n\r\n              <a routerLink=\"/productConfigurator\" mdbBtn color=\"primary\" mdbWavesEffect>Personalizar</a>\r\n            </div>\r\n        </mdb-card-body>\r\n      </mdb-card>\r\n      <!-- Card -->\r\n    </div>\r\n  </div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Catálogo de Produtos Disponíveis</h3>\r\n<ul>\r\n  <li *ngFor=\"let prod of products\" id=\"test\">\r\n    <div class=\"div-sic\">\r\n      <!-- Card -->\r\n      <mdb-card>\r\n        <div class=\"view rgba-white-slight waves-light\" mdbWavesEffect>\r\n          <!-- Card img -->\r\n          <mdb-card-img class=\"card-img-top\" src=\"https://picsum.photos/544/362/?random{{random()}}\" alt=\"\"></mdb-card-img>\r\n          <!--<a>\r\n            <div class=\"mask\"></div>\r\n          </a>-->\r\n          <!--Card content-->\r\n          <mdb-card-body>\r\n            <!--Title-->\r\n            <div style=\"text-align: center\">\r\n              <mdb-card-title>\r\n                <h4>{{prod.name}}</h4>\r\n              </mdb-card-title>\r\n              <!--Text-->\r\n\r\n              <mdb-card-text>\r\n                {{collection}}\r\n              </mdb-card-text>\r\n\r\n              <a [routerLink]=\"['/productConfigurator/configure', prod.id]\" class=\"button-front\" mdbBtn color=\"primary\" mdbWavesEffect>Personalizar</a>\r\n              <!--<a mdbBtn (click)=\"console.log('click'); configureProduct(prod.id)\" color=\"primary\" mdbWavesEffect>Personalizar</a>-->\r\n              <!--<div><button type=\"button\" (click)=\"console.log('here'); configureProduct(prod.id)\" matTooltip=\"Configurar este produto\" class=\"btn btn-primary\">Personalizar</button></div>-->\r\n            </div>\r\n          </mdb-card-body>\r\n        </div>\r\n      </mdb-card>\r\n      <!-- Card -->\r\n    </div>\r\n  </li>\r\n</ul>\r\n"
 
 /***/ }),
 
@@ -681,14 +684,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClientCatalogueComponent", function() { return ClientCatalogueComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+
+
+
 
 
 var ClientCatalogueComponent = /** @class */ (function () {
-    function ClientCatalogueComponent() {
-        this.productName = "Teste";
+    function ClientCatalogueComponent(router, service, bar) {
+        this.router = router;
+        this.service = service;
+        this.bar = bar;
         this.collection = "Coleção Teste";
     }
+    ClientCatalogueComponent.prototype.getProducts = function () {
+        var _this = this;
+        this.service.getProducts().subscribe(function (data) {
+            _this.products = data;
+        }, function (error) {
+            if (error.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                _this.bar.open("Ocorreu um erro ao tentar obter os produtos do servidor...", '', {
+                    duration: 2000,
+                });
+            }
+        });
+    };
     ClientCatalogueComponent.prototype.ngOnInit = function () {
+        this.getProducts();
+    };
+    ClientCatalogueComponent.prototype.random = function () {
+        return Math.random();
     };
     ClientCatalogueComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -696,7 +728,7 @@ var ClientCatalogueComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./client-catalogue.component.html */ "./src/app/client-catalogue/client-catalogue.component.html"),
             styles: [__webpack_require__(/*! ./client-catalogue.component.css */ "./src/app/client-catalogue/client-catalogue.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_product_service__WEBPACK_IMPORTED_MODULE_3__["ProductService"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSnackBar"]])
     ], ClientCatalogueComponent);
     return ClientCatalogueComponent;
 }());
@@ -822,7 +854,7 @@ var CreateCategoryComponent = /** @class */ (function () {
             _this.parentCategoryId = 0;
         }, function (error) {
             if (error.status == 401) {
-                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                _this.bar.open('A sua sessão expirou ou não fez managerLogin. Por favor inicie sessão para continuar.', '', {
                     duration: 2000,
                 });
             }
@@ -849,7 +881,7 @@ var CreateCategoryComponent = /** @class */ (function () {
             _this.back();
         }, function (error) {
             if (error.status == 401) {
-                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                _this.bar.open('A sua sessão expirou ou não fez managerLogin. Por favor inicie sessão para continuar.', '', {
                     duration: 2000,
                 });
             }
@@ -896,7 +928,7 @@ module.exports = "#price{\r\n    color: red;\r\n    font-size: 12px;\r\n    font
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Novo Material Acabamento</h3>\r\n<div style=\"height: 10px\"></div>\r\n<div class=\"container\">\r\n  <div [formGroup]=\"form\" class=\"custom-container\">\r\n    <mat-form-field>\r\n      <mat-select [(ngModel)]=\"material\" [ngModelOptions]=\"{standalone: true}\" placeholder=\"Material\">\r\n        <mat-option *ngFor=\"let mat of materials\" value={{mat.id}}>\r\n          {{mat.name}}\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n    <mat-form-field>\r\n      <mat-select [(ngModel)]=\"surfaceFinish\" [ngModelOptions]=\"{standalone: true}\" placeholder=\"Acabamento\">\r\n        <mat-option *ngFor=\"let sf of surfaceFinishes\" value={{sf.id}}>\r\n          {{sf.name}}\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n    <mat-form-field>\r\n      <input matInput formControlName=\"price\" placeholder=\"Incremento\" required pattern=\"[0-9]+(.[0-9]{1,2})?\">\r\n    </mat-form-field>\r\n    <p *ngIf=\"!form.valid && form.touched\" id=\"price\">\r\n      O preço tem que ser um número inteiro ou decimal com apenas duas casas décimais.\r\n    </p>\r\n  </div>\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n  </div>\r\n</div>"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Novo Material Acabamento</h3>\r\n<div style=\"height: 10px\"></div>\r\n<div class=\"container\">\r\n  <div [formGroup]=\"form\" class=\"custom-container\">\r\n    <mat-form-field>\r\n      <mat-select [(ngModel)]=\"material\" [ngModelOptions]=\"{standalone: true}\" placeholder=\"Material\">\r\n        <mat-option *ngFor=\"let mat of materials\" value={{mat.id}}>\r\n          {{mat.name}}\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n    <mat-form-field>\r\n      <mat-select [(ngModel)]=\"surfaceFinish\" [ngModelOptions]=\"{standalone: true}\" placeholder=\"Acabamento\">\r\n        <mat-option *ngFor=\"let sf of surfaceFinishes\" value={{sf.id}}>\r\n          {{sf.name}}\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n    <mat-form-field>\r\n      <input matInput formControlName=\"price\" placeholder=\"Incremento\" required pattern=\"[0-9]+(.[0-9]{1,2})?\">\r\n    </mat-form-field>\r\n    <p *ngIf=\"!form.valid && form.touched\" id=\"price\">\r\n      O preço tem que ser um número inteiro ou decimal com apenas duas casas décimais.\r\n    </p>\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"textureUrl\" [ngModelOptions]=\"{standalone: true}\" placeholder=\"URL da Textura\" required>\r\n    </mat-form-field>\r\n  </div>\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -946,7 +978,7 @@ var CreateMaterialFinishComponent = /** @class */ (function () {
             console.log(_this.materials);
         }, function (e) {
             if (e.status == 401) {
-                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                _this.bar.open('A sua sessão expirou ou não fez managerLogin. Por favor inicie sessão para continuar.', '', {
                     duration: 2000,
                 });
             }
@@ -961,7 +993,7 @@ var CreateMaterialFinishComponent = /** @class */ (function () {
             console.log(_this.surfaceFinishes);
         }, function (e) {
             if (e.status == 401) {
-                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                _this.bar.open('A sua sessão expirou ou não fez managerLogin. Por favor inicie sessão para continuar.', '', {
                     duration: 2000,
                 });
             }
@@ -977,7 +1009,7 @@ var CreateMaterialFinishComponent = /** @class */ (function () {
         if (this.validate()) {
             var m = this.materials.find(function (m) { return m.id == _this.material; });
             var s = this.surfaceFinishes.find(function (s) { return s.id == _this.surfaceFinish; });
-            var mf = new _model_material_finish__WEBPACK_IMPORTED_MODULE_7__["MaterialFinish"](m, s, this.form.value.price);
+            var mf = new _model_material_finish__WEBPACK_IMPORTED_MODULE_7__["MaterialFinish"](m, s, this.form.value.price, this.textureUrl);
             this.materialFinishService.createMaterialFinish(mf).subscribe(function (res) {
                 _this.bar.open("Sucesso: O material-acabamento foi criado", '', {
                     duration: 2000,
@@ -985,7 +1017,7 @@ var CreateMaterialFinishComponent = /** @class */ (function () {
                 _this.back();
             }, function (e) {
                 if (e.status == 401) {
-                    _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    _this.bar.open('A sua sessão expirou ou não fez managerLogin. Por favor inicie sessão para continuar.', '', {
                         duration: 2000,
                     });
                 }
@@ -1123,7 +1155,7 @@ var CreateMaterialComponent = /** @class */ (function () {
             _this.back();
         }, function (e) {
             if (e.status == 401) {
-                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                _this.bar.open('A sua sessão expirou ou não fez managerLogin. Por favor inicie sessão para continuar.', '', {
                     duration: 2000,
                 });
             }
@@ -1159,7 +1191,7 @@ var CreateMaterialComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#formpequena {\r\n  width:85%;\r\n}\r\n#butpequeno {\r\n  width:13%;\r\n  float: right;\r\n}\r\n#espaco{\r\n  width:2%;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY3JlYXRlLXByb2R1Y3QvY3JlYXRlLXByb2R1Y3QuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7Q0FDWDtBQUNEO0VBQ0UsVUFBVTtFQUNWLGFBQWE7Q0FDZDtBQUNEO0VBQ0UsU0FBUztDQUNWIiwiZmlsZSI6InNyYy9hcHAvY3JlYXRlLXByb2R1Y3QvY3JlYXRlLXByb2R1Y3QuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIiNmb3JtcGVxdWVuYSB7XHJcbiAgd2lkdGg6ODUlO1xyXG59XHJcbiNidXRwZXF1ZW5vIHtcclxuICB3aWR0aDoxMyU7XHJcbiAgZmxvYXQ6IHJpZ2h0O1xyXG59XHJcbiNlc3BhY297XHJcbiAgd2lkdGg6MiU7XHJcbn1cclxuIl19 */"
+module.exports = "#formpequena {\r\n  width: 86%;\r\n}\r\n\r\n#butpequeno {\r\n  width: 13%;\r\n  float: right;\r\n  height: 50px;\r\n}\r\n\r\n#butpequenoparts {\r\n  width: 13%;\r\n  height: auto;\r\n  float: right;\r\n}\r\n\r\n#espaco {\r\n  width: 2%;\r\n}\r\n\r\n.basic-container {\r\n  padding: 30px;\r\n}\r\n\r\n.example-h2 {\r\n  font-size: 15pt;\r\n}\r\n\r\n.example-section {\r\n  align-content: center;\r\n  align-items: center;\r\n  height: 120px;\r\n}\r\n\r\n.example-margin {\r\n  margin: 0 10px;\r\n}\r\n\r\n.result {\r\n  width: 30%;\r\n  float: left;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.mat-form-field {\r\n  font-size: 14px;\r\n  width: 100%;\r\n}\r\n\r\n.input-group {\r\n  display: table;\r\n  white-space: nowrap;\r\n  vertical-align: top;\r\n  width: 100%;\r\n}\r\n\r\n.input-group .form-control {\r\n    display: table-cell;\r\n    vertical-align: top;\r\n    width: 100%;\r\n  }\r\n\r\n.input-group .input-group-addon {\r\n    display: table-cell;\r\n    width: 1%;\r\n    vertical-align: top;\r\n    background: #2f353e;\r\n    color: #fff;\r\n    font-size: 1.15rem;\r\n    line-height: 19px;\r\n    padding-left: 10px;\r\n    padding-right: 10px;\r\n  }\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY3JlYXRlLXByb2R1Y3QvY3JlYXRlLXByb2R1Y3QuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQVc7Q0FDWjs7QUFFRDtFQUNFLFdBQVc7RUFDWCxhQUFhO0VBQ2IsYUFBYTtDQUNkOztBQUVEO0VBQ0UsV0FBVztFQUNYLGFBQWE7RUFDYixhQUFhO0NBQ2Q7O0FBRUQ7RUFDRSxVQUFVO0NBQ1g7O0FBRUQ7RUFDRSxjQUFjO0NBQ2Y7O0FBRUQ7RUFDRSxnQkFBZ0I7Q0FDakI7O0FBRUQ7RUFDRSxzQkFBc0I7RUFDdEIsb0JBQW9CO0VBQ3BCLGNBQWM7Q0FDZjs7QUFFRDtFQUNFLGVBQWU7Q0FDaEI7O0FBRUQ7RUFDRSxXQUFXO0VBQ1gsWUFBWTtFQUNaLG9CQUFvQjtDQUNyQjs7QUFFRDtFQUNFLGdCQUFnQjtFQUNoQixZQUFZO0NBQ2I7O0FBRUQ7RUFDRSxlQUFlO0VBQ2Ysb0JBQW9CO0VBQ3BCLG9CQUFvQjtFQUNwQixZQUFZO0NBQ2I7O0FBRUM7SUFDRSxvQkFBb0I7SUFDcEIsb0JBQW9CO0lBQ3BCLFlBQVk7R0FDYjs7QUFFRDtJQUNFLG9CQUFvQjtJQUNwQixVQUFVO0lBQ1Ysb0JBQW9CO0lBQ3BCLG9CQUFvQjtJQUNwQixZQUFZO0lBQ1osbUJBQW1CO0lBQ25CLGtCQUFrQjtJQUNsQixtQkFBbUI7SUFDbkIsb0JBQW9CO0dBQ3JCIiwiZmlsZSI6InNyYy9hcHAvY3JlYXRlLXByb2R1Y3QvY3JlYXRlLXByb2R1Y3QuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIiNmb3JtcGVxdWVuYSB7XHJcbiAgd2lkdGg6IDg2JTtcclxufVxyXG5cclxuI2J1dHBlcXVlbm8ge1xyXG4gIHdpZHRoOiAxMyU7XHJcbiAgZmxvYXQ6IHJpZ2h0O1xyXG4gIGhlaWdodDogNTBweDtcclxufVxyXG5cclxuI2J1dHBlcXVlbm9wYXJ0cyB7XHJcbiAgd2lkdGg6IDEzJTtcclxuICBoZWlnaHQ6IGF1dG87XHJcbiAgZmxvYXQ6IHJpZ2h0O1xyXG59XHJcblxyXG4jZXNwYWNvIHtcclxuICB3aWR0aDogMiU7XHJcbn1cclxuXHJcbi5iYXNpYy1jb250YWluZXIge1xyXG4gIHBhZGRpbmc6IDMwcHg7XHJcbn1cclxuXHJcbi5leGFtcGxlLWgyIHtcclxuICBmb250LXNpemU6IDE1cHQ7XHJcbn1cclxuXHJcbi5leGFtcGxlLXNlY3Rpb24ge1xyXG4gIGFsaWduLWNvbnRlbnQ6IGNlbnRlcjtcclxuICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIGhlaWdodDogMTIwcHg7XHJcbn1cclxuXHJcbi5leGFtcGxlLW1hcmdpbiB7XHJcbiAgbWFyZ2luOiAwIDEwcHg7XHJcbn1cclxuXHJcbi5yZXN1bHQge1xyXG4gIHdpZHRoOiAzMCU7XHJcbiAgZmxvYXQ6IGxlZnQ7XHJcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcclxufVxyXG5cclxuLm1hdC1mb3JtLWZpZWxkIHtcclxuICBmb250LXNpemU6IDE0cHg7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcbi5pbnB1dC1ncm91cCB7XHJcbiAgZGlzcGxheTogdGFibGU7XHJcbiAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcclxuICB2ZXJ0aWNhbC1hbGlnbjogdG9wO1xyXG4gIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG4gIC5pbnB1dC1ncm91cCAuZm9ybS1jb250cm9sIHtcclxuICAgIGRpc3BsYXk6IHRhYmxlLWNlbGw7XHJcbiAgICB2ZXJ0aWNhbC1hbGlnbjogdG9wO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgfVxyXG5cclxuICAuaW5wdXQtZ3JvdXAgLmlucHV0LWdyb3VwLWFkZG9uIHtcclxuICAgIGRpc3BsYXk6IHRhYmxlLWNlbGw7XHJcbiAgICB3aWR0aDogMSU7XHJcbiAgICB2ZXJ0aWNhbC1hbGlnbjogdG9wO1xyXG4gICAgYmFja2dyb3VuZDogIzJmMzUzZTtcclxuICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgZm9udC1zaXplOiAxLjE1cmVtO1xyXG4gICAgbGluZS1oZWlnaHQ6IDE5cHg7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDEwcHg7XHJcbiAgICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xyXG4gIH1cclxuXHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -1170,7 +1202,7 @@ module.exports = "#formpequena {\r\n  width:85%;\r\n}\r\n#butpequeno {\r\n  widt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Novo Produto</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n    <!-- Nome -->\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"productName\" placeholder=\"Nome do produto\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Categoria -->\r\n    <mat-form-field>\r\n      <mat-select required [(ngModel)]=\"productCategory\" placeholder=\"Categoria\">\r\n        <mat-option *ngFor=\"let category of categories\" [value]=\"category.id\">\r\n          {{category.description}}\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n\r\n    <!-- Materiais Acabamentos -->\r\n    <div >\r\n      <mat-form-field id=\"formpequena\">\r\n        <mat-select [(ngModel)]=\"productMaterialFinishes\" placeholder=\"Material Acabamento\">\r\n          <mat-option *ngFor=\"let materialfinish of materialfinishes\" [value]=\"materialfinish.id\">\r\n            {{materialfinish.material.name}} + {{materialfinish.finish.name}}\r\n          </mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n      <button id=\"butpequeno\" mat-button (click)=\"chooseMaterialFinishes()\" matTooltip=\"Escolher Materiais Acabamentos\" class=\"btn btn-primary btn-md\">Escolher</button>\r\n    </div>\r\n\r\n    <!-- Alturas -->\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"productHeights\" placeholder=\"Alturas\" required matTooltip=\"Separar por ;\" matTooltipPosition=\"left\">\r\n    </mat-form-field>\r\n\r\n\r\n    <!-- Larguras -->\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"productWidths\" placeholder=\"Larguras\" required matTooltip=\"Separar por ;\" matTooltipPosition=\"left\">\r\n    </mat-form-field>\r\n\r\n    <!-- Profundidades -->\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"productDepths\" placeholder=\"Profundidades\" required matTooltip=\"Separar por ;\" matTooltipPosition=\"left\">\r\n    </mat-form-field>\r\n\r\n    <!-- Min ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput type=\"number\" min=\"0\" max=\"100\" [(ngModel)]=\"productMinOccup\" placeholder=\"% Mínima Ocupação\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Max ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput type=\"number\" min=\"0\" max=\"100\" [(ngModel)]=\"productMaxOccup\" placeholder=\"% Máxima Ocupação\" required>\r\n    </mat-form-field>\r\n\r\n  </div>\r\n    <div class=\"sic-row\">\r\n      <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n      <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n    </div>\r\n  </div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Novo Produto</h3>\r\n<div class=\"container\">\r\n  <div>\r\n    <br />\r\n\r\n    <!-- Nome -->\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"productName\" placeholder=\"Nome do produto\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Categoria -->\r\n    <mat-form-field>\r\n      <mat-select required [(ngModel)]=\"category\" placeholder=\"Categoria\">\r\n        <mat-option *ngFor=\"let category of categories\" [value]=\"category\">\r\n          {{category.description}}\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n\r\n    <!-- Min ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput type=\"number\" min=\"0\" max=\"100\" [(ngModel)]=\"productMinOccup\" placeholder=\"% Mínima Ocupação\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Max ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput type=\"number\" min=\"{{productMinOccup}}\" max=\"100\" [(ngModel)]=\"productMaxOccup\" placeholder=\"% Máxima Ocupação\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Partes -->\r\n    <button id=\"butpequeno\" mat-button (click)=\"chooseParts()\" matTooltip=\"Escolher Produtos Opcionais\" class=\"btn btn-primary btn-md\">Escolher</button>\r\n    <mat-form-field id=\"formpequena\">\r\n      <mat-select [(ngModel)]=\"partes\" placeholder=\"Produtos Opcionais\" (click)=\"updateParts()\">\r\n        <mat-option *ngFor=\"let product of parts\" [value]=\"product\">\r\n          {{product.part.name}} (<label id=\"{{product.part.name}}\" style=\"display:inline-block;\">{{product.isOptional}}</label>)\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n\r\n    <br />\r\n    <!-- Materiais Acabamentos -->\r\n    <button mat-button (click)=\"chooseMaterialFinishes()\" matTooltip=\"Escolher Materiais Acabamentos\" class=\"btn btn-primary btn-md\">Escolher Materiais Acabamentos</button>\r\n    <div>\r\n      <mat-card *ngFor=\"let materialfinish of materialfinishes\" class=\"example-card\" style=\"width:200px;float:left;margin-top:30px;margin-right: 30px;\">\r\n        <mat-card-header style=\"text-align:left;\">\r\n          <mat-card-title style=\"font-size:medium;\">{{materialfinish.materialDTO.name}}</mat-card-title>\r\n          <mat-card-subtitle>{{materialfinish.surfaceFinishDTO.name}}</mat-card-subtitle>\r\n        </mat-card-header>\r\n        <img mat-card-image src=\"{{materialfinish.textureUrl}}\">\r\n        <mat-card-actions>\r\n          <button mat-button (click)=\"removeFromMaterialList(materialfinish)\">Remover</button>\r\n        </mat-card-actions>\r\n      </mat-card>\r\n    </div>\r\n    <br />\r\n\r\n    <!-- Alturas -->\r\n    <mat-card class=\"result\" style=\"clear:both;margin-top:30px;\">\r\n      <mat-card-content>\r\n        <h2 class=\"example-h2\">Alturas</h2>\r\n        <br />\r\n        <section class=\"example-section\">\r\n          <mat-radio-group required>\r\n            <mat-radio-button name=\"myHeight\" (click)=\"showDivNewAlturaDiscreta()\" value=\"HeightDiscrete\">Discreta</mat-radio-button>&ensp;\r\n            <mat-radio-button name=\"myHeight\" (click)=\"showDivNewAlturaContinua()\" value=\"HeightContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n          </mat-radio-group>\r\n          <div id=\"newAlturaContinua\" style=\"display:none;\">\r\n            <mat-form-field>\r\n              <input id=\"hcmin\" matInput [(ngModel)]=\"heightMin\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n            </mat-form-field>\r\n            <mat-form-field>\r\n              <input id=\"hcmax\" matInput [(ngModel)]=\"heightMax\" type=\"number\" placeholder=\"max\" min=\"{{heightMin}}\"> <br />\r\n            </mat-form-field>\r\n          </div>\r\n          <div id=\"newAlturaDiscreta\" style=\"display:none;\">\r\n            <mat-form-field>\r\n              <input id=\"hdiscrete\" matInput [(ngModel)]=\"heightDiscrete\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n            </mat-form-field>\r\n          </div>\r\n        </section>\r\n      </mat-card-content>\r\n    </mat-card>\r\n\r\n    <!-- Larguras -->\r\n    <mat-card class=\"result\" style=\"margin-left: 30px;margin-top:30px;\">\r\n      <mat-card-content>\r\n        <h2 class=\"example-h2\">Larguras</h2>\r\n        <br />\r\n        <section class=\"example-section\">\r\n          <mat-radio-group required>\r\n            <mat-radio-button name=\"myWidth\" (click)=\"showDivNewLarguraDiscreta()\" value=\"WidthDiscrete\">Discreta</mat-radio-button>\r\n            <mat-radio-button name=\"myWidth\" (click)=\"showDivNewLarguraContinua()\" value=\"WidthContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n          </mat-radio-group>\r\n          <br />\r\n          <div id=\"newLarguraContinua\" style=\"display:none;\">\r\n            <mat-form-field>\r\n              <input id=\"wcmin\" matInput [(ngModel)]=\"widthMin\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n            </mat-form-field>\r\n            <mat-form-field>\r\n              <input id=\"wcmax\" matInput [(ngModel)]=\"widthMax\" type=\"number\" placeholder=\"max\" min=\"{{widthMin}}\"> <br />\r\n            </mat-form-field>\r\n          </div>\r\n          <div id=\"newLarguraDiscreta\" style=\"display:none;\">\r\n            <mat-form-field>\r\n              <input id=\"wdiscrete\" matInput [(ngModel)]=\"widthDiscrete\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n            </mat-form-field>\r\n          </div>\r\n        </section>\r\n      </mat-card-content>\r\n    </mat-card>\r\n\r\n    <!-- Profundidades -->\r\n    <mat-card class=\"result\" style=\"margin-left: 30px;margin-top:30px;\">\r\n      <mat-card-content>\r\n        <h2 class=\"example-h2\">Profundidades</h2>\r\n        <br />\r\n        <section class=\"example-section\">\r\n          <mat-radio-group id=\"profgroup\">\r\n            <mat-radio-button name=\"myDepth\" (click)=\"showDivNewProfundidadeDiscreta()\" value=\"DepthDiscrete\">Discreta</mat-radio-button>\r\n            <mat-radio-button name=\"myDepth\" (click)=\"showDivNewProfundidadeContinua()\" value=\"DepthContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n          </mat-radio-group>\r\n          <br />\r\n          <div id=\"newProfundidadeContinua\" style=\"display:none;\">\r\n            <mat-form-field>\r\n              <input id=\"dcmin\" matInput [(ngModel)]=\"depthMin\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n            </mat-form-field>\r\n            <mat-form-field>\r\n              <input id=\"dcmax\" matInput [(ngModel)]=\"depthMax\" type=\"number\" placeholder=\"max\" min=\"0\"> <br />\r\n            </mat-form-field>\r\n          </div>\r\n          <div id=\"newProfundidadeDiscreta\" style=\"display:none;\">\r\n            <mat-form-field>\r\n              <input id=\"ddiscrete\" matInput [(ngModel)]=\"depthDiscrete\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n            </mat-form-field>\r\n          </div>\r\n        </section>\r\n      </mat-card-content>\r\n    </mat-card>\r\n\r\n\r\n\r\n  </div>\r\n    <div class=\"sic-row\">\r\n      <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n      <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n    </div>\r\n  </div>\r\n"
 
 /***/ }),
 
@@ -1192,6 +1224,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_category_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/category.service */ "./src/app/services/category.service.ts");
 /* harmony import */ var _services_material_finish_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/material-finish.service */ "./src/app/services/material-finish.service.ts");
 /* harmony import */ var _select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./select-material-finish-dialog */ "./src/app/create-product/select-material-finish-dialog.ts");
+/* harmony import */ var _model_product__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../model/product */ "./src/app/model/product.ts");
+/* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
+/* harmony import */ var _select_parts_dialog__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./select-parts-dialog */ "./src/app/create-product/select-parts-dialog.ts");
 
 
 
@@ -1200,17 +1235,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+var min_array_limit = 1;
+var dim_min_limit = 1;
+var percentage_min_limit = 0;
+var max_limit = 100;
 var CreateProductComponent = /** @class */ (function () {
-    function CreateProductComponent(router, bar, catService, matfinService, dialog) {
+    function CreateProductComponent(router, bar, service, catService, matfinService, dialog) {
         this.router = router;
         this.bar = bar;
+        this.service = service;
         this.catService = catService;
         this.matfinService = matfinService;
         this.dialog = dialog;
+        this.productName = "";
+        this.materialfinishes = [];
+        this.parts = [];
+        this.heightMin = null;
+        this.heightMax = null;
+        this.heightDiscrete = "";
+        this.HisDiscrete = true;
+        this.widthMin = null;
+        this.widthMax = null;
+        this.widthDiscrete = "";
+        this.depthMin = null;
+        this.depthMax = null;
+        this.depthDiscrete = "";
+        this.discretePattern = "[0-9]+([;][0-9]+)*";
     }
     CreateProductComponent.prototype.ngOnInit = function () {
         this.getCategories();
-        this.getMaterialFinishes();
     };
     CreateProductComponent.prototype.getCategories = function () {
         var _this = this;
@@ -1222,24 +1278,16 @@ var CreateProductComponent = /** @class */ (function () {
             });
         });
     };
-    CreateProductComponent.prototype.getMaterialFinishes = function () {
-        //this.matfinService.getMaterialFinishes().subscribe(data => {
-        //  this.categories = data;
-        //}, error => {
-        //  this.bar.open(
-        //    `Ocorreu um erro ao tentar obter as categorias do servidor...`,
-        //    '', {
-        //      duration: 2000,
-        //    });
-        //});
-    };
     CreateProductComponent.prototype.chooseMaterialFinishes = function () {
-        this.openDialog();
+        this.openMaterialDialog();
     };
-    CreateProductComponent.prototype.openDialog = function () {
+    CreateProductComponent.prototype.chooseParts = function () {
+        this.openPartsDialog();
+    };
+    CreateProductComponent.prototype.openMaterialDialog = function () {
         var _this = this;
         var dialogRef = this.dialog.open(_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_7__["SelectMaterialFinishesDialog"], {
-            width: '700px',
+            width: '900px',
             data: {}
         });
         dialogRef.afterClosed().subscribe(function (result) {
@@ -1248,12 +1296,312 @@ var CreateProductComponent = /** @class */ (function () {
             _this.materialfinishes = result;
         });
     };
+    CreateProductComponent.prototype.openPartsDialog = function () {
+        var _this = this;
+        var dialogRef = this.dialog.open(_select_parts_dialog__WEBPACK_IMPORTED_MODULE_10__["SelectPartsDialog"], {
+            width: '700px',
+            data: {}
+        });
+        dialogRef.afterClosed().subscribe(function (result) {
+            console.log('The dialog was closed');
+            console.log(result);
+            _this.parts = result;
+        });
+    };
+    CreateProductComponent.prototype.removeFromMaterialList = function (materialfinish) {
+        var index = this.materialfinishes.findIndex(function (mat) { return mat.textureUrl == materialfinish.textureUrl; });
+        this.materialfinishes.splice(index, min_array_limit);
+    };
     CreateProductComponent.prototype.confirm = function () {
-        this.bar.open("Tem calma que isto ainda n\u00E3o est\u00E1 implementado.", '', { duration: 2000 });
-        this.router.navigateByUrl('/products');
+        var _this = this;
+        //check product name is not empty
+        if (this.checkIfFieldIsEmptyOrNull([this.productName])) {
+            this.openbarNotEmpty('Nome do Produto');
+            return;
+        }
+        //check category is selected
+        if (this.checkIfFieldIsEmptyOrNull([this.category])) {
+            this.openbarNotEmpty('Categoria');
+            return;
+        }
+        // check at least one selected materialfinish
+        if (!this.checkIfArrayHasAtLeastOneValue(this.materialfinishes)) {
+            this.openbarAtLeastOne('MaterialAcabamento');
+            return;
+        }
+        //check height is not empty & >0
+        var h = this.validateDimension('Altura', this.heightDiscrete, this.heightMin, this.heightMax);
+        console.log('h');
+        console.log(h);
+        if (h == null) {
+            return;
+        }
+        //check width is not empty & >0 & check regex
+        var w = this.validateDimension('Largura', this.widthDiscrete, this.widthMin, this.widthMax);
+        console.log('w');
+        console.log(w);
+        if (w == null) {
+            return;
+        }
+        //check depth is not empty  & >0 & check regex
+        var d = this.validateDimension('Profundidade', this.depthDiscrete, this.depthMin, this.depthMax);
+        console.log('d');
+        console.log(d);
+        if (d == null) {
+            return;
+        }
+        //check min&max occup is not empty & >0 & <100
+        if (this.checkIfFieldIsEmptyOrNull(this.productMinOccup)) {
+            this.openbarNotEmpty("Ocupação Mínima");
+            return;
+        }
+        if (this.checkIfFieldIsEmptyOrNull(this.productMaxOccup)) {
+            this.openbarNotEmpty("Ocupação Máxima");
+            return;
+        }
+        if (this.checkNumberIsBeyondMinLimit(percentage_min_limit, this.productMinOccup)) {
+            this.openbarBeyondMinLimit(percentage_min_limit, "Ocupação Mínima");
+            return;
+        }
+        if (this.checkNumberIsBeyondMinLimit(percentage_min_limit, this.productMaxOccup)) {
+            this.openbarBeyondMinLimit(percentage_min_limit, "Ocupação Máxima");
+            return;
+        }
+        if (this.checkNumberIsBeyondMaxLimit(this.productMinOccup)) {
+            this.openbarBeyondMaxLimit("Ocupação Mínima");
+            return;
+        }
+        if (this.checkNumberIsBeyondMaxLimit(this.productMaxOccup)) {
+            this.openbarBeyondMaxLimit("Ocupação Máxima");
+            return;
+        }
+        //check max occup is higher than min occup
+        if (this.productMaxOccup < this.productMinOccup) {
+            this.openbarOtherMessage("Ocupação Máxima não pode ser superior à mínima.");
+            return;
+        }
+        var dimensions = { width: w, height: h, depth: d };
+        var parts = [];
+        var prod = new _model_product__WEBPACK_IMPORTED_MODULE_8__["Product"](this.productName, this.category, this.materialfinishes, dimensions, parts, this.productMinOccup, this.productMaxOccup);
+        console.log('prod criado');
+        console.log(prod);
+        this.service.createProduct(prod).subscribe(function (cat) {
+            _this.bar.open("Sucesso: o produto foi criado.", '', {
+                duration: 2000,
+            });
+            _this.back();
+        }, function (error) {
+            if (error.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                console.log('outro erro');
+                _this.bar.open("Erro: " + error.error, '', {
+                    duration: 2000,
+                });
+            }
+        });
+    };
+    CreateProductComponent.prototype.validateDimension = function (dimension, discrete, min, max) {
+        console.log('entrou');
+        //if min and max are null and discrete is ok, then it is discrete
+        if (this.checkIfFieldIsEmptyOrNull(min) && this.checkIfFieldIsEmptyOrNull(max)
+            && !this.checkIfFieldIsEmptyOrNull(discrete)) {
+            var array = discrete.split(';');
+            for (var i = 0; i < array.length; i++) {
+                var value = parseInt(array[i]);
+                if (this.checkNumberIsBeyondMinLimit(dim_min_limit, value)) {
+                    this.openbarBeyondMinLimit(dim_min_limit, dimension);
+                    return null;
+                }
+            }
+            var chosenDimension = { discrete: discrete };
+            return chosenDimension;
+            //if min and max are not null and discrete is, it means it is continuous
+        }
+        else if (!this.checkIfFieldIsEmptyOrNull(min) && !this.checkIfFieldIsEmptyOrNull(max)
+            && this.checkIfFieldIsEmptyOrNull(discrete)) {
+            if (this.checkNumberIsBeyondMinLimit(dim_min_limit, min)) {
+                this.openbarBeyondMinLimit(dim_min_limit, dimension + ' Mínima');
+                return null;
+            }
+            if (this.checkNumberIsBeyondMinLimit(dim_min_limit, max)) {
+                this.openbarBeyondMinLimit(dim_min_limit, dimension + ' Máxima');
+                return null;
+            }
+            if (min > max) {
+                this.openbarOtherMessage(dimension + ' mínima não pode ser superior à ' + dimension + ' máxima.');
+                return null;
+            }
+            var chosenDimension = { min: min, max: max };
+            return chosenDimension;
+        }
+        else {
+            // if discrete, min and max are empty, then
+            this.openbarOtherMessage('Deve preencher dimensões para ' + dimension + '.');
+            return null;
+        }
+    };
+    /**
+     * True if it is negative or 0
+     * @param num
+     * @param testName
+     */
+    CreateProductComponent.prototype.checkNumberIsBeyondMinLimit = function (limit, num) {
+        if (num < limit) {
+            return true;
+        }
+        return false;
+    };
+    /**
+     * True if it is above 100
+     * @param num
+     * @param testName
+     */
+    CreateProductComponent.prototype.checkNumberIsBeyondMaxLimit = function (num) {
+        if (num > max_limit) {
+            return true;
+        }
+        return false;
+    };
+    /**
+     * True if empty or null
+     * @param fields
+     */
+    CreateProductComponent.prototype.checkIfFieldIsEmptyOrNull = function (field) {
+        if (field == null || field.toString().trim().length == 0) {
+            return true;
+        }
+        return false;
+    };
+    /**
+     *
+     * True if has at least one element
+     * @param array
+     */
+    CreateProductComponent.prototype.checkIfArrayHasAtLeastOneValue = function (array) {
+        if (array.length < min_array_limit) {
+            return false;
+        }
+        return true;
+    };
+    CreateProductComponent.prototype.openbarAtLeastOne = function (testName) {
+        this.bar.open("Deve escolher pelo menos um " + testName + ".", '', {
+            duration: 2000,
+        });
+    };
+    CreateProductComponent.prototype.openbarNotEmpty = function (testName) {
+        this.bar.open(testName + " n\u00E3o pode estar vazio. ", '', {
+            duration: 2000,
+        });
+    };
+    CreateProductComponent.prototype.openbarBeyondMinLimit = function (limit, testName) {
+        this.bar.open(testName + " n\u00E3o pode inferior a " + limit + ".", '', {
+            duration: 2000,
+        });
+    };
+    CreateProductComponent.prototype.openbarBeyondMaxLimit = function (testName) {
+        this.bar.open(testName + " n\u00E3o pode ser superior a " + max_limit + ".", '', {
+            duration: 2000,
+        });
+    };
+    CreateProductComponent.prototype.openbarOtherMessage = function (message) {
+        this.bar.open(message, '', {
+            duration: 2000,
+        });
     };
     CreateProductComponent.prototype.back = function () {
         this.router.navigateByUrl('/products');
+    };
+    CreateProductComponent.prototype.updateParts = function () {
+        for (var i = 0; i < this.parts.length; i++) {
+            this.writeOptionalOrMandatory(this.parts[i].part.name);
+        }
+    };
+    CreateProductComponent.prototype.writeOptionalOrMandatory = function (element) {
+        var label = document.getElementById(element);
+        if (label.innerHTML === "true") {
+            label.innerHTML = "Opcional";
+        }
+        else if (label.innerHTML === "false") {
+            label.innerHTML = "Obrigatório";
+        }
+    };
+    //--------- FOR HTML SHOW/HIDE 
+    // ALTURA
+    CreateProductComponent.prototype.showDivNewAltura = function () {
+        document.getElementById('newAltura').style.display = "block";
+    };
+    CreateProductComponent.prototype.dispose_showDivNewAltura = function () {
+        document.getElementById('newAltura').style.display = "none";
+    };
+    CreateProductComponent.prototype.showDivNewAlturaDiscreta = function () {
+        this.dispose_showDivNewAlturaContinua();
+        this.heightMin = null;
+        this.heightMax = null;
+        document.getElementById('newAlturaDiscreta').style.display = "block";
+    };
+    CreateProductComponent.prototype.dispose_showDivNewAlturaDiscreta = function () {
+        document.getElementById('newAlturaDiscreta').style.display = "none";
+    };
+    CreateProductComponent.prototype.showDivNewAlturaContinua = function () {
+        this.dispose_showDivNewAlturaDiscreta();
+        this.heightDiscrete = null;
+        document.getElementById('newAlturaContinua').style.display = "block";
+    };
+    CreateProductComponent.prototype.dispose_showDivNewAlturaContinua = function () {
+        document.getElementById('newAlturaContinua').style.display = "none";
+    };
+    //LARGURA
+    CreateProductComponent.prototype.showDivNewLargura = function () {
+        this.dispose_showDivNewLargura();
+        document.getElementById('newLargura').style.display = "block";
+    };
+    CreateProductComponent.prototype.dispose_showDivNewLargura = function () {
+        document.getElementById('newLargura').style.display = "none";
+    };
+    CreateProductComponent.prototype.showDivNewLarguraDiscreta = function () {
+        this.dispose_showDivNewLarguraContinua();
+        this.widthMax = null;
+        this.widthMin = null;
+        document.getElementById('newLarguraDiscreta').style.display = "block";
+    };
+    CreateProductComponent.prototype.dispose_showDivNewLarguraDiscreta = function () {
+        document.getElementById('newLarguraDiscreta').style.display = "none";
+    };
+    CreateProductComponent.prototype.showDivNewLarguraContinua = function () {
+        this.dispose_showDivNewLarguraDiscreta();
+        this.widthDiscrete = "";
+        document.getElementById('newLarguraContinua').style.display = "block";
+    };
+    CreateProductComponent.prototype.dispose_showDivNewLarguraContinua = function () {
+        document.getElementById('newLarguraContinua').style.display = "none";
+    };
+    // PROFUNDIDADE
+    CreateProductComponent.prototype.showDivNewProfundidade = function () {
+        document.getElementById('newProfundidade').style.display = "block";
+    };
+    CreateProductComponent.prototype.dispose_showDivNewProfundidade = function () {
+        document.getElementById('newProfundidade').style.display = "none";
+    };
+    CreateProductComponent.prototype.showDivNewProfundidadeDiscreta = function () {
+        this.dispose_showDivNewProfundidadeContinua();
+        this.depthMin = null;
+        this.depthMax = null;
+        document.getElementById('newProfundidadeDiscreta').style.display = "block";
+    };
+    CreateProductComponent.prototype.dispose_showDivNewProfundidadeDiscreta = function () {
+        document.getElementById('newProfundidadeDiscreta').style.display = "none";
+    };
+    CreateProductComponent.prototype.showDivNewProfundidadeContinua = function () {
+        this.dispose_showDivNewProfundidadeDiscreta();
+        this.depthDiscrete = "";
+        document.getElementById('newProfundidadeContinua').style.display = "block";
+    };
+    CreateProductComponent.prototype.dispose_showDivNewProfundidadeContinua = function () {
+        document.getElementById('newProfundidadeContinua').style.display = "none";
     };
     CreateProductComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1263,6 +1611,7 @@ var CreateProductComponent = /** @class */ (function () {
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
             _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSnackBar"],
+            _services_product_service__WEBPACK_IMPORTED_MODULE_9__["ProductService"],
             _services_category_service__WEBPACK_IMPORTED_MODULE_5__["CategoryService"],
             _services_material_finish_service__WEBPACK_IMPORTED_MODULE_6__["MaterialFinishService"],
             _angular_material_dialog__WEBPACK_IMPORTED_MODULE_3__["MatDialog"]])
@@ -1292,7 +1641,7 @@ module.exports = "table {\r\n  width: 100%;\r\n}\r\n\r\n/*# sourceMappingURL=dat
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n\r\n  <!-- Checkbox Column -->\r\n  <ng-container matColumnDef=\"select\">\r\n    <th mat-header-cell *matHeaderCellDef>\r\n      <mat-checkbox (change)=\"$event ? masterToggle() : null\"\r\n                    [checked]=\"selection.hasValue() && isAllSelected()\"\r\n                    [indeterminate]=\"selection.hasValue() && !isAllSelected()\">\r\n      </mat-checkbox>\r\n    </th>\r\n    <td mat-cell *matCellDef=\"let row\">\r\n      <mat-checkbox (click)=\"$event.stopPropagation()\"\r\n                    (change)=\"$event ? selection.toggle(row) : null\"\r\n                    [checked]=\"selection.isSelected(row)\">\r\n      </mat-checkbox>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <!-- Position Column -->\r\n  <ng-container matColumnDef=\"position\">\r\n    <th mat-header-cell *matHeaderCellDef> # </th>\r\n    <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n  </ng-container>\r\n  <!-- Material Column -->\r\n  <ng-container matColumnDef=\"materialName\">\r\n    <th mat-header-cell *matHeaderCellDef> Material </th>\r\n    <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.material.name}} </td>\r\n  </ng-container>\r\n  <!-- Finish Column -->\r\n  <ng-container matColumnDef=\"finishName\">\r\n    <th mat-header-cell *matHeaderCellDef> Acabamento </th>\r\n    <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.finish.name}} </td>\r\n  </ng-container>\r\n  <!-- Increment Column -->\r\n  <ng-container matColumnDef=\"increment\">\r\n    <th mat-header-cell *matHeaderCellDef> Incremento/m2 </th>\r\n    <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.increment}}€/m2 </td>\r\n  </ng-container>\r\n  <!-- Total price Column -->\r\n  <ng-container matColumnDef=\"totalPrice\">\r\n    <th mat-header-cell *matHeaderCellDef> Preço total/m2 </th>\r\n    <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.increment+materialFinish.material.price}}€/m2 </td>\r\n  </ng-container>\r\n  <!-- Texture Column -->\r\n  <ng-container matColumnDef=\"texture\">\r\n    <th mat-header-cell *matHeaderCellDef> Textura </th>\r\n    <td mat-cell *matCellDef=\"let materialFinish\"> <img src=\"{{materialFinish.texture}}\" width=\"64\" height=\"64\" alt=\"Textura\"> </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"\r\n      (click)=\"selection.toggle(row)\"></tr>\r\n</table>\r\n<br />\r\n<button mat-button cdkFocusInitial [mat-dialog-close]=\"selection.selected\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">Selecionar</button>\r\n"
+module.exports = "<table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n\r\n  <!-- Checkbox Column -->\r\n  <ng-container matColumnDef=\"select\">\r\n    <th mat-header-cell *matHeaderCellDef>\r\n      <mat-checkbox (change)=\"$event ? masterToggle() : null\"\r\n                    [checked]=\"selection.hasValue() && isAllSelected()\"\r\n                    [indeterminate]=\"selection.hasValue() && !isAllSelected()\">\r\n      </mat-checkbox>\r\n    </th>\r\n    <td mat-cell *matCellDef=\"let row\">\r\n      <mat-checkbox (click)=\"$event.stopPropagation()\"\r\n                    (change)=\"$event ? selection.toggle(row) : null\"\r\n                    [checked]=\"selection.isSelected(row)\">\r\n      </mat-checkbox>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <!-- Position Column -->\r\n  <ng-container matColumnDef=\"position\">\r\n    <th mat-header-cell *matHeaderCellDef> # </th>\r\n    <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n  </ng-container>\r\n  <!-- Material Column -->\r\n  <ng-container matColumnDef=\"materialName\">\r\n    <th mat-header-cell *matHeaderCellDef> Material </th>\r\n    <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.materialDTO.name}} </td>\r\n  </ng-container>\r\n  <!-- Finish Column -->\r\n  <ng-container matColumnDef=\"finishName\">\r\n    <th mat-header-cell *matHeaderCellDef> Acabamento </th>\r\n    <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.surfaceFinishDTO.name}} </td>\r\n  </ng-container>\r\n  <!-- Increment Column -->\r\n  <ng-container matColumnDef=\"increment\">\r\n    <th mat-header-cell *matHeaderCellDef> Incremento/m2 </th>\r\n    <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.price}}€/m2 </td>\r\n  </ng-container>\r\n  <!-- Total price Column -->\r\n  <ng-container matColumnDef=\"totalPrice\">\r\n    <th mat-header-cell *matHeaderCellDef> Preço total/m2 </th>\r\n    <td mat-cell *matCellDef=\"let materialFinish\">{{materialFinish.price+materialFinish.materialDTO.price}}€/m2 </td>\r\n  </ng-container>\r\n  <!-- Texture Column -->\r\n  <ng-container matColumnDef=\"texture\">\r\n    <th mat-header-cell *matHeaderCellDef> Textura </th>\r\n    <td mat-cell *matCellDef=\"let materialFinish\"> <img src=\"{{materialFinish.textureUrl}}\" width=\"64\" height=\"64\" alt=\"Textura\"> </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"\r\n      (click)=\"selection.toggle(row)\"></tr>\r\n</table>\r\n<br />\r\n<button mat-button cdkFocusInitial [mat-dialog-close]=\"selection.selected\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">Selecionar</button>\r\n"
 
 /***/ }),
 
@@ -1310,50 +1659,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/cdk/collections */ "./node_modules/@angular/cdk/esm5/collections.es5.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _model_surface_finish__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../model/surface-finish */ "./src/app/model/surface-finish.ts");
-/* harmony import */ var _model_Material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../model/Material */ "./src/app/model/Material.ts");
+/* harmony import */ var _services_material_finish_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/material-finish.service */ "./src/app/services/material-finish.service.ts");
 
 
 
 
 
-
-var mat1 = new _model_Material__WEBPACK_IMPORTED_MODULE_5__["Material"]("Madeira", 3.89);
-var finish1 = new _model_surface_finish__WEBPACK_IMPORTED_MODULE_4__["SurfaceFinish"]("Serrado");
-var increment1 = 3.11;
-var texture1 = "https://www.sharecg.com/images/medium/24765.jpg";
-var mat2 = new _model_Material__WEBPACK_IMPORTED_MODULE_5__["Material"]("Granito", 60.5);
-var finish2 = new _model_surface_finish__WEBPACK_IMPORTED_MODULE_4__["SurfaceFinish"]("Polido");
-var increment2 = 5.5;
-var texture2 = "https://i.pinimg.com/736x/65/ac/06/65ac0600e9c46d59f14e58e1200acff3--granite-brazil.jpg";
-var MaterialFinishes = [{ material: mat1, finish: finish1, increment: increment1, texture: texture1 },
-    { material: mat2, finish: finish2, increment: increment2, texture: texture2 }];
 /**
  * @title Table with selection
  */
 var SelectMaterialFinishesDialog = /** @class */ (function () {
-    function SelectMaterialFinishesDialog(/*private matacabService: MaterialFinishService, */ bar, dialogRef, data) {
+    function SelectMaterialFinishesDialog(matacabService, bar, dialogRef, data) {
+        this.matacabService = matacabService;
         this.bar = bar;
         this.dialogRef = dialogRef;
         this.data = data;
         this.displayedColumns = ['select', 'position', 'materialName', 'finishName', 'increment', 'totalPrice', 'texture'];
-        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatTableDataSource"](MaterialFinishes);
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatTableDataSource"]();
         this.selection = new _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_1__["SelectionModel"](true, []);
     }
     SelectMaterialFinishesDialog.prototype.ngOnInit = function () {
-        //this.getMaterialFinishes();
+        this.getMaterialFinishes();
     };
     SelectMaterialFinishesDialog.prototype.getMaterialFinishes = function () {
-        //this.matacabservice.getMaterialFinishes().subscribe(data => {
-        //  this.materialFinishes = <MaterialFinish[]>data;
-        //  this.dataSource = new MatTableDataSource(this.materialFinishes);
-        //}, error => {
-        //  this.bar.open(
-        //    `Ocorreu um erro ao tentar obter os materiais do servidor: ${error.error}`,
-        //    '', {
-        //      duration: 2000,
-        //    });
-        //});
+        var _this = this;
+        this.matacabService.getMaterialFinishes().subscribe(function (data) {
+            _this.materialFinishes = data;
+            console.log(_this.materialFinishes);
+            _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatTableDataSource"](_this.materialFinishes);
+        }, function (error) {
+            _this.bar.open("Ocorreu um erro ao tentar obter os materiais acabamentos do servidor: " + error.error, '', {
+                duration: 2000,
+            });
+        });
     };
     /** Whether the number of selected elements matches the total number of rows. */
     SelectMaterialFinishesDialog.prototype.isAllSelected = function () {
@@ -1374,11 +1712,146 @@ var SelectMaterialFinishesDialog = /** @class */ (function () {
             template: __webpack_require__(/*! ./select-material-finish-dialog.html */ "./src/app/create-product/select-material-finish-dialog.html"),
             styles: [__webpack_require__(/*! ./select-material-finish-dialog.css */ "./src/app/create-product/select-material-finish-dialog.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](2, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"])),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"],
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](3, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"])),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_material_finish_service__WEBPACK_IMPORTED_MODULE_4__["MaterialFinishService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"],
             _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogRef"], Array])
     ], SelectMaterialFinishesDialog);
     return SelectMaterialFinishesDialog;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/create-product/select-parts-dialog.css":
+/*!********************************************************!*\
+  !*** ./src/app/create-product/select-parts-dialog.css ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "table {\r\n  width: 100%;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY3JlYXRlLXByb2R1Y3Qvc2VsZWN0LXBhcnRzLWRpYWxvZy5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxZQUFZO0NBQ2IiLCJmaWxlIjoic3JjL2FwcC9jcmVhdGUtcHJvZHVjdC9zZWxlY3QtcGFydHMtZGlhbG9nLmNzcyIsInNvdXJjZXNDb250ZW50IjpbInRhYmxlIHtcclxuICB3aWR0aDogMTAwJTtcclxufVxyXG4iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/create-product/select-parts-dialog.html":
+/*!*********************************************************!*\
+  !*** ./src/app/create-product/select-parts-dialog.html ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<form>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n\r\n    <!-- Checkbox Column -->\r\n    <ng-container matColumnDef=\"select\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <mat-checkbox (change)=\"$event ? masterToggle() : null\"\r\n                      [checked]=\"selection.hasValue() && isAllSelected()\"\r\n                      [indeterminate]=\"selection.hasValue() && !isAllSelected()\">\r\n        </mat-checkbox>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let row;let product;let i = index\">\r\n        <mat-checkbox (click)=\"$event.stopPropagation();deselectProduct(i)\"\r\n                      (change)=\"$event ? selection.toggle(row) : null\"\r\n                      [checked]=\"selection.isSelected(row)\">\r\n        </mat-checkbox>\r\n    </ng-container>\r\n\r\n    <!-- Optional Column -->\r\n    <ng-container matColumnDef=\"optional\">\r\n      <th mat-header-cell *matHeaderCellDef> Opcional/<br />Obrigatório </th>\r\n      <tr>\r\n        <td mat-cell *matCellDef=\"let product; let row; let i = index\">\r\n          <input type=\"radio\" required name=\"{{product.name}}\" (click)=\"btnHM[i]=false;btnHO[i]=true;\" [disabled]=\"!selection.isSelected(row)\" [checked]=\"btnHO[i] && selection.isSelected(row)\" value=\"opt\">Opcional <br />\r\n          <input type=\"radio\" name=\"{{product.name}}\" (click)=\"btnHO[i]=false;btnHM[i]=true;\" [disabled]=\"!selection.isSelected(row)\" [checked]=\"btnHM[i] && selection.isSelected(row)\" value=\"mand\"> Obrigatório\r\n        </td>\r\n      </tr>\r\n    </ng-container>\r\n\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"name\">\r\n      <th mat-header-cell *matHeaderCellDef> Nome </th>\r\n      <td mat-cell *matCellDef=\"let product\"> {{product.name}} </td>\r\n    </ng-container>\r\n\r\n\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n\r\n\r\n  </table>\r\n\r\n  <br /><!---->\r\n  <button mat-button (click)=\"convertToOptionalProduct(selection.selected)\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">Selecionar</button>\r\n</form>\r\n\r\n"
+
+/***/ }),
+
+/***/ "./src/app/create-product/select-parts-dialog.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/create-product/select-parts-dialog.ts ***!
+  \*******************************************************/
+/*! exports provided: SelectPartsDialog */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SelectPartsDialog", function() { return SelectPartsDialog; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/cdk/collections */ "./node_modules/@angular/cdk/esm5/collections.es5.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
+
+
+
+
+
+/**
+ * @title Table with selection
+ */
+var SelectPartsDialog = /** @class */ (function () {
+    function SelectPartsDialog(service, bar, dialogRef, data) {
+        this.service = service;
+        this.bar = bar;
+        this.dialogRef = dialogRef;
+        this.data = data;
+        this.displayedColumns = ['select', 'optional', 'name' /*, 'category'*/];
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatTableDataSource"]();
+        this.products = [];
+        this.selection = new _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_1__["SelectionModel"](true, []);
+        this.btnHO = [];
+        this.btnHM = [];
+    }
+    SelectPartsDialog.prototype.ngOnInit = function () {
+        this.getProducts();
+    };
+    SelectPartsDialog.prototype.getProducts = function () {
+        var _this = this;
+        this.service.getProducts().subscribe(function (data) {
+            _this.products = data;
+            _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatTableDataSource"](_this.products);
+        }, function (error) {
+            _this.bar.open("Ocorreu um erro ao tentar obter os produtos do servidor: " + error.error, '', {
+                duration: 2000,
+            });
+        });
+    };
+    SelectPartsDialog.prototype.deselectProduct = function (index) {
+        this.btnHM[index] = null;
+        this.btnHO[index] = null;
+    };
+    /** Whether the number of selected elements matches the total number of rows. */
+    SelectPartsDialog.prototype.isAllSelected = function () {
+        var numSelected = this.selection.selected.length;
+        var numRows = this.dataSource.data.length;
+        return numSelected === numRows;
+    };
+    /** Selects all rows if they are not all selected; otherwise clear selection. */
+    SelectPartsDialog.prototype.masterToggle = function () {
+        var _this = this;
+        if (this.isAllSelected()) {
+            this.selection.clear();
+            this.btnHM = [];
+            this.btnHO = [];
+        }
+        else {
+            this.dataSource.data.forEach(function (row) { return _this.selection.select(row); });
+        }
+    };
+    SelectPartsDialog.prototype.convertToOptionalProduct = function (products) {
+        var parts = [];
+        var j = 0;
+        for (var i = 0; i < products.length; i++) {
+            while (this.btnHO[j] != true && this.btnHO[j] != false && j < this.products.length) {
+                j++;
+            }
+            var part = { part: products[i], isOptional: this.btnHO[j] };
+            j++;
+            parts.push(part);
+        }
+        for (var i = 0; i < parts.length; i++) {
+            if (parts[i].isOptional != true && parts[i].isOptional != false) {
+                this.openbar("Deve escolher opcional ou obrigatório");
+                return;
+            }
+        }
+        this.dialogRef.close(parts);
+    };
+    SelectPartsDialog.prototype.openbar = function (message) {
+        this.bar.open(message, '', {
+            duration: 2000,
+        });
+    };
+    SelectPartsDialog = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
+            selector: 'select-parts-dialog',
+            template: __webpack_require__(/*! ./select-parts-dialog.html */ "./src/app/create-product/select-parts-dialog.html"),
+            styles: [__webpack_require__(/*! ./select-parts-dialog.css */ "./src/app/create-product/select-parts-dialog.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](3, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"])),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_product_service__WEBPACK_IMPORTED_MODULE_4__["ProductService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogRef"], Array])
+    ], SelectPartsDialog);
+    return SelectPartsDialog;
 }());
 
 
@@ -1609,7 +2082,7 @@ module.exports = "#price{\r\n    color: red;\r\n    font-size: 12px;\r\n    font
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Editar Material Acabamento</h3>\r\n<div style=\"height: 10px\"></div>\r\n<div class=\"container\">\r\n  <div [formGroup]=\"form\" class=\"custom-container\">\r\n    <mat-form-field>\r\n      <mat-select [(ngModel)]=\"material\" [ngModelOptions]=\"{standalone: true}\" placeholder=\"Material\">\r\n        <mat-option *ngFor=\"let mat of materials\" [value]=\"mat.id\">\r\n          {{mat.name}}\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n    <mat-form-field>\r\n      <mat-select [(ngModel)]=\"surfaceFinish\" [ngModelOptions]=\"{standalone: true}\" placeholder=\"Acabamento\">\r\n        <mat-option *ngFor=\"let sf of surfaceFinishes\" [value]=\"sf.id\">\r\n          {{sf.name}}\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n    <mat-form-field>\r\n      <input matInput formControlName=\"price\" placeholder=\"Incremento\" required pattern=\"[0-9]+(.[0-9]{1,2})?\">\r\n    </mat-form-field>\r\n    <p *ngIf=\"!form.valid && form.touched\" id=\"price\">\r\n      O preço tem que ser um número inteiro ou decimal com apenas duas casas décimais.\r\n    </p>\r\n  </div>\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Editar Material Acabamento</h3>\r\n<div style=\"height: 10px\"></div>\r\n<div class=\"container\">\r\n  <div [formGroup]=\"form\" class=\"custom-container\">\r\n    <mat-form-field>\r\n      <mat-select [(ngModel)]=\"material\" [ngModelOptions]=\"{standalone: true}\" placeholder=\"Material\">\r\n        <mat-option *ngFor=\"let mat of materials\" [value]=\"mat.id\">\r\n          {{mat.name}}\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n    <mat-form-field>\r\n      <mat-select [(ngModel)]=\"surfaceFinish\" [ngModelOptions]=\"{standalone: true}\" placeholder=\"Acabamento\">\r\n        <mat-option *ngFor=\"let sf of surfaceFinishes\" [value]=\"sf.id\">\r\n          {{sf.name}}\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n    <mat-form-field>\r\n      <input matInput formControlName=\"price\" placeholder=\"Incremento\" required pattern=\"[0-9]+(.[0-9]{1,2})?\">\r\n    </mat-form-field>\r\n    <p *ngIf=\"!form.valid && form.touched\" id=\"price\">\r\n      O preço tem que ser um número inteiro ou decimal com apenas duas casas décimais.\r\n    </p>\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"textureUrl\" [ngModelOptions]=\"{standalone: true}\" placeholder=\"URL da Textura\" required>\r\n    </mat-form-field>\r\n  </div>\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1692,9 +2165,10 @@ var EditMaterialFinishComponent = /** @class */ (function () {
             var data = res;
             var m = new _model_Material__WEBPACK_IMPORTED_MODULE_3__["Material"](data.materialDTO.name, data.materialDTO.price, data.materialDTO.id);
             var s = new _model_surface_finish__WEBPACK_IMPORTED_MODULE_4__["SurfaceFinish"](data.surfaceFinishDTO.name, data.surfaceFinishDTO.id);
-            _this.mf = new _model_material_finish__WEBPACK_IMPORTED_MODULE_2__["MaterialFinish"](m, s, data.price, data.id);
+            _this.mf = new _model_material_finish__WEBPACK_IMPORTED_MODULE_2__["MaterialFinish"](m, s, data.price, data.textureUrl, data.id);
             _this.material = _this.mf.material.id;
             _this.surfaceFinish = _this.mf.surface.id;
+            _this.textureUrl = _this.mf.textureUrl;
             _this.form.get('price').setValue(_this.mf.price);
         }, function (e) {
             _this.bar.open(e.error, '', {
@@ -1710,6 +2184,7 @@ var EditMaterialFinishComponent = /** @class */ (function () {
             this.mf.material = m;
             this.mf.surface = s;
             this.mf.price = this.form.value.price;
+            this.mf.textureUrl = this.textureUrl;
             this.materialFinishService.updateMaterialFinish(this.mf).subscribe(function (res) {
                 _this.bar.open("Sucesso: O material-acabamento foi editado com sucesso", '', {
                     duration: 2000,
@@ -1901,7 +2376,7 @@ module.exports = "pequena {\r\n  width: 85%;\r\n}\r\n\r\n#butpequeno {\r\n  widt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Editar Produto</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n    <!-- Nome -->\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"name\" placeholder=\"Nome do produto\" value=\"name\">\r\n    </mat-form-field>\r\n\r\n    <!-- Categoria -->\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"category.description\" placeholder=\"Categoria\" value=\"category\" >\r\n    </mat-form-field>\r\n\r\n    <!-- Materiais Acabamentos -->\r\n    <div>\r\n      <mat-form-field id=\"formpequena\">\r\n        <mat-select [(ngModel)]=\"materialfinishes\" placeholder=\"Material Acabamento\">\r\n          <mat-option *ngFor=\"let materialfinish of materialfinishes\" [value]=\"materialfinish.id\">\r\n            {{materialfinish.material.name}} + {{materialfinish.finish.name}}\r\n          </mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n    </div>\r\n\r\n    <!-- Alturas -->\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"height.discrete ||  height.min + '-' + height.max\" placeholder=\"Alturas\">\r\n    </mat-form-field>\r\n\r\n    <!-- Larguras -->\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"width.discrete|| width.min+ '-' + width.max\" placeholder=\"Larguras\">\r\n    </mat-form-field>\r\n\r\n    <!-- Profundidades -->\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"depth.discrete || depth.min + '-' + depth.max \" placeholder=\"Profundidades\">\r\n    </mat-form-field>\r\n\r\n    <!-- Min ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Minima Ocupação\" [value]=\"minOccup\">\r\n    </mat-form-field>\r\n\r\n    <!-- Max ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Máxima Ocupação\" [value]=\"maxOccup\">\r\n    </mat-form-field>\r\n  </div>\r\n\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar Alterações\" class=\"btn btn-primary btn-md\">Confirmar</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Cancelar</button>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Editar Produto</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n    <!-- Nome -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Nome do produto\" [(ngModel)]=\"name\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Categoria -->\r\n    <mat-form-field>\r\n      <mat-select required [(ngModel)]=\"category\" placeholder=\"Categoria\">\r\n        <mat-option *ngFor=\"let category of categories\" [value]=\"category.id\">\r\n          {{category.description}}\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n\r\n    <!-- Materiais Acabamentos -->\r\n    <!--<div>\r\n      <mat-form-field id=\"formpequena\">\r\n        <mat-select [(ngModel)]=\"materialfinishes\" placeholder=\"Material Acabamento\">\r\n          <mat-option *ngFor=\"let materialfinish of materialfinishes\" [value]=\"materialfinish.id\">\r\n            {{materialfinish.material.name}} + {{materialfinish.finish.name}}\r\n          </mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n    </div>-->\r\n\r\n    <!-- Alturas -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Alturas\" [(ngModel)]=\"height_disc||  height_min + '-' + height_max\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Larguras -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Larguras\" [(ngModel)]=\"width_disc|| width_min + '-' + width_max\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Profundidades -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Profundidades\" [(ngModel)]=\"depth_disc || depth_min + '-' + depth_max \" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Min ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Minima Ocupação\" [value]=\"minOccup\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Max ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Máxima Ocupação\" [value]=\"maxOccup\" required>\r\n    </mat-form-field>\r\n  </div>\r\n\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar Alterações\" class=\"btn btn-primary btn-md\">Confirmar</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Cancelar</button>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1920,20 +2395,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
+/* harmony import */ var _services_category_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/category.service */ "./src/app/services/category.service.ts");
+
 
 
 
 
 
 var EditProductComponent = /** @class */ (function () {
-    function EditProductComponent(router, route, service, bar) {
+    function EditProductComponent(router, route, service, catService, bar) {
         this.router = router;
         this.route = route;
         this.service = service;
+        this.catService = catService;
         this.bar = bar;
     }
     EditProductComponent.prototype.ngOnInit = function () {
         this.getProduct();
+        this.getCategories();
     };
     EditProductComponent.prototype.getProduct = function () {
         var _this = this;
@@ -1943,16 +2422,56 @@ var EditProductComponent = /** @class */ (function () {
         });
         this.service.getProduct(id).subscribe(function (res) {
             _this.product = res;
-            _this.name = res.name;
-            _this.category = res.category;
-            _this.materialfinishes = res.materialFinishes;
-            _this.height = res.dimensions.height;
-            _this.width = res.dimensions.width;
-            _this.depth = res.dimensions.depth;
-            _this.minOccup = res.minOccupancyPercentage;
-            _this.maxOccup = res.maxOccupancyPercentage;
+            _this.name = _this.product.name;
+            _this.category = _this.product.category;
+            _this.materialfinishes = _this.product.materialFinishes;
+            var heightDisc = _this.product.dimensions.height;
+            if (heightDisc.discrete == null) {
+                _this.height_max = _this.product.dimensions.height.max;
+                _this.height_min = _this.product.dimensions.height.min;
+            }
+            else {
+                //this.height_disc = (<DiscreteDimension>this.product.dimensions.height).discrete;
+            }
+            var widthDisc = _this.product.dimensions.width;
+            if (widthDisc.discrete == null) {
+                _this.width_max = _this.product.dimensions.width.max;
+                _this.width_min = _this.product.dimensions.width.min;
+            }
+            else {
+                //this.width_disc = (<DiscreteDimension>this.product.dimensions.width).discrete;
+            }
+            var depthDisc = _this.product.dimensions.depth;
+            if (depthDisc.discrete == null) {
+                _this.depth_max = _this.product.dimensions.depth.max;
+                _this.depth_min = _this.product.dimensions.depth.min;
+            }
+            else {
+                //this.depth_disc = (<DiscreteDimension>this.product.dimensions.depth).discrete;
+            }
+            _this.minOccup = _this.product.minOccupancyPercentage;
+            _this.maxOccup = _this.product.maxOccupancyPercentage;
         }, function (e) {
-            _this.bar.open(e.error, '', { duration: 2000 });
+            if (e.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                _this.bar.open("Ocorreu um erro ao tentar obter o produto escolhido do servidor...", '', {
+                    duration: 2000,
+                });
+            }
+        });
+    };
+    EditProductComponent.prototype.getCategories = function () {
+        var _this = this;
+        this.catService.getCategories().subscribe(function (data) {
+            _this.categories = data;
+        }, function (error) {
+            _this.bar.open("Ocorreu um erro ao tentar obter as categorias do servidor...", '', {
+                duration: 2000,
+            });
         });
     };
     EditProductComponent.prototype.confirm = function () {
@@ -1979,7 +2498,7 @@ var EditProductComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./edit-product.component.html */ "./src/app/edit-product/edit-product.component.html"),
             styles: [__webpack_require__(/*! ./edit-product.component.css */ "./src/app/edit-product/edit-product.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_product_service__WEBPACK_IMPORTED_MODULE_4__["ProductService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_product_service__WEBPACK_IMPORTED_MODULE_4__["ProductService"], _services_category_service__WEBPACK_IMPORTED_MODULE_5__["CategoryService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"]])
     ], EditProductComponent);
     return EditProductComponent;
 }());
@@ -2136,6 +2655,53 @@ var AuthGuard = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/guards/client.guard.ts":
+/*!****************************************!*\
+  !*** ./src/app/guards/client.guard.ts ***!
+  \****************************************/
+/*! exports provided: ClientGuard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClientGuard", function() { return ClientGuard; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+
+
+
+
+
+var ClientGuard = /** @class */ (function () {
+    function ClientGuard(bar, router, authSrv) {
+        this.bar = bar;
+        this.router = router;
+        this.authSrv = authSrv;
+    }
+    ClientGuard.prototype.canActivate = function (next, state) {
+        if (this.authSrv.isAuthenticated() && !this.authSrv.isAClient()) {
+            return true;
+        }
+        this.router.navigate(['/home']);
+        this.bar.open("Não tem permissão para aceder à página.", "", { duration: 3500 });
+        return false;
+    };
+    ClientGuard = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]])
+    ], ClientGuard);
+    return ClientGuard;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/home-page/home-page.component.css":
 /*!***************************************************!*\
   !*** ./src/app/home-page/home-page.component.css ***!
@@ -2154,7 +2720,7 @@ module.exports = ".vertical-center {\r\n  margin: 0;\r\n  position: absolute;\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card card-image\" style=\"background-image: url(https://www.bradutch.com/wp-content/uploads/2018/09/videoblocks-blue-business-background-2_h3cvzluwb_thumbnail-full01.png); height: 93%; overflow-y: hidden\">\n  <div class=\"text-white text-center py-5 px-4 my-5 vertical-center\">\n    <div>\n      <h2 class=\"card-title h1-responsive pt-3 mb-5 font-bold\"><strong>Bem-vindo à SiCProductions</strong></h2>\n      <p class=\"mx-5 mb-5\">Comece a projetar e configurar produtos personalizados à sua medida.\n        Após a configuração pode fazer a sua encomenda e acompanhar o estado da mesma.\n        Comece já a projetar e configurar os seus produtos.\n      </p>\n      <a *ngIf=\"!authenticated\" routerLink=\"/login\" class=\"btn btn-outline-white btn-md\"><i class=\"fa fa-sign-in\"></i> Iniciar sessão</a>\n      <a *ngIf=\"authenticated\" routerLink=\"/productConfigurator\" class=\"btn btn-outline-white btn-md\"><i class=\"fas fa-cube\"></i> Começar</a>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"card card-image\" style=\"background-image: url(https://www.bradutch.com/wp-content/uploads/2018/09/videoblocks-blue-business-background-2_h3cvzluwb_thumbnail-full01.png); height: 93%; overflow-y: hidden\">\n  <div class=\"text-white text-center py-5 px-4 my-5 vertical-center\">\n    <div>\n      <h2 class=\"card-title h1-responsive pt-3 mb-5 font-bold\"><strong>Bem-vindo à SiCProductions</strong></h2>\n      <p class=\"mx-5 mb-5\">Comece a projetar e configurar produtos personalizados à sua medida.\n        Após a configuração pode fazer a sua encomenda e acompanhar o estado da mesma.\n        Comece já a projetar e configurar os seus produtos.\n      </p>\n      <a *ngIf=\"!authenticated\" routerLink=\"/login\" class=\"btn btn-outline-white btn-md\"><i class=\"fa fa-sign-in\"></i> Iniciar sessão</a>\n      <a *ngIf=\"authenticated\" routerLink=\"/clientCatalogue\" class=\"btn btn-outline-white btn-md\"><i class=\"fas fa-cube\"></i> Começar</a>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -2246,7 +2812,6 @@ var LoginComponent = /** @class */ (function () {
         this.bar = bar;
         this.authSrv = authSrv;
         this.router = router;
-        this.isValidUser = false;
         this._username = "";
         this._password = "";
     }
@@ -2254,12 +2819,20 @@ var LoginComponent = /** @class */ (function () {
     };
     LoginComponent.prototype.login = function () {
         var _this = this;
-        this.authSrv.login(this._username, this._password).subscribe(function (data) {
+        this.authSrv.managerLogin(this._username, this._password).subscribe(function (data) {
             _this.authSrv.loginSucceeded(data);
+            _this.authSrv.setClient(false);
             _this.bar.open("Login com sucesso.", "", { duration: 1500 });
             _this.router.navigate(['/home']);
-        }, function (error) {
-            _this.bar.open("Ocorreu um erro...", "", { duration: 3000 });
+        }, function () {
+            _this.authSrv.clientLogin(_this._username, _this._password).subscribe(function (data) {
+                _this.authSrv.loginSucceeded(data);
+                _this.authSrv.setClient(true);
+                _this.bar.open("Login com sucesso.", "", { duration: 1500 });
+                _this.router.navigate(['/home']);
+            }, function () {
+                _this.bar.open("Combinação de utilizador ou palavra-passe incorreta.", "", { duration: 3000 });
+            });
         });
     };
     LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -2295,7 +2868,7 @@ module.exports = "/* Structure */\r\ntable {\r\n  width: 100%;\r\n}\r\n.mat-form
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Materiais Acabamentos</h3>\r\n<div class=\"example-container container\">\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\r\n  </mat-form-field>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Material Column -->\r\n    <ng-container matColumnDef=\"materialName\">\r\n      <th mat-header-cell *matHeaderCellDef> Material </th>\r\n      <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.materialDTO.name}} </td>\r\n    </ng-container>\r\n    <!-- Finish Column -->\r\n    <ng-container matColumnDef=\"finishName\">\r\n      <th mat-header-cell *matHeaderCellDef> Acabamento </th>\r\n      <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.surfaceFinishDTO.name}} </td>\r\n    </ng-container>\r\n    <!-- Increment Column -->\r\n    <ng-container matColumnDef=\"increment\">\r\n      <th mat-header-cell *matHeaderCellDef> Incremento/m2 </th>\r\n      <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.price}}€/m2 </td>\r\n    </ng-container>\r\n    <!-- Total price Column -->\r\n    <ng-container matColumnDef=\"totalPrice\">\r\n      <th mat-header-cell *matHeaderCellDef> Preço total/m2 </th>\r\n      <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.price+materialFinish.materialDTO.price}}€/m2 </td>\r\n    </ng-container>\r\n    <!-- Texture Column -->\r\n    <ng-container matColumnDef=\"texture\">\r\n      <th mat-header-cell *matHeaderCellDef> Textura </th>\r\n      <td mat-cell *matCellDef=\"let materialFinish\"> <img src=\"{{materialFinish.texture}}\" width=\"64\" height=\"64\" alt=\"Textura\"> </td>\r\n    </ng-container>\r\n    <!-- Edit Column -->\r\n    <ng-container matColumnDef=\"edit\">\r\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\r\n      <td mat-cell *matCellDef=\"let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"editMaterialFinish(i)\" matTooltip=\"Editar este material acabamento\" class=\"btn btn-primary btn-sm\">Editar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Remove Column -->\r\n    <ng-container matColumnDef=\"remove\">\r\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\r\n      <td mat-cell *matCellDef=\"let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"deleteMaterialFinish(i)\" matTooltip=\"Remover este material acabamento\" class=\"btn btn-danger btn-sm\">Remover</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"sic-row\">\r\n    <div class=\"sic-column\">\r\n      <button type=\"button\" (click)=\"addMaterialFinish()\" matTooltip=\"Criar um novo material acabamento\" class=\"btn btn-primary btn-md\">Novo</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Materiais Acabamentos</h3>\r\n<div class=\"example-container container\">\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\r\n  </mat-form-field>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Material Column -->\r\n    <ng-container matColumnDef=\"materialName\">\r\n      <th mat-header-cell *matHeaderCellDef> Material </th>\r\n      <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.materialDTO.name}} </td>\r\n    </ng-container>\r\n    <!-- Finish Column -->\r\n    <ng-container matColumnDef=\"finishName\">\r\n      <th mat-header-cell *matHeaderCellDef> Acabamento </th>\r\n      <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.surfaceFinishDTO.name}} </td>\r\n    </ng-container>\r\n    <!-- Increment Column -->\r\n    <ng-container matColumnDef=\"increment\">\r\n      <th mat-header-cell *matHeaderCellDef> Incremento/m2 </th>\r\n      <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.price}}€/m2 </td>\r\n    </ng-container>\r\n    <!-- Total price Column -->\r\n    <ng-container matColumnDef=\"totalPrice\">\r\n      <th mat-header-cell *matHeaderCellDef> Preço total/m2 </th>\r\n      <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.price+materialFinish.materialDTO.price}}€/m2 </td>\r\n    </ng-container>\r\n    <!-- Texture Column -->\r\n    <ng-container matColumnDef=\"texture\">\r\n      <th mat-header-cell *matHeaderCellDef> Textura </th>\r\n      <td mat-cell *matCellDef=\"let materialFinish\"> <img src=\"{{materialFinish.textureUrl}}\" width=\"64\" height=\"64\" alt=\"Textura\"> </td>\r\n    </ng-container>\r\n    <!-- Edit Column -->\r\n    <ng-container matColumnDef=\"edit\">\r\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\r\n      <td mat-cell *matCellDef=\"let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"editMaterialFinish(i)\" matTooltip=\"Editar este material acabamento\" class=\"btn btn-primary btn-sm\">Editar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Remove Column -->\r\n    <ng-container matColumnDef=\"remove\">\r\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\r\n      <td mat-cell *matCellDef=\"let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"deleteMaterialFinish(i)\" matTooltip=\"Remover este material acabamento\" class=\"btn btn-danger btn-sm\">Remover</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"sic-row\">\r\n    <div class=\"sic-column\">\r\n      <button type=\"button\" (click)=\"addMaterialFinish()\" matTooltip=\"Criar um novo material acabamento\" class=\"btn btn-primary btn-md\">Novo</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -2491,6 +3064,28 @@ var MaterialComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/model/Item.ts":
+/*!*******************************!*\
+  !*** ./src/app/model/Item.ts ***!
+  \*******************************/
+/*! exports provided: Item */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Item", function() { return Item; });
+var Item = /** @class */ (function () {
+    function Item(product, price) {
+        this.product = product;
+        this.price = price;
+    }
+    return Item;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/model/Material.ts":
 /*!***********************************!*\
   !*** ./src/app/model/Material.ts ***!
@@ -2547,13 +3142,107 @@ var Category = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MaterialFinish", function() { return MaterialFinish; });
 var MaterialFinish = /** @class */ (function () {
-    function MaterialFinish(material, surface, price, id) {
+    function MaterialFinish(material, surface, price, textureUrl, id) {
         this.id = id;
         this.material = material;
         this.surface = surface;
         this.price = price;
+        this.textureUrl = textureUrl;
     }
     return MaterialFinish;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/model/order.ts":
+/*!********************************!*\
+  !*** ./src/app/model/order.ts ***!
+  \********************************/
+/*! exports provided: order */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "order", function() { return order; });
+var order = /** @class */ (function () {
+    function order(itens, price, latitude, longitude, cidade, username) {
+        this.itens = itens;
+        this.price = price;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.cidade = cidade;
+        this.username = username;
+    }
+    return order;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/model/orderItem.ts":
+/*!************************************!*\
+  !*** ./src/app/model/orderItem.ts ***!
+  \************************************/
+/*! exports provided: orderItem */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "orderItem", function() { return orderItem; });
+var orderItem = /** @class */ (function () {
+    function orderItem(name, category, material, surfaceFinish, listProduct, height, depth, width) {
+        this.name = name;
+        this.category = category;
+        this.material = material;
+        this.surfaceFinish = surfaceFinish;
+        this.listProduct = listProduct;
+        this.height = height;
+        this.depth = depth;
+        this.width = width;
+    }
+    return orderItem;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/model/product.ts":
+/*!**********************************!*\
+  !*** ./src/app/model/product.ts ***!
+  \**********************************/
+/*! exports provided: Product */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Product", function() { return Product; });
+var Product = /** @class */ (function () {
+    //constructor(name: string, category: Category, materialfinishes: MaterialFinish[], dimensions: Dimensions,
+    //  parts: OptionalProducts[], minOccupancyPercentage: number, maxOccupancyPercentage: number, id?: number) {
+    //  this.id = id;
+    //  this.name = name;
+    //  this.category = category;
+    //  this.materialFinishes = materialfinishes;
+    //  this.dimensions = dimensions;
+    //  this.optionalProducts = parts;
+    //  this.minOccupancyPercentage = minOccupancyPercentage;
+    //  this.maxOccupancyPercentage = maxOccupancyPercentage;
+    //}
+    function Product(name, category, materialfinishes, dimensions, parts, minOccupancyPercentage, maxOccupancyPercentage, id) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.materialFinishes = materialfinishes;
+        this.dimensions = dimensions;
+        this.optionalProducts = parts;
+        this.minOccupancyPercentage = minOccupancyPercentage;
+        this.maxOccupancyPercentage = maxOccupancyPercentage;
+    }
+    return Product;
 }());
 
 
@@ -2600,7 +3289,7 @@ module.exports = ".fixed {\r\n  position: fixed;\r\n  top: 80px;\r\n  left: 30px
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"\" #rendererContainer></div>\r\n<a routerLink=\"/clientCatalogue\" class=\"fixed button5\" mdbBtn color=\"primary\" mdbWavesEffect> <i class=\"fas fa-arrow-left\"></i> </a>\r\n"
+module.exports = "<div class=\"\" #rendererContainer>\r\n</div>\r\n<a routerLink=\"/clientCatalogue\" class=\"fixed button5\" mdbBtn color=\"primary\" mdbWavesEffect> <i class=\"fas fa-arrow-left\"></i> </a>\r\n"
 
 /***/ }),
 
@@ -2617,6 +3306,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var three__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! three */ "./node_modules/three/build/three.module.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
+/* harmony import */ var _services_order_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/order.service */ "./src/app/services/order.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _model_order__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../model/order */ "./src/app/model/order.ts");
+/* harmony import */ var _model_orderItem__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../model/orderItem */ "./src/app/model/orderItem.ts");
+/* harmony import */ var _model_Item__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../model/Item */ "./src/app/model/Item.ts");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+
+
+
+
+
+
+
+
 
 
 
@@ -2624,16 +3329,14 @@ var OrbitControls = __webpack_require__(/*! three-orbit-controls */ "./node_modu
 var dat = __webpack_require__(/*! dat.gui */ "./node_modules/dat.gui/build/dat.gui.module.js");
 var datGUI = null;
 var guiControls = null;
-//Substituir com as do produto
-var minAltura = 200;
-var maxAltura = 1000;
-var minLargura = 200;
-var maxLargura = 1000;
-var minProfundidade = 100;
-var maxProfundidade = 500;
 var ProductConfiguratorComponent = /** @class */ (function () {
-    function ProductConfiguratorComponent() {
+    function ProductConfiguratorComponent(route, service, bar, serviceorder, authservice) {
         var _this = this;
+        this.route = route;
+        this.service = service;
+        this.bar = bar;
+        this.serviceorder = serviceorder;
+        this.authservice = authservice;
         this.renderer = new three__WEBPACK_IMPORTED_MODULE_2__["WebGLRenderer"]({ alpha: true });
         this.scene = null;
         this.camera = null;
@@ -2643,27 +3346,26 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         this.mouse = new three__WEBPACK_IMPORTED_MODULE_2__["Vector2"]();
         this.selectedMove = null;
         this.selectedScale = null;
+        this.categoria = "Armario";
         this.parts = [];
         this.scene = new three__WEBPACK_IMPORTED_MODULE_2__["Scene"]();
         this.scene.background = null;
         guiControls = new function () {
-            this.largura = minLargura;
-            this.altura = minAltura;
-            this.profundidade = minProfundidade;
+            this.name = "";
+            this.largura = 0;
+            this.altura = 0;
+            this.profundidade = 0;
             this.material = "";
-            this.acabamento = "";
+            this.produtoExtra = [];
+            this.materialExtra = [];
+            this.cidade = "";
+            this.latitude = "0000";
+            this.longitude = "0000";
+            this.encomendar = function () {
+            };
+            this.adicionar = function () {
+            };
         };
-        //this.scene.add(new THREE.AmbientLight(0xffffff), 0.5);
-        datGUI = new dat.default.GUI({ width: 300 });
-        datGUI.add(guiControls, 'altura', minAltura, maxAltura, 1).name('Altura').listen().onChange(function () { _this.updateSize(); });
-        datGUI.add(guiControls, 'largura', minLargura, maxAltura, 1).name('Largura').listen().onChange(function () { _this.updateSize(); });
-        datGUI.add(guiControls, 'profundidade', minProfundidade, maxProfundidade, 1).name('Profundidade').listen().onChange(function () { _this.updateSize(); });
-        datGUI.add(guiControls, 'material', ['Material 1', 'Material 2'])
-            .name('Material').onChange(function () { _this.updateSize(); });
-        datGUI.add(guiControls, 'acabamento', ['Acabamento 1', 'Acabamento 2'])
-            .name('Acabamento').onChange(function () { _this.updateSize(); });
-        //var modulos = datGUI.addFolder('Modulos');
-        //var modulo1 = modulos.addFolder('Modulo 1');
         this.camera = new three__WEBPACK_IMPORTED_MODULE_2__["PerspectiveCamera"](75, window.innerWidth / window.innerHeight, 1, 10000);
         this.camera.position.z = 1000;
         this.camera.add(new three__WEBPACK_IMPORTED_MODULE_2__["PointLight"](0xffffff));
@@ -2671,7 +3373,18 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
         this.controls.addEventListener('change', function () { _this.renderer.render(_this.scene, _this.camera); });
         var material = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ color: 0xff0000, wireframe: false });
-        this.mesh = this.closet(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+        if (this.categoria == "Armário") {
+            this.mesh = this.closet(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+        }
+        else if (this.categoria == "Gaveta") {
+            this.mesh = this.drawer(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+        }
+        else if (this.categoria == "Prateleira") {
+            this.mesh = this.drawer(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+        }
+        else {
+            this.mesh = this.closet(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+        }
         this.scene.add(this.mesh);
         window.addEventListener('mousedown', function (event) { _this.onMouseDown(event); }, false);
         window.addEventListener('mousemove', function (event) { _this.onMouseScale(event); }, false);
@@ -2686,22 +3399,94 @@ var ProductConfiguratorComponent = /** @class */ (function () {
     ProductConfiguratorComponent.prototype.updateSize = function () {
         this.scene.remove(this.mesh);
         var material = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ color: 0xff0000, wireframe: false });
-        this.mesh = this.closet(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
+        if (this.categoria == "Armário") {
+            this.mesh = this.closet(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+        }
+        else if (this.categoria == "Gaveta") {
+            this.mesh = this.drawer(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+        }
+        else if (this.categoria == "Prateleira") {
+            this.mesh = this.drawer(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+        }
+        else {
+            this.mesh = this.closet(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+        }
         this.scene.add(this.mesh);
     };
+    ProductConfiguratorComponent.prototype.getProduct = function () {
+        var _this = this;
+        this.route.params.subscribe(function (res) {
+            _this.id = res.id;
+        });
+        console.log("id  " + this.id);
+        this.service.getProduct(this.id).subscribe(function (data) {
+            _this.product = data;
+            guiControls.name = _this.product.name;
+            _this.createDatGui();
+        }, function (error) {
+            if (error.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                _this.bar.open("Ocorreu um erro ao tentar obter o producto do servidor...", '', {
+                    duration: 2000,
+                });
+            }
+        });
+    };
     ProductConfiguratorComponent.prototype.ngOnInit = function () {
+        this.getProduct();
     };
     ProductConfiguratorComponent.prototype.ngAfterViewInit = function () {
         this.renderer.setSize(window.innerWidth, window.innerHeight * 0.9155);
         this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
         this.animate();
     };
+    ProductConfiguratorComponent.prototype.createDatGui = function () {
+        var _this = this;
+        datGUI = new dat.default.GUI({ width: 300 });
+        datGUI.add(guiControls, 'name').name('Name').listen().onChange(function () { _this.updateSize(); });
+        if ((this.product.dimensions.height.discrete) == null) {
+            datGUI.add(guiControls, 'altura', this.product.dimensions.height.min, this.product.dimensions.height.max, 1).name('Altura').listen().onChange(function () { _this.updateSize(); });
+        }
+        else {
+            datGUI.add(guiControls, 'altura', this.convertDimensions((this.product.dimensions.height.discrete)))
+                .name('Altura').onChange(function () { _this.updateSize(); });
+        }
+        if ((this.product.dimensions.width.discrete) == null) {
+            datGUI.add(guiControls, 'largura', this.product.dimensions.width.min, this.product.dimensions.width.max, 1).name('Largura').listen().onChange(function () { _this.updateSize(); });
+        }
+        else {
+            datGUI.add(guiControls, 'largura', this.convertDimensions((this.product.dimensions.width.discrete)))
+                .name('Largura').onChange(function () { _this.updateSize(); });
+        }
+        if ((this.product.dimensions.depth.discrete) == null) {
+            datGUI.add(guiControls, 'profundidade', this.product.dimensions.depth.min, this.product.dimensions.depth.max, 1).name('Profundidade').listen().onChange(function () { _this.updateSize(); });
+        }
+        else {
+            datGUI.add(guiControls, 'profundidade', this.convertDimensions((this.product.dimensions.depth.discrete)))
+                .name('Profundidade').onChange(function () { _this.updateSize(); });
+        }
+        datGUI.add(guiControls, 'material', this.getMaterialFinish(this.product.materialFinishes))
+            .name('Material Acabamento').onChange(function () { _this.updateSize(); });
+        datGUI.add(guiControls, 'produtoExtra', ["Armario", "Gaveta"])
+            .name('SubProdutos').onChange(function () { _this.updateSize(); });
+        datGUI.add(guiControls, 'materialExtra', [])
+            .name('SubProdutos').onChange(function () { _this.updateSize(); });
+        datGUI.add(guiControls, 'cidade').name('cidade');
+        datGUI.add(guiControls, 'latitude').name('latitude');
+        datGUI.add(guiControls, 'longitude').name('longitude');
+        datGUI.add(guiControls, 'adicionar').name("Adicionar Produto").onChange(function () { });
+        datGUI.add(guiControls, 'encomendar').name("Encomendar Produto").onChange(function () { _this.encomenda(guiControls.name, guiControls.material, guiControls.altura, guiControls.profundidade, guiControls.largura, guiControls.latitude, guiControls.longitude, guiControls.cidade); });
+    };
     ProductConfiguratorComponent.prototype.animate = function () {
         var _this = this;
         window.requestAnimationFrame(function () { return _this.animate(); });
         this.renderer.render(this.scene, this.camera);
     };
-    // create closet
+    //Create Closet
     ProductConfiguratorComponent.prototype.closet = function (width, height, depth, material) {
         var thickness = height * 0.05;
         var closetG = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](width, height, depth);
@@ -2731,6 +3516,7 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         closet.add(bottomWall);
         return closet;
     };
+    //Create Drawer
     ProductConfiguratorComponent.prototype.drawer = function (width, height, depth, material) {
         var thickness = height * 0.05;
         var drawerG = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](width, height, depth);
@@ -2763,6 +3549,13 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         drawer.add(bottomWall);
         drawer.add(pull);
         return drawer;
+    };
+    //Create Shelf
+    ProductConfiguratorComponent.prototype.shelf = function (width, height, depth, material) {
+        var shelfM = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ color: 0x00ff00 });
+        var shelfG = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](width, height, depth);
+        var shelf = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](shelfG, shelfM);
+        return shelf;
     };
     ProductConfiguratorComponent.prototype.onMouseDown = function (event) {
         if (event.which == 1) {
@@ -2799,6 +3592,9 @@ var ProductConfiguratorComponent = /** @class */ (function () {
               }
         }*/
     };
+    ProductConfiguratorComponent.prototype.convertDimensions = function (dimensoes) {
+        return dimensoes.split(";");
+    };
     ProductConfiguratorComponent.prototype.onMouseMove = function (event) {
         if (this.selectedMove != null) {
             this.mouse.set((event.offsetX / this.renderer.getSize().width) * 2 - 1, -(event.offsetY / this.renderer.getSize().height) * 2 + 1);
@@ -2822,10 +3618,7 @@ var ProductConfiguratorComponent = /** @class */ (function () {
             vector.unproject(this.camera);
             var dir = vector.sub(this.camera.position).normalize();
             var distance = -this.camera.position.z / dir.z;
-            var pos = this.camera.position.clone().add(dir.multiplyScalar(distance));
-            //scale
-            //this.selectedScale.scale.x += x * this.camera.position.z * .005;
-            //this.selectedScale.scale.y += y * this.camera.position.z * .005;
+            //update dimensions
             guiControls.largura += x * this.camera.position.z * .5;
             guiControls.altura += y * this.camera.position.z * .5;
             //redraw
@@ -2847,6 +3640,38 @@ var ProductConfiguratorComponent = /** @class */ (function () {
               selectedScale = null;
         }*/
     };
+    ProductConfiguratorComponent.prototype.adicionar = function () {
+        if (guiControls.produtoExtra == "Armário") {
+            this.mesh.add(guiControls.altura, guiControls.largura, guiControls.profundidade, guiControls.materialExtra);
+        }
+        else if (guiControls.produtoExtra == "Gaveta") {
+            this.mesh.add(guiControls.altura, guiControls.largura, guiControls.profundidade, guiControls.materialExtra);
+        }
+        else if (guiControls.produtoExtra == "Prateleira") {
+            this.mesh.add(guiControls.altura, guiControls.largura, guiControls.profundidade, guiControls.materialExtra);
+        }
+    };
+    ProductConfiguratorComponent.prototype.encomenda = function (name, material, altura, profundidade, largura, latitude, longitude, cidade) {
+        console.log(this.product);
+        var category = this.product.category.description;
+        var list = [];
+        var mataca = material.split(" / ");
+        var productI = new _model_orderItem__WEBPACK_IMPORTED_MODULE_8__["orderItem"](name, category, mataca[0], mataca[1], list, altura, profundidade, largura);
+        var it = new _model_Item__WEBPACK_IMPORTED_MODULE_9__["Item"](productI, parseInt(mataca[2]));
+        var items = [];
+        items.push(it);
+        var ord = new _model_order__WEBPACK_IMPORTED_MODULE_7__["order"](items, parseInt(mataca[2]), latitude, longitude, cidade, this.authservice.getLoggedInUsername());
+        this.serviceorder.createEncomenda(ord).subscribe();
+    };
+    ProductConfiguratorComponent.prototype.getMaterialFinish = function (matsFinish) {
+        var ret = [];
+        console.log(matsFinish);
+        for (var key in matsFinish) {
+            var matFinish = matsFinish[key];
+            ret.push(matFinish.materialDTO.name + " / " + matFinish.surfaceFinishDTO.name + " / " + (matsFinish[key].price + matFinish.materialDTO.price));
+        }
+        return ret;
+    };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('rendererContainer'),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"])
@@ -2857,7 +3682,7 @@ var ProductConfiguratorComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./product-configurator.component.html */ "./src/app/product-configurator/product-configurator.component.html"),
             styles: [__webpack_require__(/*! ./product-configurator.component.css */ "./src/app/product-configurator/product-configurator.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _services_product_service__WEBPACK_IMPORTED_MODULE_4__["ProductService"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatSnackBar"], _services_order_service__WEBPACK_IMPORTED_MODULE_5__["orderService"], _services_auth_service__WEBPACK_IMPORTED_MODULE_10__["AuthService"]])
     ], ProductConfiguratorComponent);
     return ProductConfiguratorComponent;
 }());
@@ -2901,34 +3726,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _model_category__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model/category */ "./src/app/model/category.ts");
-/* harmony import */ var _model_Material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../model/Material */ "./src/app/model/Material.ts");
-/* harmony import */ var _model_surface_finish__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../model/surface-finish */ "./src/app/model/surface-finish.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
 
 
 
 
 
-
-
-
-/* para apagar */
-var name1 = "Armário XPTO";
-var name2 = "Armário XYZ";
-var category1 = new _model_category__WEBPACK_IMPORTED_MODULE_3__["Category"]("Armário", 0);
-var mat1 = new _model_Material__WEBPACK_IMPORTED_MODULE_4__["Material"]("Madeira", 3.89);
-var finish1 = new _model_surface_finish__WEBPACK_IMPORTED_MODULE_5__["SurfaceFinish"]("Serrado");
-var increment1 = 3.11;
-//const texture1 = "https://www.sharecg.com/images/medium/24765.jpg";
-var materialFinishes1 = [{ material: mat1, surface: finish1, price: increment1 }];
-var dim1 = { min: 150, max: 300 };
-var dimensions1 = { width: dim1, height: dim1, depth: dim1 };
-var minOccupancyPercentage1 = 0;
-var maxOccupancyPercentage1 = 100;
-var prod1 = { name: name1, category: category1, materialFinishes: materialFinishes1, dimensions: dimensions1, parts: [], minOccupancyPercentage: minOccupancyPercentage1, maxOccupancyPercentage: maxOccupancyPercentage1 };
-var prod2 = { name: name2, category: category1, materialFinishes: materialFinishes1, dimensions: dimensions1, parts: [], minOccupancyPercentage: minOccupancyPercentage1, maxOccupancyPercentage: maxOccupancyPercentage1 };
 var ProductComponent = /** @class */ (function () {
     function ProductComponent(router, service, bar) {
         this.router = router;
@@ -2945,14 +3749,7 @@ var ProductComponent = /** @class */ (function () {
     ProductComponent.prototype.getProducts = function () {
         var _this = this;
         this.service.getProducts().subscribe(function (data) {
-            var temp = data;
-            if (temp.length == 0) {
-                /* apagar isto quando o get estiver a funcionar */
-                _this.products = [prod1, prod2];
-            }
-            else {
-                _this.products = data;
-            }
+            _this.products = data;
             _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](_this.products);
         }, function (error) {
             if (error.status == 401) {
@@ -2993,7 +3790,7 @@ var ProductComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./product.component.html */ "./src/app/product/product.component.html"),
             styles: [__webpack_require__(/*! ./product.component.css */ "./src/app/product/product.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"], _services_product_service__WEBPACK_IMPORTED_MODULE_7__["ProductService"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSnackBar"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _services_product_service__WEBPACK_IMPORTED_MODULE_4__["ProductService"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSnackBar"]])
     ], ProductComponent);
     return ProductComponent;
 }());
@@ -3023,18 +3820,27 @@ __webpack_require__.r(__webpack_exports__);
 var AuthService = /** @class */ (function () {
     function AuthService(httpClient) {
         this.httpClient = httpClient;
-        this.isLoggedIn = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](false);
-        this.AUTH_URL = "https://siccatalogue.azurewebsites.net/api/Auth";
+        this.isLoggedIn = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](this.isAuthenticated());
+        this.isClient = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](this.isAClient());
+        this.MANAGER_AUTH_URL = "https://siccatalogue.azurewebsites.net/api/Auth";
+        this.CLIENT_AUTH_URL = "https://sicproductions.herokuapp.com/api/auth";
     }
-    AuthService.prototype.signUp = function (username, password, confirmPassword) {
-        return this.httpClient.post(this.AUTH_URL + "/SignUp", { Username: username, Password: password, ConfirmPassword: confirmPassword });
+    AuthService.prototype.managerSignUp = function (username, password, confirmPassword, companyPassword) {
+        return this.httpClient.post(this.MANAGER_AUTH_URL + "/SignUp", { Username: username, Password: password, ConfirmPassword: confirmPassword, CompanyPassword: companyPassword });
     };
-    AuthService.prototype.login = function (username, password) {
-        return this.httpClient.post(this.AUTH_URL + "/Login", { Username: username, Password: password });
+    AuthService.prototype.clientSignUp = function (username, password, confirmPassword) {
+        return this.httpClient.post(this.CLIENT_AUTH_URL + "/signup", { username: username, password: password, confirmPassword: confirmPassword });
+    };
+    AuthService.prototype.managerLogin = function (username, password) {
+        return this.httpClient.post(this.MANAGER_AUTH_URL + "/Login", { Username: username, Password: password });
+    };
+    AuthService.prototype.clientLogin = function (username, password) {
+        return this.httpClient.post(this.CLIENT_AUTH_URL + "/login", { username: username, password: password });
     };
     AuthService.prototype.loginSucceeded = function (data) {
         localStorage.setItem("access_token", data.access_token);
         localStorage.setItem("expiryDate", data.expiration);
+        localStorage.setItem("username", data.username);
         this.isLoggedIn.next(this.isAuthenticated());
     };
     AuthService.prototype.isAuthenticated = function () {
@@ -3045,12 +3851,24 @@ var AuthService = /** @class */ (function () {
         }
         return false;
     };
+    AuthService.prototype.isAClient = function () {
+        return localStorage.getItem("isClient") == "true";
+    };
+    AuthService.prototype.setClient = function (value) {
+        localStorage.setItem("isClient", "" + value);
+        this.isClient.next(this.isAClient());
+    };
     AuthService.prototype.getToken = function () {
         return localStorage.getItem("access_token");
+    };
+    AuthService.prototype.getLoggedInUsername = function () {
+        return localStorage.getItem("username");
     };
     AuthService.prototype.logout = function () {
         localStorage.removeItem('access_token');
         localStorage.removeItem('expiryDate');
+        localStorage.removeItem('username');
+        localStorage.removeItem('isClient');
         this.isLoggedIn.next(this.isAuthenticated());
     };
     AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -3092,6 +3910,7 @@ var CategoryService = /** @class */ (function (_super) {
         return _super.call(this, 'https://siccatalogue.azurewebsites.net/api/category', httpClient, authSrv) || this;
     }
     CategoryService.prototype.getCategories = function () {
+        console.log(localStorage.getItem("access_token"));
         return _super.prototype.getAll.call(this);
     };
     CategoryService.prototype.createCategory = function (category) {
@@ -3188,13 +4007,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _generic_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./generic.service */ "./src/app/services/generic.service.ts");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth.service */ "./src/app/services/auth.service.ts");
 
 
 
-var MaterialFinishService = /** @class */ (function () {
-    function MaterialFinishService(http) {
-        this.http = http;
-        this.url = 'https://siccatalogue.azurewebsites.net/api/materialfinish';
+
+
+var MaterialFinishService = /** @class */ (function (_super) {
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](MaterialFinishService, _super);
+    function MaterialFinishService(httpClient, authSrv) {
+        return _super.call(this, 'https://siccatalogue.azurewebsites.net/api/materialfinish', httpClient, authSrv) || this;
     }
     MaterialFinishService.prototype.createMaterialFinish = function (obj) {
         var mf = {
@@ -3204,9 +4027,10 @@ var MaterialFinishService = /** @class */ (function () {
             surfaceFinishDTO: {
                 id: obj.surface.id
             },
-            price: obj.price
+            price: obj.price,
+            textureUrl: obj.textureUrl
         };
-        return this.http.post(this.url, mf);
+        return _super.prototype.create.call(this, mf);
     };
     MaterialFinishService.prototype.updateMaterialFinish = function (obj) {
         var mf = {
@@ -3217,27 +4041,28 @@ var MaterialFinishService = /** @class */ (function () {
             surfaceFinishDTO: {
                 id: obj.surface.id
             },
-            price: obj.price
+            price: obj.price,
+            textureUrl: obj.textureUrl
         };
-        return this.http.put(this.url + ("/" + mf.id), mf);
+        return _super.prototype.update.call(this, mf.id, mf);
     };
     MaterialFinishService.prototype.getMaterialFinishes = function () {
-        return this.http.get(this.url);
+        return _super.prototype.getAll.call(this);
     };
     MaterialFinishService.prototype.getMaterialFinish = function (id) {
-        return this.http.get(this.url + ("/" + id));
+        return _super.prototype.getById.call(this, id);
     };
     MaterialFinishService.prototype.deleteMaterialFinish = function (id) {
-        return this.http.delete(this.url + ("/" + id));
+        return _super.prototype.delete.call(this, id);
     };
     MaterialFinishService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]])
     ], MaterialFinishService);
     return MaterialFinishService;
-}());
+}(_generic_service__WEBPACK_IMPORTED_MODULE_3__["GenericService"]));
 
 
 
@@ -3287,6 +4112,47 @@ var MaterialService = /** @class */ (function (_super) {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]])
     ], MaterialService);
     return MaterialService;
+}(_generic_service__WEBPACK_IMPORTED_MODULE_3__["GenericService"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/order.service.ts":
+/*!*******************************************!*\
+  !*** ./src/app/services/order.service.ts ***!
+  \*******************************************/
+/*! exports provided: orderService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "orderService", function() { return orderService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _generic_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./generic.service */ "./src/app/services/generic.service.ts");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth.service */ "./src/app/services/auth.service.ts");
+
+
+
+
+
+var orderService = /** @class */ (function (_super) {
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](orderService, _super);
+    function orderService(httpClient, authSrv) {
+        return _super.call(this, 'http://localhost:8888/api/order', httpClient, authSrv) || this;
+    }
+    orderService.prototype.createEncomenda = function (obj) {
+        return _super.prototype.create.call(this, obj);
+    };
+    orderService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]])
+    ], orderService);
+    return orderService;
 }(_generic_service__WEBPACK_IMPORTED_MODULE_3__["GenericService"]));
 
 
@@ -3360,39 +4226,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _model_surface_finish__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model/surface-finish */ "./src/app/model/surface-finish.ts");
+/* harmony import */ var _generic_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./generic.service */ "./src/app/services/generic.service.ts");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auth.service */ "./src/app/services/auth.service.ts");
 
 
 
 
-var SurfaceFinishService = /** @class */ (function () {
-    function SurfaceFinishService(http) {
-        this.http = http;
-        this.url = 'https://siccatalogue.azurewebsites.net/api/surfacefinish';
+
+
+var SurfaceFinishService = /** @class */ (function (_super) {
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](SurfaceFinishService, _super);
+    function SurfaceFinishService(httpClient, authSrv) {
+        return _super.call(this, 'https://siccatalogue.azurewebsites.net/api/surfacefinish', httpClient, authSrv) || this;
     }
     SurfaceFinishService.prototype.createSurfaceFinish = function (obj) {
         var sf = new _model_surface_finish__WEBPACK_IMPORTED_MODULE_3__["SurfaceFinish"](obj.name);
-        return this.http.post(this.url, sf);
+        return _super.prototype.create.call(this, sf);
     };
     SurfaceFinishService.prototype.updateSurfaceFinish = function (obj) {
-        return this.http.put(this.url + ("/" + obj.id), obj);
+        return _super.prototype.update.call(this, obj.id, obj);
     };
     SurfaceFinishService.prototype.getSurfaceFinishes = function () {
-        return this.http.get(this.url);
+        return _super.prototype.getAll.call(this);
     };
     SurfaceFinishService.prototype.getSurfaceFinish = function (id) {
-        return this.http.get(this.url + ("/" + id));
+        return _super.prototype.getById.call(this, id);
     };
     SurfaceFinishService.prototype.deleteSurfaceFinish = function (id) {
-        return this.http.delete(this.url + ("/" + id));
+        return _super.prototype.delete.call(this, id);
     };
     SurfaceFinishService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"]])
     ], SurfaceFinishService);
     return SurfaceFinishService;
-}());
+}(_generic_service__WEBPACK_IMPORTED_MODULE_4__["GenericService"]));
 
 
 
@@ -3416,7 +4286,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Ver Produto</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n    <!-- Nome -->\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"name\" placeholder=\"Nome do produto\" value=\"name\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Categoria -->\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"category.description\"  placeholder=\"Categoria\" value=\"category\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Materiais Acabamentos -->\r\n    <div>\r\n      <mat-form-field id=\"formpequena\">\r\n        <mat-select [(ngModel)]=\"materialfinishes\" placeholder=\"Material Acabamento\">\r\n          <mat-option *ngFor=\"let materialfinish of materialfinishes\" [value]=\"materialfinish.id\">\r\n            {{materialfinish.material.name}} + {{materialfinish.finish.name}}\r\n          </mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n    </div>\r\n\r\n    <!-- Alturas -->\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"height.discrete ||  height.min + '-' + height.max\" placeholder=\"Alturas\" readonly>\r\n\r\n    </mat-form-field>\r\n\r\n\r\n    <!-- Larguras -->\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"width.discrete|| width.min+ '-' + width.max\" placeholder=\"Larguras\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Profundidades -->\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"depth.discrete || depth.min + '-' + depth.max \" placeholder=\"Profundidades\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Min ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Minima Ocupação\" [value]=\"minOccup\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Max ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Máxima Ocupação\" [value]=\"maxOccup\" readonly>\r\n    </mat-form-field>\r\n\r\n  </div>\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"editProduct()\" matTooltip=\"Editar\" class=\"btn btn-primary btn-md\">Editar</button>\r\n    <button type=\"button\" (click)=\"deleteProduct()\" matTooltip=\"Apagar este Produto\" class=\"btn btn-primary btn-md\">Apagar</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Ver Produto</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n    <!-- Nome -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Nome do produto\" [(ngModel)]=\"name\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Categoria -->\r\n    <mat-form-field>\r\n      <input matInput [value]=\"categoryName\"  placeholder=\"Categoria\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Materiais Acabamentos -->\r\n    <!--<div>\r\n      <mat-form-field id=\"formpequena\">\r\n        <mat-select [(ngModel)]=\"materialfinishes\" placeholder=\"Material Acabamento\">\r\n          <mat-option *ngFor=\"let materialfinish of materialfinishes\" [value]=\"materialfinish\">\r\n            {{materialfinish.material.name}} + {{materialfinish.finish.name}}\r\n          </mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n    </div>-->\r\n\r\n    <!-- Alturas -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Alturas\" [(ngModel)]=\"height_disc||  height_min + '-' + height_max\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Larguras -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Larguras\" [(ngModel)]=\"width_disc|| width_min + '-' + width_max\"  readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Profundidades -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Profundidades\" [(ngModel)]=\"depth_disc || depth_min + '-' + depth_max \"  readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Min ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Minima Ocupação\" [value]=\"minOccup\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Max ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Máxima Ocupação\" [value]=\"maxOccup\" readonly>\r\n    </mat-form-field>\r\n\r\n  </div>\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"editProduct()\" matTooltip=\"Editar\" class=\"btn btn-primary btn-md\">Editar</button>\r\n    <button type=\"button\" (click)=\"deleteProduct()\" matTooltip=\"Apagar este Produto\" class=\"btn btn-primary btn-md\">Apagar</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -3459,16 +4329,46 @@ var ShowProductInfoComponent = /** @class */ (function () {
         this.idroute = id;
         this.service.getProduct(id).subscribe(function (res) {
             _this.product = res;
-            _this.name = res.name;
-            _this.category = res.category;
-            _this.materialfinishes = res.materialFinishes;
-            _this.height = res.dimensions.height;
-            _this.width = res.dimensions.width;
-            _this.depth = res.dimensions.depth;
-            _this.minOccup = res.minOccupancyPercentage;
-            _this.maxOccup = res.maxOccupancyPercentage;
+            _this.name = _this.product.name;
+            _this.categoryName = _this.product.category.description;
+            _this.materialfinishes = _this.product.materialFinishes;
+            var heightDisc = _this.product.dimensions.height;
+            if (heightDisc.discrete == null) {
+                _this.height_max = _this.product.dimensions.height.max;
+                _this.height_min = _this.product.dimensions.height.min;
+            }
+            else {
+                //this.height_disc = (<DiscreteDimension>this.product.dimensions.height).discrete;
+            }
+            var widthDisc = _this.product.dimensions.width;
+            if (widthDisc.discrete == null) {
+                _this.width_max = _this.product.dimensions.width.max;
+                _this.width_min = _this.product.dimensions.width.min;
+            }
+            else {
+                //this.width_disc = (<DiscreteDimension>this.product.dimensions.width).discrete;
+            }
+            var depthDisc = _this.product.dimensions.depth;
+            if (depthDisc.discrete == null) {
+                _this.depth_max = _this.product.dimensions.depth.max;
+                _this.depth_min = _this.product.dimensions.depth.min;
+            }
+            else {
+                //this.depth_disc = (<DiscreteDimension>this.product.dimensions.depth).discrete;
+            }
+            _this.minOccup = _this.product.minOccupancyPercentage;
+            _this.maxOccup = _this.product.maxOccupancyPercentage;
         }, function (e) {
-            _this.bar.open(e.error, '', { duration: 2000 });
+            if (e.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                _this.bar.open("Ocorreu um erro ao tentar obter o produto escolhido do servidor...", '', {
+                    duration: 2000,
+                });
+            }
         });
     };
     ShowProductInfoComponent.prototype.editProduct = function () {
@@ -3508,7 +4408,7 @@ var ShowProductInfoComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NpZ24tdXAvc2lnbi11cC5jb21wb25lbnQuY3NzIn0= */"
+module.exports = ".mat-radio-button ~ .mat-radio-button {\r\n  padding-right: 16px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2lnbi11cC9zaWduLXVwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxvQkFBb0I7Q0FDckIiLCJmaWxlIjoic3JjL2FwcC9zaWduLXVwL3NpZ24tdXAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYXQtcmFkaW8tYnV0dG9uIH4gLm1hdC1yYWRpby1idXR0b24ge1xyXG4gIHBhZGRpbmctcmlnaHQ6IDE2cHg7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -3519,7 +4419,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n<br />\r\n<h1 class=\"text-center\">Criar uma conta</h1>\r\n<!-- Extended material form grid -->\r\n<form class=\"form-group\">\r\n  <!-- Grid row -->\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-user prefix\"></i>\r\n        <input [(ngModel)]=\"_username\" mdbInputDirective type=\"text\" name=\"username\" class=\"form-control\" placeholder=\"Nome de utilizador\" required>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input [(ngModel)]=\"_password\" mdbInputDirective type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"Palavra-passe\" required>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input [(ngModel)]=\"_retypePassword\" mdbInputDirective type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"Repetir palavra-passe\" aria-describedby=\"pwdHelpBlock\" required>\r\n        <small id=\"pwdHelpBlock\" class=\"form-text text-muted\">\r\n          A sua palavra-passe deverá conter pelo menos 6 caracteres, uma maiúscula, uma minúscula e um dígito.\r\n        </small>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n\r\n  <mat-checkbox [(ngModel)]=\"_checked\" name=\"checkedTermsAndConditions\" color=\"primary\">Aceito os <a routerLink=\"/TermsAndConditions\">Termos e Condições</a>.</mat-checkbox>\r\n  <br />\r\n  <!-- Grid row -->\r\n  <button type=\"submit\" (click)=\"signUp()\" matTooltip=\"Criar uma conta\" class=\"btn btn-primary btn-md\">Registar</button>\r\n\r\n</form>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n<br />\r\n<h1 class=\"text-center\">Criar uma conta</h1>\r\n<!-- Extended material form grid -->\r\n<form class=\"form-group\">\r\n  <div class=\"sic-row\">\r\n    <div class=\"sic-column\">\r\n      <label for=\"radioGroup\">Registar-se como</label>\r\n    <br>\r\n  <mat-radio-group id=\"radioGroup\" [(ngModel)]=\"_isClient\" name=\"isClient\">\r\n    <mat-radio-button [value]=\"true\">Cliente</mat-radio-button>\r\n    <mat-radio-button [value]=\"false\">Gestor de Conteúdos</mat-radio-button>\r\n  </mat-radio-group>\r\n  </div>\r\n  </div>\r\n  <!-- Grid row -->\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-user prefix\"></i>\r\n        <input [(ngModel)]=\"_username\" mdbInputDirective type=\"text\" name=\"username\" class=\"form-control\" placeholder=\"Nome de utilizador\" required>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input [(ngModel)]=\"_password\" mdbInputDirective type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"Palavra-passe\" required>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input [(ngModel)]=\"_retypePassword\" mdbInputDirective type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"Repetir palavra-passe\" aria-describedby=\"pwdHelpBlock\" required>\r\n        <small id=\"pwdHelpBlock\" class=\"form-text text-muted\">\r\n          A sua palavra-passe deverá conter pelo menos 6 caracteres, uma maiúscula, uma minúscula e um dígito.\r\n        </small>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n  <div *ngIf=\"!_isClient\" class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fas fa-key prefix\"></i>\r\n        <input [(ngModel)]=\"_companyPassword\" mdbInputDirective type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"Palavra-passe da empresa\" aria-describedby=\"companyPwdHelpBlock\" required>\r\n        <small id=\"companyPwdHelpBlock\" class=\"form-text text-muted\">\r\n          Para se registar como gestor de conteúdos necessita de introduzir a palavra-passe fornecida pela empresa.\r\n        </small>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n\r\n  <mat-checkbox [(ngModel)]=\"_checked\" name=\"checkedTermsAndConditions\" color=\"primary\">Aceito os <a routerLink=\"/TermsAndConditions\">Termos e Condições</a>.</mat-checkbox>\r\n  <br />\r\n  <!-- Grid row -->\r\n  <button type=\"submit\" (click)=\"signUp()\" matTooltip=\"Criar uma conta\" class=\"btn btn-primary btn-md\">Registar</button>\r\n\r\n</form>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -3552,19 +4452,32 @@ var SignUpComponent = /** @class */ (function () {
         this._password = "";
         this._retypePassword = "";
         this._checked = false;
+        this._isClient = true;
+        this._companyPassword = "";
     }
     SignUpComponent.prototype.ngOnInit = function () {
     };
     SignUpComponent.prototype.signUp = function () {
         var _this = this;
         if (this.validate()) {
-            this.authSrv.signUp(this._username, this._password, this._retypePassword).subscribe(function (data) {
-                _this.bar.open(data.username + " foi registado com sucesso. Pode iniciar sess\u00E3o.", "", { duration: 2000 });
-                _this.router.navigate(["/login"]);
-            }, function (error) {
-                var errorJSON = JSON.stringify(error.error);
-                _this.bar.open("Erro: " + errorJSON, "", { duration: 3500 });
-            });
+            if (!this._isClient) {
+                this.authSrv.managerSignUp(this._username, this._password, this._retypePassword, this._companyPassword).subscribe(function (data) {
+                    _this.bar.open(data.username + " foi registado como gestor de conte\u00FAdos com sucesso. Pode iniciar sess\u00E3o.", "", { duration: 4000 });
+                    _this.router.navigate(["/login"]);
+                }, function (error) {
+                    var errorJSON = JSON.stringify(error.error);
+                    _this.bar.open("Erro: " + errorJSON, "", { duration: 3500 });
+                });
+            }
+            else {
+                this.authSrv.clientSignUp(this._username, this._password, this._retypePassword).subscribe(function (data) {
+                    _this.bar.open(data.username + " foi registado como cliente com sucesso. Pode iniciar sess\u00E3o.", "", { duration: 4000 });
+                    _this.router.navigate(["/login"]);
+                }, function (error) {
+                    var errorJSON = JSON.stringify(error.error);
+                    _this.bar.open("Erro: " + errorJSON, "", { duration: 3500 });
+                });
+            }
         }
         else {
             this.bar.open("Por favor insira dados válidos.", "", { duration: 3000 });
@@ -3698,6 +4611,62 @@ var SurfaceFinishComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/terms-and-conditions/terms-and-conditions.component.css":
+/*!*************************************************************************!*\
+  !*** ./src/app/terms-and-conditions/terms-and-conditions.component.css ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3Rlcm1zLWFuZC1jb25kaXRpb25zL3Rlcm1zLWFuZC1jb25kaXRpb25zLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/terms-and-conditions/terms-and-conditions.component.html":
+/*!**************************************************************************!*\
+  !*** ./src/app/terms-and-conditions/terms-and-conditions.component.html ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\r\n  <br />\r\n  <h2 class=\"text-center\">Termos e Condições - Informação referente ao tratamento de dados pessoais</h2>\r\n  <br>\r\n  <ul>\r\n    <li class=\"list-group-item\"><b>1. Responsável pelo tratamento</b><br><br>\r\n    Stock in Closet Productions S.A. («SICProductions»), com sede na Rua Dr. António Bernardino de Almeida, 431\r\n      4249-015 Porto, pessoa coletiva nº 999 999 999, matriculada na Conservatória do Registo Comercial do Porto, com o\r\n      capital social de EUR 11.000.000,00.\r\n    </li>\r\n    <li class=\"list-group-item\"><b>2. Contacto do encarregado da proteção de dados</b><br><br>\r\n      <a href=\"mailto:compliance.rgpd@sicproductions.pt\">compliance.rgpd@sicproductions.pt</a>\r\n    </li>\r\n    <li class=\"list-group-item\"><b>3. Finalidade</b><br><br>\r\n      Entregar as encomendas feitas pelo utilizador através da WebApp SICProductions na morada indicada.\r\n    </li>\r\n    <li class=\"list-group-item\"><b>4. Fundamento Jurídico</b><br><br>\r\n      O consentimento expresso do utilizador: o utilizador pode retirar o seu consentimento a todo o tempo através da app\r\n      em \"O meu perfil\" > \"Privacidade\".\r\n    </li>\r\n    <li class=\"list-group-item\"><b>5. Categorias de dados pessoais a tratar</b><br><br>\r\n      Nome da cidade de entrega e respetivas coordenadas geográficas (morada do cliente).\r\n    </li>\r\n    <li class=\"list-group-item\"><b>6. Destinatários dos dados pessoais</b><br><br>\r\n      Entidades contratadas pela SICProductions para a prestação de serviços que compreendam tratamento de dados\r\n      pessoais por sua conta, entidades as quais deverão atuar mediante instruções da SICProductions.\r\n    </li>\r\n    <li class=\"list-group-item\"><b>7. Prazo de conservação dos dados pessoais</b><br><br>\r\n      Até que o titular dos dados pessoais retire o seu consentimento ou recuse receber mais encomendas, ou pelo período\r\n      de um ano após o fim da adesão à WebApp SICProductions.\r\n    </li>\r\n    <li class=\"list-group-item\"><b>8. Direitos do titular dos dados pessoais</b><br><br>\r\n      Pode solicitar o acesso aos seus dados pessoais, a sua retificação ou o apagamento, a limitação do tratamento;\r\n      pode também opor-se ao tratamento e pedir a portabilidade dos dados, nos termos da lei em vigor. Para isso deverá enviar\r\n      um pedido escrito ao encarregado da proteção de dados da SICProductions através do contacto acima indicado. Também\r\n      tem o direito de apresentar uma reclamação à Comissão Nacional da Proteção de Dados, se entender que os seus direitos foram\r\n      infringidos.\r\n    </li>\r\n  </ul>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/terms-and-conditions/terms-and-conditions.component.ts":
+/*!************************************************************************!*\
+  !*** ./src/app/terms-and-conditions/terms-and-conditions.component.ts ***!
+  \************************************************************************/
+/*! exports provided: TermsAndConditionsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TermsAndConditionsComponent", function() { return TermsAndConditionsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var TermsAndConditionsComponent = /** @class */ (function () {
+    function TermsAndConditionsComponent() {
+    }
+    TermsAndConditionsComponent.prototype.ngOnInit = function () {
+    };
+    TermsAndConditionsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-terms-and-conditions',
+            template: __webpack_require__(/*! ./terms-and-conditions.component.html */ "./src/app/terms-and-conditions/terms-and-conditions.component.html"),
+            styles: [__webpack_require__(/*! ./terms-and-conditions.component.css */ "./src/app/terms-and-conditions/terms-and-conditions.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], TermsAndConditionsComponent);
+    return TermsAndConditionsComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/ui/footer/footer.component.css":
 /*!************************************************!*\
   !*** ./src/app/ui/footer/footer.component.css ***!
@@ -3772,7 +4741,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--Navbar-->\r\n<mdb-navbar SideClass=\"navbar navbar-expand-lg navbar-dark indigo\">\r\n\r\n  <!-- Navbar brand -->\r\n  <mdb-navbar-brand><a class=\"navbar-brand\" href=\"/sicproductions\">{{title}}</a></mdb-navbar-brand>\r\n\r\n  <!-- Collapsible content -->\r\n  <links>\r\n\r\n    <!-- Links -->\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link waves-light\" mdbWavesEffect routerLink=\"/home\" routerLinkActive=\"active\">Página Inicial</a>\r\n      </li>\r\n\r\n      <!-- Dropdown -->\r\n      <li *ngIf=\"authenticated\" class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          BackOffice<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/surfaceFinishes\">Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materials\">Materiais</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materialfinishes\">Materiais Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/categories\">Categorias</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/products\">Produtos</a>\r\n          <div class=\"divider dropdown-divider\"></div>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/collections\">Coleções</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/catalogues\">Catálogos</a>\r\n        </div>\r\n      </li>\r\n      <!-- Dropdown -->\r\n      <li *ngIf=\"authenticated\" class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          Área de Cliente<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/orders\">Encomendas</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/productConfigurator\">Projetar e configurar produto</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/clientCatalogue\">Catálogo de Produtos Disponiveis</a>\r\n        </div>\r\n      </li>\r\n\r\n    </ul>\r\n    <div class=\"navbar-expand ml-auto navbar-nav\">\r\n      <div *ngIf=\"!authenticated\" class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\" routerLink=\"/signup\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-user-plus\"></i> Registar\r\n        </a>\r\n        <a class=\"nav-item nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-sign-in\"></i> Entrar\r\n        </a>\r\n      </div>\r\n      <div *ngIf=\"authenticated\" class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">\r\n          <i class=\"fas fa-sign-out-alt\"></i>Terminar Sessão\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <!-- Links -->\r\n  </links>\r\n  <!-- Collapsible content -->\r\n</mdb-navbar>\r\n<!--/.Navbar-->\r\n"
+module.exports = "<!--Navbar-->\r\n<mdb-navbar SideClass=\"navbar navbar-expand-lg navbar-dark indigo\">\r\n\r\n  <!-- Navbar brand -->\r\n  <mdb-navbar-brand><a class=\"navbar-brand\" routerLink=\"/\">{{title}}</a></mdb-navbar-brand>\r\n\r\n  <!-- Collapsible content -->\r\n  <links>\r\n\r\n    <!-- Links -->\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link waves-light\" mdbWavesEffect routerLink=\"/home\" routerLinkActive=\"active\">Página Inicial</a>\r\n      </li>\r\n\r\n      <!-- Dropdown -->\r\n      <li *ngIf=\"authenticated && !isClient\" class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          BackOffice<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/surfaceFinishes\">Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materials\">Materiais</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materialfinishes\">Materiais Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/categories\">Categorias</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/products\">Produtos</a>\r\n          <div class=\"divider dropdown-divider\"></div>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/collections\">Coleções</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/catalogues\">Catálogos</a>\r\n        </div>\r\n      </li>\r\n      <!-- Dropdown -->\r\n      <li *ngIf=\"authenticated && isClient\" class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          Área de Cliente<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/orders\">As minhas encomendas</a>\r\n          <div class=\"divider dropdown-divider\"></div>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/clientCatalogue\">Catálogo de Produtos Disponíveis</a>\r\n        </div>\r\n      </li>\r\n\r\n    </ul>\r\n    <div class=\"navbar-expand ml-auto navbar-nav\">\r\n      <div *ngIf=\"!authenticated\" class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\" routerLink=\"/signup\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-user-plus\"></i> Registar\r\n        </a>\r\n        <a class=\"nav-item nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-sign-in\"></i> Entrar\r\n        </a>\r\n      </div>\r\n      <div *ngIf=\"authenticated\" class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\">\r\n          Bem-vindo, {{username}}\r\n        </a>\r\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">\r\n          <i class=\"fas fa-sign-out-alt\"></i>Terminar Sessão\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <!-- Links -->\r\n  </links>\r\n  <!-- Collapsible content -->\r\n</mdb-navbar>\r\n<!--/.Navbar-->\r\n"
 
 /***/ }),
 
@@ -3803,11 +4772,16 @@ var HeaderComponent = /** @class */ (function () {
         this.authSrv = authSrv;
         this.router = router;
         this.title = "SiCProductions";
+        this.username = "";
         this.authenticated = false;
         // Subscribe here, this will automatically update
         // "isUserLoggedIn" whenever a change to the subject is made.
         this.authSrv.isLoggedIn.subscribe(function (value) {
             _this.authenticated = value;
+            _this.username = _this.authSrv.getLoggedInUsername();
+        });
+        this.authSrv.isClient.subscribe(function (value) {
+            _this.isClient = value;
         });
     }
     HeaderComponent.prototype.ngOnInit = function () {
@@ -3901,49 +4875,59 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _layout_layout_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./layout/layout.component */ "./src/app/ui/layout/layout.component.ts");
-/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./header/header.component */ "./src/app/ui/header/header.component.ts");
-/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/ui/footer/footer.component.ts");
-/* harmony import */ var angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! angular-bootstrap-md */ "./node_modules/angular-bootstrap-md/esm5/angular-bootstrap-md.es5.js");
-/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../login/login.component */ "./src/app/login/login.component.ts");
-/* harmony import */ var _material_material_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../material/material.component */ "./src/app/material/material.component.ts");
-/* harmony import */ var _category_category_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../category/category.component */ "./src/app/category/category.component.ts");
-/* harmony import */ var _product_product_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../product/product.component */ "./src/app/product/product.component.ts");
-/* harmony import */ var _catalogue_catalogue_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../catalogue/catalogue.component */ "./src/app/catalogue/catalogue.component.ts");
-/* harmony import */ var _collection_collection_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../collection/collection.component */ "./src/app/collection/collection.component.ts");
-/* harmony import */ var _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../home-page/home-page.component */ "./src/app/home-page/home-page.component.ts");
-/* harmony import */ var _surface_finish_surface_finish_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../surface-finish/surface-finish.component */ "./src/app/surface-finish/surface-finish.component.ts");
-/* harmony import */ var _create_surface_finish_create_surface_finish_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../create-surface-finish/create-surface-finish.component */ "./src/app/create-surface-finish/create-surface-finish.component.ts");
-/* harmony import */ var _create_category_create_category_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../create-category/create-category.component */ "./src/app/create-category/create-category.component.ts");
-/* harmony import */ var _edit_surface_finish_edit_surface_finish_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../edit-surface-finish/edit-surface-finish.component */ "./src/app/edit-surface-finish/edit-surface-finish.component.ts");
-/* harmony import */ var _sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../sign-up/sign-up.component */ "./src/app/sign-up/sign-up.component.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/material/checkbox */ "./node_modules/@angular/material/esm5/checkbox.es5.js");
-/* harmony import */ var _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material/tooltip */ "./node_modules/@angular/material/esm5/tooltip.es5.js");
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm5/input.es5.js");
-/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm5/table.es5.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _services_surface_finish_service__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../services/surface-finish.service */ "./src/app/services/surface-finish.service.ts");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _create_material_create_material_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../create-material/create-material.component */ "./src/app/create-material/create-material.component.ts");
-/* harmony import */ var _edit_material_edit_material_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../edit-material/edit-material.component */ "./src/app/edit-material/edit-material.component.ts");
-/* harmony import */ var _edit_category_edit_category_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ../edit-category/edit-category.component */ "./src/app/edit-category/edit-category.component.ts");
-/* harmony import */ var _material_finish_material_finish_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../material-finish/material-finish.component */ "./src/app/material-finish/material-finish.component.ts");
-/* harmony import */ var _product_configurator_product_configurator_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ../product-configurator/product-configurator.component */ "./src/app/product-configurator/product-configurator.component.ts");
-/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! @angular/material/select */ "./node_modules/@angular/material/esm5/select.es5.js");
-/* harmony import */ var _guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ../guards/auth.guard */ "./src/app/guards/auth.guard.ts");
-/* harmony import */ var _client_catalogue_client_catalogue_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ../client-catalogue/client-catalogue.component */ "./src/app/client-catalogue/client-catalogue.component.ts");
-/* harmony import */ var _create_material_finish_create_material_finish_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ../create-material-finish/create-material-finish.component */ "./src/app/create-material-finish/create-material-finish.component.ts");
-/* harmony import */ var _services_material_finish_service__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ../services/material-finish.service */ "./src/app/services/material-finish.service.ts");
-/* harmony import */ var _services_material_service__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ../services/material.service */ "./src/app/services/material.service.ts");
-/* harmony import */ var _create_product_create_product_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ../create-product/create-product.component */ "./src/app/create-product/create-product.component.ts");
-/* harmony import */ var _edit_product_edit_product_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ../edit-product/edit-product.component */ "./src/app/edit-product/edit-product.component.ts");
-/* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm5/dialog.es5.js");
-/* harmony import */ var _create_product_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ../create-product/select-material-finish-dialog */ "./src/app/create-product/select-material-finish-dialog.ts");
-/* harmony import */ var _edit_material_finish_edit_material_finish_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ../edit-material-finish/edit-material-finish.component */ "./src/app/edit-material-finish/edit-material-finish.component.ts");
-/* harmony import */ var _show_product_info_show_product_info_component__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ../show-product-info/show-product-info.component */ "./src/app/show-product-info/show-product-info.component.ts");
-/* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
+/* harmony import */ var _angular_material_radio__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/radio */ "./node_modules/@angular/material/esm5/radio.es5.js");
+/* harmony import */ var _layout_layout_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./layout/layout.component */ "./src/app/ui/layout/layout.component.ts");
+/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./header/header.component */ "./src/app/ui/header/header.component.ts");
+/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/ui/footer/footer.component.ts");
+/* harmony import */ var angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! angular-bootstrap-md */ "./node_modules/angular-bootstrap-md/esm5/angular-bootstrap-md.es5.js");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _material_material_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../material/material.component */ "./src/app/material/material.component.ts");
+/* harmony import */ var _category_category_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../category/category.component */ "./src/app/category/category.component.ts");
+/* harmony import */ var _product_product_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../product/product.component */ "./src/app/product/product.component.ts");
+/* harmony import */ var _catalogue_catalogue_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../catalogue/catalogue.component */ "./src/app/catalogue/catalogue.component.ts");
+/* harmony import */ var _collection_collection_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../collection/collection.component */ "./src/app/collection/collection.component.ts");
+/* harmony import */ var _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../home-page/home-page.component */ "./src/app/home-page/home-page.component.ts");
+/* harmony import */ var _surface_finish_surface_finish_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../surface-finish/surface-finish.component */ "./src/app/surface-finish/surface-finish.component.ts");
+/* harmony import */ var _create_surface_finish_create_surface_finish_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../create-surface-finish/create-surface-finish.component */ "./src/app/create-surface-finish/create-surface-finish.component.ts");
+/* harmony import */ var _create_category_create_category_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../create-category/create-category.component */ "./src/app/create-category/create-category.component.ts");
+/* harmony import */ var _edit_surface_finish_edit_surface_finish_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../edit-surface-finish/edit-surface-finish.component */ "./src/app/edit-surface-finish/edit-surface-finish.component.ts");
+/* harmony import */ var _sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../sign-up/sign-up.component */ "./src/app/sign-up/sign-up.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material/checkbox */ "./node_modules/@angular/material/esm5/checkbox.es5.js");
+/* harmony import */ var _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/material/tooltip */ "./node_modules/@angular/material/esm5/tooltip.es5.js");
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm5/input.es5.js");
+/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm5/table.es5.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _services_surface_finish_service__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../services/surface-finish.service */ "./src/app/services/surface-finish.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_material_list__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @angular/material/list */ "./node_modules/@angular/material/esm5/list.es5.js");
+/* harmony import */ var _create_material_create_material_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ../create-material/create-material.component */ "./src/app/create-material/create-material.component.ts");
+/* harmony import */ var _edit_material_edit_material_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../edit-material/edit-material.component */ "./src/app/edit-material/edit-material.component.ts");
+/* harmony import */ var _edit_category_edit_category_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ../edit-category/edit-category.component */ "./src/app/edit-category/edit-category.component.ts");
+/* harmony import */ var _material_finish_material_finish_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ../material-finish/material-finish.component */ "./src/app/material-finish/material-finish.component.ts");
+/* harmony import */ var _product_configurator_product_configurator_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ../product-configurator/product-configurator.component */ "./src/app/product-configurator/product-configurator.component.ts");
+/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! @angular/material/select */ "./node_modules/@angular/material/esm5/select.es5.js");
+/* harmony import */ var _guards_auth_guard__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ../guards/auth.guard */ "./src/app/guards/auth.guard.ts");
+/* harmony import */ var _guards_client_guard__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ../guards/client.guard */ "./src/app/guards/client.guard.ts");
+/* harmony import */ var _client_catalogue_client_catalogue_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ../client-catalogue/client-catalogue.component */ "./src/app/client-catalogue/client-catalogue.component.ts");
+/* harmony import */ var _create_material_finish_create_material_finish_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ../create-material-finish/create-material-finish.component */ "./src/app/create-material-finish/create-material-finish.component.ts");
+/* harmony import */ var _services_material_finish_service__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ../services/material-finish.service */ "./src/app/services/material-finish.service.ts");
+/* harmony import */ var _services_material_service__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ../services/material.service */ "./src/app/services/material.service.ts");
+/* harmony import */ var _create_product_create_product_component__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ../create-product/create-product.component */ "./src/app/create-product/create-product.component.ts");
+/* harmony import */ var _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ../terms-and-conditions/terms-and-conditions.component */ "./src/app/terms-and-conditions/terms-and-conditions.component.ts");
+/* harmony import */ var _edit_product_edit_product_component__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ../edit-product/edit-product.component */ "./src/app/edit-product/edit-product.component.ts");
+/* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm5/dialog.es5.js");
+/* harmony import */ var _create_product_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ../create-product/select-material-finish-dialog */ "./src/app/create-product/select-material-finish-dialog.ts");
+/* harmony import */ var _edit_material_finish_edit_material_finish_component__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ../edit-material-finish/edit-material-finish.component */ "./src/app/edit-material-finish/edit-material-finish.component.ts");
+/* harmony import */ var _show_product_info_show_product_info_component__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ../show-product-info/show-product-info.component */ "./src/app/show-product-info/show-product-info.component.ts");
+/* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
+/* harmony import */ var _create_product_select_parts_dialog__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ../create-product/select-parts-dialog */ "./src/app/create-product/select-parts-dialog.ts");
+
+
+
+
+
 
 
 
@@ -3994,29 +4978,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var appRoutes = [
-    { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_8__["LoginComponent"] },
-    { path: 'signup', component: _sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_19__["SignUpComponent"] },
-    { path: 'home', component: _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_14__["HomePageComponent"] },
-    { path: 'surfaceFinishes', component: _surface_finish_surface_finish_component__WEBPACK_IMPORTED_MODULE_15__["SurfaceFinishComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
-    { path: 'surfaceFinishes/new', component: _create_surface_finish_create_surface_finish_component__WEBPACK_IMPORTED_MODULE_16__["CreateSurfaceFinishComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
-    { path: 'surfaceFinishes/edit/:id', component: _edit_surface_finish_edit_surface_finish_component__WEBPACK_IMPORTED_MODULE_18__["EditSurfaceFinishComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
-    { path: 'materials', component: _material_material_component__WEBPACK_IMPORTED_MODULE_9__["MaterialComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
-    { path: 'materials/new', component: _create_material_create_material_component__WEBPACK_IMPORTED_MODULE_29__["CreateMaterialComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
-    { path: 'materials/edit/:id', component: _edit_material_edit_material_component__WEBPACK_IMPORTED_MODULE_30__["EditMaterialComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
-    { path: 'materialfinishes', component: _material_finish_material_finish_component__WEBPACK_IMPORTED_MODULE_32__["MaterialFinishComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
-    { path: 'materialfinishes/new', component: _create_material_finish_create_material_finish_component__WEBPACK_IMPORTED_MODULE_37__["CreateMaterialFinishComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
-    { path: 'materialfinishes/edit/:id', component: _edit_material_finish_edit_material_finish_component__WEBPACK_IMPORTED_MODULE_44__["EditMaterialFinishComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
-    { path: 'categories', component: _category_category_component__WEBPACK_IMPORTED_MODULE_10__["CategoryComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
-    { path: 'categories/new', component: _create_category_create_category_component__WEBPACK_IMPORTED_MODULE_17__["CreateCategoryComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
-    { path: 'categories/edit/:id', component: _edit_category_edit_category_component__WEBPACK_IMPORTED_MODULE_31__["EditCategoryComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
-    { path: 'products', component: _product_product_component__WEBPACK_IMPORTED_MODULE_11__["ProductComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
-    { path: 'products/new', component: _create_product_create_product_component__WEBPACK_IMPORTED_MODULE_40__["CreateProductComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
-    { path: 'products/edit/:id', component: _edit_product_edit_product_component__WEBPACK_IMPORTED_MODULE_41__["EditProductComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
-    { path: 'products/show/:id', component: _show_product_info_show_product_info_component__WEBPACK_IMPORTED_MODULE_45__["ShowProductInfoComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
-    { path: 'catalogues', component: _catalogue_catalogue_component__WEBPACK_IMPORTED_MODULE_12__["CatalogueComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
-    { path: 'collections', component: _collection_collection_component__WEBPACK_IMPORTED_MODULE_13__["CollectionComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
-    { path: 'productConfigurator', component: _product_configurator_product_configurator_component__WEBPACK_IMPORTED_MODULE_33__["ProductConfiguratorComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
-    { path: 'clientCatalogue', component: _client_catalogue_client_catalogue_component__WEBPACK_IMPORTED_MODULE_36__["ClientCatalogueComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"]] },
+    { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_9__["LoginComponent"] },
+    { path: 'signup', component: _sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_20__["SignUpComponent"] },
+    { path: 'home', component: _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_15__["HomePageComponent"] },
+    { path: 'surfaceFinishes', component: _surface_finish_surface_finish_component__WEBPACK_IMPORTED_MODULE_16__["SurfaceFinishComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
+    { path: 'surfaceFinishes/new', component: _create_surface_finish_create_surface_finish_component__WEBPACK_IMPORTED_MODULE_17__["CreateSurfaceFinishComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
+    { path: 'surfaceFinishes/edit/:id', component: _edit_surface_finish_edit_surface_finish_component__WEBPACK_IMPORTED_MODULE_19__["EditSurfaceFinishComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
+    { path: 'materials', component: _material_material_component__WEBPACK_IMPORTED_MODULE_10__["MaterialComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
+    { path: 'materials/new', component: _create_material_create_material_component__WEBPACK_IMPORTED_MODULE_31__["CreateMaterialComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
+    { path: 'materials/edit/:id', component: _edit_material_edit_material_component__WEBPACK_IMPORTED_MODULE_32__["EditMaterialComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
+    { path: 'materialfinishes', component: _material_finish_material_finish_component__WEBPACK_IMPORTED_MODULE_34__["MaterialFinishComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
+    { path: 'materialfinishes/new', component: _create_material_finish_create_material_finish_component__WEBPACK_IMPORTED_MODULE_40__["CreateMaterialFinishComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
+    { path: 'materialfinishes/edit/:id', component: _edit_material_finish_edit_material_finish_component__WEBPACK_IMPORTED_MODULE_48__["EditMaterialFinishComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
+    { path: 'categories', component: _category_category_component__WEBPACK_IMPORTED_MODULE_11__["CategoryComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
+    { path: 'categories/new', component: _create_category_create_category_component__WEBPACK_IMPORTED_MODULE_18__["CreateCategoryComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
+    { path: 'categories/edit/:id', component: _edit_category_edit_category_component__WEBPACK_IMPORTED_MODULE_33__["EditCategoryComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
+    { path: 'products', component: _product_product_component__WEBPACK_IMPORTED_MODULE_12__["ProductComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
+    { path: 'products/new', component: _create_product_create_product_component__WEBPACK_IMPORTED_MODULE_43__["CreateProductComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
+    { path: 'products/edit/:id', component: _edit_product_edit_product_component__WEBPACK_IMPORTED_MODULE_45__["EditProductComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
+    { path: 'products/show/:id', component: _show_product_info_show_product_info_component__WEBPACK_IMPORTED_MODULE_49__["ShowProductInfoComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
+    { path: 'catalogues', component: _catalogue_catalogue_component__WEBPACK_IMPORTED_MODULE_13__["CatalogueComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
+    { path: 'collections', component: _collection_collection_component__WEBPACK_IMPORTED_MODULE_14__["CollectionComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
+    { path: 'productConfigurator/configure/:id', component: _product_configurator_product_configurator_component__WEBPACK_IMPORTED_MODULE_35__["ProductConfiguratorComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_37__["AuthGuard"]] },
+    { path: 'clientCatalogue', component: _client_catalogue_client_catalogue_component__WEBPACK_IMPORTED_MODULE_39__["ClientCatalogueComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_37__["AuthGuard"]] },
+    { path: 'TermsAndConditions', component: _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_44__["TermsAndConditionsComponent"] },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
@@ -4025,56 +5010,65 @@ var UiModule = /** @class */ (function () {
     }
     UiModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_layout_layout_component__WEBPACK_IMPORTED_MODULE_4__["LayoutComponent"], _header_header_component__WEBPACK_IMPORTED_MODULE_5__["HeaderComponent"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_6__["FooterComponent"], _create_product_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_43__["SelectMaterialFinishesDialog"]],
+            declarations: [_layout_layout_component__WEBPACK_IMPORTED_MODULE_5__["LayoutComponent"], _header_header_component__WEBPACK_IMPORTED_MODULE_6__["HeaderComponent"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_7__["FooterComponent"], _create_product_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_47__["SelectMaterialFinishesDialog"], _create_product_select_parts_dialog__WEBPACK_IMPORTED_MODULE_51__["SelectPartsDialog"]],
             exports: [
-                _layout_layout_component__WEBPACK_IMPORTED_MODULE_4__["LayoutComponent"],
-                _angular_router__WEBPACK_IMPORTED_MODULE_20__["RouterModule"],
+                _layout_layout_component__WEBPACK_IMPORTED_MODULE_5__["LayoutComponent"],
+                _angular_router__WEBPACK_IMPORTED_MODULE_21__["RouterModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
-                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["MDBBootstrapModule"],
-                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_21__["BrowserAnimationsModule"],
-                _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_22__["MatCheckboxModule"],
-                _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_23__["MatTooltipModule"],
-                _angular_material_input__WEBPACK_IMPORTED_MODULE_24__["MatInputModule"],
-                _angular_material_table__WEBPACK_IMPORTED_MODULE_25__["MatTableModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_28__["MatSnackBarModule"],
-                _angular_material_select__WEBPACK_IMPORTED_MODULE_34__["MatSelectModule"]
+                _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
+                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_8__["MDBBootstrapModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_22__["BrowserAnimationsModule"],
+                _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_23__["MatCheckboxModule"],
+                _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_24__["MatTooltipModule"],
+                _angular_material_input__WEBPACK_IMPORTED_MODULE_25__["MatInputModule"],
+                _angular_material_table__WEBPACK_IMPORTED_MODULE_26__["MatTableModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_29__["MatSnackBarModule"],
+                _angular_material_select__WEBPACK_IMPORTED_MODULE_36__["MatSelectModule"],
+                _angular_material_radio__WEBPACK_IMPORTED_MODULE_4__["MatRadioModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_29__["MatButtonModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_29__["MatCardModule"],
+                _angular_material_list__WEBPACK_IMPORTED_MODULE_30__["MatListModule"]
             ],
             imports: [
-                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["MDBBootstrapModule"].forRoot(),
-                _angular_router__WEBPACK_IMPORTED_MODULE_20__["RouterModule"].forRoot(appRoutes),
+                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_8__["MDBBootstrapModule"].forRoot(),
+                _angular_router__WEBPACK_IMPORTED_MODULE_21__["RouterModule"].forRoot(appRoutes),
                 _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
-                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["CheckboxModule"],
-                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["WavesModule"],
-                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["ButtonsModule"],
-                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_21__["BrowserAnimationsModule"],
-                _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_22__["MatCheckboxModule"],
-                _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_23__["MatTooltipModule"],
-                _angular_material_input__WEBPACK_IMPORTED_MODULE_24__["MatInputModule"],
-                _angular_material_table__WEBPACK_IMPORTED_MODULE_25__["MatTableModule"],
-                _angular_material_select__WEBPACK_IMPORTED_MODULE_34__["MatSelectModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
+                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_8__["CheckboxModule"],
+                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_8__["WavesModule"],
+                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_8__["ButtonsModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_22__["BrowserAnimationsModule"],
+                _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_23__["MatCheckboxModule"],
+                _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_24__["MatTooltipModule"],
+                _angular_material_input__WEBPACK_IMPORTED_MODULE_25__["MatInputModule"],
+                _angular_material_table__WEBPACK_IMPORTED_MODULE_26__["MatTableModule"],
+                _angular_material_select__WEBPACK_IMPORTED_MODULE_36__["MatSelectModule"],
                 _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
-                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["CheckboxModule"],
-                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["WavesModule"],
-                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_7__["ButtonsModule"],
-                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_21__["BrowserAnimationsModule"],
-                _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_22__["MatCheckboxModule"],
-                _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_23__["MatTooltipModule"],
-                _angular_material_input__WEBPACK_IMPORTED_MODULE_24__["MatInputModule"],
-                _angular_material_table__WEBPACK_IMPORTED_MODULE_25__["MatTableModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_26__["HttpClientModule"],
-                _angular_material_dialog__WEBPACK_IMPORTED_MODULE_42__["MatDialogModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_28__["MatProgressSpinnerModule"],
+                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_8__["CheckboxModule"],
+                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_8__["WavesModule"],
+                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_8__["ButtonsModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_22__["BrowserAnimationsModule"],
+                _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_23__["MatCheckboxModule"],
+                _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_24__["MatTooltipModule"],
+                _angular_material_input__WEBPACK_IMPORTED_MODULE_25__["MatInputModule"],
+                _angular_material_table__WEBPACK_IMPORTED_MODULE_26__["MatTableModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_27__["HttpClientModule"],
+                _angular_material_dialog__WEBPACK_IMPORTED_MODULE_46__["MatDialogModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_29__["MatButtonModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_29__["MatProgressSpinnerModule"],
+                _angular_material_radio__WEBPACK_IMPORTED_MODULE_4__["MatRadioModule"],
+                _angular_material_list__WEBPACK_IMPORTED_MODULE_30__["MatListModule"]
             ],
             providers: [
-                _services_surface_finish_service__WEBPACK_IMPORTED_MODULE_27__["SurfaceFinishService"],
-                _services_material_finish_service__WEBPACK_IMPORTED_MODULE_38__["MaterialFinishService"],
-                _services_material_service__WEBPACK_IMPORTED_MODULE_39__["MaterialService"],
-                _services_product_service__WEBPACK_IMPORTED_MODULE_46__["ProductService"],
-                _angular_material_dialog__WEBPACK_IMPORTED_MODULE_42__["MatDialog"]
+                _services_surface_finish_service__WEBPACK_IMPORTED_MODULE_28__["SurfaceFinishService"],
+                _services_material_finish_service__WEBPACK_IMPORTED_MODULE_41__["MaterialFinishService"],
+                _services_material_service__WEBPACK_IMPORTED_MODULE_42__["MaterialService"],
+                _services_product_service__WEBPACK_IMPORTED_MODULE_50__["ProductService"],
+                _angular_material_dialog__WEBPACK_IMPORTED_MODULE_46__["MatDialog"]
             ],
-            entryComponents: [_create_product_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_43__["SelectMaterialFinishesDialog"]]
+            entryComponents: [_create_product_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_47__["SelectMaterialFinishesDialog"], _create_product_select_parts_dialog__WEBPACK_IMPORTED_MODULE_51__["SelectPartsDialog"]]
         })
     ], UiModule);
     return UiModule;

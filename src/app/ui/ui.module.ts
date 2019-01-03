@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatRadioModule } from '@angular/material/radio';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -26,7 +27,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { SurfaceFinishService } from '../services/surface-finish.service';
-import { MatSnackBarModule } from '@angular/material';
+import { MatSnackBarModule, MatCardModule } from '@angular/material';
+import { MatListModule } from '@angular/material/list';
 import { CreateMaterialComponent } from '../create-material/create-material.component';
 import { EditMaterialComponent } from '../edit-material/edit-material.component';
 import { EditCategoryComponent } from '../edit-category/edit-category.component';
@@ -34,11 +36,13 @@ import { MaterialFinishComponent } from '../material-finish/material-finish.comp
 import { ProductConfiguratorComponent } from '../product-configurator/product-configurator.component';
 import {MatSelectModule} from '@angular/material/select';
 import {AuthGuard} from "../guards/auth.guard";
+import {ClientGuard} from "../guards/client.guard";
 import { ClientCatalogueComponent } from '../client-catalogue/client-catalogue.component';
 import { CreateMaterialFinishComponent } from '../create-material-finish/create-material-finish.component';
 import { MaterialFinishService } from '../services/material-finish.service';
 import { MaterialService } from '../services/material.service';
 import { CreateProductComponent } from '../create-product/create-product.component';
+import { TermsAndConditionsComponent } from '../terms-and-conditions/terms-and-conditions.component';
 import { EditProductComponent } from '../edit-product/edit-product.component';
 import { MatDialogModule, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatProgressSpinnerModule,  MatButtonModule } from '@angular/material';
@@ -46,42 +50,45 @@ import { SelectMaterialFinishesDialog } from '../create-product/select-material-
 import { EditMaterialFinishComponent } from '../edit-material-finish/edit-material-finish.component';
 import { ShowProductInfoComponent } from '../show-product-info/show-product-info.component';
 import { ProductService } from '../services/product.service';
+import { SelectPartsDialog } from '../create-product/select-parts-dialog';
 
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'home', component: HomePageComponent },
-  { path: 'surfaceFinishes', component: SurfaceFinishComponent, canActivate:[AuthGuard] },
-  { path: 'surfaceFinishes/new', component: CreateSurfaceFinishComponent, canActivate:[AuthGuard] },
-  { path: 'surfaceFinishes/edit/:id', component: EditSurfaceFinishComponent, canActivate:[AuthGuard] },
-  { path: 'materials', component: MaterialComponent, canActivate:[AuthGuard] },
-  { path: 'materials/new', component: CreateMaterialComponent, canActivate:[AuthGuard] },
-  { path: 'materials/edit/:id', component: EditMaterialComponent, canActivate:[AuthGuard] },
-  { path: 'materialfinishes', component: MaterialFinishComponent, canActivate:[AuthGuard] },
-  { path: 'materialfinishes/new', component: CreateMaterialFinishComponent, canActivate:[AuthGuard] },
-  { path: 'materialfinishes/edit/:id', component: EditMaterialFinishComponent, canActivate:[AuthGuard] },
-  { path: 'categories', component: CategoryComponent, canActivate:[AuthGuard] },
-  { path: 'categories/new', component: CreateCategoryComponent, canActivate:[AuthGuard] },
-  { path: 'categories/edit/:id', component: EditCategoryComponent, canActivate:[AuthGuard] },
-  { path: 'products', component: ProductComponent, canActivate: [AuthGuard] },
-  { path: 'products/new', component: CreateProductComponent, canActivate: [AuthGuard] },
-  { path: 'products/edit/:id', component: EditProductComponent, canActivate: [AuthGuard] },
-  { path: 'products/show/:id', component: ShowProductInfoComponent, canActivate: [AuthGuard] },
-  { path: 'catalogues', component: CatalogueComponent, canActivate:[AuthGuard] },
-  { path: 'collections', component: CollectionComponent, canActivate:[AuthGuard] },
-  { path: 'productConfigurator', component: ProductConfiguratorComponent, canActivate:[AuthGuard] },
+  { path: 'surfaceFinishes', component: SurfaceFinishComponent, canActivate:[ClientGuard] },
+  { path: 'surfaceFinishes/new', component: CreateSurfaceFinishComponent, canActivate:[ClientGuard] },
+  { path: 'surfaceFinishes/edit/:id', component: EditSurfaceFinishComponent, canActivate:[ClientGuard] },
+  { path: 'materials', component: MaterialComponent, canActivate:[ClientGuard] },
+  { path: 'materials/new', component: CreateMaterialComponent, canActivate:[ClientGuard] },
+  { path: 'materials/edit/:id', component: EditMaterialComponent, canActivate:[ClientGuard] },
+  { path: 'materialfinishes', component: MaterialFinishComponent, canActivate:[ClientGuard] },
+  { path: 'materialfinishes/new', component: CreateMaterialFinishComponent, canActivate:[ClientGuard] },
+  { path: 'materialfinishes/edit/:id', component: EditMaterialFinishComponent, canActivate:[ClientGuard] },
+  { path: 'categories', component: CategoryComponent, canActivate:[ClientGuard] },
+  { path: 'categories/new', component: CreateCategoryComponent, canActivate:[ClientGuard] },
+  { path: 'categories/edit/:id', component: EditCategoryComponent, canActivate:[ClientGuard] },
+  { path: 'products', component: ProductComponent, canActivate: [ClientGuard] },
+  { path: 'products/new', component: CreateProductComponent, canActivate: [ClientGuard] },
+  { path: 'products/edit/:id', component: EditProductComponent, canActivate: [ClientGuard] },
+  { path: 'products/show/:id', component: ShowProductInfoComponent, canActivate: [ClientGuard] },
+  { path: 'catalogues', component: CatalogueComponent, canActivate:[ClientGuard] },
+  { path: 'collections', component: CollectionComponent, canActivate:[ClientGuard] },
+  { path: 'productConfigurator/configure/:id', component: ProductConfiguratorComponent, canActivate:[AuthGuard] },
   { path: 'clientCatalogue', component: ClientCatalogueComponent, canActivate:[AuthGuard] },
+  { path: 'TermsAndConditions', component: TermsAndConditionsComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({
-  declarations: [LayoutComponent, HeaderComponent, FooterComponent, SelectMaterialFinishesDialog],
+  declarations: [LayoutComponent, HeaderComponent, FooterComponent, SelectMaterialFinishesDialog, SelectPartsDialog],
   exports: [
     LayoutComponent,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule,
     MDBBootstrapModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
@@ -89,13 +96,18 @@ const appRoutes: Routes = [
     MatInputModule,
     MatTableModule,
     MatSnackBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatRadioModule,
+    MatButtonModule,
+    MatCardModule,
+    MatListModule
   ],
   imports: [
     MDBBootstrapModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     CommonModule, 
-    FormsModule, 
+    FormsModule,
+    ReactiveFormsModule,
     CheckboxModule, 
     WavesModule, 
     ButtonsModule, 
@@ -117,7 +129,10 @@ const appRoutes: Routes = [
     MatTableModule,
     HttpClientModule,
     MatDialogModule,
+    MatButtonModule,
     MatProgressSpinnerModule,
+    MatRadioModule,
+    MatListModule
   ],
   providers: [
     SurfaceFinishService,
@@ -126,6 +141,6 @@ const appRoutes: Routes = [
     ProductService,
     MatDialog
   ],
-  entryComponents: [SelectMaterialFinishesDialog]
+  entryComponents: [SelectMaterialFinishesDialog, SelectPartsDialog]
 })
 export class UiModule { }

@@ -27,5 +27,5 @@ export class MaterialService extends GenericService{
   deleteMaterial(id: number): Observable<any> {
     return super.delete(id);
   }
-  
+
 }

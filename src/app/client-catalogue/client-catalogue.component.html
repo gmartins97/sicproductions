@@ -1,32 +1,36 @@
-
-<div class="sic-row">
-    <div class="sic-column">
+<h3 class="card-header text-center font-weight-bold py-4">Catálogo de Produtos Disponíveis</h3>
+<ul>
+  <li *ngFor="let prod of products" id="test">
+    <div class="div-sic">
       <!-- Card -->
-      <mdb-card style="max-width: 20%">
+      <mdb-card>
         <div class="view rgba-white-slight waves-light" mdbWavesEffect>
           <!-- Card img -->
-          <mdb-card-img src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap"></mdb-card-img>
-          <a>
+          <mdb-card-img class="card-img-top" src="https://picsum.photos/544/362/?random{{random()}}" alt=""></mdb-card-img>
+          <!--<a>
             <div class="mask"></div>
-          </a>
-        </div>
-        <!--Card content-->
-        <mdb-card-body>
-          <!--Title-->
-          <div style="text-align: center">
-            <mdb-card-title>
-              <h4>{{productName}}</h4>
-            </mdb-card-title>
-            <!--Text-->
+          </a>-->
+          <!--Card content-->
+          <mdb-card-body>
+            <!--Title-->
+            <div style="text-align: center">
+              <mdb-card-title>
+                <h4>{{prod.name}}</h4>
+              </mdb-card-title>
+              <!--Text-->
 
-            <mdb-card-text>
-              {{collection}}
-            </mdb-card-text>
+              <mdb-card-text>
+                {{collection}}
+              </mdb-card-text>
 
-              <a routerLink="/productConfigurator" mdbBtn color="primary" mdbWavesEffect>Personalizar</a>
+              <a [routerLink]="['/productConfigurator/configure', prod.id]" class="button-front" mdbBtn color="primary" mdbWavesEffect>Personalizar</a>
+              <!--<a mdbBtn (click)="console.log('click'); configureProduct(prod.id)" color="primary" mdbWavesEffect>Personalizar</a>-->
+              <!--<div><button type="button" (click)="console.log('here'); configureProduct(prod.id)" matTooltip="Configurar este produto" class="btn btn-primary">Personalizar</button></div>-->
             </div>
-        </mdb-card-body>
+          </mdb-card-body>
+        </div>
       </mdb-card>
       <!-- Card -->
     </div>
-  </div>
+  </li>
+</ul>

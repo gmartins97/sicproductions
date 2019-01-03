@@ -12,7 +12,7 @@ export class ProductService extends GenericService{
 
   constructor(httpClient: HttpClient, authSrv: AuthService) { super('https://siccatalogue.azurewebsites.net/api/product', httpClient, authSrv); }
 
-  getProducts(): Observable<any> {
+  getProducts(): Observable<Product[]> {
     return super.getAll();
   }
 

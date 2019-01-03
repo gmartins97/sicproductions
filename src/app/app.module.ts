@@ -27,6 +27,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { MatDialog } from '@angular/material/dialog';
 import { EditMaterialFinishComponent } from './edit-material-finish/edit-material-finish.component';
 import { ShowProductInfoComponent } from './show-product-info/show-product-info.component';
+import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { ShowProductInfoComponent } from './show-product-info/show-product-info.
     CreateProductComponent,
     EditProductComponent,
     EditMaterialFinishComponent,
-    ShowProductInfoComponent
+    ShowProductInfoComponent,
+    TermsAndConditionsComponent
   ],
   imports: [
     BrowserModule,

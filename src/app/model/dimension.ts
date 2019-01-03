@@ -1,3 +1,3 @@
-export class Dimension {
+export interface Dimension {
 
 }

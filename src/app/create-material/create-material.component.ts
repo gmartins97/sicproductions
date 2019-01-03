@@ -45,7 +45,7 @@ export class CreateMaterialComponent implements OnInit {
     }, e => {
       if(e.status == 401) {
         this.bar.open(
-          'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
+          'A sua sessão expirou ou não fez managerLogin. Por favor inicie sessão para continuar.',
           '', {
             duration: 2000,
           });

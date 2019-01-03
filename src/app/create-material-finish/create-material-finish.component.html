@@ -22,6 +22,9 @@
     <p *ngIf="!form.valid && form.touched" id="price">
       O preço tem que ser um número inteiro ou decimal com apenas duas casas décimais.
     </p>
+    <mat-form-field>
+      <input matInput [(ngModel)]="textureUrl" [ngModelOptions]="{standalone: true}" placeholder="URL da Textura" required>
+    </mat-form-field>
   </div>
   <div class="sic-row">
     <button type="button" (click)="confirm()" matTooltip="Confirmar" class="btn btn-primary btn-md">OK</button>

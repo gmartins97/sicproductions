@@ -1,0 +1,12 @@
+#test {
+  display: inline-block;
+  margin: 30px 30px;
+}
+
+.div-sic {
+  width: 225px;
+}
+
+.button-front {
+  z-index: 10;
+}

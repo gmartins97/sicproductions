@@ -10,23 +10,6 @@ import { Product } from '../model/product';
 import { Dimension } from '../model/dimension';
 import { Dimensions } from '../model/dimensions';
 
-/* para apagar */
-const name1 = "Armário XPTO";
-const name2 = "Armário XYZ";
-const category1 = new Category("Armário", 0);
-const mat1 = new Material("Madeira", 3.89);
-const finish1 = new SurfaceFinish("Serrado");
-const increment1 = 3.11;
-//const texture1 = "https://www.sharecg.com/images/medium/24765.jpg";
-const materialFinishes1 = [{material: mat1, surface: finish1, price: increment1}];
-const dim1 : Dimension = {min: 150, max: 300};
-const dimensions1 : Dimensions = {width: dim1, height: dim1, depth: dim1};
-const minOccupancyPercentage1 = 0;
-const maxOccupancyPercentage1 = 100;
-const prod1 : Product = {name: name1, category: category1, materialFinishes: materialFinishes1, dimensions: dimensions1, parts: [], minOccupancyPercentage: minOccupancyPercentage1, maxOccupancyPercentage: maxOccupancyPercentage1};
-const prod2 : Product = {name: name2, category: category1, materialFinishes: materialFinishes1, dimensions: dimensions1, parts: [], minOccupancyPercentage: minOccupancyPercentage1, maxOccupancyPercentage: maxOccupancyPercentage1};
-
-
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -49,15 +32,7 @@ export class ProductComponent implements OnInit {
 
   getProducts() {
     this.service.getProducts().subscribe(data => {
-      let temp: Product[] = <Product[]>data;
-     
-      if (temp.length == 0) {
-        /* apagar isto quando o get estiver a funcionar */
-        this.products = [prod1, prod2];
-      } else {
-        this.products = <Product[]>data;
-      }
-      
+      this.products = <Product[]>data;
       this.dataSource = new MatTableDataSource(this.products);
     }, error => {
       if(error.status == 401) {

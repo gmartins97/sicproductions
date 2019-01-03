@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatSnackBar } from "@angular/material";
-import { Material } from "../model/Material";
-import { SurfaceFinish } from "../model/surface-finish";
 import { Router } from '@angular/router';
 import { MaterialFinishService } from '../services/material-finish.service';
 import { MaterialFinish } from '../model/material-finish';

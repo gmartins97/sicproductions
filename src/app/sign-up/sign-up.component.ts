@@ -14,6 +14,8 @@ export class SignUpComponent implements OnInit {
   _password : string = "";
   _retypePassword : string = "";
   _checked : boolean = false;
+  _isClient : boolean = true;
+  _companyPassword : string = "";
 
   constructor(private bar: MatSnackBar,private authSrv : AuthService, private router : Router) { }
 
@@ -22,13 +24,24 @@ export class SignUpComponent implements OnInit {
 
   signUp() : void {
     if(this.validate()) {
-      this.authSrv.signUp(this._username, this._password, this._retypePassword).subscribe(data => {
-        this.bar.open(`${data.username} foi registado com sucesso. Pode iniciar sessão.`, "", {duration: 2000});
+      if(!this._isClient) {
+
+      this.authSrv.managerSignUp(this._username, this._password, this._retypePassword, this._companyPassword).subscribe(data => {
+        this.bar.open(`${data.username} foi registado como gestor de conteúdos com sucesso. Pode iniciar sessão.`, "", {duration: 4000});
         this.router.navigate(["/login"]);
       }, error => {
         let errorJSON = JSON.stringify(error.error);
         this.bar.open(`Erro: ${errorJSON}`, "", {duration: 3500});
       });
+      } else {
+        this.authSrv.clientSignUp(this._username, this._password, this._retypePassword).subscribe(data => {
+          this.bar.open(`${data.username} foi registado como cliente com sucesso. Pode iniciar sessão.`, "", {duration: 4000});
+          this.router.navigate(["/login"]);
+        }, error => {
+          let errorJSON = JSON.stringify(error.error);
+          this.bar.open(`Erro: ${errorJSON}`, "", {duration: 3500});
+        });
+      }
     } else {
       this.bar.open("Por favor insira dados válidos.", "", {duration: 3000});
     }

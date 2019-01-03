@@ -24,6 +24,8 @@ export class EditMaterialFinishComponent implements OnInit {
 
   surfaceFinish: number;
 
+  textureUrl: string;
+
   mf: MaterialFinish;
 
   form = new FormGroup({
@@ -77,10 +79,11 @@ export class EditMaterialFinishComponent implements OnInit {
       let data = <any>res;
       let m = new Material(data.materialDTO.name, data.materialDTO.price, data.materialDTO.id);
       let s = new SurfaceFinish(data.surfaceFinishDTO.name, data.surfaceFinishDTO.id);
-      this.mf = new MaterialFinish(m, s, data.price, data.id);
+      this.mf = new MaterialFinish(m, s, data.price, data.textureUrl, data.id);
 
       this.material = this.mf.material.id;
       this.surfaceFinish = this.mf.surface.id;
+      this.textureUrl = this.mf.textureUrl;
       (this.form.get('price') as FormControl).setValue(this.mf.price);
     }, e => {
       this.bar.open(
@@ -98,6 +101,7 @@ export class EditMaterialFinishComponent implements OnInit {
       this.mf.material = m;
       this.mf.surface = s;
       this.mf.price = this.form.value.price;
+      this.mf.textureUrl = this.textureUrl;
 
       this.materialFinishService.updateMaterialFinish(this.mf).subscribe(res => {
         this.bar.open(

@@ -2,7 +2,7 @@
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo">
 
   <!-- Navbar brand -->
-  <mdb-navbar-brand><a class="navbar-brand" href="/sicproductions">{{title}}</a></mdb-navbar-brand>
+  <mdb-navbar-brand><a class="navbar-brand" routerLink="/">{{title}}</a></mdb-navbar-brand>
 
   <!-- Collapsible content -->
   <links>
@@ -14,7 +14,7 @@
       </li>
 
       <!-- Dropdown -->
-      <li *ngIf="authenticated" class="nav-item dropdown" dropdown>
+      <li *ngIf="authenticated && !isClient" class="nav-item dropdown" dropdown>
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
           BackOffice<span class="caret"></span>
         </a>
@@ -30,14 +30,14 @@
         </div>
       </li>
       <!-- Dropdown -->
-      <li *ngIf="authenticated" class="nav-item dropdown" dropdown>
+      <li *ngIf="authenticated && isClient" class="nav-item dropdown" dropdown>
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
           Área de Cliente<span class="caret"></span>
         </a>
         <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/orders">Encomendas</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/productConfigurator">Projetar e configurar produto</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/clientCatalogue">Catálogo de Produtos Disponiveis</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/orders">As minhas encomendas</a>
+          <div class="divider dropdown-divider"></div>
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/clientCatalogue">Catálogo de Produtos Disponíveis</a>
         </div>
       </li>
 
@@ -52,6 +52,9 @@
         </a>
       </div>
       <div *ngIf="authenticated" class="navbar-nav">
+        <a class="nav-item nav-link">
+          Bem-vindo, {{username}}
+        </a>
         <a class="nav-item nav-link" (click)="logout()">
           <i class="fas fa-sign-out-alt"></i>Terminar Sessão
         </a>

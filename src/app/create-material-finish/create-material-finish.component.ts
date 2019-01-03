@@ -24,6 +24,8 @@ export class CreateMaterialFinishComponent implements OnInit {
 
   surfaceFinish: number;
 
+  textureUrl: string;
+
   form = new FormGroup({
     price: new FormControl()
   });
@@ -40,7 +42,7 @@ export class CreateMaterialFinishComponent implements OnInit {
     }, e => {
       if(e.status == 401) {
         this.bar.open(
-          'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
+          'A sua sessão expirou ou não fez managerLogin. Por favor inicie sessão para continuar.',
           '', {
             duration: 2000,
           });
@@ -59,7 +61,7 @@ export class CreateMaterialFinishComponent implements OnInit {
     }, e => {
       if(e.status == 401) {
         this.bar.open(
-          'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
+          'A sua sessão expirou ou não fez managerLogin. Por favor inicie sessão para continuar.',
           '', {
             duration: 2000,
           });
@@ -77,7 +79,7 @@ export class CreateMaterialFinishComponent implements OnInit {
     if (this.validate()) {
       const m = this.materials.find(m => m.id == this.material);
       const s = this.surfaceFinishes.find(s => s.id == this.surfaceFinish);
-      const mf = new MaterialFinish(m, s, this.form.value.price);
+      const mf = new MaterialFinish(m, s, this.form.value.price, this.textureUrl);
 
       this.materialFinishService.createMaterialFinish(mf).subscribe(res => {
         this.bar.open(
@@ -89,7 +91,7 @@ export class CreateMaterialFinishComponent implements OnInit {
       }, e => {
         if(e.status == 401) {
           this.bar.open(
-            'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
+            'A sua sessão expirou ou não fez managerLogin. Por favor inicie sessão para continuar.',
             '', {
               duration: 2000,
             });

@@ -25,7 +25,7 @@ export class CreateCategoryComponent implements OnInit {
     }, error => {
       if(error.status == 401) {
         this.bar.open(
-          'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
+          'A sua sessão expirou ou não fez managerLogin. Por favor inicie sessão para continuar.',
           '', {
             duration: 2000,
           });
@@ -61,7 +61,7 @@ export class CreateCategoryComponent implements OnInit {
     }, error => {
       if(error.status == 401) {
         this.bar.open(
-          'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
+          'A sua sessão expirou ou não fez managerLogin. Por favor inicie sessão para continuar.',
           '', {
             duration: 2000,
           });
