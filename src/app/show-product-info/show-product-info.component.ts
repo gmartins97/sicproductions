@@ -8,6 +8,12 @@ import { ProductService } from '../services/product.service';
 import { Dimension } from '../model/dimension';
 import { ContinuousDimension } from '../model/continuous-dimension';
 import { DiscreteDimension } from '../model/discrete-dimension';
+import { OptionalProducts } from '../model/optional-products';
+
+export interface Part {
+  product: Product;
+  optional: string;
+}
 
 @Component({
   selector: 'app-show-product-info',
@@ -20,21 +26,23 @@ export class ShowProductInfoComponent implements OnInit {
   name: string;
   categoryName: string;
   materialfinishes: MaterialFinish[];
+  parts: Part[] = [];
+  part: Part;
 
   height: Dimension;
   height_min: number;
   height_max: number;
-  height_disc: number[];
+  height_disc: string;
 
   width: Dimension;
   width_min: number;
   width_max: number;
-  width_disc: number[];
+  width_disc: string;
 
   depth: Dimension;
   depth_min: number;
   depth_max: number;
-  depth_disc: number[];
+  depth_disc: string;
 
   minOccup: number;
   maxOccup: number;
@@ -53,16 +61,22 @@ export class ShowProductInfoComponent implements OnInit {
     this.idroute = id;
     this.service.getProduct(id).subscribe(res => {
       this.product = <Product>res;
+      console.log(this.product);
       this.name = this.product.name;
       this.categoryName = this.product.category.description;
       this.materialfinishes = this.product.materialFinishes;
+      let optproducts: OptionalProducts[] = this.product.optionalProducts;
+      if (!optproducts === undefined) {
+        this.convertParts(optproducts);
+      }
+      
 
       let heightDisc = (<DiscreteDimension>this.product.dimensions.height);
-      if (heightDisc.discrete == null) {   
+      if (heightDisc.discrete == null) {
         this.height_max = (<ContinuousDimension>this.product.dimensions.height).max;
         this.height_min = (<ContinuousDimension>this.product.dimensions.height).min;
       } else {
-        //this.height_disc = (<DiscreteDimension>this.product.dimensions.height).discrete;
+        this.height_disc = (<DiscreteDimension>this.product.dimensions.height).discrete;
       }
 
       let widthDisc = (<DiscreteDimension>this.product.dimensions.width);
@@ -70,7 +84,7 @@ export class ShowProductInfoComponent implements OnInit {
         this.width_max = (<ContinuousDimension>this.product.dimensions.width).max;
         this.width_min = (<ContinuousDimension>this.product.dimensions.width).min;
       } else {
-        //this.width_disc = (<DiscreteDimension>this.product.dimensions.width).discrete;
+        this.width_disc = (<DiscreteDimension>this.product.dimensions.width).discrete;
       }
 
       let depthDisc = (<DiscreteDimension>this.product.dimensions.depth);
@@ -78,7 +92,7 @@ export class ShowProductInfoComponent implements OnInit {
         this.depth_max = (<ContinuousDimension>this.product.dimensions.depth).max;
         this.depth_min = (<ContinuousDimension>this.product.dimensions.depth).min;
       } else {
-        //this.depth_disc = (<DiscreteDimension>this.product.dimensions.depth).discrete;
+        this.depth_disc = (<DiscreteDimension>this.product.dimensions.depth).discrete;
       }
 
       this.minOccup = this.product.minOccupancyPercentage;
@@ -98,6 +112,25 @@ export class ShowProductInfoComponent implements OnInit {
           });
       }
     });
+  }
+
+  convertParts(optionalProducts: OptionalProducts[]) {
+    let product: Product;
+    for (let i = 0; i < optionalProducts.length; i++) {
+      this.service.getProduct(optionalProducts[i].productId).subscribe(res => {
+        product = <Product>res;
+        let opt: string = this.writeOptionalOrMandatory(optionalProducts[i].optional);
+        let p: Part = { product: product, optional: opt };
+        this.parts.push(p);
+      });
+    }
+  }
+
+  private writeOptionalOrMandatory(isOptional:boolean) :string{
+      if (isOptional === true) {
+        return "Opcional";
+      } 
+     return "Obrigatório";
   }
 
   editProduct(): void {

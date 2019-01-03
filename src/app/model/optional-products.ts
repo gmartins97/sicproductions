@@ -1,11 +1,11 @@
 import { Product } from './product';
 
 export class OptionalProducts {
-  part: Product;
-  isOptional: boolean;
+  productId: number;
+  optional: boolean;
 
-  constructor(product: Product, isOptional: boolean) {
-    this.part = product;
-    this.isOptional = isOptional;
+  constructor(product: number, isOptional: boolean) {
+    this.productId = product;
+    this.optional = isOptional;
   }
 }

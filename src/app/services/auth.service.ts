@@ -21,8 +21,12 @@ export class AuthService {
     return this.httpClient.post(`${this.MANAGER_AUTH_URL}/SignUp`, {Username: username, Password : password, ConfirmPassword : confirmPassword, CompanyPassword: companyPassword});
   }
 
-  clientSignUp(username: string, password: string, confirmPassword : string) : Observable<any> {
-    return this.httpClient.post(`${this.CLIENT_AUTH_URL}/signup`, {username: username, password : password, confirmPassword : confirmPassword});
+  clientSignUp(username: string, password: string, confirmPassword : string, secret: string, token: string) : Observable<any> {
+    return this.httpClient.post(`${this.CLIENT_AUTH_URL}/signup`, {username: username, password : password, confirmPassword : confirmPassword, tempSecret: secret, token: token});
+  }
+
+  clientSetupSecret() : Observable<any> {
+    return this.httpClient.get(`${this.CLIENT_AUTH_URL}/setupSecret`);
   }
 
   managerLogin(username: string, password : string) : Observable<any> {

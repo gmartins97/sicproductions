@@ -30,9 +30,9 @@
     <!-- Partes -->
     <button id="butpequeno" mat-button (click)="chooseParts()" matTooltip="Escolher Produtos Opcionais" class="btn btn-primary btn-md">Escolher</button>
     <mat-form-field id="formpequena">
-      <mat-select [(ngModel)]="partes" placeholder="Produtos Opcionais" (click)="updateParts()">
-        <mat-option *ngFor="let product of parts" [value]="product">
-          {{product.part.name}} (<label id="{{product.part.name}}" style="display:inline-block;">{{product.isOptional}}</label>)
+      <mat-select [(ngModel)]="part" placeholder="Produtos Opcionais">
+        <mat-option *ngFor="let part of parts" [value]="part">
+          {{part.product.name}} (<label id="{{part.product.name}}" style="display:inline-block;">{{part.optional}}</label>)
         </mat-option>
       </mat-select>
     </mat-form-field>

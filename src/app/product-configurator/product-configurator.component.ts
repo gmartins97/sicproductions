@@ -15,7 +15,9 @@ import { SurfaceFinish } from '../model/surface-finish';
 import { Material } from '../model/Material';
 import { MaterialFinish } from '../model/material-finish';
 import { MaterialFinishDTO } from '../model/material-finish-dto';
+import { OptionalProducts } from '../model/optional-products';
 import { AuthService } from '../services/auth.service';
+import { parseTemplate } from '@angular/compiler';
 
 declare const require: (moduleId: string) => any; /*for require function below*/
 var OrbitControls = require('three-orbit-controls')(THREE) /*import orbit controls*/
@@ -54,20 +56,24 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 	categoria = "Armario";
 	parts = [];
 	product: Product;
+	optionalProduct: Product;
 	id: number;
 
 
 	updateSize() {
 		this.scene.remove(this.mesh);
-		const material = new THREE.MeshLambertMaterial({ color: 0xff0000, wireframe: false });
+		let tmp = guiControls.material.split(" / ");
+		const loader = new THREE.TextureLoader().load(tmp[3]);
+		let material = new THREE.MeshLambertMaterial({ map: loader });
+		//const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
 		if (this.categoria == "Armário") {
-			this.mesh = this.closet(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+			this.mesh = this.closet(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
 		} else if (this.categoria == "Gaveta") {
-			this.mesh = this.drawer(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+			this.mesh = this.drawer(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
 		} else if (this.categoria == "Prateleira") {
-			this.mesh = this.drawer(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+			this.mesh = this.drawer(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
 		} else {
-			this.mesh = this.closet(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+			this.mesh = this.closet(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
 		}
 		this.scene.add(this.mesh);
 	}
@@ -76,11 +82,10 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 		this.route.params.subscribe(res => {
 			this.id = <number>res.id;
 		});
-		console.log("id  " + this.id);
 		this.service.getProduct(this.id).subscribe(data => {
 			this.product = (<Product>data)
 			guiControls.name = this.product.name;
-			
+
 			this.createDatGui();
 		}, error => {
 			if (error.status == 401) {
@@ -122,7 +127,7 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 
 
 		this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
-		this.camera.position.z = 1000;
+		this.camera.position.z = 200;
 
 		this.camera.add(new THREE.PointLight(0xffffff));
 		this.scene.add(this.camera);
@@ -185,20 +190,18 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 				.name('Profundidade').onChange(() => { this.updateSize() });
 		}
 
-		
+
 
 		datGUI.add(guiControls, 'material',
-		this.getMaterialFinish((<MaterialFinish[]> this.product.materialFinishes)))
+			this.getMaterialFinish((<MaterialFinish[]>this.product.materialFinishes)))
 			.name('Material Acabamento').onChange(() => { this.updateSize() });
-		datGUI.add(guiControls, 'produtoExtra',["Armario", "Gaveta"])
-			.name('SubProdutos').onChange(() => { this.updateSize() });
-		datGUI.add(guiControls, 'materialExtra',[])
+		datGUI.add(guiControls, 'produtoExtra', this.getSubProducts((<OptionalProducts[]>this.product.optionalProducts)))
 			.name('SubProdutos').onChange(() => { this.updateSize() });
 		datGUI.add(guiControls, 'cidade').name('cidade');
 		datGUI.add(guiControls, 'latitude').name('latitude');
 		datGUI.add(guiControls, 'longitude').name('longitude');
-		datGUI.add(guiControls, 'adicionar').name("Adicionar Produto").onChange(() => { });
-		datGUI.add(guiControls, 'encomendar').name("Encomendar Produto").onChange(() => { this.encomenda(guiControls.name, guiControls.material, guiControls.altura, guiControls.profundidade, guiControls.largura, guiControls.latitude, guiControls.longitude,guiControls.cidade) });
+		datGUI.add(guiControls, 'adicionar').name("Adicionar Produto").onChange(() => { this.adicionar()});
+		datGUI.add(guiControls, 'encomendar').name("Encomendar Produto").onChange(() => { this.encomenda(guiControls.name, guiControls.material, guiControls.altura, guiControls.profundidade, guiControls.largura, guiControls.latitude, guiControls.longitude, guiControls.cidade) });
 	}
 	animate() {
 		window.requestAnimationFrame(() => this.animate());
@@ -207,7 +210,7 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 
 	//Create Closet
 	closet(width, height, depth, material): THREE.Mesh {
-		const thickness = height * 0.05;
+		const thickness = height * 0.02;
 		const closetG = new THREE.BoxGeometry(width, height, depth);
 		const closetM = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
 		closetM.transparent = true;
@@ -249,7 +252,7 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 		const drawerG = new THREE.BoxGeometry(width, height, depth);
 		const drawerM = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
 		drawerM.transparent = true;
-		drawerM.opacity = 0.0;
+		drawerM.opacity = 0.001;
 		const drawer = new THREE.Mesh(drawerG, drawerM);
 
 		const backWallG = new THREE.BoxGeometry(width, height, thickness);
@@ -311,26 +314,13 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 			} else {
 				intersects = this.raycaster.intersectObject(this.mesh);
 				if (intersects.length > 0) {
-					this.controls.enableRotate = false;
-					this.selectedScale = intersects[0].object;
+					if (((<DiscreteDimension>this.product.dimensions.height).discrete) == null) {
+						this.controls.enableRotate = false;
+						this.selectedScale = intersects[0].object;
+					}
 				}
 			}
 		}
-		/*if (event.which == 3) {
-			  mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-			  mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-	
-			  // update the picking ray with the camera and mouse position
-			  raycaster.setFromCamera( mouse, camera );
-	
-			  // calculate objects intersecting the picking ray
-			  var intersects = raycaster.intersectObjects( test );
-	
-			  if (intersects.length > 0) {
-					controls.enablePan = false;
-					selectedScale = intersects[ 0 ].object;
-			  }
-		}*/
 	}
 
 	convertDimensions(dimensoes) {
@@ -339,7 +329,6 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 	onMouseMove(event) {
 		if (this.selectedMove != null) {
 			this.mouse.set((event.offsetX / this.renderer.getSize().width) * 2 - 1, -(event.offsetY / this.renderer.getSize().height) * 2 + 1);
-			this.raycaster.setFromCamera(this.mouse, this.camera);
 
 			//transform mouse coordinates to real world coordinates
 			const vector = new THREE.Vector3(this.mouse.x, this.mouse.y, 0.5);
@@ -365,12 +354,38 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 			const dir = vector.sub(this.camera.position).normalize();
 			const distance = - this.camera.position.z / dir.z;
 
-			//update dimensions
-			guiControls.largura += x * this.camera.position.z * .5;
-			guiControls.altura += y * this.camera.position.z * .5;
-
 			//redraw
-			this.updateSize();
+			let sizeX = guiControls.largura + x * distance;
+			let sizeY = guiControls.altura + y * distance;
+
+			if (sizeX > (<ContinuousDimension>this.product.dimensions.width).max) {
+				sizeX = (<ContinuousDimension>this.product.dimensions.width).max;
+			}
+			if (sizeX < (<ContinuousDimension>this.product.dimensions.width).min) {
+				sizeX = (<ContinuousDimension>this.product.dimensions.width).min;
+			}
+			if (sizeY > (<ContinuousDimension>this.product.dimensions.height).max) {
+				sizeY = (<ContinuousDimension>this.product.dimensions.height).max;
+			}
+			if (sizeY < (<ContinuousDimension>this.product.dimensions.height).min) {
+				sizeY = (<ContinuousDimension>this.product.dimensions.height).min;
+			}
+
+			if (sizeX <= (<ContinuousDimension>this.product.dimensions.width).max &&
+				sizeX >= (<ContinuousDimension>this.product.dimensions.width).min) {
+				//update dimensions
+				guiControls.largura = sizeX;
+
+				this.selectedScale.scale.x = sizeX / this.selectedScale.geometry.parameters.width;
+			}
+
+			if (sizeY <= (<ContinuousDimension>this.product.dimensions.height).max &&
+				sizeY >= (<ContinuousDimension>this.product.dimensions.height).min) {
+				//update dimensions
+				guiControls.altura = sizeY;
+
+				this.selectedScale.scale.y = sizeY / this.selectedScale.geometry.parameters.height;
+			}
 
 			//update mouse position
 			this.mouse.x = (event.offsetX / this.renderer.getSize().width) * 2 - 1;
@@ -392,38 +407,76 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 	}
 
 	adicionar() {
-		if (guiControls.produtoExtra == "Armário") {
-			this.mesh.add(guiControls.altura, guiControls.largura, guiControls.profundidade, guiControls.materialExtra);
-		} else if (guiControls.produtoExtra == "Gaveta") {
-			this.mesh.add(guiControls.altura, guiControls.largura, guiControls.profundidade, guiControls.materialExtra);
-		} else if (guiControls.produtoExtra == "Prateleira") {
-			this.mesh.add(guiControls.altura, guiControls.largura, guiControls.profundidade, guiControls.materialExtra);
+		var id = guiControls.produtoExtra.split("/")[1];
+		if (this.getProductById(id) != null) {
+			//ADCIONAR AQUI PRODUTO AOS ITENS
+			alert(this.optionalProduct.name);
+			if (guiControls.produtoExtra == "Armário") {
+				this.mesh.add(guiControls.altura, guiControls.largura, guiControls.profundidade, guiControls.materialExtra);
+			} else if (guiControls.produtoExtra == "Gaveta") {
+				this.mesh.add(guiControls.altura, guiControls.largura, guiControls.profundidade, guiControls.materialExtra);
+			} else if (guiControls.produtoExtra == "Prateleira") {
+				this.mesh.add(guiControls.altura, guiControls.largura, guiControls.profundidade, guiControls.materialExtra);
+			}else{
+				this.mesh.add(this.shelf(10,10,100,10));
+			}
 		}
 	}
 
-	encomenda(name: string, material: string,  altura: number, profundidade: number, largura: number,  latitude: number, longitude: number,  cidade: string) {
+	encomenda(name: string, material: string, altura: number, profundidade: number, largura: number, latitude: number, longitude: number, cidade: string) {
 		console.log(this.product)
 		const category: string = this.product.category.description;
 		const list: orderItem[] = [];
-		const mataca  = material.split(" / ");
+		const mataca = material.split(" / ");
 		const productI: orderItem = new orderItem(name, category, mataca[0], mataca[1], list, altura, profundidade, largura);
-		const it: Item = new Item(productI,  parseInt(mataca[2]) );
+		const it: Item = new Item(productI, parseInt(mataca[2]));
 		const items: Item[] = [];
 		items.push(it);
-		const ord: order = new order(items, parseInt(mataca[2]) , latitude, longitude, cidade, this.authservice.getLoggedInUsername());
+		const ord: order = new order(items, parseInt(mataca[2]), latitude, longitude, cidade, this.authservice.getLoggedInUsername());
 		this.serviceorder.createEncomenda(ord).subscribe();
 	}
 
 
-	getMaterialFinish(matsFinish: MaterialFinish[]) : string[] {
-		const ret : string[] = [];
-		
+	getMaterialFinish(matsFinish: MaterialFinish[]): string[] {
+		const ret: string[] = [];
+
 		console.log(matsFinish);
-		for(let key in matsFinish){
-			const matFinish = (<MaterialFinishDTO> (<unknown> matsFinish[key]));
-			ret.push( matFinish.materialDTO.name+" / "+  matFinish.surfaceFinishDTO.name+" / "+ (matsFinish[key].price+matFinish.materialDTO.price));
+		for (let key in matsFinish) {
+			const matFinish = (<MaterialFinishDTO>(<unknown>matsFinish[key]));
+			ret.push(matFinish.materialDTO.name + " / " + matFinish.surfaceFinishDTO.name + " / " + (matsFinish[key].price + matFinish.materialDTO.price) + " / " + matsFinish[key].textureUrl);
 		}
 		return ret;
 	}
-	
+
+	getSubProducts(matsFinish: OptionalProducts[]): string[] {
+		const ret: string[] = [];
+
+		console.log(matsFinish);
+		for (let key in matsFinish) {
+			const matFinish = (<OptionalProducts>(<unknown>matsFinish[key]));
+			ret.push(matFinish.optional + " / " + matFinish.productId);
+		}
+		return ret;
+	}
+
+	getProductById(id) {
+		this.service.getProduct(id).subscribe(data => {
+			this.optionalProduct = (<Product>data);
+		}, error => {
+			if (error.status == 401) {
+				this.bar.open(
+					'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
+					'', {
+						duration: 2000,
+					});
+			} else {
+				this.bar.open(
+					`Ocorreu um erro ao tentar obter o producto do servidor...`,
+					'', {
+						duration: 2000,
+					});
+			}
+		});
+		return this.optionalProduct;
+	}
 }

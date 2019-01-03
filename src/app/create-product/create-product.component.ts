@@ -14,7 +14,8 @@ import { Dimension } from '../model/dimension';
 import { ContinuousDimension } from '../model/continuous-dimension';
 import { DiscreteDimension } from '../model/discrete-dimension';
 import { OptionalProducts } from '../model/optional-products';
-import { Dimensions } from '../model/dimensions';
+import { Dimensions } from '../model/dimensions'; 
+import { Part } from '../show-product-info/show-product-info.component';
 
 const min_array_limit: number = 1;
 const dim_min_limit: number = 1;
@@ -31,7 +32,9 @@ export class CreateProductComponent implements OnInit {
   productName: string = "";
   categories: Category[];
   materialfinishes: MaterialFinish[] = [];
-  parts: OptionalProducts[] = [];
+  optionalProducts: OptionalProducts[] = [];
+  parts: Part[] = [];
+  part: Part;
   productMinOccup: number;
   productMaxOccup: number;
 
@@ -92,8 +95,6 @@ export class CreateProductComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
       this.materialfinishes = result;
     });
   }
@@ -105,15 +106,35 @@ export class CreateProductComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
-      this.parts = result;
+      this.optionalProducts = result;
+      if (!result === undefined) {
+        this.convertToParts(result);
+      }
     });
   }
 
   removeFromMaterialList(materialfinish: MaterialFinish): void {
-    let index: number = this.materialfinishes.findIndex(mat => mat.textureUrl == materialfinish.textureUrl);
+    let index: number = this.materialfinishes.findIndex(mat => (mat.id == materialfinish.id));
     this.materialfinishes.splice(index, min_array_limit);
+  }
+
+  convertToParts(optionalProducts: OptionalProducts[]) {
+    let product: Product;
+    for (let i = 0; i < optionalProducts.length; i++) {
+      this.service.getProduct(optionalProducts[i].productId).subscribe(res => {
+        product = <Product>res;
+        let opt: string = this.writeOptionalOrMandatory(optionalProducts[i].optional);
+        let p: Part = { product: product, optional: opt };
+        this.parts.push(p);
+      });
+    }
+  }
+
+  private writeOptionalOrMandatory(isOptional: boolean): string {
+    if (isOptional === false) {
+      return "Obrigatório";
+    }
+    return "Opcional";
   }
 
 
@@ -138,25 +159,18 @@ export class CreateProductComponent implements OnInit {
 
     //check height is not empty & >0
     let h: Dimension = this.validateDimension('Altura', this.heightDiscrete, this.heightMin, this.heightMax);
-    console.log('h');
-    console.log(h);
     if (h == null) {
       return;
     }
 
     //check width is not empty & >0 & check regex
     let w: Dimension = this.validateDimension('Largura', this.widthDiscrete, this.widthMin, this.widthMax);
-    console.log('w');
-    console.log(w);
     if (w == null) {
       return;
     }
     
-
     //check depth is not empty  & >0 & check regex
     let d: Dimension = this.validateDimension('Profundidade', this.depthDiscrete, this.depthMin, this.depthMax);
-    console.log('d');
-    console.log(d);
     if (d == null) {
       return;
     }
@@ -194,11 +208,9 @@ export class CreateProductComponent implements OnInit {
     }
 
     let dimensions: Dimensions = { width: w, height: h, depth: d };
-    let parts: OptionalProducts[] = [];
+
     let prod = new Product(this.productName, this.category, this.materialfinishes, dimensions,
-      parts, this.productMinOccup, this.productMaxOccup);
-    console.log('prod criado');
-    console.log(prod);
+      this.optionalProducts, this.productMinOccup, this.productMaxOccup);
 
     this.service.createProduct(prod).subscribe(cat => {
       this.bar.open(
@@ -215,7 +227,6 @@ export class CreateProductComponent implements OnInit {
             duration: 2000,
           });
       } else {
-        console.log('outro erro')
         this.bar.open(
           `Erro: ${error.error}`,
           '', {
@@ -227,7 +238,6 @@ export class CreateProductComponent implements OnInit {
   }
 
   private validateDimension(dimension: string, discrete: string, min: number, max: number): Dimension {
-    console.log('entrou');
     //if min and max are null and discrete is ok, then it is discrete
     if (this.checkIfFieldIsEmptyOrNull(min) && this.checkIfFieldIsEmptyOrNull(max)
       && !this.checkIfFieldIsEmptyOrNull(discrete)) {
@@ -362,21 +372,7 @@ export class CreateProductComponent implements OnInit {
   back() {
     this.router.navigateByUrl('/products');
   }
-
-  updateParts() {
-    for (let i = 0; i < this.parts.length; i++) {
-      this.writeOptionalOrMandatory(this.parts[i].part.name);
-    }
-  }
-
-  private writeOptionalOrMandatory(element: string) {
-    var label = document.getElementById(element);
-    if (label.innerHTML === "true") {
-      label.innerHTML = "Opcional";
-    } else if (label.innerHTML === "false") {
-      label.innerHTML = "Obrigatório";
-    }
-  }
+  
 
   //--------- FOR HTML SHOW/HIDE 
   // ALTURA

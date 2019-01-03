@@ -79,12 +79,13 @@ export class SelectPartsDialog {
       while (this.btnHO[j] != true && this.btnHO[j] != false && j < this.products.length) {
         j++;
       }
-      let part: OptionalProducts = { part: products[i], isOptional: this.btnHO[j] };
+
+      let part: OptionalProducts = { productId: products[i].id, optional: this.btnHO[j] };
       j++;
       parts.push(part);
     }
     for (let i = 0; i < parts.length; i++) {
-      if (parts[i].isOptional != true && parts[i].isOptional != false) {
+      if (parts[i].optional != true && parts[i].optional != false) {
         this.openbar("Deve escolher opcional ou obrigatório");
         return;
       }

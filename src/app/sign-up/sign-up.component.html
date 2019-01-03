@@ -4,6 +4,7 @@
 <!-- Extended material form grid -->
 <form class="form-group">
   <div class="sic-row">
+  <div class="sic-row">
     <div class="sic-column">
       <label for="radioGroup">Registar-se como</label>
     <br>
@@ -41,7 +42,7 @@
       <!-- Material input -->
       <div class="md-form form-group">
         <i class="fa fa-lock prefix"></i>
-        <input [(ngModel)]="_retypePassword" mdbInputDirective type="password" name="password" class="form-control" placeholder="Repetir palavra-passe" aria-describedby="pwdHelpBlock" required>
+        <input [(ngModel)]="_retypePassword" mdbInputDirective type="password" name="confirmPassword" class="form-control" placeholder="Repetir palavra-passe" aria-describedby="pwdHelpBlock" required>
         <small id="pwdHelpBlock" class="form-text text-muted">
           A sua palavra-passe deverá conter pelo menos 6 caracteres, uma maiúscula, uma minúscula e um dígito.
         </small>
@@ -55,7 +56,7 @@
       <!-- Material input -->
       <div class="md-form form-group">
         <i class="fas fa-key prefix"></i>
-        <input [(ngModel)]="_companyPassword" mdbInputDirective type="password" name="password" class="form-control" placeholder="Palavra-passe da empresa" aria-describedby="companyPwdHelpBlock" required>
+        <input [(ngModel)]="_companyPassword" mdbInputDirective type="password" name="companyPassword" class="form-control" placeholder="Palavra-passe da empresa" aria-describedby="companyPwdHelpBlock" required>
         <small id="companyPwdHelpBlock" class="form-text text-muted">
           Para se registar como gestor de conteúdos necessita de introduzir a palavra-passe fornecida pela empresa.
         </small>
@@ -64,10 +65,23 @@
     <!-- Grid column -->
   </div>
 
-  <mat-checkbox [(ngModel)]="_checked" name="checkedTermsAndConditions" color="primary">Aceito os <a routerLink="/TermsAndConditions">Termos e Condições</a>.</mat-checkbox>
+  <mat-checkbox [(ngModel)]="_checked" name="checkedTermsAndConditions" color="primary">Li e aceito os <a routerLink="/TermsAndConditions">Termos e Condições</a>.</mat-checkbox>
   <br />
   <!-- Grid row -->
   <button type="submit" (click)="signUp()" matTooltip="Criar uma conta" class="btn btn-primary btn-md">Registar</button>
+    <div *ngIf="valid" class="sic-column text-center">
+      <h2>Ligar autenticação de 2 fatores</h2>
+      <p>Leia o código QR ou introduza o segredo na aplicação Google Authenticator</p>
+      <img src="{{qrCodeImgSrc}}" alt="Código QR" class="img-thumbnail">
 
+      <p>Segredo - {{tempSecret}}</p>
+      <p>Tipo - TOTP</p>
+      <mat-form-field class="example-full-width">
+        <input [(ngModel)]="token" name="token" matInput placeholder="Código">
+      </mat-form-field>
+      <br>
+      <button type="submit" (click)="confirmSignUp()" matTooltip="Criar a conta" class="btn btn-primary btn-md">Confirmar registo</button>
+    </div>
+  </div>
 </form>
 </div>

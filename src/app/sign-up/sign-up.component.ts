@@ -17,6 +17,12 @@ export class SignUpComponent implements OnInit {
   _isClient : boolean = true;
   _companyPassword : string = "";
 
+  valid : boolean = false;
+  qrCodeImgSrc : string = "";
+  tempSecret: string = "";
+
+  token: string = "";
+
   constructor(private bar: MatSnackBar,private authSrv : AuthService, private router : Router) { }
 
   ngOnInit() {
@@ -34,7 +40,22 @@ export class SignUpComponent implements OnInit {
         this.bar.open(`Erro: ${errorJSON}`, "", {duration: 3500});
       });
       } else {
-        this.authSrv.clientSignUp(this._username, this._password, this._retypePassword).subscribe(data => {
+        this.authSrv.clientSetupSecret().subscribe(data => {
+          this.tempSecret = data.tempSecret;
+          this.qrCodeImgSrc = data.dataURL;
+          this.valid = true;
+        });
+      }
+    } else {
+      this.bar.open("Por favor insira dados válidos.", "", {duration: 3000});
+    }
+  }
+
+  confirmSignUp() : void {
+    if(this.validate()) {
+      if (this._isClient) {
+        alert(`${this._username}, ${this.tempSecret}, ${this.token}`);
+        this.authSrv.clientSignUp(this._username, this._password, this._retypePassword, this.tempSecret, this.token).subscribe(data => {
           this.bar.open(`${data.username} foi registado como cliente com sucesso. Pode iniciar sessão.`, "", {duration: 4000});
           this.router.navigate(["/login"]);
         }, error => {
@@ -42,8 +63,6 @@ export class SignUpComponent implements OnInit {
           this.bar.open(`Erro: ${errorJSON}`, "", {duration: 3500});
         });
       }
-    } else {
-      this.bar.open("Por favor insira dados válidos.", "", {duration: 3000});
     }
   }
 
