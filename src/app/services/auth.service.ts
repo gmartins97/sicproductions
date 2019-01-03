@@ -33,8 +33,8 @@ export class AuthService {
     return this.httpClient.post(`${this.MANAGER_AUTH_URL}/Login`, {Username: username, Password: password});
   }
 
-  clientLogin(username: string, password : string) : Observable<any> {
-    return this.httpClient.post(`${this.CLIENT_AUTH_URL}/login`, {username: username, password: password});
+  clientLogin(username: string, password : string, token: string) : Observable<any> {
+    return this.httpClient.post(`${this.CLIENT_AUTH_URL}/login`, {username: username, password: password, token: token});
   }
 
   loginSucceeded(data) : void {

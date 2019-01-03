@@ -1202,7 +1202,7 @@ module.exports = "#formpequena {\r\n  width: 86%;\r\n}\r\n\r\n#butpequeno {\r\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Novo Produto</h3>\r\n<div class=\"container\">\r\n  <div>\r\n    <br />\r\n\r\n    <!-- Nome -->\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"productName\" placeholder=\"Nome do produto\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Categoria -->\r\n    <mat-form-field>\r\n      <mat-select required [(ngModel)]=\"category\" placeholder=\"Categoria\">\r\n        <mat-option *ngFor=\"let category of categories\" [value]=\"category\">\r\n          {{category.description}}\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n\r\n    <!-- Min ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput type=\"number\" min=\"0\" max=\"100\" [(ngModel)]=\"productMinOccup\" placeholder=\"% Mínima Ocupação\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Max ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput type=\"number\" min=\"{{productMinOccup}}\" max=\"100\" [(ngModel)]=\"productMaxOccup\" placeholder=\"% Máxima Ocupação\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Partes -->\r\n    <button id=\"butpequeno\" mat-button (click)=\"chooseParts()\" matTooltip=\"Escolher Produtos Opcionais\" class=\"btn btn-primary btn-md\">Escolher</button>\r\n    <mat-form-field id=\"formpequena\">\r\n      <mat-select [(ngModel)]=\"partes\" placeholder=\"Produtos Opcionais\" (click)=\"updateParts()\">\r\n        <mat-option *ngFor=\"let product of parts\" [value]=\"product\">\r\n          {{product.part.name}} (<label id=\"{{product.part.name}}\" style=\"display:inline-block;\">{{product.isOptional}}</label>)\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n\r\n    <br />\r\n    <!-- Materiais Acabamentos -->\r\n    <button mat-button (click)=\"chooseMaterialFinishes()\" matTooltip=\"Escolher Materiais Acabamentos\" class=\"btn btn-primary btn-md\">Escolher Materiais Acabamentos</button>\r\n    <div>\r\n      <mat-card *ngFor=\"let materialfinish of materialfinishes\" class=\"example-card\" style=\"width:200px;float:left;margin-top:30px;margin-right: 30px;\">\r\n        <mat-card-header style=\"text-align:left;\">\r\n          <mat-card-title style=\"font-size:medium;\">{{materialfinish.materialDTO.name}}</mat-card-title>\r\n          <mat-card-subtitle>{{materialfinish.surfaceFinishDTO.name}}</mat-card-subtitle>\r\n        </mat-card-header>\r\n        <img mat-card-image src=\"{{materialfinish.textureUrl}}\">\r\n        <mat-card-actions>\r\n          <button mat-button (click)=\"removeFromMaterialList(materialfinish)\">Remover</button>\r\n        </mat-card-actions>\r\n      </mat-card>\r\n    </div>\r\n    <br />\r\n\r\n    <!-- Alturas -->\r\n    <mat-card class=\"result\" style=\"clear:both;margin-top:30px;\">\r\n      <mat-card-content>\r\n        <h2 class=\"example-h2\">Alturas</h2>\r\n        <br />\r\n        <section class=\"example-section\">\r\n          <mat-radio-group required>\r\n            <mat-radio-button name=\"myHeight\" (click)=\"showDivNewAlturaDiscreta()\" value=\"HeightDiscrete\">Discreta</mat-radio-button>&ensp;\r\n            <mat-radio-button name=\"myHeight\" (click)=\"showDivNewAlturaContinua()\" value=\"HeightContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n          </mat-radio-group>\r\n          <div id=\"newAlturaContinua\" style=\"display:none;\">\r\n            <mat-form-field>\r\n              <input id=\"hcmin\" matInput [(ngModel)]=\"heightMin\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n            </mat-form-field>\r\n            <mat-form-field>\r\n              <input id=\"hcmax\" matInput [(ngModel)]=\"heightMax\" type=\"number\" placeholder=\"max\" min=\"{{heightMin}}\"> <br />\r\n            </mat-form-field>\r\n          </div>\r\n          <div id=\"newAlturaDiscreta\" style=\"display:none;\">\r\n            <mat-form-field>\r\n              <input id=\"hdiscrete\" matInput [(ngModel)]=\"heightDiscrete\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n            </mat-form-field>\r\n          </div>\r\n        </section>\r\n      </mat-card-content>\r\n    </mat-card>\r\n\r\n    <!-- Larguras -->\r\n    <mat-card class=\"result\" style=\"margin-left: 30px;margin-top:30px;\">\r\n      <mat-card-content>\r\n        <h2 class=\"example-h2\">Larguras</h2>\r\n        <br />\r\n        <section class=\"example-section\">\r\n          <mat-radio-group required>\r\n            <mat-radio-button name=\"myWidth\" (click)=\"showDivNewLarguraDiscreta()\" value=\"WidthDiscrete\">Discreta</mat-radio-button>\r\n            <mat-radio-button name=\"myWidth\" (click)=\"showDivNewLarguraContinua()\" value=\"WidthContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n          </mat-radio-group>\r\n          <br />\r\n          <div id=\"newLarguraContinua\" style=\"display:none;\">\r\n            <mat-form-field>\r\n              <input id=\"wcmin\" matInput [(ngModel)]=\"widthMin\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n            </mat-form-field>\r\n            <mat-form-field>\r\n              <input id=\"wcmax\" matInput [(ngModel)]=\"widthMax\" type=\"number\" placeholder=\"max\" min=\"{{widthMin}}\"> <br />\r\n            </mat-form-field>\r\n          </div>\r\n          <div id=\"newLarguraDiscreta\" style=\"display:none;\">\r\n            <mat-form-field>\r\n              <input id=\"wdiscrete\" matInput [(ngModel)]=\"widthDiscrete\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n            </mat-form-field>\r\n          </div>\r\n        </section>\r\n      </mat-card-content>\r\n    </mat-card>\r\n\r\n    <!-- Profundidades -->\r\n    <mat-card class=\"result\" style=\"margin-left: 30px;margin-top:30px;\">\r\n      <mat-card-content>\r\n        <h2 class=\"example-h2\">Profundidades</h2>\r\n        <br />\r\n        <section class=\"example-section\">\r\n          <mat-radio-group id=\"profgroup\">\r\n            <mat-radio-button name=\"myDepth\" (click)=\"showDivNewProfundidadeDiscreta()\" value=\"DepthDiscrete\">Discreta</mat-radio-button>\r\n            <mat-radio-button name=\"myDepth\" (click)=\"showDivNewProfundidadeContinua()\" value=\"DepthContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n          </mat-radio-group>\r\n          <br />\r\n          <div id=\"newProfundidadeContinua\" style=\"display:none;\">\r\n            <mat-form-field>\r\n              <input id=\"dcmin\" matInput [(ngModel)]=\"depthMin\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n            </mat-form-field>\r\n            <mat-form-field>\r\n              <input id=\"dcmax\" matInput [(ngModel)]=\"depthMax\" type=\"number\" placeholder=\"max\" min=\"0\"> <br />\r\n            </mat-form-field>\r\n          </div>\r\n          <div id=\"newProfundidadeDiscreta\" style=\"display:none;\">\r\n            <mat-form-field>\r\n              <input id=\"ddiscrete\" matInput [(ngModel)]=\"depthDiscrete\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n            </mat-form-field>\r\n          </div>\r\n        </section>\r\n      </mat-card-content>\r\n    </mat-card>\r\n\r\n\r\n\r\n  </div>\r\n    <div class=\"sic-row\">\r\n      <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n      <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n    </div>\r\n  </div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Novo Produto</h3>\r\n<div class=\"container\">\r\n  <div>\r\n    <br />\r\n\r\n    <!-- Nome -->\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"productName\" placeholder=\"Nome do produto\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Categoria -->\r\n    <mat-form-field>\r\n      <mat-select required [(ngModel)]=\"category\" placeholder=\"Categoria\">\r\n        <mat-option *ngFor=\"let category of categories\" [value]=\"category\">\r\n          {{category.description}}\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n\r\n    <!-- Min ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput type=\"number\" min=\"0\" max=\"100\" [(ngModel)]=\"productMinOccup\" placeholder=\"% Mínima Ocupação\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Max ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput type=\"number\" min=\"{{productMinOccup}}\" max=\"100\" [(ngModel)]=\"productMaxOccup\" placeholder=\"% Máxima Ocupação\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Partes -->\r\n    <button id=\"butpequeno\" mat-button (click)=\"chooseParts()\" matTooltip=\"Escolher Produtos Opcionais\" class=\"btn btn-primary btn-md\">Escolher</button>\r\n    <mat-form-field id=\"formpequena\">\r\n      <mat-select [(ngModel)]=\"part\" placeholder=\"Produtos Opcionais\">\r\n        <mat-option *ngFor=\"let part of parts\" [value]=\"part\">\r\n          {{part.product.name}} (<label id=\"{{part.product.name}}\" style=\"display:inline-block;\">{{part.optional}}</label>)\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n\r\n    <br />\r\n    <!-- Materiais Acabamentos -->\r\n    <button mat-button (click)=\"chooseMaterialFinishes()\" matTooltip=\"Escolher Materiais Acabamentos\" class=\"btn btn-primary btn-md\">Escolher Materiais Acabamentos</button>\r\n    <div>\r\n      <mat-card *ngFor=\"let materialfinish of materialfinishes\" class=\"example-card\" style=\"width:200px;float:left;margin-top:30px;margin-right: 30px;\">\r\n        <mat-card-header style=\"text-align:left;\">\r\n          <mat-card-title style=\"font-size:medium;\">{{materialfinish.materialDTO.name}}</mat-card-title>\r\n          <mat-card-subtitle>{{materialfinish.surfaceFinishDTO.name}}</mat-card-subtitle>\r\n        </mat-card-header>\r\n        <img mat-card-image src=\"{{materialfinish.textureUrl}}\">\r\n        <mat-card-actions>\r\n          <button mat-button (click)=\"removeFromMaterialList(materialfinish)\">Remover</button>\r\n        </mat-card-actions>\r\n      </mat-card>\r\n    </div>\r\n    <br />\r\n\r\n    <!-- Alturas -->\r\n    <mat-card class=\"result\" style=\"clear:both;margin-top:30px;\">\r\n      <mat-card-content>\r\n        <h2 class=\"example-h2\">Alturas</h2>\r\n        <br />\r\n        <section class=\"example-section\">\r\n          <mat-radio-group required>\r\n            <mat-radio-button name=\"myHeight\" (click)=\"showDivNewAlturaDiscreta()\" value=\"HeightDiscrete\">Discreta</mat-radio-button>&ensp;\r\n            <mat-radio-button name=\"myHeight\" (click)=\"showDivNewAlturaContinua()\" value=\"HeightContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n          </mat-radio-group>\r\n          <div id=\"newAlturaContinua\" style=\"display:none;\">\r\n            <mat-form-field>\r\n              <input id=\"hcmin\" matInput [(ngModel)]=\"heightMin\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n            </mat-form-field>\r\n            <mat-form-field>\r\n              <input id=\"hcmax\" matInput [(ngModel)]=\"heightMax\" type=\"number\" placeholder=\"max\" min=\"{{heightMin}}\"> <br />\r\n            </mat-form-field>\r\n          </div>\r\n          <div id=\"newAlturaDiscreta\" style=\"display:none;\">\r\n            <mat-form-field>\r\n              <input id=\"hdiscrete\" matInput [(ngModel)]=\"heightDiscrete\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n            </mat-form-field>\r\n          </div>\r\n        </section>\r\n      </mat-card-content>\r\n    </mat-card>\r\n\r\n    <!-- Larguras -->\r\n    <mat-card class=\"result\" style=\"margin-left: 30px;margin-top:30px;\">\r\n      <mat-card-content>\r\n        <h2 class=\"example-h2\">Larguras</h2>\r\n        <br />\r\n        <section class=\"example-section\">\r\n          <mat-radio-group required>\r\n            <mat-radio-button name=\"myWidth\" (click)=\"showDivNewLarguraDiscreta()\" value=\"WidthDiscrete\">Discreta</mat-radio-button>\r\n            <mat-radio-button name=\"myWidth\" (click)=\"showDivNewLarguraContinua()\" value=\"WidthContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n          </mat-radio-group>\r\n          <br />\r\n          <div id=\"newLarguraContinua\" style=\"display:none;\">\r\n            <mat-form-field>\r\n              <input id=\"wcmin\" matInput [(ngModel)]=\"widthMin\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n            </mat-form-field>\r\n            <mat-form-field>\r\n              <input id=\"wcmax\" matInput [(ngModel)]=\"widthMax\" type=\"number\" placeholder=\"max\" min=\"{{widthMin}}\"> <br />\r\n            </mat-form-field>\r\n          </div>\r\n          <div id=\"newLarguraDiscreta\" style=\"display:none;\">\r\n            <mat-form-field>\r\n              <input id=\"wdiscrete\" matInput [(ngModel)]=\"widthDiscrete\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n            </mat-form-field>\r\n          </div>\r\n        </section>\r\n      </mat-card-content>\r\n    </mat-card>\r\n\r\n    <!-- Profundidades -->\r\n    <mat-card class=\"result\" style=\"margin-left: 30px;margin-top:30px;\">\r\n      <mat-card-content>\r\n        <h2 class=\"example-h2\">Profundidades</h2>\r\n        <br />\r\n        <section class=\"example-section\">\r\n          <mat-radio-group id=\"profgroup\">\r\n            <mat-radio-button name=\"myDepth\" (click)=\"showDivNewProfundidadeDiscreta()\" value=\"DepthDiscrete\">Discreta</mat-radio-button>\r\n            <mat-radio-button name=\"myDepth\" (click)=\"showDivNewProfundidadeContinua()\" value=\"DepthContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n          </mat-radio-group>\r\n          <br />\r\n          <div id=\"newProfundidadeContinua\" style=\"display:none;\">\r\n            <mat-form-field>\r\n              <input id=\"dcmin\" matInput [(ngModel)]=\"depthMin\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n            </mat-form-field>\r\n            <mat-form-field>\r\n              <input id=\"dcmax\" matInput [(ngModel)]=\"depthMax\" type=\"number\" placeholder=\"max\" min=\"0\"> <br />\r\n            </mat-form-field>\r\n          </div>\r\n          <div id=\"newProfundidadeDiscreta\" style=\"display:none;\">\r\n            <mat-form-field>\r\n              <input id=\"ddiscrete\" matInput [(ngModel)]=\"depthDiscrete\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n            </mat-form-field>\r\n          </div>\r\n        </section>\r\n      </mat-card-content>\r\n    </mat-card>\r\n\r\n\r\n\r\n  </div>\r\n    <div class=\"sic-row\">\r\n      <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n      <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n    </div>\r\n  </div>\r\n"
 
 /***/ }),
 
@@ -1252,6 +1252,7 @@ var CreateProductComponent = /** @class */ (function () {
         this.dialog = dialog;
         this.productName = "";
         this.materialfinishes = [];
+        this.optionalProducts = [];
         this.parts = [];
         this.heightMin = null;
         this.heightMax = null;
@@ -1291,8 +1292,6 @@ var CreateProductComponent = /** @class */ (function () {
             data: {}
         });
         dialogRef.afterClosed().subscribe(function (result) {
-            console.log('The dialog was closed');
-            console.log(result);
             _this.materialfinishes = result;
         });
     };
@@ -1303,14 +1302,37 @@ var CreateProductComponent = /** @class */ (function () {
             data: {}
         });
         dialogRef.afterClosed().subscribe(function (result) {
-            console.log('The dialog was closed');
-            console.log(result);
-            _this.parts = result;
+            _this.optionalProducts = result;
+            if (!result === undefined) {
+                _this.convertToParts(result);
+            }
         });
     };
     CreateProductComponent.prototype.removeFromMaterialList = function (materialfinish) {
-        var index = this.materialfinishes.findIndex(function (mat) { return mat.textureUrl == materialfinish.textureUrl; });
+        var index = this.materialfinishes.findIndex(function (mat) { return (mat.id == materialfinish.id); });
         this.materialfinishes.splice(index, min_array_limit);
+    };
+    CreateProductComponent.prototype.convertToParts = function (optionalProducts) {
+        var _this = this;
+        var product;
+        var _loop_1 = function (i) {
+            this_1.service.getProduct(optionalProducts[i].productId).subscribe(function (res) {
+                product = res;
+                var opt = _this.writeOptionalOrMandatory(optionalProducts[i].optional);
+                var p = { product: product, optional: opt };
+                _this.parts.push(p);
+            });
+        };
+        var this_1 = this;
+        for (var i = 0; i < optionalProducts.length; i++) {
+            _loop_1(i);
+        }
+    };
+    CreateProductComponent.prototype.writeOptionalOrMandatory = function (isOptional) {
+        if (isOptional === false) {
+            return "Obrigatório";
+        }
+        return "Opcional";
     };
     CreateProductComponent.prototype.confirm = function () {
         var _this = this;
@@ -1331,22 +1353,16 @@ var CreateProductComponent = /** @class */ (function () {
         }
         //check height is not empty & >0
         var h = this.validateDimension('Altura', this.heightDiscrete, this.heightMin, this.heightMax);
-        console.log('h');
-        console.log(h);
         if (h == null) {
             return;
         }
         //check width is not empty & >0 & check regex
         var w = this.validateDimension('Largura', this.widthDiscrete, this.widthMin, this.widthMax);
-        console.log('w');
-        console.log(w);
         if (w == null) {
             return;
         }
         //check depth is not empty  & >0 & check regex
         var d = this.validateDimension('Profundidade', this.depthDiscrete, this.depthMin, this.depthMax);
-        console.log('d');
-        console.log(d);
         if (d == null) {
             return;
         }
@@ -1381,10 +1397,7 @@ var CreateProductComponent = /** @class */ (function () {
             return;
         }
         var dimensions = { width: w, height: h, depth: d };
-        var parts = [];
-        var prod = new _model_product__WEBPACK_IMPORTED_MODULE_8__["Product"](this.productName, this.category, this.materialfinishes, dimensions, parts, this.productMinOccup, this.productMaxOccup);
-        console.log('prod criado');
-        console.log(prod);
+        var prod = new _model_product__WEBPACK_IMPORTED_MODULE_8__["Product"](this.productName, this.category, this.materialfinishes, dimensions, this.optionalProducts, this.productMinOccup, this.productMaxOccup);
         this.service.createProduct(prod).subscribe(function (cat) {
             _this.bar.open("Sucesso: o produto foi criado.", '', {
                 duration: 2000,
@@ -1397,7 +1410,6 @@ var CreateProductComponent = /** @class */ (function () {
                 });
             }
             else {
-                console.log('outro erro');
                 _this.bar.open("Erro: " + error.error, '', {
                     duration: 2000,
                 });
@@ -1405,7 +1417,6 @@ var CreateProductComponent = /** @class */ (function () {
         });
     };
     CreateProductComponent.prototype.validateDimension = function (dimension, discrete, min, max) {
-        console.log('entrou');
         //if min and max are null and discrete is ok, then it is discrete
         if (this.checkIfFieldIsEmptyOrNull(min) && this.checkIfFieldIsEmptyOrNull(max)
             && !this.checkIfFieldIsEmptyOrNull(discrete)) {
@@ -1514,20 +1525,6 @@ var CreateProductComponent = /** @class */ (function () {
     };
     CreateProductComponent.prototype.back = function () {
         this.router.navigateByUrl('/products');
-    };
-    CreateProductComponent.prototype.updateParts = function () {
-        for (var i = 0; i < this.parts.length; i++) {
-            this.writeOptionalOrMandatory(this.parts[i].part.name);
-        }
-    };
-    CreateProductComponent.prototype.writeOptionalOrMandatory = function (element) {
-        var label = document.getElementById(element);
-        if (label.innerHTML === "true") {
-            label.innerHTML = "Opcional";
-        }
-        else if (label.innerHTML === "false") {
-            label.innerHTML = "Obrigatório";
-        }
     };
     //--------- FOR HTML SHOW/HIDE 
     // ALTURA
@@ -1824,12 +1821,12 @@ var SelectPartsDialog = /** @class */ (function () {
             while (this.btnHO[j] != true && this.btnHO[j] != false && j < this.products.length) {
                 j++;
             }
-            var part = { part: products[i], isOptional: this.btnHO[j] };
+            var part = { productId: products[i].id, optional: this.btnHO[j] };
             j++;
             parts.push(part);
         }
         for (var i = 0; i < parts.length; i++) {
-            if (parts[i].isOptional != true && parts[i].isOptional != false) {
+            if (parts[i].optional != true && parts[i].optional != false) {
                 this.openbar("Deve escolher opcional ou obrigatório");
                 return;
             }
@@ -2365,7 +2362,7 @@ var EditMaterialComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "pequena {\r\n  width: 85%;\r\n}\r\n\r\n#butpequeno {\r\n  width: 13%;\r\n  float: right;\r\n}\r\n\r\n#espaco {\r\n  width: 2%;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZWRpdC1wcm9kdWN0L2VkaXQtcHJvZHVjdC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBVztDQUNaOztBQUVEO0VBQ0UsV0FBVztFQUNYLGFBQWE7Q0FDZDs7QUFFRDtFQUNFLFVBQVU7Q0FDWCIsImZpbGUiOiJzcmMvYXBwL2VkaXQtcHJvZHVjdC9lZGl0LXByb2R1Y3QuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInBlcXVlbmEge1xyXG4gIHdpZHRoOiA4NSU7XHJcbn1cclxuXHJcbiNidXRwZXF1ZW5vIHtcclxuICB3aWR0aDogMTMlO1xyXG4gIGZsb2F0OiByaWdodDtcclxufVxyXG5cclxuI2VzcGFjbyB7XHJcbiAgd2lkdGg6IDIlO1xyXG59XHJcbiJdfQ== */"
+module.exports = "#formpequena {\r\n  width: 86%;\r\n}\r\n\r\n#forminline1 {\r\n  width: 20%;\r\n  display: inline-block;\r\n}\r\n\r\n#forminline2 {\r\n  width: 60%;\r\n  margin-left: 40px;\r\n  display: inline-block;\r\n}\r\n\r\n#forminline3 {\r\n  width: 75%;\r\n  float: right;\r\n}\r\n\r\n#butpequeno {\r\n  width: 13%;\r\n  float: right;\r\n  height: 50px;\r\n}\r\n\r\n#butpequenoparts {\r\n  width: 13%;\r\n  height: auto;\r\n  float: right;\r\n}\r\n\r\n#espaco {\r\n  width: 2%;\r\n}\r\n\r\n.basic-container {\r\n  padding: 30px;\r\n}\r\n\r\n.example-h2 {\r\n  font-size: 15pt;\r\n}\r\n\r\n.example-h4 {\r\n  font-size: 10pt;\r\n}\r\n\r\n.example-section {\r\n  align-content: center;\r\n  align-items: center;\r\n  height: 120px;\r\n}\r\n\r\n.example-margin {\r\n  margin: 0 10px;\r\n}\r\n\r\n.result {\r\n  width: 30%;\r\n  float: left;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.mat-form-field {\r\n  font-size: 14px;\r\n  width: 100%;\r\n}\r\n\r\n.input-group {\r\n  display: table;\r\n  white-space: nowrap;\r\n  vertical-align: top;\r\n  width: 100%;\r\n}\r\n\r\n.input-group .form-control {\r\n    display: table-cell;\r\n    vertical-align: top;\r\n    width: 100%;\r\n  }\r\n\r\n.input-group .input-group-addon {\r\n    display: table-cell;\r\n    width: 1%;\r\n    vertical-align: top;\r\n    background: #2f353e;\r\n    color: #fff;\r\n    font-size: 1.15rem;\r\n    line-height: 19px;\r\n    padding-left: 10px;\r\n    padding-right: 10px;\r\n  }\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZWRpdC1wcm9kdWN0L2VkaXQtcHJvZHVjdC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBVztDQUNaOztBQUVEO0VBQ0UsV0FBVztFQUNYLHNCQUFzQjtDQUN2Qjs7QUFDRDtFQUNFLFdBQVc7RUFDWCxrQkFBa0I7RUFDbEIsc0JBQXNCO0NBQ3ZCOztBQUNEO0VBQ0UsV0FBVztFQUNYLGFBQWE7Q0FDZDs7QUFFRDtFQUNFLFdBQVc7RUFDWCxhQUFhO0VBQ2IsYUFBYTtDQUNkOztBQUVEO0VBQ0UsV0FBVztFQUNYLGFBQWE7RUFDYixhQUFhO0NBQ2Q7O0FBRUQ7RUFDRSxVQUFVO0NBQ1g7O0FBRUQ7RUFDRSxjQUFjO0NBQ2Y7O0FBRUQ7RUFDRSxnQkFBZ0I7Q0FDakI7O0FBRUQ7RUFDRSxnQkFBZ0I7Q0FDakI7O0FBRUQ7RUFDRSxzQkFBc0I7RUFDdEIsb0JBQW9CO0VBQ3BCLGNBQWM7Q0FDZjs7QUFFRDtFQUNFLGVBQWU7Q0FDaEI7O0FBRUQ7RUFDRSxXQUFXO0VBQ1gsWUFBWTtFQUNaLG9CQUFvQjtDQUNyQjs7QUFFRDtFQUNFLGdCQUFnQjtFQUNoQixZQUFZO0NBQ2I7O0FBRUQ7RUFDRSxlQUFlO0VBQ2Ysb0JBQW9CO0VBQ3BCLG9CQUFvQjtFQUNwQixZQUFZO0NBQ2I7O0FBRUM7SUFDRSxvQkFBb0I7SUFDcEIsb0JBQW9CO0lBQ3BCLFlBQVk7R0FDYjs7QUFFRDtJQUNFLG9CQUFvQjtJQUNwQixVQUFVO0lBQ1Ysb0JBQW9CO0lBQ3BCLG9CQUFvQjtJQUNwQixZQUFZO0lBQ1osbUJBQW1CO0lBQ25CLGtCQUFrQjtJQUNsQixtQkFBbUI7SUFDbkIsb0JBQW9CO0dBQ3JCIiwiZmlsZSI6InNyYy9hcHAvZWRpdC1wcm9kdWN0L2VkaXQtcHJvZHVjdC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2Zvcm1wZXF1ZW5hIHtcclxuICB3aWR0aDogODYlO1xyXG59XHJcblxyXG4jZm9ybWlubGluZTEge1xyXG4gIHdpZHRoOiAyMCU7XHJcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG59XHJcbiNmb3JtaW5saW5lMiB7XHJcbiAgd2lkdGg6IDYwJTtcclxuICBtYXJnaW4tbGVmdDogNDBweDtcclxuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbn1cclxuI2Zvcm1pbmxpbmUzIHtcclxuICB3aWR0aDogNzUlO1xyXG4gIGZsb2F0OiByaWdodDtcclxufVxyXG5cclxuI2J1dHBlcXVlbm8ge1xyXG4gIHdpZHRoOiAxMyU7XHJcbiAgZmxvYXQ6IHJpZ2h0O1xyXG4gIGhlaWdodDogNTBweDtcclxufVxyXG5cclxuI2J1dHBlcXVlbm9wYXJ0cyB7XHJcbiAgd2lkdGg6IDEzJTtcclxuICBoZWlnaHQ6IGF1dG87XHJcbiAgZmxvYXQ6IHJpZ2h0O1xyXG59XHJcblxyXG4jZXNwYWNvIHtcclxuICB3aWR0aDogMiU7XHJcbn1cclxuXHJcbi5iYXNpYy1jb250YWluZXIge1xyXG4gIHBhZGRpbmc6IDMwcHg7XHJcbn1cclxuXHJcbi5leGFtcGxlLWgyIHtcclxuICBmb250LXNpemU6IDE1cHQ7XHJcbn1cclxuXHJcbi5leGFtcGxlLWg0IHtcclxuICBmb250LXNpemU6IDEwcHQ7XHJcbn1cclxuXHJcbi5leGFtcGxlLXNlY3Rpb24ge1xyXG4gIGFsaWduLWNvbnRlbnQ6IGNlbnRlcjtcclxuICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIGhlaWdodDogMTIwcHg7XHJcbn1cclxuXHJcbi5leGFtcGxlLW1hcmdpbiB7XHJcbiAgbWFyZ2luOiAwIDEwcHg7XHJcbn1cclxuXHJcbi5yZXN1bHQge1xyXG4gIHdpZHRoOiAzMCU7XHJcbiAgZmxvYXQ6IGxlZnQ7XHJcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcclxufVxyXG5cclxuLm1hdC1mb3JtLWZpZWxkIHtcclxuICBmb250LXNpemU6IDE0cHg7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcbi5pbnB1dC1ncm91cCB7XHJcbiAgZGlzcGxheTogdGFibGU7XHJcbiAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcclxuICB2ZXJ0aWNhbC1hbGlnbjogdG9wO1xyXG4gIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG4gIC5pbnB1dC1ncm91cCAuZm9ybS1jb250cm9sIHtcclxuICAgIGRpc3BsYXk6IHRhYmxlLWNlbGw7XHJcbiAgICB2ZXJ0aWNhbC1hbGlnbjogdG9wO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgfVxyXG5cclxuICAuaW5wdXQtZ3JvdXAgLmlucHV0LWdyb3VwLWFkZG9uIHtcclxuICAgIGRpc3BsYXk6IHRhYmxlLWNlbGw7XHJcbiAgICB3aWR0aDogMSU7XHJcbiAgICB2ZXJ0aWNhbC1hbGlnbjogdG9wO1xyXG4gICAgYmFja2dyb3VuZDogIzJmMzUzZTtcclxuICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgZm9udC1zaXplOiAxLjE1cmVtO1xyXG4gICAgbGluZS1oZWlnaHQ6IDE5cHg7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDEwcHg7XHJcbiAgICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xyXG4gIH1cclxuIl19 */"
 
 /***/ }),
 
@@ -2376,7 +2373,7 @@ module.exports = "pequena {\r\n  width: 85%;\r\n}\r\n\r\n#butpequeno {\r\n  widt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Editar Produto</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n    <!-- Nome -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Nome do produto\" [(ngModel)]=\"name\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Categoria -->\r\n    <mat-form-field>\r\n      <mat-select required [(ngModel)]=\"category\" placeholder=\"Categoria\">\r\n        <mat-option *ngFor=\"let category of categories\" [value]=\"category.id\">\r\n          {{category.description}}\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n\r\n    <!-- Materiais Acabamentos -->\r\n    <!--<div>\r\n      <mat-form-field id=\"formpequena\">\r\n        <mat-select [(ngModel)]=\"materialfinishes\" placeholder=\"Material Acabamento\">\r\n          <mat-option *ngFor=\"let materialfinish of materialfinishes\" [value]=\"materialfinish.id\">\r\n            {{materialfinish.material.name}} + {{materialfinish.finish.name}}\r\n          </mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n    </div>-->\r\n\r\n    <!-- Alturas -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Alturas\" [(ngModel)]=\"height_disc||  height_min + '-' + height_max\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Larguras -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Larguras\" [(ngModel)]=\"width_disc|| width_min + '-' + width_max\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Profundidades -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Profundidades\" [(ngModel)]=\"depth_disc || depth_min + '-' + depth_max \" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Min ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Minima Ocupação\" [value]=\"minOccup\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Max ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Máxima Ocupação\" [value]=\"maxOccup\" required>\r\n    </mat-form-field>\r\n  </div>\r\n\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar Alterações\" class=\"btn btn-primary btn-md\">Confirmar</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Cancelar</button>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Editar Produto</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n    <!-- Nome -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Nome do produto\" [(ngModel)]=\"name\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Categoria -->\r\n    <div>\r\n      <mat-form-field style=\"width: 20%;display:inline-block;\">\r\n        <input matInput placeholder=\"Categoria Anterior\" [(ngModel)]=\"categoryBefore\" readonly>\r\n      </mat-form-field>\r\n      <mat-form-field id=\"forminline3\">\r\n        <mat-select required [(ngModel)]=\"category\" placeholder=\"Categoria\">\r\n          <mat-option *ngFor=\"let cat of categories\" [value]=\"cat.id\">\r\n            {{cat.description}}\r\n          </mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n    </div>\r\n    \r\n\r\n    <!-- Min ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Minima Ocupação\" [(ngModel)]=\"minOccup\" type=\"number\" min=\"0\" max=\"100\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Max ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Máxima Ocupação\" [(ngModel)]=\"maxOccup\" type=\"number\" min=\"{{minOccup}}\" max=\"100\" required>\r\n    </mat-form-field>\r\n  </div>\r\n\r\n  <!-- Partes -->\r\n  <button id=\"butpequeno\" mat-button (click)=\"chooseParts()\" matTooltip=\"A lista será substituida pela nova.\" class=\"btn btn-primary btn-md\">Escolher</button>\r\n  <mat-form-field id=\"forminline1\">\r\n    <mat-select [(ngModel)]=\"part\" placeholder=\"Produtos Anteriores\" >\r\n      <mat-option *ngFor=\"let part of partsBefore\" [value]=\"part\">\r\n        {{part.product.name}} (<label id=\"{{part.product.name}}\" style=\"display:inline-block;\">{{part.optional}}</label>)\r\n      </mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n  <mat-form-field id=\"forminline2\">\r\n    <mat-select [(ngModel)]=\"part\" placeholder=\"Produtos Opcionais\">\r\n      <mat-option *ngFor=\"let part of parts\" [value]=\"part\">\r\n        {{part.product.name}} (<label id=\"{{part.product.name}}\" style=\"display:inline-block;\">{{part.optional}}</label>)\r\n      </mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n\r\n  <br />\r\n  <!-- Materiais Acabamentos -->\r\n  <button mat-button (click)=\"chooseMaterialFinishes()\" matTooltip=\"Escolher Materiais Acabamentos\" class=\"btn btn-primary btn-md\">Escolher Materiais Acabamentos</button>\r\n  <div>\r\n    <mat-card *ngFor=\"let materialfinish of materialfinishes\" class=\"example-card\" style=\"width:200px;float:left;margin-top:30px;margin-right: 30px;\">\r\n      <mat-card-header style=\"text-align:left;\">\r\n        <mat-card-title style=\"font-size:medium;\">{{materialfinish.materialDTO.name}}</mat-card-title>\r\n        <mat-card-subtitle>{{materialfinish.surfaceFinishDTO.name}}</mat-card-subtitle>\r\n      </mat-card-header>\r\n      <img mat-card-image src=\"{{materialfinish.textureUrl}}\">\r\n      <mat-card-actions>\r\n        <button mat-button (click)=\"removeFromMaterialList(materialfinish)\">Remover</button>\r\n      </mat-card-actions>\r\n    </mat-card>\r\n  </div>\r\n  <br />\r\n\r\n  <!-- Alturas -->\r\n  <mat-card class=\"result\" style=\"clear:both;margin-top:30px;\">\r\n    <mat-card-content>\r\n      <h2 class=\"example-h2\">Alturas</h2>\r\n      <h4 class=\"example-h4\">Anterior: {{height_disc_ant||  height_min_ant + '-' + height_max_ant}}</h4>\r\n      <br />\r\n      <section class=\"example-section\">\r\n        <mat-radio-group required>\r\n          <mat-radio-button name=\"myHeight\" (click)=\"showDivNewAlturaDiscreta()\" value=\"HeightDiscrete\">Discreta</mat-radio-button>&ensp;\r\n          <mat-radio-button name=\"myHeight\" (click)=\"showDivNewAlturaContinua()\" value=\"HeightContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n        </mat-radio-group>\r\n        <div id=\"newAlturaContinua\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"hcmin\" matInput [(ngModel)]=\"height_min\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n          </mat-form-field>\r\n          <mat-form-field>\r\n            <input id=\"hcmax\" matInput [(ngModel)]=\"height_max\" type=\"number\" placeholder=\"max\" min=\"{{heightMin}}\"> <br />\r\n          </mat-form-field>\r\n        </div>\r\n        <div id=\"newAlturaDiscreta\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"hdiscrete\" matInput [(ngModel)]=\"height_disc\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n          </mat-form-field>\r\n        </div>\r\n      </section>\r\n    </mat-card-content>\r\n  </mat-card>\r\n\r\n  <!-- Larguras -->\r\n  <mat-card class=\"result\" style=\"margin-left: 30px;margin-top:30px;\">\r\n    <mat-card-content>\r\n      <h2 class=\"example-h2\">Larguras</h2>\r\n      <h4 class=\"example-h4\">Anterior: {{width_disc_ant||  width_min_ant + '-' + width_max_ant}}</h4>\r\n      <br />\r\n      <section class=\"example-section\">\r\n        <mat-radio-group required>\r\n          <mat-radio-button name=\"myWidth\" (click)=\"showDivNewLarguraDiscreta()\" value=\"WidthDiscrete\">Discreta</mat-radio-button>\r\n          <mat-radio-button name=\"myWidth\" (click)=\"showDivNewLarguraContinua()\" value=\"WidthContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n        </mat-radio-group>\r\n        <br />\r\n        <div id=\"newLarguraContinua\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"wcmin\" matInput [(ngModel)]=\"width_min\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n          </mat-form-field>\r\n          <mat-form-field>\r\n            <input id=\"wcmax\" matInput [(ngModel)]=\"width_max\" type=\"number\" placeholder=\"max\" min=\"{{widthMin}}\"> <br />\r\n          </mat-form-field>\r\n        </div>\r\n        <div id=\"newLarguraDiscreta\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"wdiscrete\" matInput [(ngModel)]=\"width_disc\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n          </mat-form-field>\r\n        </div>\r\n      </section>\r\n    </mat-card-content>\r\n  </mat-card>\r\n\r\n  <!-- Profundidades -->\r\n  <mat-card class=\"result\" style=\"margin-left: 30px;margin-top:30px;\">\r\n    <mat-card-content>\r\n      <h2 class=\"example-h2\">Profundidades</h2>\r\n      <h4 class=\"example-h4\">Anterior: {{depth_disc_ant||  depth_min_ant + '-' + depth_max_ant}}</h4>\r\n      <br />\r\n      <section class=\"example-section\">\r\n        <mat-radio-group id=\"profgroup\">\r\n          <mat-radio-button name=\"myDepth\" (click)=\"showDivNewProfundidadeDiscreta()\" value=\"DepthDiscrete\">Discreta</mat-radio-button>\r\n          <mat-radio-button name=\"myDepth\" (click)=\"showDivNewProfundidadeContinua()\" value=\"DepthContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n        </mat-radio-group>\r\n        <br />\r\n        <div id=\"newProfundidadeContinua\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"dcmin\" matInput [(ngModel)]=\"depth_min\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n          </mat-form-field>\r\n          <mat-form-field>\r\n            <input id=\"dcmax\" matInput [(ngModel)]=\"depth_max\" type=\"number\" placeholder=\"max\" min=\"0\"> <br />\r\n          </mat-form-field>\r\n        </div>\r\n        <div id=\"newProfundidadeDiscreta\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"ddiscrete\" matInput [(ngModel)]=\"depth_disc\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n          </mat-form-field>\r\n        </div>\r\n      </section>\r\n    </mat-card-content>\r\n  </mat-card>\r\n\r\n\r\n\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar Alterações\" class=\"btn btn-primary btn-md\">Confirmar</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Cancelar</button>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -2396,23 +2393,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
 /* harmony import */ var _services_category_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/category.service */ "./src/app/services/category.service.ts");
+/* harmony import */ var _create_product_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../create-product/select-material-finish-dialog */ "./src/app/create-product/select-material-finish-dialog.ts");
+/* harmony import */ var _create_product_select_parts_dialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../create-product/select-parts-dialog */ "./src/app/create-product/select-parts-dialog.ts");
 
 
 
 
 
 
+
+
+var min_array_limit = 1;
+var dim_min_limit = 1;
+var percentage_min_limit = 0;
+var max_limit = 100;
 var EditProductComponent = /** @class */ (function () {
-    function EditProductComponent(router, route, service, catService, bar) {
+    function EditProductComponent(router, route, service, catService, dialog, bar) {
         this.router = router;
         this.route = route;
         this.service = service;
         this.catService = catService;
+        this.dialog = dialog;
         this.bar = bar;
+        this.optionalProducts = [];
+        this.parts = [];
+        this.partsBefore = [];
+        this.discretePattern = "[0-9]+([;][0-9]+)*";
     }
     EditProductComponent.prototype.ngOnInit = function () {
-        this.getProduct();
         this.getCategories();
+        this.getProduct();
     };
     EditProductComponent.prototype.getProduct = function () {
         var _this = this;
@@ -2422,32 +2432,37 @@ var EditProductComponent = /** @class */ (function () {
         });
         this.service.getProduct(id).subscribe(function (res) {
             _this.product = res;
+            console.log(_this.product);
             _this.name = _this.product.name;
-            _this.category = _this.product.category;
+            _this.categoryBefore = _this.product.category.description;
             _this.materialfinishes = _this.product.materialFinishes;
-            var heightDisc = _this.product.dimensions.height;
-            if (heightDisc.discrete == null) {
-                _this.height_max = _this.product.dimensions.height.max;
-                _this.height_min = _this.product.dimensions.height.min;
+            var optproducts = _this.product.optionalProducts;
+            if (!optproducts === undefined) {
+                _this.convertPartsBefore(optproducts);
+            }
+            var heightDisc_ant = _this.product.dimensions.height;
+            if (heightDisc_ant.discrete == null) {
+                _this.height_max_ant = _this.product.dimensions.height.max;
+                _this.height_min_ant = _this.product.dimensions.height.min;
             }
             else {
-                //this.height_disc = (<DiscreteDimension>this.product.dimensions.height).discrete;
+                _this.height_disc_ant = _this.product.dimensions.height.discrete;
             }
-            var widthDisc = _this.product.dimensions.width;
-            if (widthDisc.discrete == null) {
-                _this.width_max = _this.product.dimensions.width.max;
-                _this.width_min = _this.product.dimensions.width.min;
-            }
-            else {
-                //this.width_disc = (<DiscreteDimension>this.product.dimensions.width).discrete;
-            }
-            var depthDisc = _this.product.dimensions.depth;
-            if (depthDisc.discrete == null) {
-                _this.depth_max = _this.product.dimensions.depth.max;
-                _this.depth_min = _this.product.dimensions.depth.min;
+            var widthDisc_ant = _this.product.dimensions.width;
+            if (widthDisc_ant.discrete == null) {
+                _this.width_max_ant = _this.product.dimensions.width.max;
+                _this.width_min_ant = _this.product.dimensions.width.min;
             }
             else {
-                //this.depth_disc = (<DiscreteDimension>this.product.dimensions.depth).discrete;
+                _this.width_disc_ant = _this.product.dimensions.width.discrete;
+            }
+            var depthDisc_ant = _this.product.dimensions.depth;
+            if (depthDisc_ant.discrete == null) {
+                _this.depth_max_ant = _this.product.dimensions.depth.max;
+                _this.depth_min_ant = _this.product.dimensions.depth.min;
+            }
+            else {
+                _this.depth_disc_ant = _this.product.dimensions.depth.discrete;
             }
             _this.minOccup = _this.product.minOccupancyPercentage;
             _this.maxOccup = _this.product.maxOccupancyPercentage;
@@ -2464,6 +2479,33 @@ var EditProductComponent = /** @class */ (function () {
             }
         });
     };
+    EditProductComponent.prototype.convertPartsBefore = function (optionalProducts) {
+        var _this = this;
+        var product;
+        var _loop_1 = function (i) {
+            this_1.service.getProduct(optionalProducts[i].productId).subscribe(function (res) {
+                product = res;
+                var opt = _this.writeOptionalOrMandatory(optionalProducts[i].optional);
+                var p = { product: product, optional: opt };
+                _this.partsBefore.push(p);
+            });
+        };
+        var this_1 = this;
+        for (var i = 0; i < optionalProducts.length; i++) {
+            _loop_1(i);
+        }
+    };
+    EditProductComponent.prototype.writeOptionalOrMandatory = function (isOptional) {
+        if (isOptional === true) {
+            return "Opcional";
+        }
+        return "Obrigatório";
+    };
+    EditProductComponent.prototype.removeFromMaterialList = function (materialfinish) {
+        console.log(materialfinish);
+        var index = this.materialfinishes.findIndex(function (mat) { return (mat.id == materialfinish.id); });
+        this.materialfinishes.splice(index, 1);
+    };
     EditProductComponent.prototype.getCategories = function () {
         var _this = this;
         this.catService.getCategories().subscribe(function (data) {
@@ -2473,6 +2515,51 @@ var EditProductComponent = /** @class */ (function () {
                 duration: 2000,
             });
         });
+    };
+    EditProductComponent.prototype.chooseMaterialFinishes = function () {
+        this.openMaterialDialog();
+    };
+    EditProductComponent.prototype.chooseParts = function () {
+        this.openPartsDialog();
+    };
+    EditProductComponent.prototype.openMaterialDialog = function () {
+        var _this = this;
+        var dialogRef = this.dialog.open(_create_product_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_6__["SelectMaterialFinishesDialog"], {
+            width: '900px',
+            data: {}
+        });
+        dialogRef.afterClosed().subscribe(function (result) {
+            _this.materialfinishes = result;
+        });
+    };
+    EditProductComponent.prototype.openPartsDialog = function () {
+        var _this = this;
+        var dialogRef = this.dialog.open(_create_product_select_parts_dialog__WEBPACK_IMPORTED_MODULE_7__["SelectPartsDialog"], {
+            width: '700px',
+            data: {}
+        });
+        dialogRef.afterClosed().subscribe(function (result) {
+            _this.optionalProducts = result;
+            if (!result === undefined) {
+                _this.convertToParts(result);
+            }
+        });
+    };
+    EditProductComponent.prototype.convertToParts = function (optionalProducts) {
+        var _this = this;
+        var product;
+        var _loop_2 = function (i) {
+            this_2.service.getProduct(optionalProducts[i].productId).subscribe(function (res) {
+                product = res;
+                var opt = _this.writeOptionalOrMandatory(optionalProducts[i].optional);
+                var p = { product: product, optional: opt };
+                _this.parts.push(p);
+            });
+        };
+        var this_2 = this;
+        for (var i = 0; i < optionalProducts.length; i++) {
+            _loop_2(i);
+        }
     };
     EditProductComponent.prototype.confirm = function () {
         //const sizeSurfaceFinishName = this.surfaceFinishName.trim().length;
@@ -2492,13 +2579,87 @@ var EditProductComponent = /** @class */ (function () {
     EditProductComponent.prototype.back = function () {
         this.router.navigateByUrl('/products');
     };
+    //--------- FOR HTML SHOW/HIDE 
+    // ALTURA
+    EditProductComponent.prototype.showDivNewAltura = function () {
+        document.getElementById('newAltura').style.display = "block";
+    };
+    EditProductComponent.prototype.dispose_showDivNewAltura = function () {
+        document.getElementById('newAltura').style.display = "none";
+    };
+    EditProductComponent.prototype.showDivNewAlturaDiscreta = function () {
+        this.dispose_showDivNewAlturaContinua();
+        this.height_min = null;
+        this.height_max = null;
+        document.getElementById('newAlturaDiscreta').style.display = "block";
+    };
+    EditProductComponent.prototype.dispose_showDivNewAlturaDiscreta = function () {
+        document.getElementById('newAlturaDiscreta').style.display = "none";
+    };
+    EditProductComponent.prototype.showDivNewAlturaContinua = function () {
+        this.dispose_showDivNewAlturaDiscreta();
+        this.height_disc = null;
+        document.getElementById('newAlturaContinua').style.display = "block";
+    };
+    EditProductComponent.prototype.dispose_showDivNewAlturaContinua = function () {
+        document.getElementById('newAlturaContinua').style.display = "none";
+    };
+    //LARGURA
+    EditProductComponent.prototype.showDivNewLargura = function () {
+        this.dispose_showDivNewLargura();
+        document.getElementById('newLargura').style.display = "block";
+    };
+    EditProductComponent.prototype.dispose_showDivNewLargura = function () {
+        document.getElementById('newLargura').style.display = "none";
+    };
+    EditProductComponent.prototype.showDivNewLarguraDiscreta = function () {
+        this.dispose_showDivNewLarguraContinua();
+        this.width_max = null;
+        this.width_min = null;
+        document.getElementById('newLarguraDiscreta').style.display = "block";
+    };
+    EditProductComponent.prototype.dispose_showDivNewLarguraDiscreta = function () {
+        document.getElementById('newLarguraDiscreta').style.display = "none";
+    };
+    EditProductComponent.prototype.showDivNewLarguraContinua = function () {
+        this.dispose_showDivNewLarguraDiscreta();
+        this.width_disc = "";
+        document.getElementById('newLarguraContinua').style.display = "block";
+    };
+    EditProductComponent.prototype.dispose_showDivNewLarguraContinua = function () {
+        document.getElementById('newLarguraContinua').style.display = "none";
+    };
+    // PROFUNDIDADE
+    EditProductComponent.prototype.showDivNewProfundidade = function () {
+        document.getElementById('newProfundidade').style.display = "block";
+    };
+    EditProductComponent.prototype.dispose_showDivNewProfundidade = function () {
+        document.getElementById('newProfundidade').style.display = "none";
+    };
+    EditProductComponent.prototype.showDivNewProfundidadeDiscreta = function () {
+        this.dispose_showDivNewProfundidadeContinua();
+        this.depth_min = null;
+        this.depth_max = null;
+        document.getElementById('newProfundidadeDiscreta').style.display = "block";
+    };
+    EditProductComponent.prototype.dispose_showDivNewProfundidadeDiscreta = function () {
+        document.getElementById('newProfundidadeDiscreta').style.display = "none";
+    };
+    EditProductComponent.prototype.showDivNewProfundidadeContinua = function () {
+        this.dispose_showDivNewProfundidadeDiscreta();
+        this.depth_disc = "";
+        document.getElementById('newProfundidadeContinua').style.display = "block";
+    };
+    EditProductComponent.prototype.dispose_showDivNewProfundidadeContinua = function () {
+        document.getElementById('newProfundidadeContinua').style.display = "none";
+    };
     EditProductComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-edit-product',
             template: __webpack_require__(/*! ./edit-product.component.html */ "./src/app/edit-product/edit-product.component.html"),
             styles: [__webpack_require__(/*! ./edit-product.component.css */ "./src/app/edit-product/edit-product.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_product_service__WEBPACK_IMPORTED_MODULE_4__["ProductService"], _services_category_service__WEBPACK_IMPORTED_MODULE_5__["CategoryService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_product_service__WEBPACK_IMPORTED_MODULE_4__["ProductService"], _services_category_service__WEBPACK_IMPORTED_MODULE_5__["CategoryService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"]])
     ], EditProductComponent);
     return EditProductComponent;
 }());
@@ -2720,7 +2881,7 @@ module.exports = ".vertical-center {\r\n  margin: 0;\r\n  position: absolute;\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card card-image\" style=\"background-image: url(https://www.bradutch.com/wp-content/uploads/2018/09/videoblocks-blue-business-background-2_h3cvzluwb_thumbnail-full01.png); height: 93%; overflow-y: hidden\">\n  <div class=\"text-white text-center py-5 px-4 my-5 vertical-center\">\n    <div>\n      <h2 class=\"card-title h1-responsive pt-3 mb-5 font-bold\"><strong>Bem-vindo à SiCProductions</strong></h2>\n      <p class=\"mx-5 mb-5\">Comece a projetar e configurar produtos personalizados à sua medida.\n        Após a configuração pode fazer a sua encomenda e acompanhar o estado da mesma.\n        Comece já a projetar e configurar os seus produtos.\n      </p>\n      <a *ngIf=\"!authenticated\" routerLink=\"/login\" class=\"btn btn-outline-white btn-md\"><i class=\"fa fa-sign-in\"></i> Iniciar sessão</a>\n      <a *ngIf=\"authenticated\" routerLink=\"/clientCatalogue\" class=\"btn btn-outline-white btn-md\"><i class=\"fas fa-cube\"></i> Começar</a>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"card card-image\" style=\"background-image: url(https://www.bradutch.com/wp-content/uploads/2018/09/videoblocks-blue-business-background-2_h3cvzluwb_thumbnail-full01.png); height: 93%; overflow-y: hidden\">\n  <div class=\"text-white text-center py-5 px-4 my-5 vertical-center\">\n    <div>\n      <h2 class=\"card-title h1-responsive pt-3 mb-5 font-bold\"><strong>Bem-vindo à SiCProductions</strong></h2>\n      <p class=\"mx-5 mb-5\">Comece a projetar e configurar produtos personalizados à sua medida.\n        Após a configuração pode fazer a sua encomenda e acompanhar o estado da mesma.\n        Comece já a projetar e configurar os seus produtos.\n      </p>\n      <a *ngIf=\"!authenticated\" routerLink=\"/login\" class=\"btn btn-outline-white btn-md\"><i class=\"fa fa-sign-in\"></i> Iniciar sessão</a>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -2783,7 +2944,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\"><br />\r\n<h1 class=\"text-center\">Bem-vindo</h1>\r\n<!-- Extended material form grid -->\r\n<form class=\"form-group\">\r\n  <!-- Grid row -->\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-user prefix\"></i>\r\n        <input [(ngModel)]=\"_username\" name=\"username\" mdbInputDirective type=\"text\" class=\"form-control\" placeholder=\"Nome de utilizador\" required>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input [(ngModel)]=\"_password\" name=\"password\" mdbInputDirective type=\"password\" class=\"form-control\" placeholder=\"Palavra-passe\" required>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n  <!-- Grid row -->\r\n  <div *ngIf=\"isValidUser\">\r\n    <div class=\"form-row\">\r\n      <!-- Grid column -->\r\n      <div class=\"col-md-6\">\r\n        <!-- Material input -->\r\n        <div class=\"md-form form-group\">\r\n          <i class=\"fas fa-key prefix\"></i>\r\n          <input mdbInputDirective type=\"password\" class=\"form-control\" placeholder=\"Código de 4 dígitos recebido no e-mail\" required>\r\n        </div>\r\n      </div>\r\n      <!-- Grid column -->\r\n    </div>\r\n  </div>\r\n  <button type=\"submit\" (click)=\"login()\" matTooltip=\"Iniciar sessão\" class=\"btn btn-primary btn-md\">Entrar</button>\r\n  Não tem uma conta? <a routerLink=\"/signup\">Crie uma.</a>\r\n</form>\r\n<!-- Extended material form grid -->\r\n</div>\r\n"
+module.exports = "<div class=\"container\"><br />\r\n<h1 class=\"text-center\">Bem-vindo</h1>\r\n<!-- Extended material form grid -->\r\n<form class=\"form-group\">\r\n  <!-- Grid row -->\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-user prefix\"></i>\r\n        <input [(ngModel)]=\"_username\" name=\"username\" mdbInputDirective type=\"text\" class=\"form-control\" placeholder=\"Nome de utilizador\" required>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input [(ngModel)]=\"_password\" name=\"password\" mdbInputDirective type=\"password\" class=\"form-control\" placeholder=\"Palavra-passe\" required>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fas fa-key prefix\"></i>\r\n        <input [(ngModel)]=\"token\" name=\"token\" mdbInputDirective type=\"text\" class=\"form-control\" placeholder=\"Código\" aria-describedby=\"tokenPwdHelpBlock\">\r\n        <small id=\"tokenHelpBlock\" class=\"form-text text-muted\">\r\n          Para se autenticar, escreva o código de 6 dígitos fornecido pela aplicação Google Authenticator (apenas obrigatório para clientes).\r\n        </small>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n  <button type=\"submit\" (click)=\"login()\" matTooltip=\"Iniciar sessão\" class=\"btn btn-primary btn-md\">Entrar</button>\r\n  Não tem uma conta? <a routerLink=\"/signup\">Crie uma.</a>\r\n</form>\r\n<!-- Extended material form grid -->\r\n</div>\r\n"
 
 /***/ }),
 
@@ -2814,6 +2975,7 @@ var LoginComponent = /** @class */ (function () {
         this.router = router;
         this._username = "";
         this._password = "";
+        this.token = "";
     }
     LoginComponent.prototype.ngOnInit = function () {
     };
@@ -2825,13 +2987,13 @@ var LoginComponent = /** @class */ (function () {
             _this.bar.open("Login com sucesso.", "", { duration: 1500 });
             _this.router.navigate(['/home']);
         }, function () {
-            _this.authSrv.clientLogin(_this._username, _this._password).subscribe(function (data) {
+            _this.authSrv.clientLogin(_this._username, _this._password, _this.token).subscribe(function (data) {
                 _this.authSrv.loginSucceeded(data);
                 _this.authSrv.setClient(true);
                 _this.bar.open("Login com sucesso.", "", { duration: 1500 });
                 _this.router.navigate(['/home']);
             }, function () {
-                _this.bar.open("Combinação de utilizador ou palavra-passe incorreta.", "", { duration: 3000 });
+                _this.bar.open("Combinação de utilizador, palavra-passe ou autenticação de 2 fatores falhada.", "", { duration: 3000 });
             });
         });
     };
@@ -3221,17 +3383,6 @@ var orderItem = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Product", function() { return Product; });
 var Product = /** @class */ (function () {
-    //constructor(name: string, category: Category, materialfinishes: MaterialFinish[], dimensions: Dimensions,
-    //  parts: OptionalProducts[], minOccupancyPercentage: number, maxOccupancyPercentage: number, id?: number) {
-    //  this.id = id;
-    //  this.name = name;
-    //  this.category = category;
-    //  this.materialFinishes = materialfinishes;
-    //  this.dimensions = dimensions;
-    //  this.optionalProducts = parts;
-    //  this.minOccupancyPercentage = minOccupancyPercentage;
-    //  this.maxOccupancyPercentage = maxOccupancyPercentage;
-    //}
     function Product(name, category, materialfinishes, dimensions, parts, minOccupancyPercentage, maxOccupancyPercentage, id) {
         this.id = id;
         this.name = name;
@@ -3329,6 +3480,11 @@ var OrbitControls = __webpack_require__(/*! three-orbit-controls */ "./node_modu
 var dat = __webpack_require__(/*! dat.gui */ "./node_modules/dat.gui/build/dat.gui.module.js");
 var datGUI = null;
 var guiControls = null;
+var guiControlsNomeExtra = null;
+var guiControlsExtraLargura = null;
+var guiControlsExtraAltura = null;
+var guiControlsExtraProfundidade = null;
+var guiControlsExtraMaterial = null;
 var ProductConfiguratorComponent = /** @class */ (function () {
     function ProductConfiguratorComponent(route, service, bar, serviceorder, authservice) {
         var _this = this;
@@ -3365,9 +3521,14 @@ var ProductConfiguratorComponent = /** @class */ (function () {
             };
             this.adicionar = function () {
             };
+            this.nomeProdutoOpcional = " ";
+            this.larguraProdutoExtra = 0;
+            this.alturaProdutoExtra = 0;
+            this.profundidadeProdutoExtra = 0;
+            this.materialProdutoExtra = "";
         };
         this.camera = new three__WEBPACK_IMPORTED_MODULE_2__["PerspectiveCamera"](75, window.innerWidth / window.innerHeight, 1, 10000);
-        this.camera.position.z = 1000;
+        this.camera.position.z = 200;
         this.camera.add(new three__WEBPACK_IMPORTED_MODULE_2__["PointLight"](0xffffff));
         this.scene.add(this.camera);
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
@@ -3398,18 +3559,44 @@ var ProductConfiguratorComponent = /** @class */ (function () {
     };
     ProductConfiguratorComponent.prototype.updateSize = function () {
         this.scene.remove(this.mesh);
-        var material = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ color: 0xff0000, wireframe: false });
+        var tmp = guiControls.material.split(" / ");
+        var loader = new three__WEBPACK_IMPORTED_MODULE_2__["TextureLoader"]().load(tmp[3]);
+        var material = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ map: loader });
         if (this.categoria == "Armário") {
-            this.mesh = this.closet(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+            this.mesh = this.closet(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
         }
         else if (this.categoria == "Gaveta") {
-            this.mesh = this.drawer(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+            this.mesh = this.drawer(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
         }
         else if (this.categoria == "Prateleira") {
-            this.mesh = this.drawer(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+            this.mesh = this.shelf(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
         }
         else {
-            this.mesh = this.closet(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
+            this.mesh = this.closet(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
+        }
+        if (this.optionalProduct != null) {
+            var selectedObject = this.scene.getObjectByName((this.optionalProduct.id).toString());
+            if (selectedObject != null) {
+                this.scene.remove(selectedObject);
+            }
+            var tmp_1 = guiControls.materialProdutoExtra.split(" / ");
+            var loader_1 = new three__WEBPACK_IMPORTED_MODULE_2__["TextureLoader"]().load(tmp_1[3]);
+            var material_1 = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ map: loader_1 });
+            var obj = null;
+            if (guiControls.produtoExtra == "Armário") {
+                obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material_1);
+            }
+            else if (guiControls.produtoExtra == "Gaveta") {
+                obj = this.drawer(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material_1);
+            }
+            else if (guiControls.produtoExtra == "Prateleira") {
+                obj = this.shelf(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material_1);
+            }
+            else {
+                obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material_1);
+            }
+            obj.name = (this.optionalProduct.id).toString();
+            this.scene.add(obj);
         }
         this.scene.add(this.mesh);
     };
@@ -3418,7 +3605,6 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         this.route.params.subscribe(function (res) {
             _this.id = res.id;
         });
-        console.log("id  " + this.id);
         this.service.getProduct(this.id).subscribe(function (data) {
             _this.product = data;
             guiControls.name = _this.product.name;
@@ -3471,14 +3657,12 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         }
         datGUI.add(guiControls, 'material', this.getMaterialFinish(this.product.materialFinishes))
             .name('Material Acabamento').onChange(function () { _this.updateSize(); });
-        datGUI.add(guiControls, 'produtoExtra', ["Armario", "Gaveta"])
-            .name('SubProdutos').onChange(function () { _this.updateSize(); });
-        datGUI.add(guiControls, 'materialExtra', [])
+        datGUI.add(guiControls, 'produtoExtra', this.getSubProducts(this.product.optionalProducts))
             .name('SubProdutos').onChange(function () { _this.updateSize(); });
         datGUI.add(guiControls, 'cidade').name('cidade');
         datGUI.add(guiControls, 'latitude').name('latitude');
         datGUI.add(guiControls, 'longitude').name('longitude');
-        datGUI.add(guiControls, 'adicionar').name("Adicionar Produto").onChange(function () { });
+        datGUI.add(guiControls, 'adicionar').name("Adicionar Produto").onChange(function () { _this.adicionar(); });
         datGUI.add(guiControls, 'encomendar').name("Encomendar Produto").onChange(function () { _this.encomenda(guiControls.name, guiControls.material, guiControls.altura, guiControls.profundidade, guiControls.largura, guiControls.latitude, guiControls.longitude, guiControls.cidade); });
     };
     ProductConfiguratorComponent.prototype.animate = function () {
@@ -3488,7 +3672,7 @@ var ProductConfiguratorComponent = /** @class */ (function () {
     };
     //Create Closet
     ProductConfiguratorComponent.prototype.closet = function (width, height, depth, material) {
-        var thickness = height * 0.05;
+        var thickness = height * 0.02;
         var closetG = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](width, height, depth);
         var closetM = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ color: 0x00ff00 });
         closetM.transparent = true;
@@ -3522,7 +3706,7 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         var drawerG = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](width, height, depth);
         var drawerM = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ color: 0x00ff00 });
         drawerM.transparent = true;
-        drawerM.opacity = 0.0;
+        drawerM.opacity = 0.001;
         var drawer = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](drawerG, drawerM);
         var backWallG = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](width, height, thickness);
         var backWall = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](backWallG, material);
@@ -3557,98 +3741,52 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         var shelf = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](shelfG, shelfM);
         return shelf;
     };
-    ProductConfiguratorComponent.prototype.onMouseDown = function (event) {
-        if (event.which == 1) {
-            this.mouse.set((event.offsetX / this.renderer.getSize().width) * 2 - 1, -(event.offsetY / this.renderer.getSize().height) * 2 + 1);
-            // update the picking ray with the camera and mouse position
-            this.raycaster.setFromCamera(this.mouse, this.camera);
-            // calculate objects intersecting the picking ray
-            var intersects = this.raycaster.intersectObjects(this.parts);
-            if (intersects.length > 0) {
-                this.controls.enableRotate = false;
-                this.selectedMove = intersects[0].object;
-            }
-            else {
-                intersects = this.raycaster.intersectObject(this.mesh);
-                if (intersects.length > 0) {
-                    this.controls.enableRotate = false;
-                    this.selectedScale = intersects[0].object;
-                }
-            }
-        }
-        /*if (event.which == 3) {
-              mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-              mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-    
-              // update the picking ray with the camera and mouse position
-              raycaster.setFromCamera( mouse, camera );
-    
-              // calculate objects intersecting the picking ray
-              var intersects = raycaster.intersectObjects( test );
-    
-              if (intersects.length > 0) {
-                    controls.enablePan = false;
-                    selectedScale = intersects[ 0 ].object;
-              }
-        }*/
-    };
     ProductConfiguratorComponent.prototype.convertDimensions = function (dimensoes) {
         return dimensoes.split(";");
     };
-    ProductConfiguratorComponent.prototype.onMouseMove = function (event) {
-        if (this.selectedMove != null) {
-            this.mouse.set((event.offsetX / this.renderer.getSize().width) * 2 - 1, -(event.offsetY / this.renderer.getSize().height) * 2 + 1);
-            this.raycaster.setFromCamera(this.mouse, this.camera);
-            //transform mouse coordinates to real world coordinates
-            var vector = new three__WEBPACK_IMPORTED_MODULE_2__["Vector3"](this.mouse.x, this.mouse.y, 0.5);
-            vector.unproject(this.camera);
-            var dir = vector.sub(this.camera.position).normalize();
-            var distance = -this.camera.position.z / dir.z;
-            var pos = this.camera.position.clone().add(dir.multiplyScalar(distance));
-            //copy position
-            this.selectedMove.position.copy(pos);
-        }
-    };
-    ProductConfiguratorComponent.prototype.onMouseScale = function (event) {
-        if (this.selectedScale != null) {
-            var x = ((event.offsetX / this.renderer.getSize().width) * 2 - 1) - this.mouse.x;
-            var y = (-(event.offsetY / this.renderer.getSize().height) * 2 + 1) - this.mouse.y;
-            //transform mouse coordinates to real world coordinates
-            var vector = new three__WEBPACK_IMPORTED_MODULE_2__["Vector3"](x, y, 0.5);
-            vector.unproject(this.camera);
-            var dir = vector.sub(this.camera.position).normalize();
-            var distance = -this.camera.position.z / dir.z;
-            //update dimensions
-            guiControls.largura += x * this.camera.position.z * .5;
-            guiControls.altura += y * this.camera.position.z * .5;
-            //redraw
-            this.updateSize();
-            //update mouse position
-            this.mouse.x = (event.offsetX / this.renderer.getSize().width) * 2 - 1;
-            this.mouse.y = -(event.offsetY / this.renderer.getSize().height) * 2 + 1;
-        }
-    };
-    ProductConfiguratorComponent.prototype.onMouseUp = function (event) {
-        // Enable the controls
-        if (event.which == 1) {
-            this.controls.enableRotate = true;
-            this.selectedMove = null;
-            this.selectedScale = null;
-        }
-        /*if (event.which == 3) {
-              controls.enablePan = true;
-              selectedScale = null;
-        }*/
-    };
     ProductConfiguratorComponent.prototype.adicionar = function () {
-        if (guiControls.produtoExtra == "Armário") {
-            this.mesh.add(guiControls.altura, guiControls.largura, guiControls.profundidade, guiControls.materialExtra);
-        }
-        else if (guiControls.produtoExtra == "Gaveta") {
-            this.mesh.add(guiControls.altura, guiControls.largura, guiControls.profundidade, guiControls.materialExtra);
-        }
-        else if (guiControls.produtoExtra == "Prateleira") {
-            this.mesh.add(guiControls.altura, guiControls.largura, guiControls.profundidade, guiControls.materialExtra);
+        var _this = this;
+        var id = guiControls.produtoExtra.split("/")[1];
+        if (this.getProductById(id) != null) {
+            //ADCIONAR AQUI PRODUTO AOS ITENS
+            if ((this.optionalProduct.dimensions.height.discrete) == null) {
+                guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra', this.optionalProduct.dimensions.height.min, this.optionalProduct.dimensions.height.max, 1).name('Altura').listen().onChange(function () { _this.updateSize(); });
+            }
+            else {
+                guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra', this.convertDimensions((this.optionalProduct.dimensions.height.discrete)))
+                    .name('Altura Produto Opcional').onChange(function () { _this.updateSize(); });
+            }
+            if ((this.optionalProduct.dimensions.width.discrete) == null) {
+                guiControlsExtraLargura = datGUI.add(guiControls, 'larguraProdutoExtra', this.optionalProduct.dimensions.width.min, this.optionalProduct.dimensions.width.max, 1).name('Largura').listen().onChange(function () { _this.updateSize(); });
+            }
+            else {
+                guiControlsExtraLargura = datGUI.add(guiControls, 'larguraProdutoExtra', this.convertDimensions((this.optionalProduct.dimensions.width.discrete)))
+                    .name('Largura Produto Opcional').onChange(function () { _this.updateSize(); });
+            }
+            if ((this.optionalProduct.dimensions.depth.discrete) == null) {
+                guiControlsExtraProfundidade = datGUI.add(guiControls, 'profundidadeProdutoExtra', this.optionalProduct.dimensions.depth.min, this.optionalProduct.dimensions.depth.max, 1).name('Profundidade').listen().onChange(function () { _this.updateSize(); });
+            }
+            else {
+                guiControlsExtraProfundidade = datGUI.add(guiControls, 'profundidadeProdutoExtra', this.convertDimensions((this.optionalProduct.dimensions.depth.discrete)))
+                    .name('Profundidade Produto Opcional').onChange(function () { _this.updateSize(); });
+            }
+            guiControlsExtraMaterial = datGUI.add(guiControls, 'materialProdutoExtra', this.getMaterialFinish(this.optionalProduct.materialFinishes))
+                .name('Material Acabamento Extra').onChange(function () { _this.updateSize(); });
+            alert(this.optionalProduct.name);
+            if (guiControls.produtoExtra == "Armário") {
+                var obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+            }
+            else if (guiControls.produtoExtra == "Gaveta") {
+                var obj = this.drawer(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+            }
+            else if (guiControls.produtoExtra == "Prateleira") {
+                var obj = this.shelf(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+            }
+            else {
+                var obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+                obj.name = (this.optionalProduct.id).toString();
+                this.scene.add(obj);
+            }
         }
     };
     ProductConfiguratorComponent.prototype.encomenda = function (name, material, altura, profundidade, largura, latitude, longitude, cidade) {
@@ -3668,9 +3806,135 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         console.log(matsFinish);
         for (var key in matsFinish) {
             var matFinish = matsFinish[key];
-            ret.push(matFinish.materialDTO.name + " / " + matFinish.surfaceFinishDTO.name + " / " + (matsFinish[key].price + matFinish.materialDTO.price));
+            ret.push(matFinish.materialDTO.name + " / " + matFinish.surfaceFinishDTO.name + " / " + (matsFinish[key].price + matFinish.materialDTO.price) + " / " + matsFinish[key].textureUrl);
         }
         return ret;
+    };
+    ProductConfiguratorComponent.prototype.getSubProducts = function (matsFinish) {
+        var ret = [];
+        console.log(matsFinish);
+        for (var key in matsFinish) {
+            var matFinish = matsFinish[key];
+            ret.push(matFinish.optional + " / " + matFinish.productId);
+        }
+        return ret;
+    };
+    ProductConfiguratorComponent.prototype.getProductById = function (id) {
+        var _this = this;
+        this.service.getProduct(id).subscribe(function (data) {
+            _this.optionalProduct = data;
+        }, function (error) {
+            if (error.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                _this.bar.open("Ocorreu um erro ao tentar obter o producto do servidor...", '', {
+                    duration: 2000,
+                });
+            }
+        });
+        return this.optionalProduct;
+    };
+    ProductConfiguratorComponent.prototype.changeActiveProduct = function (id) {
+        var newProduct = this.getProductById(id);
+        if (newProduct != null) {
+            this.optionalProduct = newProduct;
+            datGUI.remove(guiControlsExtraAltura);
+            datGUI.remove(guiControlsExtraLargura);
+            datGUI.remove(guiControlsExtraProfundidade);
+            datGUI.remove(guiControlsExtraMaterial);
+        }
+    };
+    ProductConfiguratorComponent.prototype.onMouseDown = function (event) {
+        if (event.which == 1) {
+            this.mouse.set((event.offsetX / this.renderer.getSize().width) * 2 - 1, -(event.offsetY / this.renderer.getSize().height) * 2 + 1);
+            // update the picking ray with the camera and mouse position
+            this.raycaster.setFromCamera(this.mouse, this.camera);
+            // calculate objects intersecting the picking ray
+            var intersects = this.raycaster.intersectObjects(this.parts);
+            if (intersects.length > 0) {
+                this.controls.enableRotate = false;
+                this.changeActiveProduct(parseInt(intersects[0].object.name));
+                this.selectedMove = intersects[0].object;
+            }
+            else {
+                intersects = this.raycaster.intersectObject(this.mesh);
+                if (intersects.length > 0) {
+                    if ((this.product.dimensions.height.discrete) == null) {
+                        this.controls.enableRotate = false;
+                        this.selectedScale = intersects[0].object;
+                    }
+                }
+            }
+        }
+    };
+    ProductConfiguratorComponent.prototype.onMouseMove = function (event) {
+        if (this.selectedMove != null) {
+            this.mouse.set((event.offsetX / this.renderer.getSize().width) * 2 - 1, -(event.offsetY / this.renderer.getSize().height) * 2 + 1);
+            //transform mouse coordinates to real world coordinates
+            var vector = new three__WEBPACK_IMPORTED_MODULE_2__["Vector3"](this.mouse.x, this.mouse.y, 0.5);
+            vector.unproject(this.camera);
+            var dir = vector.sub(this.camera.position).normalize();
+            var distance = -this.camera.position.z / dir.z;
+            var pos = this.camera.position.clone().add(dir.multiplyScalar(distance));
+            //copy position
+            this.selectedMove.position.copy(pos);
+        }
+    };
+    ProductConfiguratorComponent.prototype.onMouseScale = function (event) {
+        if (this.selectedScale != null) {
+            var x = ((event.offsetX / this.renderer.getSize().width) * 2 - 1) - this.mouse.x;
+            var y = (-(event.offsetY / this.renderer.getSize().height) * 2 + 1) - this.mouse.y;
+            //transform mouse coordinates to real world coordinates
+            var vector = new three__WEBPACK_IMPORTED_MODULE_2__["Vector3"](x, y, 0.5);
+            vector.unproject(this.camera);
+            var dir = vector.sub(this.camera.position).normalize();
+            var distance = -this.camera.position.z / dir.z;
+            //redraw
+            var sizeX = guiControls.largura + x * distance;
+            var sizeY = guiControls.altura + y * distance;
+            if (sizeX > this.product.dimensions.width.max) {
+                sizeX = this.product.dimensions.width.max;
+            }
+            if (sizeX < this.product.dimensions.width.min) {
+                sizeX = this.product.dimensions.width.min;
+            }
+            if (sizeY > this.product.dimensions.height.max) {
+                sizeY = this.product.dimensions.height.max;
+            }
+            if (sizeY < this.product.dimensions.height.min) {
+                sizeY = this.product.dimensions.height.min;
+            }
+            if (sizeX <= this.product.dimensions.width.max &&
+                sizeX >= this.product.dimensions.width.min) {
+                //update dimensions
+                guiControls.largura = sizeX;
+                this.selectedScale.scale.x = sizeX / this.selectedScale.geometry.parameters.width;
+            }
+            if (sizeY <= this.product.dimensions.height.max &&
+                sizeY >= this.product.dimensions.height.min) {
+                //update dimensions
+                guiControls.altura = sizeY;
+                this.selectedScale.scale.y = sizeY / this.selectedScale.geometry.parameters.height;
+            }
+            //update mouse position
+            this.mouse.x = (event.offsetX / this.renderer.getSize().width) * 2 - 1;
+            this.mouse.y = -(event.offsetY / this.renderer.getSize().height) * 2 + 1;
+        }
+    };
+    ProductConfiguratorComponent.prototype.onMouseUp = function (event) {
+        // Enable the controls
+        if (event.which == 1) {
+            this.controls.enableRotate = true;
+            this.selectedMove = null;
+            this.selectedScale = null;
+        }
+        /*if (event.which == 3) {
+              controls.enablePan = true;
+              selectedScale = null;
+        }*/
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('rendererContainer'),
@@ -3828,14 +4092,17 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.managerSignUp = function (username, password, confirmPassword, companyPassword) {
         return this.httpClient.post(this.MANAGER_AUTH_URL + "/SignUp", { Username: username, Password: password, ConfirmPassword: confirmPassword, CompanyPassword: companyPassword });
     };
-    AuthService.prototype.clientSignUp = function (username, password, confirmPassword) {
-        return this.httpClient.post(this.CLIENT_AUTH_URL + "/signup", { username: username, password: password, confirmPassword: confirmPassword });
+    AuthService.prototype.clientSignUp = function (username, password, confirmPassword, secret, token) {
+        return this.httpClient.post(this.CLIENT_AUTH_URL + "/signup", { username: username, password: password, confirmPassword: confirmPassword, tempSecret: secret, token: token });
+    };
+    AuthService.prototype.clientSetupSecret = function () {
+        return this.httpClient.get(this.CLIENT_AUTH_URL + "/setupSecret");
     };
     AuthService.prototype.managerLogin = function (username, password) {
         return this.httpClient.post(this.MANAGER_AUTH_URL + "/Login", { Username: username, Password: password });
     };
-    AuthService.prototype.clientLogin = function (username, password) {
-        return this.httpClient.post(this.CLIENT_AUTH_URL + "/login", { username: username, password: password });
+    AuthService.prototype.clientLogin = function (username, password, token) {
+        return this.httpClient.post(this.CLIENT_AUTH_URL + "/login", { username: username, password: password, token: token });
     };
     AuthService.prototype.loginSucceeded = function (data) {
         localStorage.setItem("access_token", data.access_token);
@@ -4286,7 +4553,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Ver Produto</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n    <!-- Nome -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Nome do produto\" [(ngModel)]=\"name\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Categoria -->\r\n    <mat-form-field>\r\n      <input matInput [value]=\"categoryName\"  placeholder=\"Categoria\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Materiais Acabamentos -->\r\n    <!--<div>\r\n      <mat-form-field id=\"formpequena\">\r\n        <mat-select [(ngModel)]=\"materialfinishes\" placeholder=\"Material Acabamento\">\r\n          <mat-option *ngFor=\"let materialfinish of materialfinishes\" [value]=\"materialfinish\">\r\n            {{materialfinish.material.name}} + {{materialfinish.finish.name}}\r\n          </mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n    </div>-->\r\n\r\n    <!-- Alturas -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Alturas\" [(ngModel)]=\"height_disc||  height_min + '-' + height_max\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Larguras -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Larguras\" [(ngModel)]=\"width_disc|| width_min + '-' + width_max\"  readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Profundidades -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Profundidades\" [(ngModel)]=\"depth_disc || depth_min + '-' + depth_max \"  readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Min ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Minima Ocupação\" [value]=\"minOccup\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Max ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Máxima Ocupação\" [value]=\"maxOccup\" readonly>\r\n    </mat-form-field>\r\n\r\n  </div>\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"editProduct()\" matTooltip=\"Editar\" class=\"btn btn-primary btn-md\">Editar</button>\r\n    <button type=\"button\" (click)=\"deleteProduct()\" matTooltip=\"Apagar este Produto\" class=\"btn btn-primary btn-md\">Apagar</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Ver Produto</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n    <!-- Nome -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Nome do produto\" [(ngModel)]=\"name\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Categoria -->\r\n    <mat-form-field>\r\n      <input matInput [value]=\"categoryName\" placeholder=\"Categoria\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Alturas -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Alturas\" [(ngModel)]=\"height_disc||  height_min + '-' + height_max\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Larguras -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Larguras\" [(ngModel)]=\"width_disc|| width_min + '-' + width_max\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Profundidades -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Profundidades\" [(ngModel)]=\"depth_disc || depth_min + '-' + depth_max \" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Min ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Minima Ocupação\" [value]=\"minOccup\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Max ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Máxima Ocupação\" [value]=\"maxOccup\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Partes -->\r\n    <mat-form-field id=\"formpequena\">\r\n      <mat-select [(ngModel)]=\"part\" placeholder=\"Produtos Opcionais\">\r\n        <mat-option *ngFor=\"let part of parts\" [value]=\"part\">\r\n          {{part.product.name}} (<label id=\"{{part.product.name}}\" style=\"display:inline-block;\">{{part.optional}}</label>)\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n\r\n    <!-- Materiais Acabamentos -->\r\n    <mat-card *ngFor=\"let materialfinish of materialfinishes\" class=\"example-card\" style=\"width:200px;float:left;margin-top:30px;margin-right: 30px;\">\r\n      <mat-card-header style=\"text-align:left;\">\r\n        <mat-card-title style=\"font-size:medium;\">{{materialfinish.materialDTO.name}}</mat-card-title>\r\n        <mat-card-subtitle>{{materialfinish.surfaceFinishDTO.name}}</mat-card-subtitle>\r\n      </mat-card-header>\r\n      <img mat-card-image src=\"{{materialfinish.textureUrl}}\">\r\n      <mat-card-actions>\r\n\r\n      </mat-card-actions>\r\n    </mat-card>\r\n\r\n  </div>\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"editProduct()\" matTooltip=\"Editar\" class=\"btn btn-primary btn-md\">Editar</button>\r\n    <button type=\"button\" (click)=\"deleteProduct()\" matTooltip=\"Apagar este Produto\" class=\"btn btn-primary btn-md\">Apagar</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -4316,6 +4583,7 @@ var ShowProductInfoComponent = /** @class */ (function () {
         this.route = route;
         this.service = service;
         this.bar = bar;
+        this.parts = [];
     }
     ShowProductInfoComponent.prototype.ngOnInit = function () {
         this.getProduct();
@@ -4329,16 +4597,21 @@ var ShowProductInfoComponent = /** @class */ (function () {
         this.idroute = id;
         this.service.getProduct(id).subscribe(function (res) {
             _this.product = res;
+            console.log(_this.product);
             _this.name = _this.product.name;
             _this.categoryName = _this.product.category.description;
             _this.materialfinishes = _this.product.materialFinishes;
+            var optproducts = _this.product.optionalProducts;
+            if (!optproducts === undefined) {
+                _this.convertParts(optproducts);
+            }
             var heightDisc = _this.product.dimensions.height;
             if (heightDisc.discrete == null) {
                 _this.height_max = _this.product.dimensions.height.max;
                 _this.height_min = _this.product.dimensions.height.min;
             }
             else {
-                //this.height_disc = (<DiscreteDimension>this.product.dimensions.height).discrete;
+                _this.height_disc = _this.product.dimensions.height.discrete;
             }
             var widthDisc = _this.product.dimensions.width;
             if (widthDisc.discrete == null) {
@@ -4346,7 +4619,7 @@ var ShowProductInfoComponent = /** @class */ (function () {
                 _this.width_min = _this.product.dimensions.width.min;
             }
             else {
-                //this.width_disc = (<DiscreteDimension>this.product.dimensions.width).discrete;
+                _this.width_disc = _this.product.dimensions.width.discrete;
             }
             var depthDisc = _this.product.dimensions.depth;
             if (depthDisc.discrete == null) {
@@ -4354,7 +4627,7 @@ var ShowProductInfoComponent = /** @class */ (function () {
                 _this.depth_min = _this.product.dimensions.depth.min;
             }
             else {
-                //this.depth_disc = (<DiscreteDimension>this.product.dimensions.depth).discrete;
+                _this.depth_disc = _this.product.dimensions.depth.discrete;
             }
             _this.minOccup = _this.product.minOccupancyPercentage;
             _this.maxOccup = _this.product.maxOccupancyPercentage;
@@ -4370,6 +4643,28 @@ var ShowProductInfoComponent = /** @class */ (function () {
                 });
             }
         });
+    };
+    ShowProductInfoComponent.prototype.convertParts = function (optionalProducts) {
+        var _this = this;
+        var product;
+        var _loop_1 = function (i) {
+            this_1.service.getProduct(optionalProducts[i].productId).subscribe(function (res) {
+                product = res;
+                var opt = _this.writeOptionalOrMandatory(optionalProducts[i].optional);
+                var p = { product: product, optional: opt };
+                _this.parts.push(p);
+            });
+        };
+        var this_1 = this;
+        for (var i = 0; i < optionalProducts.length; i++) {
+            _loop_1(i);
+        }
+    };
+    ShowProductInfoComponent.prototype.writeOptionalOrMandatory = function (isOptional) {
+        if (isOptional === true) {
+            return "Opcional";
+        }
+        return "Obrigatório";
     };
     ShowProductInfoComponent.prototype.editProduct = function () {
         this.router.navigateByUrl('/products/edit/' + this.idroute);
@@ -4408,7 +4703,7 @@ var ShowProductInfoComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".mat-radio-button ~ .mat-radio-button {\r\n  padding-right: 16px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2lnbi11cC9zaWduLXVwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxvQkFBb0I7Q0FDckIiLCJmaWxlIjoic3JjL2FwcC9zaWduLXVwL3NpZ24tdXAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYXQtcmFkaW8tYnV0dG9uIH4gLm1hdC1yYWRpby1idXR0b24ge1xyXG4gIHBhZGRpbmctcmlnaHQ6IDE2cHg7XHJcbn0iXX0= */"
+module.exports = ".mat-radio-button ~ .mat-radio-button {\r\n  padding-right: 16px;\r\n}\r\n\r\n.example-full-width {\r\n  width: 50%;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2lnbi11cC9zaWduLXVwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxvQkFBb0I7Q0FDckI7O0FBRUQ7RUFDRSxXQUFXO0NBQ1oiLCJmaWxlIjoic3JjL2FwcC9zaWduLXVwL3NpZ24tdXAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYXQtcmFkaW8tYnV0dG9uIH4gLm1hdC1yYWRpby1idXR0b24ge1xyXG4gIHBhZGRpbmctcmlnaHQ6IDE2cHg7XHJcbn1cclxuXHJcbi5leGFtcGxlLWZ1bGwtd2lkdGgge1xyXG4gIHdpZHRoOiA1MCU7XHJcbn1cclxuIl19 */"
 
 /***/ }),
 
@@ -4419,7 +4714,7 @@ module.exports = ".mat-radio-button ~ .mat-radio-button {\r\n  padding-right: 16
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n<br />\r\n<h1 class=\"text-center\">Criar uma conta</h1>\r\n<!-- Extended material form grid -->\r\n<form class=\"form-group\">\r\n  <div class=\"sic-row\">\r\n    <div class=\"sic-column\">\r\n      <label for=\"radioGroup\">Registar-se como</label>\r\n    <br>\r\n  <mat-radio-group id=\"radioGroup\" [(ngModel)]=\"_isClient\" name=\"isClient\">\r\n    <mat-radio-button [value]=\"true\">Cliente</mat-radio-button>\r\n    <mat-radio-button [value]=\"false\">Gestor de Conteúdos</mat-radio-button>\r\n  </mat-radio-group>\r\n  </div>\r\n  </div>\r\n  <!-- Grid row -->\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-user prefix\"></i>\r\n        <input [(ngModel)]=\"_username\" mdbInputDirective type=\"text\" name=\"username\" class=\"form-control\" placeholder=\"Nome de utilizador\" required>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input [(ngModel)]=\"_password\" mdbInputDirective type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"Palavra-passe\" required>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input [(ngModel)]=\"_retypePassword\" mdbInputDirective type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"Repetir palavra-passe\" aria-describedby=\"pwdHelpBlock\" required>\r\n        <small id=\"pwdHelpBlock\" class=\"form-text text-muted\">\r\n          A sua palavra-passe deverá conter pelo menos 6 caracteres, uma maiúscula, uma minúscula e um dígito.\r\n        </small>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n  <div *ngIf=\"!_isClient\" class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fas fa-key prefix\"></i>\r\n        <input [(ngModel)]=\"_companyPassword\" mdbInputDirective type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"Palavra-passe da empresa\" aria-describedby=\"companyPwdHelpBlock\" required>\r\n        <small id=\"companyPwdHelpBlock\" class=\"form-text text-muted\">\r\n          Para se registar como gestor de conteúdos necessita de introduzir a palavra-passe fornecida pela empresa.\r\n        </small>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n\r\n  <mat-checkbox [(ngModel)]=\"_checked\" name=\"checkedTermsAndConditions\" color=\"primary\">Aceito os <a routerLink=\"/TermsAndConditions\">Termos e Condições</a>.</mat-checkbox>\r\n  <br />\r\n  <!-- Grid row -->\r\n  <button type=\"submit\" (click)=\"signUp()\" matTooltip=\"Criar uma conta\" class=\"btn btn-primary btn-md\">Registar</button>\r\n\r\n</form>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n<br />\r\n<h1 class=\"text-center\">Criar uma conta</h1>\r\n<!-- Extended material form grid -->\r\n<form class=\"form-group\">\r\n  <div class=\"sic-row\">\r\n  <div class=\"sic-row\">\r\n    <div class=\"sic-column\">\r\n      <label for=\"radioGroup\">Registar-se como</label>\r\n    <br>\r\n  <mat-radio-group id=\"radioGroup\" [(ngModel)]=\"_isClient\" name=\"isClient\">\r\n    <mat-radio-button [value]=\"true\">Cliente</mat-radio-button>\r\n    <mat-radio-button [value]=\"false\">Gestor de Conteúdos</mat-radio-button>\r\n  </mat-radio-group>\r\n  </div>\r\n  </div>\r\n  <!-- Grid row -->\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-user prefix\"></i>\r\n        <input [(ngModel)]=\"_username\" mdbInputDirective type=\"text\" name=\"username\" class=\"form-control\" placeholder=\"Nome de utilizador\" required>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input [(ngModel)]=\"_password\" mdbInputDirective type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"Palavra-passe\" required>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n  <div class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fa fa-lock prefix\"></i>\r\n        <input [(ngModel)]=\"_retypePassword\" mdbInputDirective type=\"password\" name=\"confirmPassword\" class=\"form-control\" placeholder=\"Repetir palavra-passe\" aria-describedby=\"pwdHelpBlock\" required>\r\n        <small id=\"pwdHelpBlock\" class=\"form-text text-muted\">\r\n          A sua palavra-passe deverá conter pelo menos 6 caracteres, uma maiúscula, uma minúscula e um dígito.\r\n        </small>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n  <div *ngIf=\"!_isClient\" class=\"form-row\">\r\n    <!-- Grid column -->\r\n    <div class=\"col-md-6\">\r\n      <!-- Material input -->\r\n      <div class=\"md-form form-group\">\r\n        <i class=\"fas fa-key prefix\"></i>\r\n        <input [(ngModel)]=\"_companyPassword\" mdbInputDirective type=\"password\" name=\"companyPassword\" class=\"form-control\" placeholder=\"Palavra-passe da empresa\" aria-describedby=\"companyPwdHelpBlock\" required>\r\n        <small id=\"companyPwdHelpBlock\" class=\"form-text text-muted\">\r\n          Para se registar como gestor de conteúdos necessita de introduzir a palavra-passe fornecida pela empresa.\r\n        </small>\r\n      </div>\r\n    </div>\r\n    <!-- Grid column -->\r\n  </div>\r\n\r\n  <mat-checkbox [(ngModel)]=\"_checked\" name=\"checkedTermsAndConditions\" color=\"primary\">Li e aceito os <a routerLink=\"/TermsAndConditions\">Termos e Condições</a>.</mat-checkbox>\r\n  <br />\r\n  <!-- Grid row -->\r\n  <button type=\"submit\" (click)=\"signUp()\" matTooltip=\"Criar uma conta\" class=\"btn btn-primary btn-md\">Registar</button>\r\n    <div *ngIf=\"valid\" class=\"sic-column text-center\">\r\n      <h2>Ligar autenticação de 2 fatores</h2>\r\n      <p>Leia o código QR ou introduza o segredo na aplicação Google Authenticator</p>\r\n      <img src=\"{{qrCodeImgSrc}}\" alt=\"Código QR\" class=\"img-thumbnail\">\r\n\r\n      <p>Segredo - {{tempSecret}}</p>\r\n      <p>Tipo - TOTP</p>\r\n      <mat-form-field class=\"example-full-width\">\r\n        <input [(ngModel)]=\"token\" name=\"token\" matInput placeholder=\"Código\">\r\n      </mat-form-field>\r\n      <br>\r\n      <button type=\"submit\" (click)=\"confirmSignUp()\" matTooltip=\"Criar a conta\" class=\"btn btn-primary btn-md\">Confirmar registo</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -4454,6 +4749,10 @@ var SignUpComponent = /** @class */ (function () {
         this._checked = false;
         this._isClient = true;
         this._companyPassword = "";
+        this.valid = false;
+        this.qrCodeImgSrc = "";
+        this.tempSecret = "";
+        this.token = "";
     }
     SignUpComponent.prototype.ngOnInit = function () {
     };
@@ -4470,7 +4769,23 @@ var SignUpComponent = /** @class */ (function () {
                 });
             }
             else {
-                this.authSrv.clientSignUp(this._username, this._password, this._retypePassword).subscribe(function (data) {
+                this.authSrv.clientSetupSecret().subscribe(function (data) {
+                    _this.tempSecret = data.tempSecret;
+                    _this.qrCodeImgSrc = data.dataURL;
+                    _this.valid = true;
+                });
+            }
+        }
+        else {
+            this.bar.open("Por favor insira dados válidos.", "", { duration: 3000 });
+        }
+    };
+    SignUpComponent.prototype.confirmSignUp = function () {
+        var _this = this;
+        if (this.validate()) {
+            if (this._isClient) {
+                alert(this._username + ", " + this.tempSecret + ", " + this.token);
+                this.authSrv.clientSignUp(this._username, this._password, this._retypePassword, this.tempSecret, this.token).subscribe(function (data) {
                     _this.bar.open(data.username + " foi registado como cliente com sucesso. Pode iniciar sess\u00E3o.", "", { duration: 4000 });
                     _this.router.navigate(["/login"]);
                 }, function (error) {
@@ -4478,9 +4793,6 @@ var SignUpComponent = /** @class */ (function () {
                     _this.bar.open("Erro: " + errorJSON, "", { duration: 3500 });
                 });
             }
-        }
-        else {
-            this.bar.open("Por favor insira dados válidos.", "", { duration: 3000 });
         }
     };
     SignUpComponent.prototype.validate = function () {

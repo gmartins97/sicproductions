@@ -24,19 +24,19 @@
     </div>
     <!-- Grid column -->
   </div>
-  <!-- Grid row -->
-  <div *ngIf="isValidUser">
-    <div class="form-row">
-      <!-- Grid column -->
-      <div class="col-md-6">
-        <!-- Material input -->
-        <div class="md-form form-group">
-          <i class="fas fa-key prefix"></i>
-          <input mdbInputDirective type="password" class="form-control" placeholder="Código de 4 dígitos recebido no e-mail" required>
-        </div>
+  <div class="form-row">
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <i class="fas fa-key prefix"></i>
+        <input [(ngModel)]="token" name="token" mdbInputDirective type="text" class="form-control" placeholder="Código" aria-describedby="tokenPwdHelpBlock">
+        <small id="tokenHelpBlock" class="form-text text-muted">
+          Para se autenticar, escreva o código de 6 dígitos fornecido pela aplicação Google Authenticator (apenas obrigatório para clientes).
+        </small>
       </div>
-      <!-- Grid column -->
     </div>
+    <!-- Grid column -->
   </div>
   <button type="submit" (click)="login()" matTooltip="Iniciar sessão" class="btn btn-primary btn-md">Entrar</button>
   Não tem uma conta? <a routerLink="/signup">Crie uma.</a>

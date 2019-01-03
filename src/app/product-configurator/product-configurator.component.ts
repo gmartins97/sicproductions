@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { ActivatedRoute, Router } from "@angular/router";
 import { ProductService } from "../services/product.service";
 import { orderService } from "../services/order.service";
-import { MatSnackBar } from "@angular/material";
+import { MatSnackBar, _MatRadioGroupMixinBase } from "@angular/material";
 import { Product } from '../model/product';
 import { ContinuousDimension } from '../model/continuous-dimension';
 import { DiscreteDimension } from '../model/discrete-dimension';
@@ -18,6 +18,7 @@ import { MaterialFinishDTO } from '../model/material-finish-dto';
 import { OptionalProducts } from '../model/optional-products';
 import { AuthService } from '../services/auth.service';
 import { parseTemplate } from '@angular/compiler';
+import { Scene } from 'three';
 
 declare const require: (moduleId: string) => any; /*for require function below*/
 var OrbitControls = require('three-orbit-controls')(THREE) /*import orbit controls*/
@@ -25,7 +26,11 @@ var dat = require('dat.gui');
 
 var datGUI = null;
 var guiControls = null;
-
+var guiControlsNomeExtra = null;
+var guiControlsExtraLargura = null;
+var guiControlsExtraAltura = null;
+var guiControlsExtraProfundidade = null;
+var guiControlsExtraMaterial = null;
 @Component({
 	selector: 'app-product-configurator',
 	templateUrl: './product-configurator.component.html',
@@ -60,20 +65,43 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 	id: number;
 
 
+
 	updateSize() {
+
 		this.scene.remove(this.mesh);
+
 		let tmp = guiControls.material.split(" / ");
 		const loader = new THREE.TextureLoader().load(tmp[3]);
 		let material = new THREE.MeshLambertMaterial({ map: loader });
-		//const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
 		if (this.categoria == "Armário") {
 			this.mesh = this.closet(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
 		} else if (this.categoria == "Gaveta") {
 			this.mesh = this.drawer(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
 		} else if (this.categoria == "Prateleira") {
-			this.mesh = this.drawer(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
+			this.mesh = this.shelf(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
 		} else {
 			this.mesh = this.closet(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
+		}
+		if (this.optionalProduct != null) {
+			var selectedObject = this.scene.getObjectByName((this.optionalProduct.id).toString());
+			if (selectedObject != null) {
+				this.scene.remove(selectedObject);
+			}
+			let tmp = guiControls.materialProdutoExtra.split(" / ");
+			const loader = new THREE.TextureLoader().load(tmp[3]);
+			let material = new THREE.MeshLambertMaterial({ map: loader });
+			var obj = null;
+			if (guiControls.produtoExtra == "Armário") {
+				obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material);
+			} else if (guiControls.produtoExtra == "Gaveta") {
+				obj = this.drawer(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material);
+			} else if (guiControls.produtoExtra == "Prateleira") {
+				obj = this.shelf(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material);
+			} else {
+				obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material);
+			}
+			obj.name = (this.optionalProduct.id).toString();
+			this.scene.add(obj);
 		}
 		this.scene.add(this.mesh);
 	}
@@ -123,6 +151,11 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 			}
 			this.adicionar = function () {
 			}
+			this.nomeProdutoOpcional = " ";
+			this.larguraProdutoExtra = 0;
+			this.alturaProdutoExtra = 0;
+			this.profundidadeProdutoExtra = 0;
+			this.materialProdutoExtra = "";
 		}
 
 
@@ -189,9 +222,6 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 				this.convertDimensions(((<DiscreteDimension>this.product.dimensions.depth).discrete)))
 				.name('Profundidade').onChange(() => { this.updateSize() });
 		}
-
-
-
 		datGUI.add(guiControls, 'material',
 			this.getMaterialFinish((<MaterialFinish[]>this.product.materialFinishes)))
 			.name('Material Acabamento').onChange(() => { this.updateSize() });
@@ -200,7 +230,7 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 		datGUI.add(guiControls, 'cidade').name('cidade');
 		datGUI.add(guiControls, 'latitude').name('latitude');
 		datGUI.add(guiControls, 'longitude').name('longitude');
-		datGUI.add(guiControls, 'adicionar').name("Adicionar Produto").onChange(() => { this.adicionar()});
+		datGUI.add(guiControls, 'adicionar').name("Adicionar Produto").onChange(() => { this.adicionar() });
 		datGUI.add(guiControls, 'encomendar').name("Encomendar Produto").onChange(() => { this.encomenda(guiControls.name, guiControls.material, guiControls.altura, guiControls.profundidade, guiControls.largura, guiControls.latitude, guiControls.longitude, guiControls.cidade) });
 	}
 	animate() {
@@ -297,7 +327,120 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 		return shelf;
 	}
 
+	convertDimensions(dimensoes) {
+		return dimensoes.split(";");
+	}
 
+	adicionar() {
+		var id = guiControls.produtoExtra.split("/")[1];
+		if (this.getProductById(id) != null) {
+			//ADCIONAR AQUI PRODUTO AOS ITENS
+			if (((<DiscreteDimension>this.optionalProduct.dimensions.height).discrete) == null) {
+				guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra', (<ContinuousDimension>this.optionalProduct.dimensions.height).min, (<ContinuousDimension>this.optionalProduct.dimensions.height).max, 1).name('Altura').listen().onChange(() => { this.updateSize() });
+			} else {
+				guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra',
+					this.convertDimensions(((<DiscreteDimension>this.optionalProduct.dimensions.height).discrete)))
+					.name('Altura Produto Opcional').onChange(() => { this.updateSize() });
+			}
+			if (((<DiscreteDimension>this.optionalProduct.dimensions.width).discrete) == null) {
+				guiControlsExtraLargura = datGUI.add(guiControls, 'larguraProdutoExtra', (<ContinuousDimension>this.optionalProduct.dimensions.width).min, (<ContinuousDimension>this.optionalProduct.dimensions.width).max, 1).name('Largura').listen().onChange(() => { this.updateSize() });
+			} else {
+				guiControlsExtraLargura = datGUI.add(guiControls, 'larguraProdutoExtra',
+					this.convertDimensions(((<DiscreteDimension>this.optionalProduct.dimensions.width).discrete)))
+					.name('Largura Produto Opcional').onChange(() => { this.updateSize() });
+			}
+			if (((<DiscreteDimension>this.optionalProduct.dimensions.depth).discrete) == null) {
+				guiControlsExtraProfundidade = datGUI.add(guiControls, 'profundidadeProdutoExtra', (<ContinuousDimension>this.optionalProduct.dimensions.depth).min, (<ContinuousDimension>this.optionalProduct.dimensions.depth).max, 1).name('Profundidade').listen().onChange(() => { this.updateSize() });
+			} else {
+				guiControlsExtraProfundidade = datGUI.add(guiControls, 'profundidadeProdutoExtra',
+					this.convertDimensions(((<DiscreteDimension>this.optionalProduct.dimensions.depth).discrete)))
+					.name('Profundidade Produto Opcional').onChange(() => { this.updateSize() });
+			}
+			guiControlsExtraMaterial = datGUI.add(guiControls, 'materialProdutoExtra',
+				this.getMaterialFinish((<MaterialFinish[]>this.optionalProduct.materialFinishes)))
+				.name('Material Acabamento Extra').onChange(() => { this.updateSize() });
+			alert(this.optionalProduct.name);
+			if (guiControls.produtoExtra == "Armário") {
+				var obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+			} else if (guiControls.produtoExtra == "Gaveta") {
+				var obj = this.drawer(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+			} else if (guiControls.produtoExtra == "Prateleira") {
+				var obj = this.shelf(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+			} else {
+				var obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+				obj.name = (this.optionalProduct.id).toString();
+				this.scene.add(obj);
+			}
+		}
+	}
+
+	encomenda(name: string, material: string, altura: number, profundidade: number, largura: number, latitude: number, longitude: number, cidade: string) {
+		console.log(this.product)
+		const category: string = this.product.category.description;
+		const list: orderItem[] = [];
+		const mataca = material.split(" / ");
+		const productI: orderItem = new orderItem(name, category, mataca[0], mataca[1], list, altura, profundidade, largura);
+		const it: Item = new Item(productI, parseInt(mataca[2]));
+		const items: Item[] = [];
+		items.push(it);
+		const ord: order = new order(items, parseInt(mataca[2]), latitude, longitude, cidade, this.authservice.getLoggedInUsername());
+		this.serviceorder.createEncomenda(ord).subscribe();
+	}
+
+
+	getMaterialFinish(matsFinish: MaterialFinish[]): string[] {
+		const ret: string[] = [];
+
+		console.log(matsFinish);
+		for (let key in matsFinish) {
+			const matFinish = (<MaterialFinishDTO>(<unknown>matsFinish[key]));
+			ret.push(matFinish.materialDTO.name + " / " + matFinish.surfaceFinishDTO.name + " / " + (matsFinish[key].price + matFinish.materialDTO.price) + " / " + matsFinish[key].textureUrl);
+		}
+		return ret;
+	}
+
+	getSubProducts(matsFinish: OptionalProducts[]): string[] {
+		const ret: string[] = [];
+
+		console.log(matsFinish);
+		for (let key in matsFinish) {
+			const matFinish = (<OptionalProducts>(<unknown>matsFinish[key]));
+			ret.push(matFinish.optional + " / " + matFinish.productId);
+		}
+		return ret;
+	}
+
+	getProductById(id) {
+		this.service.getProduct(id).subscribe(data => {
+			this.optionalProduct = (<Product>data);
+		}, error => {
+			if (error.status == 401) {
+				this.bar.open(
+					'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
+					'', {
+						duration: 2000,
+					});
+			} else {
+				this.bar.open(
+					`Ocorreu um erro ao tentar obter o producto do servidor...`,
+					'', {
+						duration: 2000,
+					});
+			}
+		});
+		return this.optionalProduct;
+	}
+
+	changeActiveProduct(id) {
+		var newProduct = this.getProductById(id);
+		if (newProduct != null) {
+			this.optionalProduct = newProduct;
+			datGUI.remove(guiControlsExtraAltura);
+			datGUI.remove(guiControlsExtraLargura);
+			datGUI.remove(guiControlsExtraProfundidade);
+			datGUI.remove(guiControlsExtraMaterial);
+		}
+	}
 	onMouseDown(event) {
 		if (event.which == 1) {
 			this.mouse.set((event.offsetX / this.renderer.getSize().width) * 2 - 1, -(event.offsetY / this.renderer.getSize().height) * 2 + 1);
@@ -307,9 +450,9 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 
 			// calculate objects intersecting the picking ray
 			let intersects = this.raycaster.intersectObjects(this.parts);
-
 			if (intersects.length > 0) {
 				this.controls.enableRotate = false;
+				this.changeActiveProduct(parseInt(intersects[0].object.name));
 				this.selectedMove = intersects[0].object;
 			} else {
 				intersects = this.raycaster.intersectObject(this.mesh);
@@ -323,9 +466,7 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 		}
 	}
 
-	convertDimensions(dimensoes) {
-		return dimensoes.split(";");
-	}
+
 	onMouseMove(event) {
 		if (this.selectedMove != null) {
 			this.mouse.set((event.offsetX / this.renderer.getSize().width) * 2 - 1, -(event.offsetY / this.renderer.getSize().height) * 2 + 1);
@@ -406,77 +547,4 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 		}*/
 	}
 
-	adicionar() {
-		var id = guiControls.produtoExtra.split("/")[1];
-		if (this.getProductById(id) != null) {
-			//ADCIONAR AQUI PRODUTO AOS ITENS
-			alert(this.optionalProduct.name);
-			if (guiControls.produtoExtra == "Armário") {
-				this.mesh.add(guiControls.altura, guiControls.largura, guiControls.profundidade, guiControls.materialExtra);
-			} else if (guiControls.produtoExtra == "Gaveta") {
-				this.mesh.add(guiControls.altura, guiControls.largura, guiControls.profundidade, guiControls.materialExtra);
-			} else if (guiControls.produtoExtra == "Prateleira") {
-				this.mesh.add(guiControls.altura, guiControls.largura, guiControls.profundidade, guiControls.materialExtra);
-			}else{
-				this.mesh.add(this.shelf(10,10,100,10));
-			}
-		}
-	}
-
-	encomenda(name: string, material: string, altura: number, profundidade: number, largura: number, latitude: number, longitude: number, cidade: string) {
-		console.log(this.product)
-		const category: string = this.product.category.description;
-		const list: orderItem[] = [];
-		const mataca = material.split(" / ");
-		const productI: orderItem = new orderItem(name, category, mataca[0], mataca[1], list, altura, profundidade, largura);
-		const it: Item = new Item(productI, parseInt(mataca[2]));
-		const items: Item[] = [];
-		items.push(it);
-		const ord: order = new order(items, parseInt(mataca[2]), latitude, longitude, cidade, this.authservice.getLoggedInUsername());
-		this.serviceorder.createEncomenda(ord).subscribe();
-	}
-
-
-	getMaterialFinish(matsFinish: MaterialFinish[]): string[] {
-		const ret: string[] = [];
-
-		console.log(matsFinish);
-		for (let key in matsFinish) {
-			const matFinish = (<MaterialFinishDTO>(<unknown>matsFinish[key]));
-			ret.push(matFinish.materialDTO.name + " / " + matFinish.surfaceFinishDTO.name + " / " + (matsFinish[key].price + matFinish.materialDTO.price) + " / " + matsFinish[key].textureUrl);
-		}
-		return ret;
-	}
-
-	getSubProducts(matsFinish: OptionalProducts[]): string[] {
-		const ret: string[] = [];
-
-		console.log(matsFinish);
-		for (let key in matsFinish) {
-			const matFinish = (<OptionalProducts>(<unknown>matsFinish[key]));
-			ret.push(matFinish.optional + " / " + matFinish.productId);
-		}
-		return ret;
-	}
-
-	getProductById(id) {
-		this.service.getProduct(id).subscribe(data => {
-			this.optionalProduct = (<Product>data);
-		}, error => {
-			if (error.status == 401) {
-				this.bar.open(
-					'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
-					'', {
-						duration: 2000,
-					});
-			} else {
-				this.bar.open(
-					`Ocorreu um erro ao tentar obter o producto do servidor...`,
-					'', {
-						duration: 2000,
-					});
-			}
-		});
-		return this.optionalProduct;
-	}
 }

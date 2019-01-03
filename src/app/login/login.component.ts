@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
 
   _password : string = "";
 
+  token : string = "";
+
   constructor(private bar: MatSnackBar, private authSrv : AuthService, private router : Router) { }
 
   ngOnInit() {
@@ -27,13 +29,13 @@ export class LoginComponent implements OnInit {
       this.bar.open("Login com sucesso.", "", {duration: 1500});
       this.router.navigate(['/home']);
     }, () => {
-      this.authSrv.clientLogin(this._username, this._password).subscribe(data => {
+      this.authSrv.clientLogin(this._username, this._password, this.token).subscribe(data => {
         this.authSrv.loginSucceeded(data);
         this.authSrv.setClient(true);
         this.bar.open("Login com sucesso.", "", {duration: 1500});
         this.router.navigate(['/home']);
       }, () => {
-        this.bar.open("Combinação de utilizador ou palavra-passe incorreta.", "", {duration: 3000});
+        this.bar.open("Combinação de utilizador, palavra-passe ou autenticação de 2 fatores falhada.", "", {duration: 3000});
       });
     });
   }
