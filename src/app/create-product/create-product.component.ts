@@ -106,9 +106,12 @@ export class CreateProductComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.optionalProducts = result;
-      if (!result === undefined) {
+      if (!(result === undefined)) {
+        this.optionalProducts = result;
         this.convertToParts(result);
+      } else {
+        this.optionalProducts = [];
+        this.parts = [];
       }
     });
   }
@@ -128,9 +131,12 @@ export class CreateProductComponent implements OnInit {
         this.parts.push(p);
       });
     }
+    console.log('parts');
+    console.log(this.parts);
   }
 
   private writeOptionalOrMandatory(isOptional: boolean): string {
+    console.log('entrou no write');
     if (isOptional === false) {
       return "Obrigatório";
     }

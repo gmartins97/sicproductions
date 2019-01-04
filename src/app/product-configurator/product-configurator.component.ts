@@ -19,6 +19,7 @@ import { OptionalProducts } from '../model/optional-products';
 import { AuthService } from '../services/auth.service';
 import { parseTemplate } from '@angular/compiler';
 import { Scene } from 'three';
+import { concatAll } from 'rxjs/operators';
 
 declare const require: (moduleId: string) => any; /*for require function below*/
 var OrbitControls = require('three-orbit-controls')(THREE) /*import orbit controls*/
@@ -241,7 +242,7 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 	//Create Closet
 	closet(width, height, depth, material): THREE.Mesh {
 		const thickness = height * 0.02;
-		const closetG = new THREE.BoxGeometry(width, height, depth);
+		const closetG = new THREE.BoxGeometry(0, 0, 0);
 		const closetM = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
 		closetM.transparent = true;
 		closetM.opacity = 0.0;
@@ -334,7 +335,15 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 	adicionar() {
 		var id = guiControls.produtoExtra.split("/")[1];
 		if (this.getProductById(id) != null) {
-			//ADCIONAR AQUI PRODUTO AOS ITENS
+			if (guiControlsNomeExtra != null) {
+				datGUI.remove(guiControlsNomeExtra);
+				datGUI.remove(guiControlsExtraAltura);
+				datGUI.remove(guiControlsExtraLargura);
+				datGUI.remove(guiControlsExtraProfundidade);
+				datGUI.remove(guiControlsExtraMaterial);
+			}
+			guiControls.nomeProdutoOpcional=this.optionalProduct.name;
+			guiControlsNomeExtra = datGUI.add(guiControls, 'nomeProdutoOpcional').name('Produto Opcional Selecionado').listen();
 			if (((<DiscreteDimension>this.optionalProduct.dimensions.height).discrete) == null) {
 				guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra', (<ContinuousDimension>this.optionalProduct.dimensions.height).min, (<ContinuousDimension>this.optionalProduct.dimensions.height).max, 1).name('Altura').listen().onChange(() => { this.updateSize() });
 			} else {
@@ -359,18 +368,19 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 			guiControlsExtraMaterial = datGUI.add(guiControls, 'materialProdutoExtra',
 				this.getMaterialFinish((<MaterialFinish[]>this.optionalProduct.materialFinishes)))
 				.name('Material Acabamento Extra').onChange(() => { this.updateSize() });
-			alert(this.optionalProduct.name);
+			var obj = null;
 			if (guiControls.produtoExtra == "Armário") {
-				var obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+				obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
 			} else if (guiControls.produtoExtra == "Gaveta") {
-				var obj = this.drawer(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+				obj = this.drawer(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
 			} else if (guiControls.produtoExtra == "Prateleira") {
-				var obj = this.shelf(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+				obj = this.shelf(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
 			} else {
-				var obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
-				obj.name = (this.optionalProduct.id).toString();
-				this.scene.add(obj);
+				obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
 			}
+			obj.name = (this.optionalProduct.id).toString();
+			this.parts.push(obj);
+			this.scene.add(obj);
 		}
 	}
 
@@ -434,14 +444,43 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 	changeActiveProduct(id) {
 		var newProduct = this.getProductById(id);
 		if (newProduct != null) {
+			console.log("mudei");
 			this.optionalProduct = newProduct;
+			datGUI.remove(guiControlsNomeExtra);
 			datGUI.remove(guiControlsExtraAltura);
 			datGUI.remove(guiControlsExtraLargura);
 			datGUI.remove(guiControlsExtraProfundidade);
 			datGUI.remove(guiControlsExtraMaterial);
+			guiControlsNomeExtra=this.optionalProduct.name;
+			guiControlsNomeExtra = datGUI.add(guiControls, 'nomeProdutoOpcional').name('Produto Opcional Selecionado').listen();
+			if (((<DiscreteDimension>this.optionalProduct.dimensions.height).discrete) == null) {
+				guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra', (<ContinuousDimension>this.optionalProduct.dimensions.height).min, (<ContinuousDimension>this.optionalProduct.dimensions.height).max, 1).name('Altura').listen().onChange(() => { this.updateSize() });
+			} else {
+				guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra',
+					this.convertDimensions(((<DiscreteDimension>this.optionalProduct.dimensions.height).discrete)))
+					.name('Altura Produto Opcional').onChange(() => { this.updateSize() });
+			}
+			if (((<DiscreteDimension>this.optionalProduct.dimensions.width).discrete) == null) {
+				guiControlsExtraLargura = datGUI.add(guiControls, 'larguraProdutoExtra', (<ContinuousDimension>this.optionalProduct.dimensions.width).min, (<ContinuousDimension>this.optionalProduct.dimensions.width).max, 1).name('Largura').listen().onChange(() => { this.updateSize() });
+			} else {
+				guiControlsExtraLargura = datGUI.add(guiControls, 'larguraProdutoExtra',
+					this.convertDimensions(((<DiscreteDimension>this.optionalProduct.dimensions.width).discrete)))
+					.name('Largura Produto Opcional').onChange(() => { this.updateSize() });
+			}
+			if (((<DiscreteDimension>this.optionalProduct.dimensions.depth).discrete) == null) {
+				guiControlsExtraProfundidade = datGUI.add(guiControls, 'profundidadeProdutoExtra', (<ContinuousDimension>this.optionalProduct.dimensions.depth).min, (<ContinuousDimension>this.optionalProduct.dimensions.depth).max, 1).name('Profundidade').listen().onChange(() => { this.updateSize() });
+			} else {
+				guiControlsExtraProfundidade = datGUI.add(guiControls, 'profundidadeProdutoExtra',
+					this.convertDimensions(((<DiscreteDimension>this.optionalProduct.dimensions.depth).discrete)))
+					.name('Profundidade Produto Opcional').onChange(() => { this.updateSize() });
+			}
+			guiControlsExtraMaterial = datGUI.add(guiControls, 'materialProdutoExtra',
+				this.getMaterialFinish((<MaterialFinish[]>this.optionalProduct.materialFinishes)))
+				.name('Material Acabamento Extra').onChange(() => { this.updateSize() });
 		}
 	}
 	onMouseDown(event) {
+
 		if (event.which == 1) {
 			this.mouse.set((event.offsetX / this.renderer.getSize().width) * 2 - 1, -(event.offsetY / this.renderer.getSize().height) * 2 + 1);
 
@@ -450,8 +489,11 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 
 			// calculate objects intersecting the picking ray
 			let intersects = this.raycaster.intersectObjects(this.parts);
+			console.log(this.parts.length);
 			if (intersects.length > 0) {
 				this.controls.enableRotate = false;
+				alert('ola');
+				alert(intersects[0].object.name);
 				this.changeActiveProduct(parseInt(intersects[0].object.name));
 				this.selectedMove = intersects[0].object;
 			} else {

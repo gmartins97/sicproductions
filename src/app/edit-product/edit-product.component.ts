@@ -13,6 +13,7 @@ import { SelectMaterialFinishesDialog } from '../create-product/select-material-
 import { SelectPartsDialog } from '../create-product/select-parts-dialog';
 import { OptionalProducts } from '../model/optional-products';
 import { Part } from '../show-product-info/show-product-info.component';
+import { Dimensions } from '../model/dimensions';
 
 const min_array_limit: number = 1;
 const dim_min_limit: number = 1;
@@ -196,10 +197,12 @@ export class EditProductComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.optionalProducts = result;
-
-      if (!result === undefined) {
+      if (!(result === undefined)) {
+        this.optionalProducts = result;
         this.convertToParts(result);
+      } else {
+        this.optionalProducts = [];
+        this.parts = [];
       }
     });
   }
@@ -216,21 +219,238 @@ export class EditProductComponent implements OnInit {
     }
   }
 
-  confirm(): void {
-    //const sizeSurfaceFinishName = this.surfaceFinishName.trim().length;
+  confirm() {
+    //check product name is not empty
+    if (this.checkIfFieldIsEmptyOrNull([this.name])) {
+      this.openbarNotEmpty('Nome do Produto');
+      return;
+    }
 
-    //if (sizeSurfaceFinishName > 0) {
-    //  this.surface.name = this.surfaceFinishName;
-    //  this.service.updateSurfaceFinish(this.surface).subscribe(res => {
-    //    this.bar.open('Sucesso: o acabamento foi atualizado', '', { duration: 2000 });
-    //    this.back();
-    //  }, e => {
-    //    this.bar.open(e.error, '', { duration: 2000 });
-    //  });
-    //} else {
-    //  this.minLengthValidation = false;
-    //}
-    this.bar.open(`Tem calma que isto ainda não está implementado.`, '', { duration: 2000 });
+    //check category is selected
+    if (this.checkIfFieldIsEmptyOrNull([this.category])) {
+      this.openbarNotEmpty('Categoria');
+      return;
+    }
+
+    // check at least one selected materialfinish
+    if (!this.checkIfArrayHasAtLeastOneValue(this.materialfinishes)) {
+      this.openbarAtLeastOne('MaterialAcabamento');
+      return;
+    }
+
+    //check height is not empty & >0
+    let h: Dimension = this.validateDimension('Altura', this.height_disc, this.height_min, this.height_max);
+    if (h == null) {
+      return;
+    }
+
+    //check width is not empty & >0 & check regex
+    let w: Dimension = this.validateDimension('Largura', this.width_disc, this.width_min, this.width_max);
+    if (w == null) {
+      return;
+    }
+
+    //check depth is not empty  & >0 & check regex
+    let d: Dimension = this.validateDimension('Profundidade', this.depth_disc, this.depth_min, this.depth_max);
+    if (d == null) {
+      return;
+    }
+
+    //check min&max occup is not empty & >0 & <100
+    if (this.checkIfFieldIsEmptyOrNull(this.minOccup)) {
+      this.openbarNotEmpty("Ocupação Mínima");
+      return;
+    }
+    if (this.checkIfFieldIsEmptyOrNull(this.maxOccup)) {
+      this.openbarNotEmpty("Ocupação Máxima");
+      return;
+    }
+    if (this.checkNumberIsBeyondMinLimit(percentage_min_limit, this.minOccup)) {
+      this.openbarBeyondMinLimit(percentage_min_limit, "Ocupação Mínima");
+      return;
+    }
+    if (this.checkNumberIsBeyondMinLimit(percentage_min_limit, this.maxOccup)) {
+      this.openbarBeyondMinLimit(percentage_min_limit, "Ocupação Máxima");
+      return;
+    }
+    if (this.checkNumberIsBeyondMaxLimit(this.minOccup)) {
+      this.openbarBeyondMaxLimit("Ocupação Mínima");
+      return;
+    }
+    if (this.checkNumberIsBeyondMaxLimit(this.maxOccup)) {
+      this.openbarBeyondMaxLimit("Ocupação Máxima");
+      return;
+    }
+
+    //check max occup is higher than min occup
+    if (this.maxOccup < this.minOccup) {
+      this.openbarOtherMessage("Ocupação Máxima não pode ser superior à mínima.");
+      return;
+    }
+
+    let dimensions: Dimensions = { width: w, height: h, depth: d };
+
+    let prod = new Product(this.name, this.category, this.materialfinishes, dimensions,
+      this.optionalProducts, this.minOccup, this.maxOccup);
+    console.log('id para update');
+    console.log(this.product.id);
+    console.log('prod para procurar');
+    console.log(prod);
+    this.service.updateProduct(this.product.id, prod).subscribe(prod => {
+      this.bar.open(
+        `Sucesso: o produto foi editado.`,
+        '', {
+          duration: 2000,
+        });
+      this.back();
+    }, error => {
+      if (error.status == 401) {
+        this.bar.open(
+          'A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.',
+          '', {
+            duration: 2000,
+          });
+      } else {
+        this.bar.open(
+          `Erro: ${error.error}`,
+          '', {
+            duration: 2000,
+          });
+      }
+    });
+
+  }
+
+  private validateDimension(dimension: string, discrete: string, min: number, max: number): Dimension {
+    //if min and max are null and discrete is ok, then it is discrete
+    if (this.checkIfFieldIsEmptyOrNull(min) && this.checkIfFieldIsEmptyOrNull(max)
+      && !this.checkIfFieldIsEmptyOrNull(discrete)) {
+      let array = discrete.split(';');
+      for (let i: number = 0; i < array.length; i++) {
+        let value = parseInt(array[i]);
+        if (this.checkNumberIsBeyondMinLimit(dim_min_limit, value)) {
+          this.openbarBeyondMinLimit(dim_min_limit, dimension);
+          return null;
+        }
+      }
+
+      let chosenDimension: DiscreteDimension = { discrete: discrete };
+      return chosenDimension;
+
+      //if min and max are not null and discrete is, it means it is continuous
+    } else if (!this.checkIfFieldIsEmptyOrNull(min) && !this.checkIfFieldIsEmptyOrNull(max)
+      && this.checkIfFieldIsEmptyOrNull(discrete)) {
+
+      if (this.checkNumberIsBeyondMinLimit(dim_min_limit, min)) {
+        this.openbarBeyondMinLimit(dim_min_limit, dimension + ' Mínima');
+        return null;
+      }
+
+      if (this.checkNumberIsBeyondMinLimit(dim_min_limit, max)) {
+        this.openbarBeyondMinLimit(dim_min_limit, dimension + ' Máxima');
+        return null;
+      }
+
+      if (min > max) {
+        this.openbarOtherMessage(dimension + ' mínima não pode ser superior à ' + dimension + ' máxima.');
+        return null;
+      }
+      let chosenDimension: ContinuousDimension = { min: min, max: max };
+      return chosenDimension;
+
+    } else {
+      // if discrete, min and max are empty, then
+      this.openbarOtherMessage('Deve preencher dimensões para ' + dimension + '.');
+      return null;
+    }
+  }
+
+  /**
+   * True if it is negative or 0
+   * @param num
+   * @param testName
+   */
+  private checkNumberIsBeyondMinLimit(limit: number, num: number): boolean {
+    if (num < limit) {
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * True if it is above 100
+   * @param num
+   * @param testName
+   */
+  private checkNumberIsBeyondMaxLimit(num: number): boolean {
+    if (num > max_limit) {
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * True if empty or null
+   * @param fields
+   */
+  private checkIfFieldIsEmptyOrNull(field): boolean {
+    if (field == null || field.toString().trim().length == 0) {
+      return true;
+    }
+    return false;
+
+  }
+
+  /**
+   *
+   * True if has at least one element
+   * @param array
+   */
+  private checkIfArrayHasAtLeastOneValue(array) {
+    if (array.length < min_array_limit) {
+      return false;
+    }
+    return true;
+  }
+
+  private openbarAtLeastOne(testName: string) {
+    this.bar.open(
+      `Deve escolher pelo menos um ` + testName + `.`,
+      '', {
+        duration: 2000,
+      });
+  }
+
+  private openbarNotEmpty(testName: string) {
+    this.bar.open(
+      testName + ` não pode estar vazio. `,
+      '', {
+        duration: 2000,
+      });
+  }
+
+  private openbarBeyondMinLimit(limit: number, testName: string) {
+    this.bar.open(
+      testName + ` não pode inferior a ` + limit + `.`,
+      '', {
+        duration: 2000,
+      });
+  }
+
+  private openbarBeyondMaxLimit(testName: string) {
+    this.bar.open(
+      testName + ` não pode ser superior a ` + max_limit + `.`,
+      '', {
+        duration: 2000,
+      });
+  }
+
+  private openbarOtherMessage(message: string) {
+    this.bar.open(
+      message,
+      '', {
+        duration: 2000,
+      });
   }
 
   back(): void {

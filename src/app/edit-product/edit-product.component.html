@@ -15,7 +15,7 @@
       </mat-form-field>
       <mat-form-field id="forminline3">
         <mat-select required [(ngModel)]="category" placeholder="Categoria">
-          <mat-option *ngFor="let cat of categories" [value]="cat.id">
+          <mat-option *ngFor="let cat of categories" [value]="cat">
             {{cat.description}}
           </mat-option>
         </mat-select>

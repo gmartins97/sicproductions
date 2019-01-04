@@ -48,21 +48,22 @@
     </mat-form-field>
 
     <!-- Materiais Acabamentos -->
-    <mat-card *ngFor="let materialfinish of materialfinishes" class="example-card" style="width:200px;float:left;margin-top:30px;margin-right: 30px;">
-      <mat-card-header style="text-align:left;">
-        <mat-card-title style="font-size:medium;">{{materialfinish.materialDTO.name}}</mat-card-title>
-        <mat-card-subtitle>{{materialfinish.surfaceFinishDTO.name}}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src="{{materialfinish.textureUrl}}">
-      <mat-card-actions>
+    <div>
+      <mat-card *ngFor="let materialfinish of materialfinishes" class="example-card" style="width:200px;float:left;margin-top:30px;margin-right: 30px;">
+        <mat-card-header style="text-align:left;">
+          <mat-card-title style="font-size:medium;">{{materialfinish.materialDTO.name}}</mat-card-title>
+          <mat-card-subtitle>{{materialfinish.surfaceFinishDTO.name}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{materialfinish.textureUrl}}">
+        <mat-card-actions>
 
-      </mat-card-actions>
-    </mat-card>
+        </mat-card-actions>
+      </mat-card>
 
+    </div>
+    <div class="sic-row">
+      <button type="button" (click)="editProduct()" matTooltip="Editar" class="btn btn-primary btn-md">Editar</button>
+      <button type="button" (click)="deleteProduct()" matTooltip="Apagar este Produto" class="btn btn-primary btn-md">Apagar</button>
+      <button type="button" (click)="back()" matTooltip="Cancelar" class="btn btn-light btn-md">Retroceder</button>
+    </div>
   </div>
-  <div class="sic-row">
-    <button type="button" (click)="editProduct()" matTooltip="Editar" class="btn btn-primary btn-md">Editar</button>
-    <button type="button" (click)="deleteProduct()" matTooltip="Apagar este Produto" class="btn btn-primary btn-md">Apagar</button>
-    <button type="button" (click)="back()" matTooltip="Cancelar" class="btn btn-light btn-md">Retroceder</button>
-  </div>
-</div>

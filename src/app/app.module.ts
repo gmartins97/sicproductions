@@ -28,6 +28,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditMaterialFinishComponent } from './edit-material-finish/edit-material-finish.component';
 import { ShowProductInfoComponent } from './show-product-info/show-product-info.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
+import { OrdersComponent } from './orders/orders.component';
+import { EditOrdersComponent } from './edit-orders/edit-orders.component';
 
 
 @NgModule({
@@ -56,7 +58,9 @@ import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-co
     EditProductComponent,
     EditMaterialFinishComponent,
     ShowProductInfoComponent,
-    TermsAndConditionsComponent
+    TermsAndConditionsComponent,
+    OrdersComponent,
+    EditOrdersComponent
   ],
   imports: [
     BrowserModule,

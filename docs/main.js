@@ -399,6 +399,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit_material_finish_edit_material_finish_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./edit-material-finish/edit-material-finish.component */ "./src/app/edit-material-finish/edit-material-finish.component.ts");
 /* harmony import */ var _show_product_info_show_product_info_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./show-product-info/show-product-info.component */ "./src/app/show-product-info/show-product-info.component.ts");
 /* harmony import */ var _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./terms-and-conditions/terms-and-conditions.component */ "./src/app/terms-and-conditions/terms-and-conditions.component.ts");
+/* harmony import */ var _orders_orders_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./orders/orders.component */ "./src/app/orders/orders.component.ts");
+/* harmony import */ var _edit_orders_edit_orders_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./edit-orders/edit-orders.component */ "./src/app/edit-orders/edit-orders.component.ts");
+
+
 
 
 
@@ -460,7 +464,9 @@ var AppModule = /** @class */ (function () {
                 _edit_product_edit_product_component__WEBPACK_IMPORTED_MODULE_26__["EditProductComponent"],
                 _edit_material_finish_edit_material_finish_component__WEBPACK_IMPORTED_MODULE_28__["EditMaterialFinishComponent"],
                 _show_product_info_show_product_info_component__WEBPACK_IMPORTED_MODULE_29__["ShowProductInfoComponent"],
-                _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_30__["TermsAndConditionsComponent"]
+                _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_30__["TermsAndConditionsComponent"],
+                _orders_orders_component__WEBPACK_IMPORTED_MODULE_31__["OrdersComponent"],
+                _edit_orders_edit_orders_component__WEBPACK_IMPORTED_MODULE_32__["EditOrdersComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -1302,9 +1308,13 @@ var CreateProductComponent = /** @class */ (function () {
             data: {}
         });
         dialogRef.afterClosed().subscribe(function (result) {
-            _this.optionalProducts = result;
-            if (!result === undefined) {
+            if (!(result === undefined)) {
+                _this.optionalProducts = result;
                 _this.convertToParts(result);
+            }
+            else {
+                _this.optionalProducts = [];
+                _this.parts = [];
             }
         });
     };
@@ -1327,8 +1337,11 @@ var CreateProductComponent = /** @class */ (function () {
         for (var i = 0; i < optionalProducts.length; i++) {
             _loop_1(i);
         }
+        console.log('parts');
+        console.log(this.parts);
     };
     CreateProductComponent.prototype.writeOptionalOrMandatory = function (isOptional) {
+        console.log('entrou no write');
         if (isOptional === false) {
             return "Obrigatório";
         }
@@ -1638,7 +1651,7 @@ module.exports = "table {\r\n  width: 100%;\r\n}\r\n\r\n/*# sourceMappingURL=dat
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n\r\n  <!-- Checkbox Column -->\r\n  <ng-container matColumnDef=\"select\">\r\n    <th mat-header-cell *matHeaderCellDef>\r\n      <mat-checkbox (change)=\"$event ? masterToggle() : null\"\r\n                    [checked]=\"selection.hasValue() && isAllSelected()\"\r\n                    [indeterminate]=\"selection.hasValue() && !isAllSelected()\">\r\n      </mat-checkbox>\r\n    </th>\r\n    <td mat-cell *matCellDef=\"let row\">\r\n      <mat-checkbox (click)=\"$event.stopPropagation()\"\r\n                    (change)=\"$event ? selection.toggle(row) : null\"\r\n                    [checked]=\"selection.isSelected(row)\">\r\n      </mat-checkbox>\r\n    </td>\r\n  </ng-container>\r\n\r\n  <!-- Position Column -->\r\n  <ng-container matColumnDef=\"position\">\r\n    <th mat-header-cell *matHeaderCellDef> # </th>\r\n    <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n  </ng-container>\r\n  <!-- Material Column -->\r\n  <ng-container matColumnDef=\"materialName\">\r\n    <th mat-header-cell *matHeaderCellDef> Material </th>\r\n    <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.materialDTO.name}} </td>\r\n  </ng-container>\r\n  <!-- Finish Column -->\r\n  <ng-container matColumnDef=\"finishName\">\r\n    <th mat-header-cell *matHeaderCellDef> Acabamento </th>\r\n    <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.surfaceFinishDTO.name}} </td>\r\n  </ng-container>\r\n  <!-- Increment Column -->\r\n  <ng-container matColumnDef=\"increment\">\r\n    <th mat-header-cell *matHeaderCellDef> Incremento/m2 </th>\r\n    <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.price}}€/m2 </td>\r\n  </ng-container>\r\n  <!-- Total price Column -->\r\n  <ng-container matColumnDef=\"totalPrice\">\r\n    <th mat-header-cell *matHeaderCellDef> Preço total/m2 </th>\r\n    <td mat-cell *matCellDef=\"let materialFinish\">{{materialFinish.price+materialFinish.materialDTO.price}}€/m2 </td>\r\n  </ng-container>\r\n  <!-- Texture Column -->\r\n  <ng-container matColumnDef=\"texture\">\r\n    <th mat-header-cell *matHeaderCellDef> Textura </th>\r\n    <td mat-cell *matCellDef=\"let materialFinish\"> <img src=\"{{materialFinish.textureUrl}}\" width=\"64\" height=\"64\" alt=\"Textura\"> </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"\r\n      (click)=\"selection.toggle(row)\"></tr>\r\n</table>\r\n<br />\r\n<button mat-button cdkFocusInitial [mat-dialog-close]=\"selection.selected\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">Selecionar</button>\r\n"
+module.exports = "<div class=\"example-container container\">\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n\r\n    <!-- Checkbox Column -->\r\n    <ng-container matColumnDef=\"select\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <mat-checkbox (change)=\"$event ? masterToggle() : null\"\r\n                      [checked]=\"selection.hasValue() && isAllSelected()\"\r\n                      [indeterminate]=\"selection.hasValue() && !isAllSelected()\">\r\n        </mat-checkbox>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let row\">\r\n        <mat-checkbox (click)=\"$event.stopPropagation()\"\r\n                      (change)=\"$event ? selection.toggle(row) : null\"\r\n                      [checked]=\"selection.isSelected(row)\">\r\n        </mat-checkbox>\r\n      </td>\r\n    </ng-container>\r\n\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Material Column -->\r\n    <ng-container matColumnDef=\"materialName\">\r\n      <th mat-header-cell *matHeaderCellDef> Material </th>\r\n      <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.materialDTO.name}} </td>\r\n    </ng-container>\r\n    <!-- Finish Column -->\r\n    <ng-container matColumnDef=\"finishName\">\r\n      <th mat-header-cell *matHeaderCellDef> Acabamento </th>\r\n      <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.surfaceFinishDTO.name}} </td>\r\n    </ng-container>\r\n    <!-- Increment Column -->\r\n    <ng-container matColumnDef=\"increment\">\r\n      <th mat-header-cell *matHeaderCellDef> Incremento/m2 </th>\r\n      <td mat-cell *matCellDef=\"let materialFinish\"> {{materialFinish.price}}€/m2 </td>\r\n    </ng-container>\r\n    <!-- Total price Column -->\r\n    <ng-container matColumnDef=\"totalPrice\">\r\n      <th mat-header-cell *matHeaderCellDef> Preço total/m2 </th>\r\n      <td mat-cell *matCellDef=\"let materialFinish\">{{materialFinish.price+materialFinish.materialDTO.price}}€/m2 </td>\r\n    </ng-container>\r\n    <!-- Texture Column -->\r\n    <ng-container matColumnDef=\"texture\">\r\n      <th mat-header-cell *matHeaderCellDef> Textura </th>\r\n      <td mat-cell *matCellDef=\"let materialFinish\"> <img src=\"{{materialFinish.textureUrl}}\" width=\"64\" height=\"64\" alt=\"Textura\"> </td>\r\n    </ng-container>\r\n\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"\r\n        (click)=\"selection.toggle(row)\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"sic-row\">\r\n    <button mat-button cdkFocusInitial [mat-dialog-close]=\"selection.selected\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">Selecionar</button>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1738,7 +1751,7 @@ module.exports = "table {\r\n  width: 100%;\r\n}\r\n\r\n/*# sourceMappingURL=dat
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n\r\n    <!-- Checkbox Column -->\r\n    <ng-container matColumnDef=\"select\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <mat-checkbox (change)=\"$event ? masterToggle() : null\"\r\n                      [checked]=\"selection.hasValue() && isAllSelected()\"\r\n                      [indeterminate]=\"selection.hasValue() && !isAllSelected()\">\r\n        </mat-checkbox>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let row;let product;let i = index\">\r\n        <mat-checkbox (click)=\"$event.stopPropagation();deselectProduct(i)\"\r\n                      (change)=\"$event ? selection.toggle(row) : null\"\r\n                      [checked]=\"selection.isSelected(row)\">\r\n        </mat-checkbox>\r\n    </ng-container>\r\n\r\n    <!-- Optional Column -->\r\n    <ng-container matColumnDef=\"optional\">\r\n      <th mat-header-cell *matHeaderCellDef> Opcional/<br />Obrigatório </th>\r\n      <tr>\r\n        <td mat-cell *matCellDef=\"let product; let row; let i = index\">\r\n          <input type=\"radio\" required name=\"{{product.name}}\" (click)=\"btnHM[i]=false;btnHO[i]=true;\" [disabled]=\"!selection.isSelected(row)\" [checked]=\"btnHO[i] && selection.isSelected(row)\" value=\"opt\">Opcional <br />\r\n          <input type=\"radio\" name=\"{{product.name}}\" (click)=\"btnHO[i]=false;btnHM[i]=true;\" [disabled]=\"!selection.isSelected(row)\" [checked]=\"btnHM[i] && selection.isSelected(row)\" value=\"mand\"> Obrigatório\r\n        </td>\r\n      </tr>\r\n    </ng-container>\r\n\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"name\">\r\n      <th mat-header-cell *matHeaderCellDef> Nome </th>\r\n      <td mat-cell *matCellDef=\"let product\"> {{product.name}} </td>\r\n    </ng-container>\r\n\r\n\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n\r\n\r\n  </table>\r\n\r\n  <br /><!---->\r\n  <button mat-button (click)=\"convertToOptionalProduct(selection.selected)\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">Selecionar</button>\r\n</form>\r\n\r\n"
+module.exports = "<div class=\"example-container container\">\r\n  <form>\r\n    <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n\r\n      <!-- Checkbox Column -->\r\n      <ng-container matColumnDef=\"select\">\r\n        <th mat-header-cell *matHeaderCellDef>\r\n          <mat-checkbox (change)=\"$event ? masterToggle() : null\"\r\n                        [checked]=\"selection.hasValue() && isAllSelected()\"\r\n                        [indeterminate]=\"selection.hasValue() && !isAllSelected()\">\r\n          </mat-checkbox>\r\n        </th>\r\n        <td mat-cell *matCellDef=\"let row;let product;let i = index\">\r\n          <mat-checkbox (click)=\"$event.stopPropagation();deselectProduct(i)\"\r\n                        (change)=\"$event ? selection.toggle(row) : null\"\r\n                        [checked]=\"selection.isSelected(row)\">\r\n          </mat-checkbox>\r\n      </ng-container>\r\n\r\n      <!-- Optional Column -->\r\n      <ng-container matColumnDef=\"optional\">\r\n        <th mat-header-cell *matHeaderCellDef> Opcional/<br />Obrigatório </th>\r\n        <tr>\r\n          <td mat-cell *matCellDef=\"let product; let row; let i = index\">\r\n            <input type=\"radio\" required name=\"{{product.name}}\" (click)=\"btnHM[i]=false;btnHO[i]=true;\" [disabled]=\"!selection.isSelected(row)\" [checked]=\"btnHO[i] && selection.isSelected(row)\" value=\"opt\">Opcional <br />\r\n            <input type=\"radio\" name=\"{{product.name}}\" (click)=\"btnHO[i]=false;btnHM[i]=true;\" [disabled]=\"!selection.isSelected(row)\" [checked]=\"btnHM[i] && selection.isSelected(row)\" value=\"mand\"> Obrigatório\r\n          </td>\r\n        </tr>\r\n      </ng-container>\r\n\r\n      <!-- Name Column -->\r\n      <ng-container matColumnDef=\"name\">\r\n        <th mat-header-cell *matHeaderCellDef> Nome </th>\r\n        <td mat-cell *matCellDef=\"let product\"> {{product.name}} </td>\r\n      </ng-container>\r\n\r\n\r\n      <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n      <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n\r\n\r\n    </table>\r\n\r\n    <br /><!---->\r\n  </form>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"sic-row\">\r\n    <button mat-button (click)=\"convertToOptionalProduct(selection.selected)\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">Selecionar</button>\r\n\r\n  </div>\r\n</div>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -2355,6 +2368,62 @@ var EditMaterialComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/edit-orders/edit-orders.component.css":
+/*!*******************************************************!*\
+  !*** ./src/app/edit-orders/edit-orders.component.css ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2VkaXQtb3JkZXJzL2VkaXQtb3JkZXJzLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/edit-orders/edit-orders.component.html":
+/*!********************************************************!*\
+  !*** ./src/app/edit-orders/edit-orders.component.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n  edit-orders works!\r\n</p>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/edit-orders/edit-orders.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/edit-orders/edit-orders.component.ts ***!
+  \******************************************************/
+/*! exports provided: EditOrdersComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditOrdersComponent", function() { return EditOrdersComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var EditOrdersComponent = /** @class */ (function () {
+    function EditOrdersComponent() {
+    }
+    EditOrdersComponent.prototype.ngOnInit = function () {
+    };
+    EditOrdersComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-edit-orders',
+            template: __webpack_require__(/*! ./edit-orders.component.html */ "./src/app/edit-orders/edit-orders.component.html"),
+            styles: [__webpack_require__(/*! ./edit-orders.component.css */ "./src/app/edit-orders/edit-orders.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], EditOrdersComponent);
+    return EditOrdersComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/edit-product/edit-product.component.css":
 /*!*********************************************************!*\
   !*** ./src/app/edit-product/edit-product.component.css ***!
@@ -2373,7 +2442,7 @@ module.exports = "#formpequena {\r\n  width: 86%;\r\n}\r\n\r\n#forminline1 {\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Editar Produto</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n    <!-- Nome -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Nome do produto\" [(ngModel)]=\"name\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Categoria -->\r\n    <div>\r\n      <mat-form-field style=\"width: 20%;display:inline-block;\">\r\n        <input matInput placeholder=\"Categoria Anterior\" [(ngModel)]=\"categoryBefore\" readonly>\r\n      </mat-form-field>\r\n      <mat-form-field id=\"forminline3\">\r\n        <mat-select required [(ngModel)]=\"category\" placeholder=\"Categoria\">\r\n          <mat-option *ngFor=\"let cat of categories\" [value]=\"cat.id\">\r\n            {{cat.description}}\r\n          </mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n    </div>\r\n    \r\n\r\n    <!-- Min ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Minima Ocupação\" [(ngModel)]=\"minOccup\" type=\"number\" min=\"0\" max=\"100\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Max ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Máxima Ocupação\" [(ngModel)]=\"maxOccup\" type=\"number\" min=\"{{minOccup}}\" max=\"100\" required>\r\n    </mat-form-field>\r\n  </div>\r\n\r\n  <!-- Partes -->\r\n  <button id=\"butpequeno\" mat-button (click)=\"chooseParts()\" matTooltip=\"A lista será substituida pela nova.\" class=\"btn btn-primary btn-md\">Escolher</button>\r\n  <mat-form-field id=\"forminline1\">\r\n    <mat-select [(ngModel)]=\"part\" placeholder=\"Produtos Anteriores\" >\r\n      <mat-option *ngFor=\"let part of partsBefore\" [value]=\"part\">\r\n        {{part.product.name}} (<label id=\"{{part.product.name}}\" style=\"display:inline-block;\">{{part.optional}}</label>)\r\n      </mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n  <mat-form-field id=\"forminline2\">\r\n    <mat-select [(ngModel)]=\"part\" placeholder=\"Produtos Opcionais\">\r\n      <mat-option *ngFor=\"let part of parts\" [value]=\"part\">\r\n        {{part.product.name}} (<label id=\"{{part.product.name}}\" style=\"display:inline-block;\">{{part.optional}}</label>)\r\n      </mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n\r\n  <br />\r\n  <!-- Materiais Acabamentos -->\r\n  <button mat-button (click)=\"chooseMaterialFinishes()\" matTooltip=\"Escolher Materiais Acabamentos\" class=\"btn btn-primary btn-md\">Escolher Materiais Acabamentos</button>\r\n  <div>\r\n    <mat-card *ngFor=\"let materialfinish of materialfinishes\" class=\"example-card\" style=\"width:200px;float:left;margin-top:30px;margin-right: 30px;\">\r\n      <mat-card-header style=\"text-align:left;\">\r\n        <mat-card-title style=\"font-size:medium;\">{{materialfinish.materialDTO.name}}</mat-card-title>\r\n        <mat-card-subtitle>{{materialfinish.surfaceFinishDTO.name}}</mat-card-subtitle>\r\n      </mat-card-header>\r\n      <img mat-card-image src=\"{{materialfinish.textureUrl}}\">\r\n      <mat-card-actions>\r\n        <button mat-button (click)=\"removeFromMaterialList(materialfinish)\">Remover</button>\r\n      </mat-card-actions>\r\n    </mat-card>\r\n  </div>\r\n  <br />\r\n\r\n  <!-- Alturas -->\r\n  <mat-card class=\"result\" style=\"clear:both;margin-top:30px;\">\r\n    <mat-card-content>\r\n      <h2 class=\"example-h2\">Alturas</h2>\r\n      <h4 class=\"example-h4\">Anterior: {{height_disc_ant||  height_min_ant + '-' + height_max_ant}}</h4>\r\n      <br />\r\n      <section class=\"example-section\">\r\n        <mat-radio-group required>\r\n          <mat-radio-button name=\"myHeight\" (click)=\"showDivNewAlturaDiscreta()\" value=\"HeightDiscrete\">Discreta</mat-radio-button>&ensp;\r\n          <mat-radio-button name=\"myHeight\" (click)=\"showDivNewAlturaContinua()\" value=\"HeightContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n        </mat-radio-group>\r\n        <div id=\"newAlturaContinua\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"hcmin\" matInput [(ngModel)]=\"height_min\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n          </mat-form-field>\r\n          <mat-form-field>\r\n            <input id=\"hcmax\" matInput [(ngModel)]=\"height_max\" type=\"number\" placeholder=\"max\" min=\"{{heightMin}}\"> <br />\r\n          </mat-form-field>\r\n        </div>\r\n        <div id=\"newAlturaDiscreta\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"hdiscrete\" matInput [(ngModel)]=\"height_disc\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n          </mat-form-field>\r\n        </div>\r\n      </section>\r\n    </mat-card-content>\r\n  </mat-card>\r\n\r\n  <!-- Larguras -->\r\n  <mat-card class=\"result\" style=\"margin-left: 30px;margin-top:30px;\">\r\n    <mat-card-content>\r\n      <h2 class=\"example-h2\">Larguras</h2>\r\n      <h4 class=\"example-h4\">Anterior: {{width_disc_ant||  width_min_ant + '-' + width_max_ant}}</h4>\r\n      <br />\r\n      <section class=\"example-section\">\r\n        <mat-radio-group required>\r\n          <mat-radio-button name=\"myWidth\" (click)=\"showDivNewLarguraDiscreta()\" value=\"WidthDiscrete\">Discreta</mat-radio-button>\r\n          <mat-radio-button name=\"myWidth\" (click)=\"showDivNewLarguraContinua()\" value=\"WidthContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n        </mat-radio-group>\r\n        <br />\r\n        <div id=\"newLarguraContinua\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"wcmin\" matInput [(ngModel)]=\"width_min\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n          </mat-form-field>\r\n          <mat-form-field>\r\n            <input id=\"wcmax\" matInput [(ngModel)]=\"width_max\" type=\"number\" placeholder=\"max\" min=\"{{widthMin}}\"> <br />\r\n          </mat-form-field>\r\n        </div>\r\n        <div id=\"newLarguraDiscreta\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"wdiscrete\" matInput [(ngModel)]=\"width_disc\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n          </mat-form-field>\r\n        </div>\r\n      </section>\r\n    </mat-card-content>\r\n  </mat-card>\r\n\r\n  <!-- Profundidades -->\r\n  <mat-card class=\"result\" style=\"margin-left: 30px;margin-top:30px;\">\r\n    <mat-card-content>\r\n      <h2 class=\"example-h2\">Profundidades</h2>\r\n      <h4 class=\"example-h4\">Anterior: {{depth_disc_ant||  depth_min_ant + '-' + depth_max_ant}}</h4>\r\n      <br />\r\n      <section class=\"example-section\">\r\n        <mat-radio-group id=\"profgroup\">\r\n          <mat-radio-button name=\"myDepth\" (click)=\"showDivNewProfundidadeDiscreta()\" value=\"DepthDiscrete\">Discreta</mat-radio-button>\r\n          <mat-radio-button name=\"myDepth\" (click)=\"showDivNewProfundidadeContinua()\" value=\"DepthContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n        </mat-radio-group>\r\n        <br />\r\n        <div id=\"newProfundidadeContinua\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"dcmin\" matInput [(ngModel)]=\"depth_min\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n          </mat-form-field>\r\n          <mat-form-field>\r\n            <input id=\"dcmax\" matInput [(ngModel)]=\"depth_max\" type=\"number\" placeholder=\"max\" min=\"0\"> <br />\r\n          </mat-form-field>\r\n        </div>\r\n        <div id=\"newProfundidadeDiscreta\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"ddiscrete\" matInput [(ngModel)]=\"depth_disc\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n          </mat-form-field>\r\n        </div>\r\n      </section>\r\n    </mat-card-content>\r\n  </mat-card>\r\n\r\n\r\n\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar Alterações\" class=\"btn btn-primary btn-md\">Confirmar</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Cancelar</button>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Editar Produto</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n    <!-- Nome -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Nome do produto\" [(ngModel)]=\"name\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Categoria -->\r\n    <div>\r\n      <mat-form-field style=\"width: 20%;display:inline-block;\">\r\n        <input matInput placeholder=\"Categoria Anterior\" [(ngModel)]=\"categoryBefore\" readonly>\r\n      </mat-form-field>\r\n      <mat-form-field id=\"forminline3\">\r\n        <mat-select required [(ngModel)]=\"category\" placeholder=\"Categoria\">\r\n          <mat-option *ngFor=\"let cat of categories\" [value]=\"cat\">\r\n            {{cat.description}}\r\n          </mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n    </div>\r\n    \r\n\r\n    <!-- Min ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Minima Ocupação\" [(ngModel)]=\"minOccup\" type=\"number\" min=\"0\" max=\"100\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Max ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Máxima Ocupação\" [(ngModel)]=\"maxOccup\" type=\"number\" min=\"{{minOccup}}\" max=\"100\" required>\r\n    </mat-form-field>\r\n  </div>\r\n\r\n  <!-- Partes -->\r\n  <button id=\"butpequeno\" mat-button (click)=\"chooseParts()\" matTooltip=\"A lista será substituida pela nova.\" class=\"btn btn-primary btn-md\">Escolher</button>\r\n  <mat-form-field id=\"forminline1\">\r\n    <mat-select [(ngModel)]=\"part\" placeholder=\"Produtos Anteriores\" >\r\n      <mat-option *ngFor=\"let part of partsBefore\" [value]=\"part\">\r\n        {{part.product.name}} (<label id=\"{{part.product.name}}\" style=\"display:inline-block;\">{{part.optional}}</label>)\r\n      </mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n  <mat-form-field id=\"forminline2\">\r\n    <mat-select [(ngModel)]=\"part\" placeholder=\"Produtos Opcionais\">\r\n      <mat-option *ngFor=\"let part of parts\" [value]=\"part\">\r\n        {{part.product.name}} (<label id=\"{{part.product.name}}\" style=\"display:inline-block;\">{{part.optional}}</label>)\r\n      </mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n\r\n  <br />\r\n  <!-- Materiais Acabamentos -->\r\n  <button mat-button (click)=\"chooseMaterialFinishes()\" matTooltip=\"Escolher Materiais Acabamentos\" class=\"btn btn-primary btn-md\">Escolher Materiais Acabamentos</button>\r\n  <div>\r\n    <mat-card *ngFor=\"let materialfinish of materialfinishes\" class=\"example-card\" style=\"width:200px;float:left;margin-top:30px;margin-right: 30px;\">\r\n      <mat-card-header style=\"text-align:left;\">\r\n        <mat-card-title style=\"font-size:medium;\">{{materialfinish.materialDTO.name}}</mat-card-title>\r\n        <mat-card-subtitle>{{materialfinish.surfaceFinishDTO.name}}</mat-card-subtitle>\r\n      </mat-card-header>\r\n      <img mat-card-image src=\"{{materialfinish.textureUrl}}\">\r\n      <mat-card-actions>\r\n        <button mat-button (click)=\"removeFromMaterialList(materialfinish)\">Remover</button>\r\n      </mat-card-actions>\r\n    </mat-card>\r\n  </div>\r\n  <br />\r\n\r\n  <!-- Alturas -->\r\n  <mat-card class=\"result\" style=\"clear:both;margin-top:30px;\">\r\n    <mat-card-content>\r\n      <h2 class=\"example-h2\">Alturas</h2>\r\n      <h4 class=\"example-h4\">Anterior: {{height_disc_ant||  height_min_ant + '-' + height_max_ant}}</h4>\r\n      <br />\r\n      <section class=\"example-section\">\r\n        <mat-radio-group required>\r\n          <mat-radio-button name=\"myHeight\" (click)=\"showDivNewAlturaDiscreta()\" value=\"HeightDiscrete\">Discreta</mat-radio-button>&ensp;\r\n          <mat-radio-button name=\"myHeight\" (click)=\"showDivNewAlturaContinua()\" value=\"HeightContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n        </mat-radio-group>\r\n        <div id=\"newAlturaContinua\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"hcmin\" matInput [(ngModel)]=\"height_min\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n          </mat-form-field>\r\n          <mat-form-field>\r\n            <input id=\"hcmax\" matInput [(ngModel)]=\"height_max\" type=\"number\" placeholder=\"max\" min=\"{{heightMin}}\"> <br />\r\n          </mat-form-field>\r\n        </div>\r\n        <div id=\"newAlturaDiscreta\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"hdiscrete\" matInput [(ngModel)]=\"height_disc\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n          </mat-form-field>\r\n        </div>\r\n      </section>\r\n    </mat-card-content>\r\n  </mat-card>\r\n\r\n  <!-- Larguras -->\r\n  <mat-card class=\"result\" style=\"margin-left: 30px;margin-top:30px;\">\r\n    <mat-card-content>\r\n      <h2 class=\"example-h2\">Larguras</h2>\r\n      <h4 class=\"example-h4\">Anterior: {{width_disc_ant||  width_min_ant + '-' + width_max_ant}}</h4>\r\n      <br />\r\n      <section class=\"example-section\">\r\n        <mat-radio-group required>\r\n          <mat-radio-button name=\"myWidth\" (click)=\"showDivNewLarguraDiscreta()\" value=\"WidthDiscrete\">Discreta</mat-radio-button>\r\n          <mat-radio-button name=\"myWidth\" (click)=\"showDivNewLarguraContinua()\" value=\"WidthContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n        </mat-radio-group>\r\n        <br />\r\n        <div id=\"newLarguraContinua\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"wcmin\" matInput [(ngModel)]=\"width_min\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n          </mat-form-field>\r\n          <mat-form-field>\r\n            <input id=\"wcmax\" matInput [(ngModel)]=\"width_max\" type=\"number\" placeholder=\"max\" min=\"{{widthMin}}\"> <br />\r\n          </mat-form-field>\r\n        </div>\r\n        <div id=\"newLarguraDiscreta\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"wdiscrete\" matInput [(ngModel)]=\"width_disc\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n          </mat-form-field>\r\n        </div>\r\n      </section>\r\n    </mat-card-content>\r\n  </mat-card>\r\n\r\n  <!-- Profundidades -->\r\n  <mat-card class=\"result\" style=\"margin-left: 30px;margin-top:30px;\">\r\n    <mat-card-content>\r\n      <h2 class=\"example-h2\">Profundidades</h2>\r\n      <h4 class=\"example-h4\">Anterior: {{depth_disc_ant||  depth_min_ant + '-' + depth_max_ant}}</h4>\r\n      <br />\r\n      <section class=\"example-section\">\r\n        <mat-radio-group id=\"profgroup\">\r\n          <mat-radio-button name=\"myDepth\" (click)=\"showDivNewProfundidadeDiscreta()\" value=\"DepthDiscrete\">Discreta</mat-radio-button>\r\n          <mat-radio-button name=\"myDepth\" (click)=\"showDivNewProfundidadeContinua()\" value=\"DepthContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n        </mat-radio-group>\r\n        <br />\r\n        <div id=\"newProfundidadeContinua\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"dcmin\" matInput [(ngModel)]=\"depth_min\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n          </mat-form-field>\r\n          <mat-form-field>\r\n            <input id=\"dcmax\" matInput [(ngModel)]=\"depth_max\" type=\"number\" placeholder=\"max\" min=\"0\"> <br />\r\n          </mat-form-field>\r\n        </div>\r\n        <div id=\"newProfundidadeDiscreta\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"ddiscrete\" matInput [(ngModel)]=\"depth_disc\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n          </mat-form-field>\r\n        </div>\r\n      </section>\r\n    </mat-card-content>\r\n  </mat-card>\r\n\r\n\r\n\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar Alterações\" class=\"btn btn-primary btn-md\">Confirmar</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Cancelar</button>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -2391,10 +2460,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
-/* harmony import */ var _services_category_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/category.service */ "./src/app/services/category.service.ts");
-/* harmony import */ var _create_product_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../create-product/select-material-finish-dialog */ "./src/app/create-product/select-material-finish-dialog.ts");
-/* harmony import */ var _create_product_select_parts_dialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../create-product/select-parts-dialog */ "./src/app/create-product/select-parts-dialog.ts");
+/* harmony import */ var _model_product__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../model/product */ "./src/app/model/product.ts");
+/* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
+/* harmony import */ var _services_category_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/category.service */ "./src/app/services/category.service.ts");
+/* harmony import */ var _create_product_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../create-product/select-material-finish-dialog */ "./src/app/create-product/select-material-finish-dialog.ts");
+/* harmony import */ var _create_product_select_parts_dialog__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../create-product/select-parts-dialog */ "./src/app/create-product/select-parts-dialog.ts");
+
 
 
 
@@ -2524,7 +2595,7 @@ var EditProductComponent = /** @class */ (function () {
     };
     EditProductComponent.prototype.openMaterialDialog = function () {
         var _this = this;
-        var dialogRef = this.dialog.open(_create_product_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_6__["SelectMaterialFinishesDialog"], {
+        var dialogRef = this.dialog.open(_create_product_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_7__["SelectMaterialFinishesDialog"], {
             width: '900px',
             data: {}
         });
@@ -2534,14 +2605,18 @@ var EditProductComponent = /** @class */ (function () {
     };
     EditProductComponent.prototype.openPartsDialog = function () {
         var _this = this;
-        var dialogRef = this.dialog.open(_create_product_select_parts_dialog__WEBPACK_IMPORTED_MODULE_7__["SelectPartsDialog"], {
+        var dialogRef = this.dialog.open(_create_product_select_parts_dialog__WEBPACK_IMPORTED_MODULE_8__["SelectPartsDialog"], {
             width: '700px',
             data: {}
         });
         dialogRef.afterClosed().subscribe(function (result) {
-            _this.optionalProducts = result;
-            if (!result === undefined) {
+            if (!(result === undefined)) {
+                _this.optionalProducts = result;
                 _this.convertToParts(result);
+            }
+            else {
+                _this.optionalProducts = [];
+                _this.parts = [];
             }
         });
     };
@@ -2562,19 +2637,197 @@ var EditProductComponent = /** @class */ (function () {
         }
     };
     EditProductComponent.prototype.confirm = function () {
-        //const sizeSurfaceFinishName = this.surfaceFinishName.trim().length;
-        //if (sizeSurfaceFinishName > 0) {
-        //  this.surface.name = this.surfaceFinishName;
-        //  this.service.updateSurfaceFinish(this.surface).subscribe(res => {
-        //    this.bar.open('Sucesso: o acabamento foi atualizado', '', { duration: 2000 });
-        //    this.back();
-        //  }, e => {
-        //    this.bar.open(e.error, '', { duration: 2000 });
-        //  });
-        //} else {
-        //  this.minLengthValidation = false;
-        //}
-        this.bar.open("Tem calma que isto ainda n\u00E3o est\u00E1 implementado.", '', { duration: 2000 });
+        var _this = this;
+        //check product name is not empty
+        if (this.checkIfFieldIsEmptyOrNull([this.name])) {
+            this.openbarNotEmpty('Nome do Produto');
+            return;
+        }
+        //check category is selected
+        if (this.checkIfFieldIsEmptyOrNull([this.category])) {
+            this.openbarNotEmpty('Categoria');
+            return;
+        }
+        // check at least one selected materialfinish
+        if (!this.checkIfArrayHasAtLeastOneValue(this.materialfinishes)) {
+            this.openbarAtLeastOne('MaterialAcabamento');
+            return;
+        }
+        //check height is not empty & >0
+        var h = this.validateDimension('Altura', this.height_disc, this.height_min, this.height_max);
+        if (h == null) {
+            return;
+        }
+        //check width is not empty & >0 & check regex
+        var w = this.validateDimension('Largura', this.width_disc, this.width_min, this.width_max);
+        if (w == null) {
+            return;
+        }
+        //check depth is not empty  & >0 & check regex
+        var d = this.validateDimension('Profundidade', this.depth_disc, this.depth_min, this.depth_max);
+        if (d == null) {
+            return;
+        }
+        //check min&max occup is not empty & >0 & <100
+        if (this.checkIfFieldIsEmptyOrNull(this.minOccup)) {
+            this.openbarNotEmpty("Ocupação Mínima");
+            return;
+        }
+        if (this.checkIfFieldIsEmptyOrNull(this.maxOccup)) {
+            this.openbarNotEmpty("Ocupação Máxima");
+            return;
+        }
+        if (this.checkNumberIsBeyondMinLimit(percentage_min_limit, this.minOccup)) {
+            this.openbarBeyondMinLimit(percentage_min_limit, "Ocupação Mínima");
+            return;
+        }
+        if (this.checkNumberIsBeyondMinLimit(percentage_min_limit, this.maxOccup)) {
+            this.openbarBeyondMinLimit(percentage_min_limit, "Ocupação Máxima");
+            return;
+        }
+        if (this.checkNumberIsBeyondMaxLimit(this.minOccup)) {
+            this.openbarBeyondMaxLimit("Ocupação Mínima");
+            return;
+        }
+        if (this.checkNumberIsBeyondMaxLimit(this.maxOccup)) {
+            this.openbarBeyondMaxLimit("Ocupação Máxima");
+            return;
+        }
+        //check max occup is higher than min occup
+        if (this.maxOccup < this.minOccup) {
+            this.openbarOtherMessage("Ocupação Máxima não pode ser superior à mínima.");
+            return;
+        }
+        var dimensions = { width: w, height: h, depth: d };
+        var prod = new _model_product__WEBPACK_IMPORTED_MODULE_4__["Product"](this.name, this.category, this.materialfinishes, dimensions, this.optionalProducts, this.minOccup, this.maxOccup);
+        console.log('id para update');
+        console.log(this.product.id);
+        console.log('prod para procurar');
+        console.log(prod);
+        this.service.updateProduct(this.product.id, prod).subscribe(function (prod) {
+            _this.bar.open("Sucesso: o produto foi editado.", '', {
+                duration: 2000,
+            });
+            _this.back();
+        }, function (error) {
+            if (error.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                _this.bar.open("Erro: " + error.error, '', {
+                    duration: 2000,
+                });
+            }
+        });
+    };
+    EditProductComponent.prototype.validateDimension = function (dimension, discrete, min, max) {
+        //if min and max are null and discrete is ok, then it is discrete
+        if (this.checkIfFieldIsEmptyOrNull(min) && this.checkIfFieldIsEmptyOrNull(max)
+            && !this.checkIfFieldIsEmptyOrNull(discrete)) {
+            var array = discrete.split(';');
+            for (var i = 0; i < array.length; i++) {
+                var value = parseInt(array[i]);
+                if (this.checkNumberIsBeyondMinLimit(dim_min_limit, value)) {
+                    this.openbarBeyondMinLimit(dim_min_limit, dimension);
+                    return null;
+                }
+            }
+            var chosenDimension = { discrete: discrete };
+            return chosenDimension;
+            //if min and max are not null and discrete is, it means it is continuous
+        }
+        else if (!this.checkIfFieldIsEmptyOrNull(min) && !this.checkIfFieldIsEmptyOrNull(max)
+            && this.checkIfFieldIsEmptyOrNull(discrete)) {
+            if (this.checkNumberIsBeyondMinLimit(dim_min_limit, min)) {
+                this.openbarBeyondMinLimit(dim_min_limit, dimension + ' Mínima');
+                return null;
+            }
+            if (this.checkNumberIsBeyondMinLimit(dim_min_limit, max)) {
+                this.openbarBeyondMinLimit(dim_min_limit, dimension + ' Máxima');
+                return null;
+            }
+            if (min > max) {
+                this.openbarOtherMessage(dimension + ' mínima não pode ser superior à ' + dimension + ' máxima.');
+                return null;
+            }
+            var chosenDimension = { min: min, max: max };
+            return chosenDimension;
+        }
+        else {
+            // if discrete, min and max are empty, then
+            this.openbarOtherMessage('Deve preencher dimensões para ' + dimension + '.');
+            return null;
+        }
+    };
+    /**
+     * True if it is negative or 0
+     * @param num
+     * @param testName
+     */
+    EditProductComponent.prototype.checkNumberIsBeyondMinLimit = function (limit, num) {
+        if (num < limit) {
+            return true;
+        }
+        return false;
+    };
+    /**
+     * True if it is above 100
+     * @param num
+     * @param testName
+     */
+    EditProductComponent.prototype.checkNumberIsBeyondMaxLimit = function (num) {
+        if (num > max_limit) {
+            return true;
+        }
+        return false;
+    };
+    /**
+     * True if empty or null
+     * @param fields
+     */
+    EditProductComponent.prototype.checkIfFieldIsEmptyOrNull = function (field) {
+        if (field == null || field.toString().trim().length == 0) {
+            return true;
+        }
+        return false;
+    };
+    /**
+     *
+     * True if has at least one element
+     * @param array
+     */
+    EditProductComponent.prototype.checkIfArrayHasAtLeastOneValue = function (array) {
+        if (array.length < min_array_limit) {
+            return false;
+        }
+        return true;
+    };
+    EditProductComponent.prototype.openbarAtLeastOne = function (testName) {
+        this.bar.open("Deve escolher pelo menos um " + testName + ".", '', {
+            duration: 2000,
+        });
+    };
+    EditProductComponent.prototype.openbarNotEmpty = function (testName) {
+        this.bar.open(testName + " n\u00E3o pode estar vazio. ", '', {
+            duration: 2000,
+        });
+    };
+    EditProductComponent.prototype.openbarBeyondMinLimit = function (limit, testName) {
+        this.bar.open(testName + " n\u00E3o pode inferior a " + limit + ".", '', {
+            duration: 2000,
+        });
+    };
+    EditProductComponent.prototype.openbarBeyondMaxLimit = function (testName) {
+        this.bar.open(testName + " n\u00E3o pode ser superior a " + max_limit + ".", '', {
+            duration: 2000,
+        });
+    };
+    EditProductComponent.prototype.openbarOtherMessage = function (message) {
+        this.bar.open(message, '', {
+            duration: 2000,
+        });
     };
     EditProductComponent.prototype.back = function () {
         this.router.navigateByUrl('/products');
@@ -2659,7 +2912,7 @@ var EditProductComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./edit-product.component.html */ "./src/app/edit-product/edit-product.component.html"),
             styles: [__webpack_require__(/*! ./edit-product.component.css */ "./src/app/edit-product/edit-product.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_product_service__WEBPACK_IMPORTED_MODULE_4__["ProductService"], _services_category_service__WEBPACK_IMPORTED_MODULE_5__["CategoryService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_product_service__WEBPACK_IMPORTED_MODULE_5__["ProductService"], _services_category_service__WEBPACK_IMPORTED_MODULE_6__["CategoryService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"]])
     ], EditProductComponent);
     return EditProductComponent;
 }());
@@ -3422,6 +3675,62 @@ var SurfaceFinish = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/orders/orders.component.css":
+/*!*********************************************!*\
+  !*** ./src/app/orders/orders.component.css ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL29yZGVycy9vcmRlcnMuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/orders/orders.component.html":
+/*!**********************************************!*\
+  !*** ./src/app/orders/orders.component.html ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n  orders works!\r\n</p>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/orders/orders.component.ts":
+/*!********************************************!*\
+  !*** ./src/app/orders/orders.component.ts ***!
+  \********************************************/
+/*! exports provided: OrdersComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrdersComponent", function() { return OrdersComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var OrdersComponent = /** @class */ (function () {
+    function OrdersComponent() {
+    }
+    OrdersComponent.prototype.ngOnInit = function () {
+    };
+    OrdersComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-orders',
+            template: __webpack_require__(/*! ./orders.component.html */ "./src/app/orders/orders.component.html"),
+            styles: [__webpack_require__(/*! ./orders.component.css */ "./src/app/orders/orders.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], OrdersComponent);
+    return OrdersComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/product-configurator/product-configurator.component.css":
 /*!*************************************************************************!*\
   !*** ./src/app/product-configurator/product-configurator.component.css ***!
@@ -3673,7 +3982,7 @@ var ProductConfiguratorComponent = /** @class */ (function () {
     //Create Closet
     ProductConfiguratorComponent.prototype.closet = function (width, height, depth, material) {
         var thickness = height * 0.02;
-        var closetG = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](width, height, depth);
+        var closetG = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](0, 0, 0);
         var closetM = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ color: 0x00ff00 });
         closetM.transparent = true;
         closetM.opacity = 0.0;
@@ -3748,7 +4057,15 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         var _this = this;
         var id = guiControls.produtoExtra.split("/")[1];
         if (this.getProductById(id) != null) {
-            //ADCIONAR AQUI PRODUTO AOS ITENS
+            if (guiControlsNomeExtra != null) {
+                datGUI.remove(guiControlsNomeExtra);
+                datGUI.remove(guiControlsExtraAltura);
+                datGUI.remove(guiControlsExtraLargura);
+                datGUI.remove(guiControlsExtraProfundidade);
+                datGUI.remove(guiControlsExtraMaterial);
+            }
+            guiControls.nomeProdutoOpcional = this.optionalProduct.name;
+            guiControlsNomeExtra = datGUI.add(guiControls, 'nomeProdutoOpcional').name('Produto Opcional Selecionado').listen();
             if ((this.optionalProduct.dimensions.height.discrete) == null) {
                 guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra', this.optionalProduct.dimensions.height.min, this.optionalProduct.dimensions.height.max, 1).name('Altura').listen().onChange(function () { _this.updateSize(); });
             }
@@ -3772,21 +4089,22 @@ var ProductConfiguratorComponent = /** @class */ (function () {
             }
             guiControlsExtraMaterial = datGUI.add(guiControls, 'materialProdutoExtra', this.getMaterialFinish(this.optionalProduct.materialFinishes))
                 .name('Material Acabamento Extra').onChange(function () { _this.updateSize(); });
-            alert(this.optionalProduct.name);
+            var obj = null;
             if (guiControls.produtoExtra == "Armário") {
-                var obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+                obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
             }
             else if (guiControls.produtoExtra == "Gaveta") {
-                var obj = this.drawer(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+                obj = this.drawer(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
             }
             else if (guiControls.produtoExtra == "Prateleira") {
-                var obj = this.shelf(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+                obj = this.shelf(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
             }
             else {
-                var obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
-                obj.name = (this.optionalProduct.id).toString();
-                this.scene.add(obj);
+                obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
             }
+            obj.name = (this.optionalProduct.id).toString();
+            this.parts.push(obj);
+            this.scene.add(obj);
         }
     };
     ProductConfiguratorComponent.prototype.encomenda = function (name, material, altura, profundidade, largura, latitude, longitude, cidade) {
@@ -3838,13 +4156,41 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         return this.optionalProduct;
     };
     ProductConfiguratorComponent.prototype.changeActiveProduct = function (id) {
+        var _this = this;
         var newProduct = this.getProductById(id);
         if (newProduct != null) {
+            console.log("mudei");
             this.optionalProduct = newProduct;
+            datGUI.remove(guiControlsNomeExtra);
             datGUI.remove(guiControlsExtraAltura);
             datGUI.remove(guiControlsExtraLargura);
             datGUI.remove(guiControlsExtraProfundidade);
             datGUI.remove(guiControlsExtraMaterial);
+            guiControlsNomeExtra = this.optionalProduct.name;
+            guiControlsNomeExtra = datGUI.add(guiControls, 'nomeProdutoOpcional').name('Produto Opcional Selecionado').listen();
+            if ((this.optionalProduct.dimensions.height.discrete) == null) {
+                guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra', this.optionalProduct.dimensions.height.min, this.optionalProduct.dimensions.height.max, 1).name('Altura').listen().onChange(function () { _this.updateSize(); });
+            }
+            else {
+                guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra', this.convertDimensions((this.optionalProduct.dimensions.height.discrete)))
+                    .name('Altura Produto Opcional').onChange(function () { _this.updateSize(); });
+            }
+            if ((this.optionalProduct.dimensions.width.discrete) == null) {
+                guiControlsExtraLargura = datGUI.add(guiControls, 'larguraProdutoExtra', this.optionalProduct.dimensions.width.min, this.optionalProduct.dimensions.width.max, 1).name('Largura').listen().onChange(function () { _this.updateSize(); });
+            }
+            else {
+                guiControlsExtraLargura = datGUI.add(guiControls, 'larguraProdutoExtra', this.convertDimensions((this.optionalProduct.dimensions.width.discrete)))
+                    .name('Largura Produto Opcional').onChange(function () { _this.updateSize(); });
+            }
+            if ((this.optionalProduct.dimensions.depth.discrete) == null) {
+                guiControlsExtraProfundidade = datGUI.add(guiControls, 'profundidadeProdutoExtra', this.optionalProduct.dimensions.depth.min, this.optionalProduct.dimensions.depth.max, 1).name('Profundidade').listen().onChange(function () { _this.updateSize(); });
+            }
+            else {
+                guiControlsExtraProfundidade = datGUI.add(guiControls, 'profundidadeProdutoExtra', this.convertDimensions((this.optionalProduct.dimensions.depth.discrete)))
+                    .name('Profundidade Produto Opcional').onChange(function () { _this.updateSize(); });
+            }
+            guiControlsExtraMaterial = datGUI.add(guiControls, 'materialProdutoExtra', this.getMaterialFinish(this.optionalProduct.materialFinishes))
+                .name('Material Acabamento Extra').onChange(function () { _this.updateSize(); });
         }
     };
     ProductConfiguratorComponent.prototype.onMouseDown = function (event) {
@@ -3854,8 +4200,11 @@ var ProductConfiguratorComponent = /** @class */ (function () {
             this.raycaster.setFromCamera(this.mouse, this.camera);
             // calculate objects intersecting the picking ray
             var intersects = this.raycaster.intersectObjects(this.parts);
+            console.log(this.parts.length);
             if (intersects.length > 0) {
                 this.controls.enableRotate = false;
+                alert('ola');
+                alert(intersects[0].object.name);
                 this.changeActiveProduct(parseInt(intersects[0].object.name));
                 this.selectedMove = intersects[0].object;
             }
@@ -4553,7 +4902,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Ver Produto</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n    <!-- Nome -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Nome do produto\" [(ngModel)]=\"name\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Categoria -->\r\n    <mat-form-field>\r\n      <input matInput [value]=\"categoryName\" placeholder=\"Categoria\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Alturas -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Alturas\" [(ngModel)]=\"height_disc||  height_min + '-' + height_max\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Larguras -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Larguras\" [(ngModel)]=\"width_disc|| width_min + '-' + width_max\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Profundidades -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Profundidades\" [(ngModel)]=\"depth_disc || depth_min + '-' + depth_max \" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Min ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Minima Ocupação\" [value]=\"minOccup\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Max ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Máxima Ocupação\" [value]=\"maxOccup\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Partes -->\r\n    <mat-form-field id=\"formpequena\">\r\n      <mat-select [(ngModel)]=\"part\" placeholder=\"Produtos Opcionais\">\r\n        <mat-option *ngFor=\"let part of parts\" [value]=\"part\">\r\n          {{part.product.name}} (<label id=\"{{part.product.name}}\" style=\"display:inline-block;\">{{part.optional}}</label>)\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n\r\n    <!-- Materiais Acabamentos -->\r\n    <mat-card *ngFor=\"let materialfinish of materialfinishes\" class=\"example-card\" style=\"width:200px;float:left;margin-top:30px;margin-right: 30px;\">\r\n      <mat-card-header style=\"text-align:left;\">\r\n        <mat-card-title style=\"font-size:medium;\">{{materialfinish.materialDTO.name}}</mat-card-title>\r\n        <mat-card-subtitle>{{materialfinish.surfaceFinishDTO.name}}</mat-card-subtitle>\r\n      </mat-card-header>\r\n      <img mat-card-image src=\"{{materialfinish.textureUrl}}\">\r\n      <mat-card-actions>\r\n\r\n      </mat-card-actions>\r\n    </mat-card>\r\n\r\n  </div>\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"editProduct()\" matTooltip=\"Editar\" class=\"btn btn-primary btn-md\">Editar</button>\r\n    <button type=\"button\" (click)=\"deleteProduct()\" matTooltip=\"Apagar este Produto\" class=\"btn btn-primary btn-md\">Apagar</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Ver Produto</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n    <!-- Nome -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Nome do produto\" [(ngModel)]=\"name\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Categoria -->\r\n    <mat-form-field>\r\n      <input matInput [value]=\"categoryName\" placeholder=\"Categoria\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Alturas -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Alturas\" [(ngModel)]=\"height_disc||  height_min + '-' + height_max\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Larguras -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Larguras\" [(ngModel)]=\"width_disc|| width_min + '-' + width_max\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Profundidades -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Profundidades\" [(ngModel)]=\"depth_disc || depth_min + '-' + depth_max \" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Min ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Minima Ocupação\" [value]=\"minOccup\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Max ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Máxima Ocupação\" [value]=\"maxOccup\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- Partes -->\r\n    <mat-form-field id=\"formpequena\">\r\n      <mat-select [(ngModel)]=\"part\" placeholder=\"Produtos Opcionais\">\r\n        <mat-option *ngFor=\"let part of parts\" [value]=\"part\">\r\n          {{part.product.name}} (<label id=\"{{part.product.name}}\" style=\"display:inline-block;\">{{part.optional}}</label>)\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n\r\n    <!-- Materiais Acabamentos -->\r\n    <div>\r\n      <mat-card *ngFor=\"let materialfinish of materialfinishes\" class=\"example-card\" style=\"width:200px;float:left;margin-top:30px;margin-right: 30px;\">\r\n        <mat-card-header style=\"text-align:left;\">\r\n          <mat-card-title style=\"font-size:medium;\">{{materialfinish.materialDTO.name}}</mat-card-title>\r\n          <mat-card-subtitle>{{materialfinish.surfaceFinishDTO.name}}</mat-card-subtitle>\r\n        </mat-card-header>\r\n        <img mat-card-image src=\"{{materialfinish.textureUrl}}\">\r\n        <mat-card-actions>\r\n\r\n        </mat-card-actions>\r\n      </mat-card>\r\n\r\n    </div>\r\n    <div class=\"sic-row\">\r\n      <button type=\"button\" (click)=\"editProduct()\" matTooltip=\"Editar\" class=\"btn btn-primary btn-md\">Editar</button>\r\n      <button type=\"button\" (click)=\"deleteProduct()\" matTooltip=\"Apagar este Produto\" class=\"btn btn-primary btn-md\">Apagar</button>\r\n      <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n    </div>\r\n  </div>\r\n"
 
 /***/ }),
 
