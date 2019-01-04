@@ -10,7 +10,7 @@ import { AuthService } from "./auth.service";
 })
 export class orderService extends GenericService{
 
-  constructor(httpClient: HttpClient, authSrv: AuthService) { super('http://sicproductions.herokuapp.com/api/order', httpClient, authSrv); }
+  constructor(httpClient: HttpClient, authSrv: AuthService) { super('https://sicproductions.herokuapp.com/api/order', httpClient, authSrv); }
 
   createEncomenda(obj: order): Observable<order> {
     return super.create(obj);

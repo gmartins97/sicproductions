@@ -4783,7 +4783,7 @@ __webpack_require__.r(__webpack_exports__);
 var orderService = /** @class */ (function (_super) {
     tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](orderService, _super);
     function orderService(httpClient, authSrv) {
-        return _super.call(this, 'http://sicproductions.herokuapp.com/api/order', httpClient, authSrv) || this;
+        return _super.call(this, 'https://sicproductions.herokuapp.com/api/order', httpClient, authSrv) || this;
     }
     orderService.prototype.createEncomenda = function (obj) {
         return _super.prototype.create.call(this, obj);
