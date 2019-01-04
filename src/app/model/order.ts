@@ -1,16 +1,19 @@
 import { Item } from './Item';
 
 export class order {
-    itens: Item[];
-    price: number;
+    _id?: number;
+    item: Item[];
+    totalPrice: number;
     latitude: number;
     longitude: number;
     cidade: string;
     username: string;
+    state: string;
+    date: Date;
   
-    constructor(itens: Item[], price: number,  latitude: number ,  longitude: number , cidade: string , username: string) {
-      this.itens = itens;
-      this.price = price;
+    constructor(itens: Item[], totalPrice: number,  latitude: number ,  longitude: number , cidade: string , username: string) {
+      this.item = itens;
+      this.totalPrice = totalPrice;
       this.latitude = latitude;
       this.longitude = longitude;
       this.cidade = cidade;

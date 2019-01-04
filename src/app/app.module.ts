@@ -29,7 +29,7 @@ import { EditMaterialFinishComponent } from './edit-material-finish/edit-materia
 import { ShowProductInfoComponent } from './show-product-info/show-product-info.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { OrdersComponent } from './orders/orders.component';
-import { EditOrdersComponent } from './edit-orders/edit-orders.component';
+import { ShowOrdersInfoComponent } from './show-orders-info/show-orders-info.component';
 
 
 @NgModule({
@@ -60,7 +60,7 @@ import { EditOrdersComponent } from './edit-orders/edit-orders.component';
     ShowProductInfoComponent,
     TermsAndConditionsComponent,
     OrdersComponent,
-    EditOrdersComponent
+    ShowOrdersInfoComponent
   ],
   imports: [
     BrowserModule,

@@ -74,11 +74,11 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 		let tmp = guiControls.material.split(" / ");
 		const loader = new THREE.TextureLoader().load(tmp[3]);
 		let material = new THREE.MeshLambertMaterial({ map: loader });
-		if (this.categoria == "Armário") {
+		if (this.categoria == "Armários") {
 			this.mesh = this.closet(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
-		} else if (this.categoria == "Gaveta") {
+		} else if (this.categoria == "Gavetas") {
 			this.mesh = this.drawer(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
-		} else if (this.categoria == "Prateleira") {
+		} else if (this.categoria == "Prateleiras") {
 			this.mesh = this.shelf(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
 		} else {
 			this.mesh = this.closet(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
@@ -92,11 +92,11 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 			const loader = new THREE.TextureLoader().load(tmp[3]);
 			let material = new THREE.MeshLambertMaterial({ map: loader });
 			var obj = null;
-			if (guiControls.produtoExtra == "Armário") {
+			if (guiControls.produtoExtra == "Armários") {
 				obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material);
-			} else if (guiControls.produtoExtra == "Gaveta") {
+			} else if (guiControls.produtoExtra == "Gavetas") {
 				obj = this.drawer(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material);
-			} else if (guiControls.produtoExtra == "Prateleira") {
+			} else if (guiControls.produtoExtra == "Prateleiras") {
 				obj = this.shelf(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material);
 			} else {
 				obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material);
@@ -152,6 +152,8 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 			}
 			this.adicionar = function () {
 			}
+			this.remover = function () {
+			}
 			this.nomeProdutoOpcional = " ";
 			this.larguraProdutoExtra = 0;
 			this.alturaProdutoExtra = 0;
@@ -171,11 +173,11 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 
 		const material = new THREE.MeshLambertMaterial({ color: 0xff0000, wireframe: false });
 
-		if (this.categoria == "Armário") {
+		if (this.categoria == "Armários") {
 			this.mesh = this.closet(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
-		} else if (this.categoria == "Gaveta") {
+		} else if (this.categoria == "Gavetas") {
 			this.mesh = this.drawer(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
-		} else if (this.categoria == "Prateleira") {
+		} else if (this.categoria == "Prateleiras") {
 			this.mesh = this.drawer(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
 		} else {
 			this.mesh = this.closet(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
@@ -232,6 +234,7 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 		datGUI.add(guiControls, 'latitude').name('latitude');
 		datGUI.add(guiControls, 'longitude').name('longitude');
 		datGUI.add(guiControls, 'adicionar').name("Adicionar Produto").onChange(() => { this.adicionar() });
+		datGUI.add(guiControls, 'remover').name("Remover Produto").onChange(() => { this.removeProduct(this.optionalProduct.id) });
 		datGUI.add(guiControls, 'encomendar').name("Encomendar Produto").onChange(() => { this.encomenda(guiControls.name, guiControls.material, guiControls.altura, guiControls.profundidade, guiControls.largura, guiControls.latitude, guiControls.longitude, guiControls.cidade) });
 	}
 	animate() {
@@ -322,9 +325,8 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 
 	//Create Shelf
 	shelf(width, height, depth, material): THREE.Mesh {
-		const shelfM = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
 		const shelfG = new THREE.BoxGeometry(width, height, depth);
-		const shelf = new THREE.Mesh(shelfG, shelfM);
+		const shelf = new THREE.Mesh(shelfG, material);
 		return shelf;
 	}
 
@@ -335,14 +337,8 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 	adicionar() {
 		var id = guiControls.produtoExtra.split("/")[1];
 		if (this.getProductById(id) != null) {
-			if (guiControlsNomeExtra != null) {
-				datGUI.remove(guiControlsNomeExtra);
-				datGUI.remove(guiControlsExtraAltura);
-				datGUI.remove(guiControlsExtraLargura);
-				datGUI.remove(guiControlsExtraProfundidade);
-				datGUI.remove(guiControlsExtraMaterial);
-			}
-			guiControls.nomeProdutoOpcional=this.optionalProduct.name;
+			this.limparProdutoOpcionalDatGUI();
+			guiControls.nomeProdutoOpcional = this.optionalProduct.name;
 			guiControlsNomeExtra = datGUI.add(guiControls, 'nomeProdutoOpcional').name('Produto Opcional Selecionado').listen();
 			if (((<DiscreteDimension>this.optionalProduct.dimensions.height).discrete) == null) {
 				guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra', (<ContinuousDimension>this.optionalProduct.dimensions.height).min, (<ContinuousDimension>this.optionalProduct.dimensions.height).max, 1).name('Altura').listen().onChange(() => { this.updateSize() });
@@ -369,11 +365,11 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 				this.getMaterialFinish((<MaterialFinish[]>this.optionalProduct.materialFinishes)))
 				.name('Material Acabamento Extra').onChange(() => { this.updateSize() });
 			var obj = null;
-			if (guiControls.produtoExtra == "Armário") {
+			if (guiControls.produtoExtra == "Armários") {
 				obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
-			} else if (guiControls.produtoExtra == "Gaveta") {
+			} else if (guiControls.produtoExtra == "Gavetas") {
 				obj = this.drawer(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
-			} else if (guiControls.produtoExtra == "Prateleira") {
+			} else if (guiControls.produtoExtra == "Prateleiras") {
 				obj = this.shelf(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
 			} else {
 				obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
@@ -409,6 +405,19 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 		return ret;
 	}
 
+	removeProduct(id) {
+		var selectedObject = this.scene.getObjectByName(id.toString());
+		if (selectedObject != null) {
+			this.scene.remove(selectedObject);
+			this.limparProdutoOpcionalDatGUI();
+			Object.keys(this.parts).forEach(key => {
+				if (this.parts[key].name == id.toString()) {
+					console.log("Found.");
+					//this.parts.splice[key,1];
+				}
+			});
+		}		
+	}
 	getSubProducts(matsFinish: OptionalProducts[]): string[] {
 		const ret: string[] = [];
 
@@ -446,12 +455,8 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 		if (newProduct != null) {
 			console.log("mudei");
 			this.optionalProduct = newProduct;
-			datGUI.remove(guiControlsNomeExtra);
-			datGUI.remove(guiControlsExtraAltura);
-			datGUI.remove(guiControlsExtraLargura);
-			datGUI.remove(guiControlsExtraProfundidade);
-			datGUI.remove(guiControlsExtraMaterial);
-			guiControlsNomeExtra=this.optionalProduct.name;
+			this.limparProdutoOpcionalDatGUI();
+			guiControlsNomeExtra = this.optionalProduct.name;
 			guiControlsNomeExtra = datGUI.add(guiControls, 'nomeProdutoOpcional').name('Produto Opcional Selecionado').listen();
 			if (((<DiscreteDimension>this.optionalProduct.dimensions.height).discrete) == null) {
 				guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra', (<ContinuousDimension>this.optionalProduct.dimensions.height).min, (<ContinuousDimension>this.optionalProduct.dimensions.height).max, 1).name('Altura').listen().onChange(() => { this.updateSize() });
@@ -587,6 +592,31 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 			  controls.enablePan = true;
 			  selectedScale = null;
 		}*/
+	}
+
+	limparProdutoOpcionalDatGUI() {
+		if (datGUI != null) {
+			if (guiControlsNomeExtra != null) {
+				datGUI.remove(guiControlsNomeExtra);
+				guiControlsNomeExtra=null;
+			}
+			if (guiControlsExtraLargura != null) {
+				datGUI.remove(guiControlsExtraLargura);
+				guiControlsExtraLargura=null;
+			}
+			if (guiControlsExtraAltura != null) {
+				datGUI.remove(guiControlsExtraAltura);
+				guiControlsExtraAltura=null;
+			}
+			if (guiControlsExtraProfundidade != null) {
+				datGUI.remove(guiControlsExtraProfundidade);
+				guiControlsExtraProfundidade=null;
+			}
+			if (guiControlsExtraMaterial != null) {
+				datGUI.remove(guiControlsExtraMaterial);
+				guiControlsExtraMaterial=null;
+			}
+		}
 	}
 
 }

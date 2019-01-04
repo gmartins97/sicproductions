@@ -400,7 +400,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _show_product_info_show_product_info_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./show-product-info/show-product-info.component */ "./src/app/show-product-info/show-product-info.component.ts");
 /* harmony import */ var _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./terms-and-conditions/terms-and-conditions.component */ "./src/app/terms-and-conditions/terms-and-conditions.component.ts");
 /* harmony import */ var _orders_orders_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./orders/orders.component */ "./src/app/orders/orders.component.ts");
-/* harmony import */ var _edit_orders_edit_orders_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./edit-orders/edit-orders.component */ "./src/app/edit-orders/edit-orders.component.ts");
+/* harmony import */ var _show_orders_info_show_orders_info_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./show-orders-info/show-orders-info.component */ "./src/app/show-orders-info/show-orders-info.component.ts");
 
 
 
@@ -466,7 +466,7 @@ var AppModule = /** @class */ (function () {
                 _show_product_info_show_product_info_component__WEBPACK_IMPORTED_MODULE_29__["ShowProductInfoComponent"],
                 _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_30__["TermsAndConditionsComponent"],
                 _orders_orders_component__WEBPACK_IMPORTED_MODULE_31__["OrdersComponent"],
-                _edit_orders_edit_orders_component__WEBPACK_IMPORTED_MODULE_32__["EditOrdersComponent"]
+                _show_orders_info_show_orders_info_component__WEBPACK_IMPORTED_MODULE_32__["ShowOrdersInfoComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -2368,62 +2368,6 @@ var EditMaterialComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/edit-orders/edit-orders.component.css":
-/*!*******************************************************!*\
-  !*** ./src/app/edit-orders/edit-orders.component.css ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2VkaXQtb3JkZXJzL2VkaXQtb3JkZXJzLmNvbXBvbmVudC5jc3MifQ== */"
-
-/***/ }),
-
-/***/ "./src/app/edit-orders/edit-orders.component.html":
-/*!********************************************************!*\
-  !*** ./src/app/edit-orders/edit-orders.component.html ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<p>\r\n  edit-orders works!\r\n</p>\r\n"
-
-/***/ }),
-
-/***/ "./src/app/edit-orders/edit-orders.component.ts":
-/*!******************************************************!*\
-  !*** ./src/app/edit-orders/edit-orders.component.ts ***!
-  \******************************************************/
-/*! exports provided: EditOrdersComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditOrdersComponent", function() { return EditOrdersComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-
-
-var EditOrdersComponent = /** @class */ (function () {
-    function EditOrdersComponent() {
-    }
-    EditOrdersComponent.prototype.ngOnInit = function () {
-    };
-    EditOrdersComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-edit-orders',
-            template: __webpack_require__(/*! ./edit-orders.component.html */ "./src/app/edit-orders/edit-orders.component.html"),
-            styles: [__webpack_require__(/*! ./edit-orders.component.css */ "./src/app/edit-orders/edit-orders.component.css")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-    ], EditOrdersComponent);
-    return EditOrdersComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/edit-product/edit-product.component.css":
 /*!*********************************************************!*\
   !*** ./src/app/edit-product/edit-product.component.css ***!
@@ -3582,9 +3526,9 @@ var MaterialFinish = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "order", function() { return order; });
 var order = /** @class */ (function () {
-    function order(itens, price, latitude, longitude, cidade, username) {
-        this.itens = itens;
-        this.price = price;
+    function order(itens, totalPrice, latitude, longitude, cidade, username) {
+        this.item = itens;
+        this.totalPrice = totalPrice;
         this.latitude = latitude;
         this.longitude = longitude;
         this.cidade = cidade;
@@ -3682,7 +3626,7 @@ var SurfaceFinish = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL29yZGVycy9vcmRlcnMuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "/* Structure */\r\ntable {\r\n    width: 100%;\r\n  }\r\n.mat-form-field {\r\n    font-size: 14px;\r\n    width: 100%;\r\n  }\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvb3JkZXJzL29yZGVycy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLGVBQWU7QUFDZjtJQUNJLFlBQVk7R0FDYjtBQUVEO0lBQ0UsZ0JBQWdCO0lBQ2hCLFlBQVk7R0FDYiIsImZpbGUiOiJzcmMvYXBwL29yZGVycy9vcmRlcnMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIFN0cnVjdHVyZSAqL1xyXG50YWJsZSB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICB9XHJcbiAgXHJcbiAgLm1hdC1mb3JtLWZpZWxkIHtcclxuICAgIGZvbnQtc2l6ZTogMTRweDtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gIH1cclxuICAiXX0= */"
 
 /***/ }),
 
@@ -3693,7 +3637,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  orders works!\r\n</p>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Encomendas</h3>\r\n<div class=\"example-container container\">\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\r\n  </mat-form-field>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"name\">\r\n      <th mat-header-cell *matHeaderCellDef> Nome </th>\r\n      <td mat-cell *matCellDef=\"let order\"> {{order.item[0].product.name}} </td>\r\n    </ng-container>\r\n    <!-- Date Column -->\r\n    <ng-container matColumnDef=\"date\">\r\n      <th mat-header-cell *matHeaderCellDef> Date </th>\r\n      <td mat-cell *matCellDef=\"let order\"> {{order.date}} </td>\r\n    </ng-container>\r\n    <!-- Info Column -->\r\n    <ng-container matColumnDef=\"info\">\r\n      <th mat-header-cell *matHeaderCellDef> Mais info </th>\r\n      <td mat-cell *matCellDef=\"let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"showOrder(i)\" matTooltip=\"Saber mais sobre esta encomenda\" class=\"btn btn-info btn-sm\">Mais informações</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Edit Column -->\r\n    <ng-container matColumnDef=\"edit\">\r\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\r\n      <td mat-cell *matCellDef=\"let material; let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"a\" matTooltip=\"Editar esta encomenda\" class=\"btn btn-primary btn-sm\">Editar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Remove Column -->\r\n    <ng-container matColumnDef=\"remove\">\r\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\r\n      <td mat-cell *matCellDef=\"let order; let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"deleteOrder(i)\" matTooltip=\"Remover esta encomenda\" class=\"btn btn-danger btn-sm\">Remover</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"sic-row\">\r\n    <div class=\"sic-column\">\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -3709,12 +3653,64 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrdersComponent", function() { return OrdersComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_order_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/order.service */ "./src/app/services/order.service.ts");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+
+
+
+
 
 
 var OrdersComponent = /** @class */ (function () {
-    function OrdersComponent() {
+    function OrdersComponent(router, service, bar, authservice) {
+        this.router = router;
+        this.service = service;
+        this.bar = bar;
+        this.authservice = authservice;
+        this.displayedColumns = ['position', 'name', 'date', 'info', 'edit', 'remove'];
     }
     OrdersComponent.prototype.ngOnInit = function () {
+        this.getEncomendas(this.authservice.getLoggedInUsername());
+    };
+    OrdersComponent.prototype.applyFilter = function (filterValue) {
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+    };
+    OrdersComponent.prototype.getEncomendas = function (username) {
+        var _this = this;
+        this.service.getEncomendasUser(username).subscribe(function (data) {
+            _this.orders = data;
+            _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatTableDataSource"](_this.orders);
+        }, function (error) {
+            if (error.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                _this.bar.open('Ocorreu um erro ao tentar obter as encomendas do servidor...', '', {
+                    duration: 2000,
+                });
+            }
+        });
+    };
+    /* editOrder(index: number): void {
+       let id = this.orders[index].id;
+       this.router.navigateByUrl("orders/edit/" + id);
+    } */
+    OrdersComponent.prototype.showOrder = function (index) {
+        var id = this.orders[index]._id;
+        this.router.navigateByUrl("orders/show/" + id);
+    };
+    OrdersComponent.prototype.deleteOrder = function (index) {
+        var _this = this;
+        this.service.deleteEncomenda(this.orders[index]._id).subscribe(function (p) {
+            _this.bar.open("Encomenda removido com sucesso", '', { duration: 2000 });
+            _this.getEncomendas(_this.authservice.getLoggedInUsername());
+        }, function (e) {
+            _this.bar.open('Ocorreu um erro: ' + e.error, '', { duration: 2000 });
+        });
     };
     OrdersComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -3722,7 +3718,7 @@ var OrdersComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./orders.component.html */ "./src/app/orders/orders.component.html"),
             styles: [__webpack_require__(/*! ./orders.component.css */ "./src/app/orders/orders.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_order_service__WEBPACK_IMPORTED_MODULE_3__["orderService"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"], _services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]])
     ], OrdersComponent);
     return OrdersComponent;
 }());
@@ -3830,6 +3826,8 @@ var ProductConfiguratorComponent = /** @class */ (function () {
             };
             this.adicionar = function () {
             };
+            this.remover = function () {
+            };
             this.nomeProdutoOpcional = " ";
             this.larguraProdutoExtra = 0;
             this.alturaProdutoExtra = 0;
@@ -3843,13 +3841,13 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
         this.controls.addEventListener('change', function () { _this.renderer.render(_this.scene, _this.camera); });
         var material = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ color: 0xff0000, wireframe: false });
-        if (this.categoria == "Armário") {
+        if (this.categoria == "Armários") {
             this.mesh = this.closet(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
         }
-        else if (this.categoria == "Gaveta") {
+        else if (this.categoria == "Gavetas") {
             this.mesh = this.drawer(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
         }
-        else if (this.categoria == "Prateleira") {
+        else if (this.categoria == "Prateleiras") {
             this.mesh = this.drawer(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
         }
         else {
@@ -3871,13 +3869,13 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         var tmp = guiControls.material.split(" / ");
         var loader = new three__WEBPACK_IMPORTED_MODULE_2__["TextureLoader"]().load(tmp[3]);
         var material = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ map: loader });
-        if (this.categoria == "Armário") {
+        if (this.categoria == "Armários") {
             this.mesh = this.closet(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
         }
-        else if (this.categoria == "Gaveta") {
+        else if (this.categoria == "Gavetas") {
             this.mesh = this.drawer(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
         }
-        else if (this.categoria == "Prateleira") {
+        else if (this.categoria == "Prateleiras") {
             this.mesh = this.shelf(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
         }
         else {
@@ -3892,13 +3890,13 @@ var ProductConfiguratorComponent = /** @class */ (function () {
             var loader_1 = new three__WEBPACK_IMPORTED_MODULE_2__["TextureLoader"]().load(tmp_1[3]);
             var material_1 = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ map: loader_1 });
             var obj = null;
-            if (guiControls.produtoExtra == "Armário") {
+            if (guiControls.produtoExtra == "Armários") {
                 obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material_1);
             }
-            else if (guiControls.produtoExtra == "Gaveta") {
+            else if (guiControls.produtoExtra == "Gavetas") {
                 obj = this.drawer(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material_1);
             }
-            else if (guiControls.produtoExtra == "Prateleira") {
+            else if (guiControls.produtoExtra == "Prateleiras") {
                 obj = this.shelf(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material_1);
             }
             else {
@@ -3972,6 +3970,7 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         datGUI.add(guiControls, 'latitude').name('latitude');
         datGUI.add(guiControls, 'longitude').name('longitude');
         datGUI.add(guiControls, 'adicionar').name("Adicionar Produto").onChange(function () { _this.adicionar(); });
+        datGUI.add(guiControls, 'remover').name("Remover Produto").onChange(function () { _this.removeProduct(_this.optionalProduct.id); });
         datGUI.add(guiControls, 'encomendar').name("Encomendar Produto").onChange(function () { _this.encomenda(guiControls.name, guiControls.material, guiControls.altura, guiControls.profundidade, guiControls.largura, guiControls.latitude, guiControls.longitude, guiControls.cidade); });
     };
     ProductConfiguratorComponent.prototype.animate = function () {
@@ -4045,9 +4044,8 @@ var ProductConfiguratorComponent = /** @class */ (function () {
     };
     //Create Shelf
     ProductConfiguratorComponent.prototype.shelf = function (width, height, depth, material) {
-        var shelfM = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ color: 0x00ff00 });
         var shelfG = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](width, height, depth);
-        var shelf = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](shelfG, shelfM);
+        var shelf = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](shelfG, material);
         return shelf;
     };
     ProductConfiguratorComponent.prototype.convertDimensions = function (dimensoes) {
@@ -4057,13 +4055,7 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         var _this = this;
         var id = guiControls.produtoExtra.split("/")[1];
         if (this.getProductById(id) != null) {
-            if (guiControlsNomeExtra != null) {
-                datGUI.remove(guiControlsNomeExtra);
-                datGUI.remove(guiControlsExtraAltura);
-                datGUI.remove(guiControlsExtraLargura);
-                datGUI.remove(guiControlsExtraProfundidade);
-                datGUI.remove(guiControlsExtraMaterial);
-            }
+            this.limparProdutoOpcionalDatGUI();
             guiControls.nomeProdutoOpcional = this.optionalProduct.name;
             guiControlsNomeExtra = datGUI.add(guiControls, 'nomeProdutoOpcional').name('Produto Opcional Selecionado').listen();
             if ((this.optionalProduct.dimensions.height.discrete) == null) {
@@ -4090,13 +4082,13 @@ var ProductConfiguratorComponent = /** @class */ (function () {
             guiControlsExtraMaterial = datGUI.add(guiControls, 'materialProdutoExtra', this.getMaterialFinish(this.optionalProduct.materialFinishes))
                 .name('Material Acabamento Extra').onChange(function () { _this.updateSize(); });
             var obj = null;
-            if (guiControls.produtoExtra == "Armário") {
+            if (guiControls.produtoExtra == "Armários") {
                 obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
             }
-            else if (guiControls.produtoExtra == "Gaveta") {
+            else if (guiControls.produtoExtra == "Gavetas") {
                 obj = this.drawer(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
             }
-            else if (guiControls.produtoExtra == "Prateleira") {
+            else if (guiControls.produtoExtra == "Prateleiras") {
                 obj = this.shelf(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
             }
             else {
@@ -4127,6 +4119,20 @@ var ProductConfiguratorComponent = /** @class */ (function () {
             ret.push(matFinish.materialDTO.name + " / " + matFinish.surfaceFinishDTO.name + " / " + (matsFinish[key].price + matFinish.materialDTO.price) + " / " + matsFinish[key].textureUrl);
         }
         return ret;
+    };
+    ProductConfiguratorComponent.prototype.removeProduct = function (id) {
+        var _this = this;
+        var selectedObject = this.scene.getObjectByName(id.toString());
+        if (selectedObject != null) {
+            this.scene.remove(selectedObject);
+            this.limparProdutoOpcionalDatGUI();
+            Object.keys(this.parts).forEach(function (key) {
+                if (_this.parts[key].name == id.toString()) {
+                    console.log("Found.");
+                    //this.parts.splice[key,1];
+                }
+            });
+        }
     };
     ProductConfiguratorComponent.prototype.getSubProducts = function (matsFinish) {
         var ret = [];
@@ -4161,11 +4167,7 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         if (newProduct != null) {
             console.log("mudei");
             this.optionalProduct = newProduct;
-            datGUI.remove(guiControlsNomeExtra);
-            datGUI.remove(guiControlsExtraAltura);
-            datGUI.remove(guiControlsExtraLargura);
-            datGUI.remove(guiControlsExtraProfundidade);
-            datGUI.remove(guiControlsExtraMaterial);
+            this.limparProdutoOpcionalDatGUI();
             guiControlsNomeExtra = this.optionalProduct.name;
             guiControlsNomeExtra = datGUI.add(guiControls, 'nomeProdutoOpcional').name('Produto Opcional Selecionado').listen();
             if ((this.optionalProduct.dimensions.height.discrete) == null) {
@@ -4284,6 +4286,30 @@ var ProductConfiguratorComponent = /** @class */ (function () {
               controls.enablePan = true;
               selectedScale = null;
         }*/
+    };
+    ProductConfiguratorComponent.prototype.limparProdutoOpcionalDatGUI = function () {
+        if (datGUI != null) {
+            if (guiControlsNomeExtra != null) {
+                datGUI.remove(guiControlsNomeExtra);
+                guiControlsNomeExtra = null;
+            }
+            if (guiControlsExtraLargura != null) {
+                datGUI.remove(guiControlsExtraLargura);
+                guiControlsExtraLargura = null;
+            }
+            if (guiControlsExtraAltura != null) {
+                datGUI.remove(guiControlsExtraAltura);
+                guiControlsExtraAltura = null;
+            }
+            if (guiControlsExtraProfundidade != null) {
+                datGUI.remove(guiControlsExtraProfundidade);
+                guiControlsExtraProfundidade = null;
+            }
+            if (guiControlsExtraMaterial != null) {
+                datGUI.remove(guiControlsExtraMaterial);
+                guiControlsExtraMaterial = null;
+            }
+        }
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('rendererContainer'),
@@ -4757,10 +4783,22 @@ __webpack_require__.r(__webpack_exports__);
 var orderService = /** @class */ (function (_super) {
     tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](orderService, _super);
     function orderService(httpClient, authSrv) {
-        return _super.call(this, 'http://localhost:8888/api/order', httpClient, authSrv) || this;
+        return _super.call(this, 'http://sicproductions.herokuapp.com/api/order', httpClient, authSrv) || this;
     }
     orderService.prototype.createEncomenda = function (obj) {
         return _super.prototype.create.call(this, obj);
+    };
+    orderService.prototype.getEncomendasUser = function (username) {
+        return _super.prototype.getById.call(this, username);
+    };
+    orderService.prototype.getEncomenda = function (username, id) {
+        return _super.prototype.getById.call(this, username + '/' + id);
+    };
+    orderService.prototype.updateEncomenda = function (id, order) {
+        return _super.prototype.update.call(this, id, order);
+    };
+    orderService.prototype.deleteEncomenda = function (id) {
+        return _super.prototype.delete.call(this, id);
     };
     orderService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -4879,6 +4917,119 @@ var SurfaceFinishService = /** @class */ (function (_super) {
     ], SurfaceFinishService);
     return SurfaceFinishService;
 }(_generic_service__WEBPACK_IMPORTED_MODULE_4__["GenericService"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/show-orders-info/show-orders-info.component.css":
+/*!*****************************************************************!*\
+  !*** ./src/app/show-orders-info/show-orders-info.component.css ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3Nob3ctb3JkZXJzLWluZm8vc2hvdy1vcmRlcnMtaW5mby5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/show-orders-info/show-orders-info.component.html":
+/*!******************************************************************!*\
+  !*** ./src/app/show-orders-info/show-orders-info.component.html ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Ver Encomenda</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n     <!-- State -->\r\n     <mat-form-field>\r\n      <input matInput placeholder=\"Estado da encomenda\" [(ngModel)]=\"state\" readonly>\r\n    </mat-form-field>\r\n\r\n\r\n    <!-- date -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Data da Encomenda\" [(ngModel)]=\"date\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- cidade -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"cidade\" [(ngModel)]=\"cidade\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- latitude -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Latitude\" [(ngModel)]=\"latitude\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- longitude -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"longitude\" [(ngModel)]=\"longitude\" readonly>\r\n    </mat-form-field>\r\n\r\n\r\n    <!-- totalPrice -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Preco\" [(ngModel)]=\"totalPrice\" readonly>\r\n    </mat-form-field>\r\n\r\n    <div *ngFor=\"let product of item\">\r\n\r\n    <!-- Itens Nome -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemNome\" [(ngModel)]=\"product.product.name\" readonly>\r\n    </mat-form-field>\r\n    <br />\r\n    <!-- Itens -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemMaterial\" [(ngModel)]=\"product.product.material\" readonly>\r\n    </mat-form-field>\r\n\r\n    <br />\r\n    <!-- Itens -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemAcabamento\" [(ngModel)]=\"product.product.surfaceFinish\" readonly>\r\n    </mat-form-field>\r\n    <br />\r\n     <!-- Itens -->\r\n     <mat-form-field>\r\n      <input matInput placeholder=\"ItemAltura\" [(ngModel)]=\"product.product.height\" readonly>\r\n    </mat-form-field>\r\n    <br />\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemProfundidade\" [(ngModel)]=\"product.product.depth\" readonly>\r\n    </mat-form-field>\r\n    <br />\r\n\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemLargura\" [(ngModel)]=\"product.product.width\" readonly>\r\n    </mat-form-field>\r\n\r\n\r\n</div>\r\n\r\n\r\n    <div class=\"sic-row\">\r\n      <button type=\"button\" (click)=\"deleteOrder()\" matTooltip=\"Apagar esta Encomenda\" class=\"btn btn-primary btn-md\">Apagar</button>\r\n      <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n    </div>\r\n  </div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/show-orders-info/show-orders-info.component.ts":
+/*!****************************************************************!*\
+  !*** ./src/app/show-orders-info/show-orders-info.component.ts ***!
+  \****************************************************************/
+/*! exports provided: ShowOrdersInfoComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShowOrdersInfoComponent", function() { return ShowOrdersInfoComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _services_order_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/order.service */ "./src/app/services/order.service.ts");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+
+
+
+
+
+
+var ShowOrdersInfoComponent = /** @class */ (function () {
+    function ShowOrdersInfoComponent(router, route, service, authservice, bar) {
+        this.router = router;
+        this.route = route;
+        this.service = service;
+        this.authservice = authservice;
+        this.bar = bar;
+    }
+    ShowOrdersInfoComponent.prototype.ngOnInit = function () {
+        this.getEncomenda(this.authservice.getLoggedInUsername());
+    };
+    ShowOrdersInfoComponent.prototype.getEncomenda = function (username) {
+        var _this = this;
+        var id;
+        this.route.params.subscribe(function (res) {
+            id = res.id;
+        });
+        this.idroute = id;
+        this.service.getEncomenda(username, id).subscribe(function (res) {
+            _this.order = res;
+            _this.item = _this.order.item;
+            console.log(_this.item);
+            _this.latitude = _this.order.latitude;
+            _this.longitude = _this.order.longitude;
+            _this.state = _this.order.state;
+            _this.cidade = _this.order.cidade;
+            _this.date = _this.order.date;
+            _this.totalPrice = _this.order.totalPrice;
+            console.log(_this.order);
+        }, function (e) {
+            if (e.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                _this.bar.open("Ocorreu um erro ao tentar obter o produto escolhido do servidor...", '', {
+                    duration: 2000,
+                });
+            }
+        });
+    };
+    ShowOrdersInfoComponent.prototype.deleteOrder = function () {
+        var _this = this;
+        this.service.deleteEncomenda(this.idroute).subscribe(function (p) {
+            _this.bar.open("Order removida com sucesso", '', { duration: 2000 });
+            _this.router.navigateByUrl('/orders');
+        }, function (e) {
+            _this.bar.open('Ocorreu um erro: ' + e.error, '', { duration: 2000 });
+        });
+    };
+    ShowOrdersInfoComponent.prototype.back = function () {
+        this.router.navigateByUrl('/orders');
+    };
+    ShowOrdersInfoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-show-orders-info',
+            template: __webpack_require__(/*! ./show-orders-info.component.html */ "./src/app/show-orders-info/show-orders-info.component.html"),
+            styles: [__webpack_require__(/*! ./show-orders-info.component.css */ "./src/app/show-orders-info/show-orders-info.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_order_service__WEBPACK_IMPORTED_MODULE_4__["orderService"], _services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"]])
+    ], ShowOrdersInfoComponent);
+    return ShowOrdersInfoComponent;
+}());
 
 
 
@@ -5402,7 +5553,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--Navbar-->\r\n<mdb-navbar SideClass=\"navbar navbar-expand-lg navbar-dark indigo\">\r\n\r\n  <!-- Navbar brand -->\r\n  <mdb-navbar-brand><a class=\"navbar-brand\" routerLink=\"/\">{{title}}</a></mdb-navbar-brand>\r\n\r\n  <!-- Collapsible content -->\r\n  <links>\r\n\r\n    <!-- Links -->\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link waves-light\" mdbWavesEffect routerLink=\"/home\" routerLinkActive=\"active\">Página Inicial</a>\r\n      </li>\r\n\r\n      <!-- Dropdown -->\r\n      <li *ngIf=\"authenticated && !isClient\" class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          BackOffice<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/surfaceFinishes\">Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materials\">Materiais</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materialfinishes\">Materiais Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/categories\">Categorias</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/products\">Produtos</a>\r\n          <div class=\"divider dropdown-divider\"></div>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/collections\">Coleções</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/catalogues\">Catálogos</a>\r\n        </div>\r\n      </li>\r\n      <!-- Dropdown -->\r\n      <li *ngIf=\"authenticated && isClient\" class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          Área de Cliente<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/orders\">As minhas encomendas</a>\r\n          <div class=\"divider dropdown-divider\"></div>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/clientCatalogue\">Catálogo de Produtos Disponíveis</a>\r\n        </div>\r\n      </li>\r\n\r\n    </ul>\r\n    <div class=\"navbar-expand ml-auto navbar-nav\">\r\n      <div *ngIf=\"!authenticated\" class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\" routerLink=\"/signup\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-user-plus\"></i> Registar\r\n        </a>\r\n        <a class=\"nav-item nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-sign-in\"></i> Entrar\r\n        </a>\r\n      </div>\r\n      <div *ngIf=\"authenticated\" class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\">\r\n          Bem-vindo, {{username}}\r\n        </a>\r\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">\r\n          <i class=\"fas fa-sign-out-alt\"></i>Terminar Sessão\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <!-- Links -->\r\n  </links>\r\n  <!-- Collapsible content -->\r\n</mdb-navbar>\r\n<!--/.Navbar-->\r\n"
+module.exports = "<!--Navbar-->\r\n<mdb-navbar SideClass=\"navbar navbar-expand-lg navbar-dark indigo\">\r\n\r\n  <!-- Navbar brand -->\r\n  <mdb-navbar-brand><a class=\"navbar-brand\" routerLink=\"/\">{{title}}</a></mdb-navbar-brand>\r\n\r\n  <!-- Collapsible content -->\r\n  <links>\r\n\r\n    <!-- Links -->\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link waves-light\" mdbWavesEffect routerLink=\"/home\" routerLinkActive=\"active\">Página Inicial</a>\r\n      </li>\r\n\r\n      <!-- Dropdown -->\r\n      <li *ngIf=\"authenticated && !isClient\" class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          BackOffice<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/surfaceFinishes\">Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materials\">Materiais</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materialfinishes\">Materiais Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/categories\">Categorias</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/products\">Produtos</a>\r\n          <div class=\"divider dropdown-divider\"></div>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/collections\">Coleções</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/catalogues\">Catálogos</a>\r\n        </div>\r\n      </li>\r\n      <!-- Dropdown -->\r\n      <li *ngIf=\"authenticated && isClient\" class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          Área de Cliente<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/orders/:username\">As minhas encomendas</a>\r\n          <div class=\"divider dropdown-divider\"></div>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/clientCatalogue\">Catálogo de Produtos Disponíveis</a>\r\n        </div>\r\n      </li>\r\n\r\n    </ul>\r\n    <div class=\"navbar-expand ml-auto navbar-nav\">\r\n      <div *ngIf=\"!authenticated\" class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\" routerLink=\"/signup\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-user-plus\"></i> Registar\r\n        </a>\r\n        <a class=\"nav-item nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-sign-in\"></i> Entrar\r\n        </a>\r\n      </div>\r\n      <div *ngIf=\"authenticated\" class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\">\r\n          Bem-vindo, {{username}}\r\n        </a>\r\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">\r\n          <i class=\"fas fa-sign-out-alt\"></i>Terminar Sessão\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <!-- Links -->\r\n  </links>\r\n  <!-- Collapsible content -->\r\n</mdb-navbar>\r\n<!--/.Navbar-->\r\n"
 
 /***/ }),
 
@@ -5553,37 +5704,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _create_category_create_category_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../create-category/create-category.component */ "./src/app/create-category/create-category.component.ts");
 /* harmony import */ var _edit_surface_finish_edit_surface_finish_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../edit-surface-finish/edit-surface-finish.component */ "./src/app/edit-surface-finish/edit-surface-finish.component.ts");
 /* harmony import */ var _sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../sign-up/sign-up.component */ "./src/app/sign-up/sign-up.component.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material/checkbox */ "./node_modules/@angular/material/esm5/checkbox.es5.js");
-/* harmony import */ var _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/material/tooltip */ "./node_modules/@angular/material/esm5/tooltip.es5.js");
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm5/input.es5.js");
-/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm5/table.es5.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _services_surface_finish_service__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../services/surface-finish.service */ "./src/app/services/surface-finish.service.ts");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _angular_material_list__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @angular/material/list */ "./node_modules/@angular/material/esm5/list.es5.js");
-/* harmony import */ var _create_material_create_material_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ../create-material/create-material.component */ "./src/app/create-material/create-material.component.ts");
-/* harmony import */ var _edit_material_edit_material_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../edit-material/edit-material.component */ "./src/app/edit-material/edit-material.component.ts");
-/* harmony import */ var _edit_category_edit_category_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ../edit-category/edit-category.component */ "./src/app/edit-category/edit-category.component.ts");
-/* harmony import */ var _material_finish_material_finish_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ../material-finish/material-finish.component */ "./src/app/material-finish/material-finish.component.ts");
-/* harmony import */ var _product_configurator_product_configurator_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ../product-configurator/product-configurator.component */ "./src/app/product-configurator/product-configurator.component.ts");
-/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! @angular/material/select */ "./node_modules/@angular/material/esm5/select.es5.js");
-/* harmony import */ var _guards_auth_guard__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ../guards/auth.guard */ "./src/app/guards/auth.guard.ts");
-/* harmony import */ var _guards_client_guard__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ../guards/client.guard */ "./src/app/guards/client.guard.ts");
-/* harmony import */ var _client_catalogue_client_catalogue_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ../client-catalogue/client-catalogue.component */ "./src/app/client-catalogue/client-catalogue.component.ts");
-/* harmony import */ var _create_material_finish_create_material_finish_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ../create-material-finish/create-material-finish.component */ "./src/app/create-material-finish/create-material-finish.component.ts");
-/* harmony import */ var _services_material_finish_service__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ../services/material-finish.service */ "./src/app/services/material-finish.service.ts");
-/* harmony import */ var _services_material_service__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ../services/material.service */ "./src/app/services/material.service.ts");
-/* harmony import */ var _create_product_create_product_component__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ../create-product/create-product.component */ "./src/app/create-product/create-product.component.ts");
-/* harmony import */ var _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ../terms-and-conditions/terms-and-conditions.component */ "./src/app/terms-and-conditions/terms-and-conditions.component.ts");
-/* harmony import */ var _edit_product_edit_product_component__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ../edit-product/edit-product.component */ "./src/app/edit-product/edit-product.component.ts");
-/* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm5/dialog.es5.js");
-/* harmony import */ var _create_product_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ../create-product/select-material-finish-dialog */ "./src/app/create-product/select-material-finish-dialog.ts");
-/* harmony import */ var _edit_material_finish_edit_material_finish_component__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ../edit-material-finish/edit-material-finish.component */ "./src/app/edit-material-finish/edit-material-finish.component.ts");
-/* harmony import */ var _show_product_info_show_product_info_component__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ../show-product-info/show-product-info.component */ "./src/app/show-product-info/show-product-info.component.ts");
-/* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
-/* harmony import */ var _create_product_select_parts_dialog__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ../create-product/select-parts-dialog */ "./src/app/create-product/select-parts-dialog.ts");
+/* harmony import */ var _orders_orders_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../orders/orders.component */ "./src/app/orders/orders.component.ts");
+/* harmony import */ var _show_orders_info_show_orders_info_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../show-orders-info/show-orders-info.component */ "./src/app/show-orders-info/show-orders-info.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/material/checkbox */ "./node_modules/@angular/material/esm5/checkbox.es5.js");
+/* harmony import */ var _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @angular/material/tooltip */ "./node_modules/@angular/material/esm5/tooltip.es5.js");
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm5/input.es5.js");
+/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm5/table.es5.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _services_surface_finish_service__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../services/surface-finish.service */ "./src/app/services/surface-finish.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_material_list__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! @angular/material/list */ "./node_modules/@angular/material/esm5/list.es5.js");
+/* harmony import */ var _create_material_create_material_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ../create-material/create-material.component */ "./src/app/create-material/create-material.component.ts");
+/* harmony import */ var _edit_material_edit_material_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ../edit-material/edit-material.component */ "./src/app/edit-material/edit-material.component.ts");
+/* harmony import */ var _edit_category_edit_category_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ../edit-category/edit-category.component */ "./src/app/edit-category/edit-category.component.ts");
+/* harmony import */ var _material_finish_material_finish_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ../material-finish/material-finish.component */ "./src/app/material-finish/material-finish.component.ts");
+/* harmony import */ var _product_configurator_product_configurator_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ../product-configurator/product-configurator.component */ "./src/app/product-configurator/product-configurator.component.ts");
+/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! @angular/material/select */ "./node_modules/@angular/material/esm5/select.es5.js");
+/* harmony import */ var _guards_auth_guard__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ../guards/auth.guard */ "./src/app/guards/auth.guard.ts");
+/* harmony import */ var _guards_client_guard__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ../guards/client.guard */ "./src/app/guards/client.guard.ts");
+/* harmony import */ var _client_catalogue_client_catalogue_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ../client-catalogue/client-catalogue.component */ "./src/app/client-catalogue/client-catalogue.component.ts");
+/* harmony import */ var _create_material_finish_create_material_finish_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ../create-material-finish/create-material-finish.component */ "./src/app/create-material-finish/create-material-finish.component.ts");
+/* harmony import */ var _services_material_finish_service__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ../services/material-finish.service */ "./src/app/services/material-finish.service.ts");
+/* harmony import */ var _services_material_service__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ../services/material.service */ "./src/app/services/material.service.ts");
+/* harmony import */ var _create_product_create_product_component__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ../create-product/create-product.component */ "./src/app/create-product/create-product.component.ts");
+/* harmony import */ var _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ../terms-and-conditions/terms-and-conditions.component */ "./src/app/terms-and-conditions/terms-and-conditions.component.ts");
+/* harmony import */ var _edit_product_edit_product_component__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ../edit-product/edit-product.component */ "./src/app/edit-product/edit-product.component.ts");
+/* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm5/dialog.es5.js");
+/* harmony import */ var _create_product_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ../create-product/select-material-finish-dialog */ "./src/app/create-product/select-material-finish-dialog.ts");
+/* harmony import */ var _edit_material_finish_edit_material_finish_component__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ../edit-material-finish/edit-material-finish.component */ "./src/app/edit-material-finish/edit-material-finish.component.ts");
+/* harmony import */ var _show_product_info_show_product_info_component__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ../show-product-info/show-product-info.component */ "./src/app/show-product-info/show-product-info.component.ts");
+/* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
+/* harmony import */ var _services_order_service__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ../services/order.service */ "./src/app/services/order.service.ts");
+/* harmony import */ var _create_product_select_parts_dialog__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ../create-product/select-parts-dialog */ "./src/app/create-product/select-parts-dialog.ts");
+
+
+
 
 
 
@@ -5642,27 +5799,29 @@ var appRoutes = [
     { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_9__["LoginComponent"] },
     { path: 'signup', component: _sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_20__["SignUpComponent"] },
     { path: 'home', component: _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_15__["HomePageComponent"] },
-    { path: 'surfaceFinishes', component: _surface_finish_surface_finish_component__WEBPACK_IMPORTED_MODULE_16__["SurfaceFinishComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
-    { path: 'surfaceFinishes/new', component: _create_surface_finish_create_surface_finish_component__WEBPACK_IMPORTED_MODULE_17__["CreateSurfaceFinishComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
-    { path: 'surfaceFinishes/edit/:id', component: _edit_surface_finish_edit_surface_finish_component__WEBPACK_IMPORTED_MODULE_19__["EditSurfaceFinishComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
-    { path: 'materials', component: _material_material_component__WEBPACK_IMPORTED_MODULE_10__["MaterialComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
-    { path: 'materials/new', component: _create_material_create_material_component__WEBPACK_IMPORTED_MODULE_31__["CreateMaterialComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
-    { path: 'materials/edit/:id', component: _edit_material_edit_material_component__WEBPACK_IMPORTED_MODULE_32__["EditMaterialComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
-    { path: 'materialfinishes', component: _material_finish_material_finish_component__WEBPACK_IMPORTED_MODULE_34__["MaterialFinishComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
-    { path: 'materialfinishes/new', component: _create_material_finish_create_material_finish_component__WEBPACK_IMPORTED_MODULE_40__["CreateMaterialFinishComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
-    { path: 'materialfinishes/edit/:id', component: _edit_material_finish_edit_material_finish_component__WEBPACK_IMPORTED_MODULE_48__["EditMaterialFinishComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
-    { path: 'categories', component: _category_category_component__WEBPACK_IMPORTED_MODULE_11__["CategoryComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
-    { path: 'categories/new', component: _create_category_create_category_component__WEBPACK_IMPORTED_MODULE_18__["CreateCategoryComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
-    { path: 'categories/edit/:id', component: _edit_category_edit_category_component__WEBPACK_IMPORTED_MODULE_33__["EditCategoryComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
-    { path: 'products', component: _product_product_component__WEBPACK_IMPORTED_MODULE_12__["ProductComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
-    { path: 'products/new', component: _create_product_create_product_component__WEBPACK_IMPORTED_MODULE_43__["CreateProductComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
-    { path: 'products/edit/:id', component: _edit_product_edit_product_component__WEBPACK_IMPORTED_MODULE_45__["EditProductComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
-    { path: 'products/show/:id', component: _show_product_info_show_product_info_component__WEBPACK_IMPORTED_MODULE_49__["ShowProductInfoComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
-    { path: 'catalogues', component: _catalogue_catalogue_component__WEBPACK_IMPORTED_MODULE_13__["CatalogueComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
-    { path: 'collections', component: _collection_collection_component__WEBPACK_IMPORTED_MODULE_14__["CollectionComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_38__["ClientGuard"]] },
-    { path: 'productConfigurator/configure/:id', component: _product_configurator_product_configurator_component__WEBPACK_IMPORTED_MODULE_35__["ProductConfiguratorComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_37__["AuthGuard"]] },
-    { path: 'clientCatalogue', component: _client_catalogue_client_catalogue_component__WEBPACK_IMPORTED_MODULE_39__["ClientCatalogueComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_37__["AuthGuard"]] },
-    { path: 'TermsAndConditions', component: _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_44__["TermsAndConditionsComponent"] },
+    { path: 'surfaceFinishes', component: _surface_finish_surface_finish_component__WEBPACK_IMPORTED_MODULE_16__["SurfaceFinishComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'surfaceFinishes/new', component: _create_surface_finish_create_surface_finish_component__WEBPACK_IMPORTED_MODULE_17__["CreateSurfaceFinishComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'surfaceFinishes/edit/:id', component: _edit_surface_finish_edit_surface_finish_component__WEBPACK_IMPORTED_MODULE_19__["EditSurfaceFinishComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'materials', component: _material_material_component__WEBPACK_IMPORTED_MODULE_10__["MaterialComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'materials/new', component: _create_material_create_material_component__WEBPACK_IMPORTED_MODULE_33__["CreateMaterialComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'materials/edit/:id', component: _edit_material_edit_material_component__WEBPACK_IMPORTED_MODULE_34__["EditMaterialComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'materialfinishes', component: _material_finish_material_finish_component__WEBPACK_IMPORTED_MODULE_36__["MaterialFinishComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'materialfinishes/new', component: _create_material_finish_create_material_finish_component__WEBPACK_IMPORTED_MODULE_42__["CreateMaterialFinishComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'materialfinishes/edit/:id', component: _edit_material_finish_edit_material_finish_component__WEBPACK_IMPORTED_MODULE_50__["EditMaterialFinishComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'categories', component: _category_category_component__WEBPACK_IMPORTED_MODULE_11__["CategoryComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'categories/new', component: _create_category_create_category_component__WEBPACK_IMPORTED_MODULE_18__["CreateCategoryComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'categories/edit/:id', component: _edit_category_edit_category_component__WEBPACK_IMPORTED_MODULE_35__["EditCategoryComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'products', component: _product_product_component__WEBPACK_IMPORTED_MODULE_12__["ProductComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'products/new', component: _create_product_create_product_component__WEBPACK_IMPORTED_MODULE_45__["CreateProductComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'products/edit/:id', component: _edit_product_edit_product_component__WEBPACK_IMPORTED_MODULE_47__["EditProductComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'products/show/:id', component: _show_product_info_show_product_info_component__WEBPACK_IMPORTED_MODULE_51__["ShowProductInfoComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'catalogues', component: _catalogue_catalogue_component__WEBPACK_IMPORTED_MODULE_13__["CatalogueComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'collections', component: _collection_collection_component__WEBPACK_IMPORTED_MODULE_14__["CollectionComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'productConfigurator/configure/:id', component: _product_configurator_product_configurator_component__WEBPACK_IMPORTED_MODULE_37__["ProductConfiguratorComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_39__["AuthGuard"]] },
+    { path: 'clientCatalogue', component: _client_catalogue_client_catalogue_component__WEBPACK_IMPORTED_MODULE_41__["ClientCatalogueComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_39__["AuthGuard"]] },
+    { path: 'orders/:username', component: _orders_orders_component__WEBPACK_IMPORTED_MODULE_21__["OrdersComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_39__["AuthGuard"]] },
+    { path: 'orders/show/:id', component: _show_orders_info_show_orders_info_component__WEBPACK_IMPORTED_MODULE_22__["ShowOrdersInfoComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_39__["AuthGuard"]] },
+    { path: 'TermsAndConditions', component: _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_46__["TermsAndConditionsComponent"] },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
@@ -5671,65 +5830,66 @@ var UiModule = /** @class */ (function () {
     }
     UiModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_layout_layout_component__WEBPACK_IMPORTED_MODULE_5__["LayoutComponent"], _header_header_component__WEBPACK_IMPORTED_MODULE_6__["HeaderComponent"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_7__["FooterComponent"], _create_product_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_47__["SelectMaterialFinishesDialog"], _create_product_select_parts_dialog__WEBPACK_IMPORTED_MODULE_51__["SelectPartsDialog"]],
+            declarations: [_layout_layout_component__WEBPACK_IMPORTED_MODULE_5__["LayoutComponent"], _header_header_component__WEBPACK_IMPORTED_MODULE_6__["HeaderComponent"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_7__["FooterComponent"], _create_product_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_49__["SelectMaterialFinishesDialog"], _create_product_select_parts_dialog__WEBPACK_IMPORTED_MODULE_54__["SelectPartsDialog"]],
             exports: [
                 _layout_layout_component__WEBPACK_IMPORTED_MODULE_5__["LayoutComponent"],
-                _angular_router__WEBPACK_IMPORTED_MODULE_21__["RouterModule"],
+                _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
                 angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_8__["MDBBootstrapModule"],
-                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_22__["BrowserAnimationsModule"],
-                _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_23__["MatCheckboxModule"],
-                _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_24__["MatTooltipModule"],
-                _angular_material_input__WEBPACK_IMPORTED_MODULE_25__["MatInputModule"],
-                _angular_material_table__WEBPACK_IMPORTED_MODULE_26__["MatTableModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_29__["MatSnackBarModule"],
-                _angular_material_select__WEBPACK_IMPORTED_MODULE_36__["MatSelectModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_24__["BrowserAnimationsModule"],
+                _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_25__["MatCheckboxModule"],
+                _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_26__["MatTooltipModule"],
+                _angular_material_input__WEBPACK_IMPORTED_MODULE_27__["MatInputModule"],
+                _angular_material_table__WEBPACK_IMPORTED_MODULE_28__["MatTableModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_31__["MatSnackBarModule"],
+                _angular_material_select__WEBPACK_IMPORTED_MODULE_38__["MatSelectModule"],
                 _angular_material_radio__WEBPACK_IMPORTED_MODULE_4__["MatRadioModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_29__["MatButtonModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_29__["MatCardModule"],
-                _angular_material_list__WEBPACK_IMPORTED_MODULE_30__["MatListModule"]
+                _angular_material__WEBPACK_IMPORTED_MODULE_31__["MatButtonModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_31__["MatCardModule"],
+                _angular_material_list__WEBPACK_IMPORTED_MODULE_32__["MatListModule"]
             ],
             imports: [
                 angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_8__["MDBBootstrapModule"].forRoot(),
-                _angular_router__WEBPACK_IMPORTED_MODULE_21__["RouterModule"].forRoot(appRoutes),
+                _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterModule"].forRoot(appRoutes),
                 _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
                 angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_8__["CheckboxModule"],
                 angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_8__["WavesModule"],
                 angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_8__["ButtonsModule"],
-                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_22__["BrowserAnimationsModule"],
-                _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_23__["MatCheckboxModule"],
-                _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_24__["MatTooltipModule"],
-                _angular_material_input__WEBPACK_IMPORTED_MODULE_25__["MatInputModule"],
-                _angular_material_table__WEBPACK_IMPORTED_MODULE_26__["MatTableModule"],
-                _angular_material_select__WEBPACK_IMPORTED_MODULE_36__["MatSelectModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_24__["BrowserAnimationsModule"],
+                _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_25__["MatCheckboxModule"],
+                _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_26__["MatTooltipModule"],
+                _angular_material_input__WEBPACK_IMPORTED_MODULE_27__["MatInputModule"],
+                _angular_material_table__WEBPACK_IMPORTED_MODULE_28__["MatTableModule"],
+                _angular_material_select__WEBPACK_IMPORTED_MODULE_38__["MatSelectModule"],
                 _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_8__["CheckboxModule"],
                 angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_8__["WavesModule"],
                 angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_8__["ButtonsModule"],
-                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_22__["BrowserAnimationsModule"],
-                _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_23__["MatCheckboxModule"],
-                _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_24__["MatTooltipModule"],
-                _angular_material_input__WEBPACK_IMPORTED_MODULE_25__["MatInputModule"],
-                _angular_material_table__WEBPACK_IMPORTED_MODULE_26__["MatTableModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_27__["HttpClientModule"],
-                _angular_material_dialog__WEBPACK_IMPORTED_MODULE_46__["MatDialogModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_29__["MatButtonModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_29__["MatProgressSpinnerModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_24__["BrowserAnimationsModule"],
+                _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_25__["MatCheckboxModule"],
+                _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_26__["MatTooltipModule"],
+                _angular_material_input__WEBPACK_IMPORTED_MODULE_27__["MatInputModule"],
+                _angular_material_table__WEBPACK_IMPORTED_MODULE_28__["MatTableModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_29__["HttpClientModule"],
+                _angular_material_dialog__WEBPACK_IMPORTED_MODULE_48__["MatDialogModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_31__["MatButtonModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_31__["MatProgressSpinnerModule"],
                 _angular_material_radio__WEBPACK_IMPORTED_MODULE_4__["MatRadioModule"],
-                _angular_material_list__WEBPACK_IMPORTED_MODULE_30__["MatListModule"]
+                _angular_material_list__WEBPACK_IMPORTED_MODULE_32__["MatListModule"]
             ],
             providers: [
-                _services_surface_finish_service__WEBPACK_IMPORTED_MODULE_28__["SurfaceFinishService"],
-                _services_material_finish_service__WEBPACK_IMPORTED_MODULE_41__["MaterialFinishService"],
-                _services_material_service__WEBPACK_IMPORTED_MODULE_42__["MaterialService"],
-                _services_product_service__WEBPACK_IMPORTED_MODULE_50__["ProductService"],
-                _angular_material_dialog__WEBPACK_IMPORTED_MODULE_46__["MatDialog"]
+                _services_surface_finish_service__WEBPACK_IMPORTED_MODULE_30__["SurfaceFinishService"],
+                _services_material_finish_service__WEBPACK_IMPORTED_MODULE_43__["MaterialFinishService"],
+                _services_material_service__WEBPACK_IMPORTED_MODULE_44__["MaterialService"],
+                _services_product_service__WEBPACK_IMPORTED_MODULE_52__["ProductService"],
+                _services_order_service__WEBPACK_IMPORTED_MODULE_53__["orderService"],
+                _angular_material_dialog__WEBPACK_IMPORTED_MODULE_48__["MatDialog"]
             ],
-            entryComponents: [_create_product_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_47__["SelectMaterialFinishesDialog"], _create_product_select_parts_dialog__WEBPACK_IMPORTED_MODULE_51__["SelectPartsDialog"]]
+            entryComponents: [_create_product_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_49__["SelectMaterialFinishesDialog"], _create_product_select_parts_dialog__WEBPACK_IMPORTED_MODULE_54__["SelectPartsDialog"]]
         })
     ], UiModule);
     return UiModule;

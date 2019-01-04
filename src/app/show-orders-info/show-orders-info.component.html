@@ -1,0 +1,78 @@
+<h3 class="card-header text-center font-weight-bold py-4">Ver Encomenda</h3>
+<div class="container">
+  <div class="custom-container">
+    <br />
+
+     <!-- State -->
+     <mat-form-field>
+      <input matInput placeholder="Estado da encomenda" [(ngModel)]="state" readonly>
+    </mat-form-field>
+
+
+    <!-- date -->
+    <mat-form-field>
+      <input matInput placeholder="Data da Encomenda" [(ngModel)]="date" readonly>
+    </mat-form-field>
+
+    <!-- cidade -->
+    <mat-form-field>
+      <input matInput placeholder="cidade" [(ngModel)]="cidade" readonly>
+    </mat-form-field>
+
+    <!-- latitude -->
+    <mat-form-field>
+      <input matInput placeholder="Latitude" [(ngModel)]="latitude" readonly>
+    </mat-form-field>
+
+    <!-- longitude -->
+    <mat-form-field>
+      <input matInput placeholder="longitude" [(ngModel)]="longitude" readonly>
+    </mat-form-field>
+
+
+    <!-- totalPrice -->
+    <mat-form-field>
+      <input matInput placeholder="Preco" [(ngModel)]="totalPrice" readonly>
+    </mat-form-field>
+
+    <div *ngFor="let product of item">
+
+    <!-- Itens Nome -->
+    <mat-form-field>
+      <input matInput placeholder="ItemNome" [(ngModel)]="product.product.name" readonly>
+    </mat-form-field>
+    <br />
+    <!-- Itens -->
+    <mat-form-field>
+      <input matInput placeholder="ItemMaterial" [(ngModel)]="product.product.material" readonly>
+    </mat-form-field>
+
+    <br />
+    <!-- Itens -->
+    <mat-form-field>
+      <input matInput placeholder="ItemAcabamento" [(ngModel)]="product.product.surfaceFinish" readonly>
+    </mat-form-field>
+    <br />
+     <!-- Itens -->
+     <mat-form-field>
+      <input matInput placeholder="ItemAltura" [(ngModel)]="product.product.height" readonly>
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <input matInput placeholder="ItemProfundidade" [(ngModel)]="product.product.depth" readonly>
+    </mat-form-field>
+    <br />
+
+    <mat-form-field>
+      <input matInput placeholder="ItemLargura" [(ngModel)]="product.product.width" readonly>
+    </mat-form-field>
+
+
+</div>
+
+
+    <div class="sic-row">
+      <button type="button" (click)="deleteOrder()" matTooltip="Apagar esta Encomenda" class="btn btn-primary btn-md">Apagar</button>
+      <button type="button" (click)="back()" matTooltip="Cancelar" class="btn btn-light btn-md">Retroceder</button>
+    </div>
+  </div>

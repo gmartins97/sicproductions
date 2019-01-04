@@ -10,13 +10,28 @@ import { AuthService } from "./auth.service";
 })
 export class orderService extends GenericService{
 
-  constructor(httpClient: HttpClient, authSrv: AuthService) { super('http://localhost:8888/api/order', httpClient, authSrv); }
+  constructor(httpClient: HttpClient, authSrv: AuthService) { super('http://sicproductions.herokuapp.com/api/order', httpClient, authSrv); }
 
   createEncomenda(obj: order): Observable<order> {
     return super.create(obj);
   }
 
+  getEncomendasUser(username : string): Observable<order[]> {
+    return super.getById(username);
+  }
 
+  getEncomenda(username : string ,id: number): Observable<order>{
+    return super.getById(username+'/'+id);
+  }
+
+
+  updateEncomenda(id:number, order: order): Observable<any> {
+    return super.update(id, order);
+  }
+
+  deleteEncomenda(id: number): Observable<any> {
+    return super.delete(id);
+  }
   
 
 }

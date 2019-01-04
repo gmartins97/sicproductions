@@ -19,6 +19,8 @@ import { CreateSurfaceFinishComponent } from '../create-surface-finish/create-su
 import { CreateCategoryComponent } from '../create-category/create-category.component';
 import { EditSurfaceFinishComponent } from '../edit-surface-finish/edit-surface-finish.component';
 import { SignUpComponent } from '../sign-up/sign-up.component';
+import { OrdersComponent } from '../orders/orders.component';
+import { ShowOrdersInfoComponent } from '../show-orders-info/show-orders-info.component';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -50,6 +52,7 @@ import { SelectMaterialFinishesDialog } from '../create-product/select-material-
 import { EditMaterialFinishComponent } from '../edit-material-finish/edit-material-finish.component';
 import { ShowProductInfoComponent } from '../show-product-info/show-product-info.component';
 import { ProductService } from '../services/product.service';
+import { orderService } from '../services/order.service';
 import { SelectPartsDialog } from '../create-product/select-parts-dialog';
 
 
@@ -77,6 +80,8 @@ const appRoutes: Routes = [
   { path: 'collections', component: CollectionComponent, canActivate:[ClientGuard] },
   { path: 'productConfigurator/configure/:id', component: ProductConfiguratorComponent, canActivate:[AuthGuard] },
   { path: 'clientCatalogue', component: ClientCatalogueComponent, canActivate:[AuthGuard] },
+  { path: 'orders/:username', component: OrdersComponent, canActivate: [AuthGuard] },
+  { path: 'orders/show/:id', component: ShowOrdersInfoComponent, canActivate: [AuthGuard] },
   { path: 'TermsAndConditions', component: TermsAndConditionsComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
@@ -139,6 +144,7 @@ const appRoutes: Routes = [
     MaterialFinishService,
     MaterialService,
     ProductService,
+    orderService,
     MatDialog
   ],
   entryComponents: [SelectMaterialFinishesDialog, SelectPartsDialog]
