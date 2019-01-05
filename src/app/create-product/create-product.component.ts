@@ -95,14 +95,22 @@ export class CreateProductComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.materialfinishes = result;
+      if (!(result === undefined)) {
+        for (let matfin of result) {
+          let index: number = this.materialfinishes.findIndex(mf => (mf.id == matfin.id));
+
+          if (index == -1) {
+            this.materialfinishes.push(matfin);
+          }
+        }
+      }
     });
   }
 
   openPartsDialog(): void {
     const dialogRef = this.dialog.open(SelectPartsDialog, {
       width: '700px',
-      data: {}
+      data: null
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -131,12 +139,9 @@ export class CreateProductComponent implements OnInit {
         this.parts.push(p);
       });
     }
-    console.log('parts');
-    console.log(this.parts);
   }
 
   private writeOptionalOrMandatory(isOptional: boolean): string {
-    console.log('entrou no write');
     if (isOptional === false) {
       return "Obrigatório";
     }

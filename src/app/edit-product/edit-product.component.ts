@@ -32,16 +32,22 @@ export class EditProductComponent implements OnInit {
   category: Category;
   categoryBefore: string;
   categories: Category[];
-  materialfinishes: MaterialFinish[];
+  materialfinishes: MaterialFinish[] = [];
 
+  hdisc: boolean = false;
+  hcont: boolean = false;
   height_min: number;
   height_max: number;
   height_disc: string;
 
+  wdisc: boolean = false;
+  wcont: boolean = false;
   width_min: number;
   width_max: number;
   width_disc: string;
 
+  ddisc: boolean = false;
+  dcont: boolean = false;
   depth_min: number;
   depth_max: number;
   depth_disc: string;
@@ -60,6 +66,7 @@ export class EditProductComponent implements OnInit {
 
   optionalProducts: OptionalProducts[] = [];
   parts: Part[] = [];
+  part: Part;
   partsBefore: Part[] = [];
 
   minOccup: number;
@@ -82,37 +89,53 @@ export class EditProductComponent implements OnInit {
     });
     this.service.getProduct(id).subscribe(res => {
       this.product = <Product>res;
-      console.log(this.product);
       this.name = this.product.name;
       this.categoryBefore = (<Category>this.product.category).description;
+      this.category = this.categories.find(c => c.description == this.categoryBefore);
       this.materialfinishes = this.product.materialFinishes;
       let optproducts: OptionalProducts[] = this.product.optionalProducts;
-      if (!optproducts === undefined) {
+      if (!(optproducts === undefined)) {
         this.convertPartsBefore(optproducts);
       }
       
       let heightDisc_ant = (<DiscreteDimension>this.product.dimensions.height);
       if (heightDisc_ant.discrete == null) {
+        this.showDivNewAlturaContinua();
+        
         this.height_max_ant = (<ContinuousDimension>this.product.dimensions.height).max;
         this.height_min_ant = (<ContinuousDimension>this.product.dimensions.height).min;
+        this.height_min = this.height_min_ant;
+        this.height_max = this.height_max_ant;
       } else {
+        this.showDivNewAlturaDiscreta();
         this.height_disc_ant = (<DiscreteDimension>this.product.dimensions.height).discrete;
+        this.height_disc = this.height_disc_ant;
       }
 
       let widthDisc_ant = (<DiscreteDimension>this.product.dimensions.width);
       if (widthDisc_ant.discrete == null) {
+        this.showDivNewLarguraContinua();
         this.width_max_ant = (<ContinuousDimension>this.product.dimensions.width).max;
         this.width_min_ant = (<ContinuousDimension>this.product.dimensions.width).min;
+        this.width_min = this.width_min_ant;
+        this.width_max = this.width_max_ant;
       } else {
+        this.showDivNewLarguraDiscreta();
         this.width_disc_ant = (<DiscreteDimension>this.product.dimensions.width).discrete;
+        this.width_disc = this.width_disc_ant;
       }
 
       let depthDisc_ant = (<DiscreteDimension>this.product.dimensions.depth);
       if (depthDisc_ant.discrete == null) {
+        this.showDivNewProfundidadeContinua();
         this.depth_max_ant = (<ContinuousDimension>this.product.dimensions.depth).max;
         this.depth_min_ant = (<ContinuousDimension>this.product.dimensions.depth).min;
+        this.depth_min = this.depth_min_ant;
+        this.depth_max = this.depth_max_ant;
       } else {
+        this.showDivNewProfundidadeDiscreta();
         this.depth_disc_ant = (<DiscreteDimension>this.product.dimensions.depth).discrete;
+        this.depth_disc = this.depth_disc_ant;
       }
 
       this.minOccup = this.product.minOccupancyPercentage;
@@ -154,7 +177,6 @@ export class EditProductComponent implements OnInit {
   }
 
   removeFromMaterialList(materialfinish: MaterialFinish): void {
-    console.log(materialfinish);
     let index: number = this.materialfinishes.findIndex(mat => (mat.id == materialfinish.id));
     this.materialfinishes.splice(index, 1);
   }
@@ -186,20 +208,27 @@ export class EditProductComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.materialfinishes = result;
+      if (!(result === undefined)) {
+        for (let matfin of result) {
+          let index: number = this.materialfinishes.findIndex(mf => (mf.id == matfin.id));
+
+          if (index == -1) {
+            this.materialfinishes.push(matfin);
+          }
+        }
+      }
     });
   }
 
   openPartsDialog(): void {
     const dialogRef = this.dialog.open(SelectPartsDialog, {
       width: '700px',
-      data: {}
+      data:  this.product.id
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (!(result === undefined)) {
         this.optionalProducts = result;
-        this.convertToParts(result);
       } else {
         this.optionalProducts = [];
         this.parts = [];
@@ -292,10 +321,7 @@ export class EditProductComponent implements OnInit {
 
     let prod = new Product(this.name, this.category, this.materialfinishes, dimensions,
       this.optionalProducts, this.minOccup, this.maxOccup);
-    console.log('id para update');
-    console.log(this.product.id);
-    console.log('prod para procurar');
-    console.log(prod);
+
     this.service.updateProduct(this.product.id, prod).subscribe(prod => {
       this.bar.open(
         `Sucesso: o produto foi editado.`,
@@ -471,6 +497,8 @@ export class EditProductComponent implements OnInit {
     this.dispose_showDivNewAlturaContinua();
     this.height_min = null;
     this.height_max = null;
+    this.hcont = false;
+    this.hdisc = true;
     document.getElementById('newAlturaDiscreta').style.display = "block";
   }
 
@@ -481,6 +509,8 @@ export class EditProductComponent implements OnInit {
   showDivNewAlturaContinua() {
     this.dispose_showDivNewAlturaDiscreta();
     this.height_disc = null;
+    this.hcont = true;
+    this.hdisc = false;
     document.getElementById('newAlturaContinua').style.display = "block";
   }
 
@@ -502,6 +532,8 @@ export class EditProductComponent implements OnInit {
     this.dispose_showDivNewLarguraContinua();
     this.width_max = null;
     this.width_min = null;
+    this.wcont = false;
+    this.wdisc = true;
     document.getElementById('newLarguraDiscreta').style.display = "block";
   }
 
@@ -511,6 +543,8 @@ export class EditProductComponent implements OnInit {
 
   showDivNewLarguraContinua() {
     this.dispose_showDivNewLarguraDiscreta();
+    this.wcont = true;
+    this.wdisc = false;
     this.width_disc = "";
     document.getElementById('newLarguraContinua').style.display = "block";
   }
@@ -532,6 +566,8 @@ export class EditProductComponent implements OnInit {
     this.dispose_showDivNewProfundidadeContinua();
     this.depth_min = null;
     this.depth_max = null;
+    this.dcont = false;
+    this.ddisc =true;
     document.getElementById('newProfundidadeDiscreta').style.display = "block";
   }
 
@@ -542,6 +578,8 @@ export class EditProductComponent implements OnInit {
   showDivNewProfundidadeContinua() {
     this.dispose_showDivNewProfundidadeDiscreta();
     this.depth_disc = "";
+    this.dcont = true;
+    this.ddisc = false;
     document.getElementById('newProfundidadeContinua').style.display = "block";
   }
 

@@ -66,7 +66,7 @@ export class ShowProductInfoComponent implements OnInit {
       this.categoryName = this.product.category.description;
       this.materialfinishes = this.product.materialFinishes;
       let optproducts: OptionalProducts[] = this.product.optionalProducts;
-      if (!optproducts === undefined) {
+      if (!(optproducts === undefined)) {
         this.convertParts(optproducts);
       }
       

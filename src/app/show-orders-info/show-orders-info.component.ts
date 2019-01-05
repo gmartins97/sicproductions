@@ -79,7 +79,8 @@ export class ShowOrdersInfoComponent implements OnInit {
   }
 
   back(): void {
-    this.router.navigateByUrl('/orders');
+    const username = this.authservice.getLoggedInUsername();
+    this.router.navigateByUrl(`/orders/${username}`);
   }
 
 

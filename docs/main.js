@@ -1298,14 +1298,25 @@ var CreateProductComponent = /** @class */ (function () {
             data: {}
         });
         dialogRef.afterClosed().subscribe(function (result) {
-            _this.materialfinishes = result;
+            if (!(result === undefined)) {
+                var _loop_1 = function (matfin) {
+                    var index = _this.materialfinishes.findIndex(function (mf) { return (mf.id == matfin.id); });
+                    if (index == -1) {
+                        _this.materialfinishes.push(matfin);
+                    }
+                };
+                for (var _i = 0, result_1 = result; _i < result_1.length; _i++) {
+                    var matfin = result_1[_i];
+                    _loop_1(matfin);
+                }
+            }
         });
     };
     CreateProductComponent.prototype.openPartsDialog = function () {
         var _this = this;
         var dialogRef = this.dialog.open(_select_parts_dialog__WEBPACK_IMPORTED_MODULE_10__["SelectPartsDialog"], {
             width: '700px',
-            data: {}
+            data: null
         });
         dialogRef.afterClosed().subscribe(function (result) {
             if (!(result === undefined)) {
@@ -1325,7 +1336,7 @@ var CreateProductComponent = /** @class */ (function () {
     CreateProductComponent.prototype.convertToParts = function (optionalProducts) {
         var _this = this;
         var product;
-        var _loop_1 = function (i) {
+        var _loop_2 = function (i) {
             this_1.service.getProduct(optionalProducts[i].productId).subscribe(function (res) {
                 product = res;
                 var opt = _this.writeOptionalOrMandatory(optionalProducts[i].optional);
@@ -1335,13 +1346,10 @@ var CreateProductComponent = /** @class */ (function () {
         };
         var this_1 = this;
         for (var i = 0; i < optionalProducts.length; i++) {
-            _loop_1(i);
+            _loop_2(i);
         }
-        console.log('parts');
-        console.log(this.parts);
     };
     CreateProductComponent.prototype.writeOptionalOrMandatory = function (isOptional) {
-        console.log('entrou no write');
         if (isOptional === false) {
             return "Obrigatório";
         }
@@ -1695,7 +1703,6 @@ var SelectMaterialFinishesDialog = /** @class */ (function () {
         var _this = this;
         this.matacabService.getMaterialFinishes().subscribe(function (data) {
             _this.materialFinishes = data;
-            console.log(_this.materialFinishes);
             _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatTableDataSource"](_this.materialFinishes);
         }, function (error) {
             _this.bar.open("Ocorreu um erro ao tentar obter os materiais acabamentos do servidor: " + error.error, '', {
@@ -1770,6 +1777,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 
@@ -1779,11 +1788,12 @@ __webpack_require__.r(__webpack_exports__);
  * @title Table with selection
  */
 var SelectPartsDialog = /** @class */ (function () {
-    function SelectPartsDialog(service, bar, dialogRef, data) {
+    function SelectPartsDialog(service, bar, route, dialogRef, id) {
         this.service = service;
         this.bar = bar;
+        this.route = route;
         this.dialogRef = dialogRef;
-        this.data = data;
+        this.id = id;
         this.displayedColumns = ['select', 'optional', 'name' /*, 'category'*/];
         this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatTableDataSource"]();
         this.products = [];
@@ -1798,6 +1808,10 @@ var SelectPartsDialog = /** @class */ (function () {
         var _this = this;
         this.service.getProducts().subscribe(function (data) {
             _this.products = data;
+            var index = _this.products.findIndex(function (p) { return (p.id == _this.id); });
+            if (!(index === undefined) && !(index == -1)) {
+                _this.products.splice(index, 1);
+            }
             _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatTableDataSource"](_this.products);
         }, function (error) {
             _this.bar.open("Ocorreu um erro ao tentar obter os produtos do servidor: " + error.error, '', {
@@ -1857,9 +1871,9 @@ var SelectPartsDialog = /** @class */ (function () {
             template: __webpack_require__(/*! ./select-parts-dialog.html */ "./src/app/create-product/select-parts-dialog.html"),
             styles: [__webpack_require__(/*! ./select-parts-dialog.css */ "./src/app/create-product/select-parts-dialog.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](3, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"])),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_product_service__WEBPACK_IMPORTED_MODULE_4__["ProductService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"],
-            _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogRef"], Array])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](4, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"])),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_product_service__WEBPACK_IMPORTED_MODULE_4__["ProductService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogRef"], Number])
     ], SelectPartsDialog);
     return SelectPartsDialog;
 }());
@@ -2386,7 +2400,7 @@ module.exports = "#formpequena {\r\n  width: 86%;\r\n}\r\n\r\n#forminline1 {\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Editar Produto</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n    <!-- Nome -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Nome do produto\" [(ngModel)]=\"name\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Categoria -->\r\n    <div>\r\n      <mat-form-field style=\"width: 20%;display:inline-block;\">\r\n        <input matInput placeholder=\"Categoria Anterior\" [(ngModel)]=\"categoryBefore\" readonly>\r\n      </mat-form-field>\r\n      <mat-form-field id=\"forminline3\">\r\n        <mat-select required [(ngModel)]=\"category\" placeholder=\"Categoria\">\r\n          <mat-option *ngFor=\"let cat of categories\" [value]=\"cat\">\r\n            {{cat.description}}\r\n          </mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n    </div>\r\n    \r\n\r\n    <!-- Min ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Minima Ocupação\" [(ngModel)]=\"minOccup\" type=\"number\" min=\"0\" max=\"100\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Max ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Máxima Ocupação\" [(ngModel)]=\"maxOccup\" type=\"number\" min=\"{{minOccup}}\" max=\"100\" required>\r\n    </mat-form-field>\r\n  </div>\r\n\r\n  <!-- Partes -->\r\n  <button id=\"butpequeno\" mat-button (click)=\"chooseParts()\" matTooltip=\"A lista será substituida pela nova.\" class=\"btn btn-primary btn-md\">Escolher</button>\r\n  <mat-form-field id=\"forminline1\">\r\n    <mat-select [(ngModel)]=\"part\" placeholder=\"Produtos Anteriores\" >\r\n      <mat-option *ngFor=\"let part of partsBefore\" [value]=\"part\">\r\n        {{part.product.name}} (<label id=\"{{part.product.name}}\" style=\"display:inline-block;\">{{part.optional}}</label>)\r\n      </mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n  <mat-form-field id=\"forminline2\">\r\n    <mat-select [(ngModel)]=\"part\" placeholder=\"Produtos Opcionais\">\r\n      <mat-option *ngFor=\"let part of parts\" [value]=\"part\">\r\n        {{part.product.name}} (<label id=\"{{part.product.name}}\" style=\"display:inline-block;\">{{part.optional}}</label>)\r\n      </mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n\r\n  <br />\r\n  <!-- Materiais Acabamentos -->\r\n  <button mat-button (click)=\"chooseMaterialFinishes()\" matTooltip=\"Escolher Materiais Acabamentos\" class=\"btn btn-primary btn-md\">Escolher Materiais Acabamentos</button>\r\n  <div>\r\n    <mat-card *ngFor=\"let materialfinish of materialfinishes\" class=\"example-card\" style=\"width:200px;float:left;margin-top:30px;margin-right: 30px;\">\r\n      <mat-card-header style=\"text-align:left;\">\r\n        <mat-card-title style=\"font-size:medium;\">{{materialfinish.materialDTO.name}}</mat-card-title>\r\n        <mat-card-subtitle>{{materialfinish.surfaceFinishDTO.name}}</mat-card-subtitle>\r\n      </mat-card-header>\r\n      <img mat-card-image src=\"{{materialfinish.textureUrl}}\">\r\n      <mat-card-actions>\r\n        <button mat-button (click)=\"removeFromMaterialList(materialfinish)\">Remover</button>\r\n      </mat-card-actions>\r\n    </mat-card>\r\n  </div>\r\n  <br />\r\n\r\n  <!-- Alturas -->\r\n  <mat-card class=\"result\" style=\"clear:both;margin-top:30px;\">\r\n    <mat-card-content>\r\n      <h2 class=\"example-h2\">Alturas</h2>\r\n      <h4 class=\"example-h4\">Anterior: {{height_disc_ant||  height_min_ant + '-' + height_max_ant}}</h4>\r\n      <br />\r\n      <section class=\"example-section\">\r\n        <mat-radio-group required>\r\n          <mat-radio-button name=\"myHeight\" (click)=\"showDivNewAlturaDiscreta()\" value=\"HeightDiscrete\">Discreta</mat-radio-button>&ensp;\r\n          <mat-radio-button name=\"myHeight\" (click)=\"showDivNewAlturaContinua()\" value=\"HeightContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n        </mat-radio-group>\r\n        <div id=\"newAlturaContinua\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"hcmin\" matInput [(ngModel)]=\"height_min\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n          </mat-form-field>\r\n          <mat-form-field>\r\n            <input id=\"hcmax\" matInput [(ngModel)]=\"height_max\" type=\"number\" placeholder=\"max\" min=\"{{heightMin}}\"> <br />\r\n          </mat-form-field>\r\n        </div>\r\n        <div id=\"newAlturaDiscreta\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"hdiscrete\" matInput [(ngModel)]=\"height_disc\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n          </mat-form-field>\r\n        </div>\r\n      </section>\r\n    </mat-card-content>\r\n  </mat-card>\r\n\r\n  <!-- Larguras -->\r\n  <mat-card class=\"result\" style=\"margin-left: 30px;margin-top:30px;\">\r\n    <mat-card-content>\r\n      <h2 class=\"example-h2\">Larguras</h2>\r\n      <h4 class=\"example-h4\">Anterior: {{width_disc_ant||  width_min_ant + '-' + width_max_ant}}</h4>\r\n      <br />\r\n      <section class=\"example-section\">\r\n        <mat-radio-group required>\r\n          <mat-radio-button name=\"myWidth\" (click)=\"showDivNewLarguraDiscreta()\" value=\"WidthDiscrete\">Discreta</mat-radio-button>\r\n          <mat-radio-button name=\"myWidth\" (click)=\"showDivNewLarguraContinua()\" value=\"WidthContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n        </mat-radio-group>\r\n        <br />\r\n        <div id=\"newLarguraContinua\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"wcmin\" matInput [(ngModel)]=\"width_min\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n          </mat-form-field>\r\n          <mat-form-field>\r\n            <input id=\"wcmax\" matInput [(ngModel)]=\"width_max\" type=\"number\" placeholder=\"max\" min=\"{{widthMin}}\"> <br />\r\n          </mat-form-field>\r\n        </div>\r\n        <div id=\"newLarguraDiscreta\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"wdiscrete\" matInput [(ngModel)]=\"width_disc\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n          </mat-form-field>\r\n        </div>\r\n      </section>\r\n    </mat-card-content>\r\n  </mat-card>\r\n\r\n  <!-- Profundidades -->\r\n  <mat-card class=\"result\" style=\"margin-left: 30px;margin-top:30px;\">\r\n    <mat-card-content>\r\n      <h2 class=\"example-h2\">Profundidades</h2>\r\n      <h4 class=\"example-h4\">Anterior: {{depth_disc_ant||  depth_min_ant + '-' + depth_max_ant}}</h4>\r\n      <br />\r\n      <section class=\"example-section\">\r\n        <mat-radio-group id=\"profgroup\">\r\n          <mat-radio-button name=\"myDepth\" (click)=\"showDivNewProfundidadeDiscreta()\" value=\"DepthDiscrete\">Discreta</mat-radio-button>\r\n          <mat-radio-button name=\"myDepth\" (click)=\"showDivNewProfundidadeContinua()\" value=\"DepthContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n        </mat-radio-group>\r\n        <br />\r\n        <div id=\"newProfundidadeContinua\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"dcmin\" matInput [(ngModel)]=\"depth_min\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n          </mat-form-field>\r\n          <mat-form-field>\r\n            <input id=\"dcmax\" matInput [(ngModel)]=\"depth_max\" type=\"number\" placeholder=\"max\" min=\"0\"> <br />\r\n          </mat-form-field>\r\n        </div>\r\n        <div id=\"newProfundidadeDiscreta\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"ddiscrete\" matInput [(ngModel)]=\"depth_disc\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n          </mat-form-field>\r\n        </div>\r\n      </section>\r\n    </mat-card-content>\r\n  </mat-card>\r\n\r\n\r\n\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar Alterações\" class=\"btn btn-primary btn-md\">Confirmar</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Cancelar</button>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Editar Produto</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n    <!-- Nome -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Nome do produto\" [(ngModel)]=\"name\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Categoria -->\r\n    <div>\r\n      <mat-form-field style=\"width: 20%;display:inline-block;\">\r\n        <input matInput placeholder=\"Categoria Anterior\" [(ngModel)]=\"categoryBefore\" readonly>\r\n      </mat-form-field>\r\n      <mat-form-field id=\"forminline3\">\r\n        <mat-select required [(ngModel)]=\"category\" placeholder=\"Categoria\">\r\n          <mat-option *ngFor=\"let cat of categories\" [value]=\"cat\">\r\n            {{cat.description}}\r\n          </mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n    </div>\r\n    \r\n\r\n    <!-- Min ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Minima Ocupação\" [(ngModel)]=\"minOccup\" type=\"number\" min=\"0\" max=\"100\" required>\r\n    </mat-form-field>\r\n\r\n    <!-- Max ocupacao -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"% Máxima Ocupação\" [(ngModel)]=\"maxOccup\" type=\"number\" min=\"{{minOccup}}\" max=\"100\" required>\r\n    </mat-form-field>\r\n  </div>\r\n\r\n  <!-- Partes -->\r\n  <button id=\"butpequeno\" mat-button (click)=\"chooseParts()\" matTooltip=\"A lista será substituida pela nova.\" class=\"btn btn-primary btn-md\">Escolher</button>\r\n  <mat-form-field id=\"forminline1\">\r\n    <mat-select [(ngModel)]=\"part\" placeholder=\"Produtos Anteriores\" >\r\n      <mat-option *ngFor=\"let part of partsBefore\" [value]=\"part\">\r\n        {{part.product.name}} (<label id=\"{{part.product.name}}\" style=\"display:inline-block;\">{{part.optional}}</label>)\r\n      </mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n  <mat-form-field id=\"forminline2\">\r\n    <mat-select [(ngModel)]=\"part\" placeholder=\"Produtos Opcionais\">\r\n      <mat-option *ngFor=\"let part of parts\" [value]=\"part\">\r\n        {{part.product.name}} (<label id=\"{{part.product.name}}\" style=\"display:inline-block;\">{{part.optional}}</label>)\r\n      </mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n\r\n  <br />\r\n  <!-- Materiais Acabamentos -->\r\n  <button mat-button (click)=\"chooseMaterialFinishes()\" matTooltip=\"Escolher Materiais Acabamentos\" class=\"btn btn-primary btn-md\">Escolher Materiais Acabamentos</button>\r\n  <div>\r\n    <mat-card *ngFor=\"let materialfinish of materialfinishes\" class=\"example-card\" style=\"width:200px;float:left;margin-top:30px;margin-right: 30px;\">\r\n      <mat-card-header style=\"text-align:left;\">\r\n        <mat-card-title style=\"font-size:medium;\">{{materialfinish.materialDTO.name}}</mat-card-title>\r\n        <mat-card-subtitle>{{materialfinish.surfaceFinishDTO.name}}</mat-card-subtitle>\r\n      </mat-card-header>\r\n      <img mat-card-image src=\"{{materialfinish.textureUrl}}\">\r\n      <mat-card-actions>\r\n        <button mat-button (click)=\"removeFromMaterialList(materialfinish)\">Remover</button>\r\n      </mat-card-actions>\r\n    </mat-card>\r\n  </div>\r\n  <br />\r\n\r\n  <!-- Alturas -->\r\n  <mat-card class=\"result\" style=\"clear:both;margin-top:30px;\">\r\n    <mat-card-content>\r\n      <h2 class=\"example-h2\">Alturas</h2>\r\n      <h4 class=\"example-h4\">Anterior: {{height_disc_ant||  height_min_ant + '-' + height_max_ant}}</h4>\r\n      <br />\r\n      <section class=\"example-section\">\r\n        <mat-radio-group required>\r\n          <mat-radio-button name=\"myHeight\" [(checked)]=\"hdisc\" (click)=\"showDivNewAlturaDiscreta()\" value=\"HeightDiscrete\">Discreta</mat-radio-button>&ensp;\r\n          <mat-radio-button name=\"myHeight\" [(checked)]=\"hcont\" (click)=\"showDivNewAlturaContinua()\" value=\"HeightContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n        </mat-radio-group>\r\n        <div id=\"newAlturaContinua\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"hcmin\" matInput [(ngModel)]=\"height_min\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n          </mat-form-field>\r\n          <mat-form-field>\r\n            <input id=\"hcmax\" matInput [(ngModel)]=\"height_max\" type=\"number\" placeholder=\"max\" min=\"{{heightMin}}\"> <br />\r\n          </mat-form-field>\r\n        </div>\r\n        <div id=\"newAlturaDiscreta\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"hdiscrete\" matInput [(ngModel)]=\"height_disc\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n          </mat-form-field>\r\n        </div>\r\n      </section>\r\n    </mat-card-content>\r\n  </mat-card>\r\n\r\n  <!-- Larguras -->\r\n  <mat-card class=\"result\" style=\"margin-left: 30px;margin-top:30px;\">\r\n    <mat-card-content>\r\n      <h2 class=\"example-h2\">Larguras</h2>\r\n      <h4 class=\"example-h4\">Anterior: {{width_disc_ant||  width_min_ant + '-' + width_max_ant}}</h4>\r\n      <br />\r\n      <section class=\"example-section\">\r\n        <mat-radio-group required>\r\n          <mat-radio-button name=\"myWidth\" [(checked)]=\"wdisc\" (click)=\"showDivNewLarguraDiscreta()\" value=\"WidthDiscrete\">Discreta</mat-radio-button>\r\n          <mat-radio-button name=\"myWidth\" [(checked)]=\"wcont\" (click)=\"showDivNewLarguraContinua()\" value=\"WidthContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n        </mat-radio-group>\r\n        <br />\r\n        <div id=\"newLarguraContinua\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"wcmin\" matInput [(ngModel)]=\"width_min\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n          </mat-form-field>\r\n          <mat-form-field>\r\n            <input id=\"wcmax\" matInput [(ngModel)]=\"width_max\" type=\"number\" placeholder=\"max\" min=\"{{widthMin}}\"> <br />\r\n          </mat-form-field>\r\n        </div>\r\n        <div id=\"newLarguraDiscreta\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"wdiscrete\" matInput [(ngModel)]=\"width_disc\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n          </mat-form-field>\r\n        </div>\r\n      </section>\r\n    </mat-card-content>\r\n  </mat-card>\r\n\r\n  <!-- Profundidades -->\r\n  <mat-card class=\"result\" style=\"margin-left: 30px;margin-top:30px;\">\r\n    <mat-card-content>\r\n      <h2 class=\"example-h2\">Profundidades</h2>\r\n      <h4 class=\"example-h4\">Anterior: {{depth_disc_ant||  depth_min_ant + '-' + depth_max_ant}}</h4>\r\n      <br />\r\n      <section class=\"example-section\">\r\n        <mat-radio-group id=\"profgroup\">\r\n          <mat-radio-button name=\"myDepth\" [(checked)]=\"ddisc\" (click)=\"showDivNewProfundidadeDiscreta()\" value=\"DepthDiscrete\">Discreta</mat-radio-button>\r\n          <mat-radio-button name=\"myDepth\" [(checked)]=\"dcont\" (click)=\"showDivNewProfundidadeContinua()\" value=\"DepthContinuous\" style=\"float:right;padding-right:40px;\">Contínua</mat-radio-button>\r\n        </mat-radio-group>\r\n        <br />\r\n        <div id=\"newProfundidadeContinua\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"dcmin\" matInput [(ngModel)]=\"depth_min\" type=\"number\" placeholder=\"min\" min=\"0\">\r\n          </mat-form-field>\r\n          <mat-form-field>\r\n            <input id=\"dcmax\" matInput [(ngModel)]=\"depth_max\" type=\"number\" placeholder=\"max\" min=\"0\"> <br />\r\n          </mat-form-field>\r\n        </div>\r\n        <div id=\"newProfundidadeDiscreta\" style=\"display:none;\">\r\n          <mat-form-field>\r\n            <input id=\"ddiscrete\" matInput [(ngModel)]=\"depth_disc\" pattern=\"{{discretePattern}}\" type=\"text\" matTooltip=\"Separar por ;\" placeholder=\"Valores Discretos\"><br />\r\n          </mat-form-field>\r\n        </div>\r\n      </section>\r\n    </mat-card-content>\r\n  </mat-card>\r\n\r\n\r\n\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar Alterações\" class=\"btn btn-primary btn-md\">Confirmar</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Cancelar</button>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -2430,6 +2444,13 @@ var EditProductComponent = /** @class */ (function () {
         this.catService = catService;
         this.dialog = dialog;
         this.bar = bar;
+        this.materialfinishes = [];
+        this.hdisc = false;
+        this.hcont = false;
+        this.wdisc = false;
+        this.wcont = false;
+        this.ddisc = false;
+        this.dcont = false;
         this.optionalProducts = [];
         this.parts = [];
         this.partsBefore = [];
@@ -2447,37 +2468,52 @@ var EditProductComponent = /** @class */ (function () {
         });
         this.service.getProduct(id).subscribe(function (res) {
             _this.product = res;
-            console.log(_this.product);
             _this.name = _this.product.name;
             _this.categoryBefore = _this.product.category.description;
+            _this.category = _this.categories.find(function (c) { return c.description == _this.categoryBefore; });
             _this.materialfinishes = _this.product.materialFinishes;
             var optproducts = _this.product.optionalProducts;
-            if (!optproducts === undefined) {
+            if (!(optproducts === undefined)) {
                 _this.convertPartsBefore(optproducts);
             }
             var heightDisc_ant = _this.product.dimensions.height;
             if (heightDisc_ant.discrete == null) {
+                _this.showDivNewAlturaContinua();
                 _this.height_max_ant = _this.product.dimensions.height.max;
                 _this.height_min_ant = _this.product.dimensions.height.min;
+                _this.height_min = _this.height_min_ant;
+                _this.height_max = _this.height_max_ant;
             }
             else {
+                _this.showDivNewAlturaDiscreta();
                 _this.height_disc_ant = _this.product.dimensions.height.discrete;
+                _this.height_disc = _this.height_disc_ant;
             }
             var widthDisc_ant = _this.product.dimensions.width;
             if (widthDisc_ant.discrete == null) {
+                _this.showDivNewLarguraContinua();
                 _this.width_max_ant = _this.product.dimensions.width.max;
                 _this.width_min_ant = _this.product.dimensions.width.min;
+                _this.width_min = _this.width_min_ant;
+                _this.width_max = _this.width_max_ant;
             }
             else {
+                _this.showDivNewLarguraDiscreta();
                 _this.width_disc_ant = _this.product.dimensions.width.discrete;
+                _this.width_disc = _this.width_disc_ant;
             }
             var depthDisc_ant = _this.product.dimensions.depth;
             if (depthDisc_ant.discrete == null) {
+                _this.showDivNewProfundidadeContinua();
                 _this.depth_max_ant = _this.product.dimensions.depth.max;
                 _this.depth_min_ant = _this.product.dimensions.depth.min;
+                _this.depth_min = _this.depth_min_ant;
+                _this.depth_max = _this.depth_max_ant;
             }
             else {
+                _this.showDivNewProfundidadeDiscreta();
                 _this.depth_disc_ant = _this.product.dimensions.depth.discrete;
+                _this.depth_disc = _this.depth_disc_ant;
             }
             _this.minOccup = _this.product.minOccupancyPercentage;
             _this.maxOccup = _this.product.maxOccupancyPercentage;
@@ -2517,7 +2553,6 @@ var EditProductComponent = /** @class */ (function () {
         return "Obrigatório";
     };
     EditProductComponent.prototype.removeFromMaterialList = function (materialfinish) {
-        console.log(materialfinish);
         var index = this.materialfinishes.findIndex(function (mat) { return (mat.id == materialfinish.id); });
         this.materialfinishes.splice(index, 1);
     };
@@ -2544,19 +2579,29 @@ var EditProductComponent = /** @class */ (function () {
             data: {}
         });
         dialogRef.afterClosed().subscribe(function (result) {
-            _this.materialfinishes = result;
+            if (!(result === undefined)) {
+                var _loop_2 = function (matfin) {
+                    var index = _this.materialfinishes.findIndex(function (mf) { return (mf.id == matfin.id); });
+                    if (index == -1) {
+                        _this.materialfinishes.push(matfin);
+                    }
+                };
+                for (var _i = 0, result_1 = result; _i < result_1.length; _i++) {
+                    var matfin = result_1[_i];
+                    _loop_2(matfin);
+                }
+            }
         });
     };
     EditProductComponent.prototype.openPartsDialog = function () {
         var _this = this;
         var dialogRef = this.dialog.open(_create_product_select_parts_dialog__WEBPACK_IMPORTED_MODULE_8__["SelectPartsDialog"], {
             width: '700px',
-            data: {}
+            data: this.product.id
         });
         dialogRef.afterClosed().subscribe(function (result) {
             if (!(result === undefined)) {
                 _this.optionalProducts = result;
-                _this.convertToParts(result);
             }
             else {
                 _this.optionalProducts = [];
@@ -2567,7 +2612,7 @@ var EditProductComponent = /** @class */ (function () {
     EditProductComponent.prototype.convertToParts = function (optionalProducts) {
         var _this = this;
         var product;
-        var _loop_2 = function (i) {
+        var _loop_3 = function (i) {
             this_2.service.getProduct(optionalProducts[i].productId).subscribe(function (res) {
                 product = res;
                 var opt = _this.writeOptionalOrMandatory(optionalProducts[i].optional);
@@ -2577,7 +2622,7 @@ var EditProductComponent = /** @class */ (function () {
         };
         var this_2 = this;
         for (var i = 0; i < optionalProducts.length; i++) {
-            _loop_2(i);
+            _loop_3(i);
         }
     };
     EditProductComponent.prototype.confirm = function () {
@@ -2644,10 +2689,6 @@ var EditProductComponent = /** @class */ (function () {
         }
         var dimensions = { width: w, height: h, depth: d };
         var prod = new _model_product__WEBPACK_IMPORTED_MODULE_4__["Product"](this.name, this.category, this.materialfinishes, dimensions, this.optionalProducts, this.minOccup, this.maxOccup);
-        console.log('id para update');
-        console.log(this.product.id);
-        console.log('prod para procurar');
-        console.log(prod);
         this.service.updateProduct(this.product.id, prod).subscribe(function (prod) {
             _this.bar.open("Sucesso: o produto foi editado.", '', {
                 duration: 2000,
@@ -2788,6 +2829,8 @@ var EditProductComponent = /** @class */ (function () {
         this.dispose_showDivNewAlturaContinua();
         this.height_min = null;
         this.height_max = null;
+        this.hcont = false;
+        this.hdisc = true;
         document.getElementById('newAlturaDiscreta').style.display = "block";
     };
     EditProductComponent.prototype.dispose_showDivNewAlturaDiscreta = function () {
@@ -2796,6 +2839,8 @@ var EditProductComponent = /** @class */ (function () {
     EditProductComponent.prototype.showDivNewAlturaContinua = function () {
         this.dispose_showDivNewAlturaDiscreta();
         this.height_disc = null;
+        this.hcont = true;
+        this.hdisc = false;
         document.getElementById('newAlturaContinua').style.display = "block";
     };
     EditProductComponent.prototype.dispose_showDivNewAlturaContinua = function () {
@@ -2813,6 +2858,8 @@ var EditProductComponent = /** @class */ (function () {
         this.dispose_showDivNewLarguraContinua();
         this.width_max = null;
         this.width_min = null;
+        this.wcont = false;
+        this.wdisc = true;
         document.getElementById('newLarguraDiscreta').style.display = "block";
     };
     EditProductComponent.prototype.dispose_showDivNewLarguraDiscreta = function () {
@@ -2820,6 +2867,8 @@ var EditProductComponent = /** @class */ (function () {
     };
     EditProductComponent.prototype.showDivNewLarguraContinua = function () {
         this.dispose_showDivNewLarguraDiscreta();
+        this.wcont = true;
+        this.wdisc = false;
         this.width_disc = "";
         document.getElementById('newLarguraContinua').style.display = "block";
     };
@@ -2837,6 +2886,8 @@ var EditProductComponent = /** @class */ (function () {
         this.dispose_showDivNewProfundidadeContinua();
         this.depth_min = null;
         this.depth_max = null;
+        this.dcont = false;
+        this.ddisc = true;
         document.getElementById('newProfundidadeDiscreta').style.display = "block";
     };
     EditProductComponent.prototype.dispose_showDivNewProfundidadeDiscreta = function () {
@@ -2845,6 +2896,8 @@ var EditProductComponent = /** @class */ (function () {
     EditProductComponent.prototype.showDivNewProfundidadeContinua = function () {
         this.dispose_showDivNewProfundidadeDiscreta();
         this.depth_disc = "";
+        this.dcont = true;
+        this.ddisc = false;
         document.getElementById('newProfundidadeContinua').style.display = "block";
     };
     EditProductComponent.prototype.dispose_showDivNewProfundidadeContinua = function () {
@@ -3807,7 +3860,7 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         this.mouse = new three__WEBPACK_IMPORTED_MODULE_2__["Vector2"]();
         this.selectedMove = null;
         this.selectedScale = null;
-        this.categoria = "Armario";
+        this.categoria = "Gavetas";
         this.parts = [];
         this.scene = new three__WEBPACK_IMPORTED_MODULE_2__["Scene"]();
         this.scene.background = null;
@@ -3840,20 +3893,6 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         this.scene.add(this.camera);
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
         this.controls.addEventListener('change', function () { _this.renderer.render(_this.scene, _this.camera); });
-        var material = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ color: 0xff0000, wireframe: false });
-        if (this.categoria == "Armários") {
-            this.mesh = this.closet(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
-        }
-        else if (this.categoria == "Gavetas") {
-            this.mesh = this.drawer(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
-        }
-        else if (this.categoria == "Prateleiras") {
-            this.mesh = this.drawer(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
-        }
-        else {
-            this.mesh = this.closet(guiControls.altura, guiControls.largura, guiControls.profundidade, material);
-        }
-        this.scene.add(this.mesh);
         window.addEventListener('mousedown', function (event) { _this.onMouseDown(event); }, false);
         window.addEventListener('mousemove', function (event) { _this.onMouseScale(event); }, false);
         window.addEventListener('mousemove', function (event) { _this.onMouseMove(event); }, false);
@@ -3865,45 +3904,34 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         }
     };
     ProductConfiguratorComponent.prototype.updateSize = function () {
+        var _this = this;
         this.scene.remove(this.mesh);
         var tmp = guiControls.material.split(" / ");
         var loader = new three__WEBPACK_IMPORTED_MODULE_2__["TextureLoader"]().load(tmp[3]);
         var material = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ map: loader });
-        if (this.categoria == "Armários") {
-            this.mesh = this.closet(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
-        }
-        else if (this.categoria == "Gavetas") {
-            this.mesh = this.drawer(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
-        }
-        else if (this.categoria == "Prateleiras") {
-            this.mesh = this.shelf(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
-        }
-        else {
-            this.mesh = this.closet(guiControls.largura, guiControls.altura, guiControls.profundidade, material);
-        }
+        this.mesh = this.devolverTipoProduto(guiControls.largura, guiControls.altura, guiControls.profundidade, material, this.product.category.description);
         if (this.optionalProduct != null) {
             var selectedObject = this.scene.getObjectByName((this.optionalProduct.id).toString());
             if (selectedObject != null) {
                 this.scene.remove(selectedObject);
+                Object.keys(this.parts).forEach(function (key) {
+                    var k = +key;
+                    if (k < _this.parts.length) {
+                        if (_this.parts[k].name == (_this.optionalProduct.id).toString()) {
+                            console.log("Found." + k);
+                            var tmp = _this.parts.splice(k, 1);
+                            console.log(_this.parts);
+                        }
+                    }
+                });
             }
             var tmp_1 = guiControls.materialProdutoExtra.split(" / ");
             var loader_1 = new three__WEBPACK_IMPORTED_MODULE_2__["TextureLoader"]().load(tmp_1[3]);
             var material_1 = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ map: loader_1 });
-            var obj = null;
-            if (guiControls.produtoExtra == "Armários") {
-                obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material_1);
-            }
-            else if (guiControls.produtoExtra == "Gavetas") {
-                obj = this.drawer(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material_1);
-            }
-            else if (guiControls.produtoExtra == "Prateleiras") {
-                obj = this.shelf(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material_1);
-            }
-            else {
-                obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material_1);
-            }
+            var obj = this.devolverTipoProduto(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material_1, this.optionalProduct.category.description);
             obj.name = (this.optionalProduct.id).toString();
             this.scene.add(obj);
+            this.parts.push(obj);
         }
         this.scene.add(this.mesh);
     };
@@ -3981,10 +4009,10 @@ var ProductConfiguratorComponent = /** @class */ (function () {
     //Create Closet
     ProductConfiguratorComponent.prototype.closet = function (width, height, depth, material) {
         var thickness = height * 0.02;
-        var closetG = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](0, 0, 0);
+        var closetG = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](width, height, 0);
         var closetM = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ color: 0x00ff00 });
         closetM.transparent = true;
-        closetM.opacity = 0.0;
+        closetM.opacity = 0.2;
         var closet = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](closetG, closetM);
         var backWallG = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](width, height, thickness);
         var backWall = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](backWallG, material);
@@ -4045,8 +4073,28 @@ var ProductConfiguratorComponent = /** @class */ (function () {
     //Create Shelf
     ProductConfiguratorComponent.prototype.shelf = function (width, height, depth, material) {
         var shelfG = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](width, height, depth);
-        var shelf = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](shelfG, material);
-        return shelf;
+        var shelfM = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ color: 0x00ff00 });
+        shelfM.transparent = true;
+        shelfM.opacity = 0.001;
+        var drawer = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](shelfG, shelfM);
+        var frontWallG = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](width, height, depth);
+        var frontWall = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](frontWallG, material);
+        drawer.add(frontWall);
+        return drawer;
+    };
+    //Create Cabide
+    ProductConfiguratorComponent.prototype.cabide = function (width, height, depth, material) {
+        var cabideG = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](width, height, depth);
+        var cabideM = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ color: 0x00ff00 });
+        cabideM.transparent = true;
+        cabideM.opacity = 0.001;
+        var cabide = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](cabideG, cabideM);
+        var geometry = new three__WEBPACK_IMPORTED_MODULE_2__["CylinderGeometry"](depth, height, width, 32);
+        material = new three__WEBPACK_IMPORTED_MODULE_2__["MeshPhongMaterial"]({ color: 0x282828 });
+        var cylinder = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](geometry, material);
+        cylinder.rotateZ(three__WEBPACK_IMPORTED_MODULE_2__["Math"].degToRad(90));
+        cabide.add(cylinder);
+        return cabide;
     };
     ProductConfiguratorComponent.prototype.convertDimensions = function (dimensoes) {
         return dimensoes.split(";");
@@ -4084,6 +4132,7 @@ var ProductConfiguratorComponent = /** @class */ (function () {
             var obj = null;
             if (guiControls.produtoExtra == "Armários") {
                 obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+                console.log("adicionar " + obj);
             }
             else if (guiControls.produtoExtra == "Gavetas") {
                 obj = this.drawer(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
@@ -4093,10 +4142,11 @@ var ProductConfiguratorComponent = /** @class */ (function () {
             }
             else {
                 obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+                console.log(obj.geometry);
             }
             obj.name = (this.optionalProduct.id).toString();
-            this.parts.push(obj);
             this.scene.add(obj);
+            this.parts.push(obj);
         }
     };
     ProductConfiguratorComponent.prototype.encomenda = function (name, material, altura, profundidade, largura, latitude, longitude, cidade) {
@@ -4113,7 +4163,6 @@ var ProductConfiguratorComponent = /** @class */ (function () {
     };
     ProductConfiguratorComponent.prototype.getMaterialFinish = function (matsFinish) {
         var ret = [];
-        console.log(matsFinish);
         for (var key in matsFinish) {
             var matFinish = matsFinish[key];
             ret.push(matFinish.materialDTO.name + " / " + matFinish.surfaceFinishDTO.name + " / " + (matsFinish[key].price + matFinish.materialDTO.price) + " / " + matsFinish[key].textureUrl);
@@ -4126,10 +4175,14 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         if (selectedObject != null) {
             this.scene.remove(selectedObject);
             this.limparProdutoOpcionalDatGUI();
-            Object.keys(this.parts).forEach(function (key) {
-                if (_this.parts[key].name == id.toString()) {
-                    console.log("Found.");
-                    //this.parts.splice[key,1];
+            Object.keys(this.parts).forEach(function (k) {
+                var key = +k;
+                if (key < _this.parts.length) {
+                    if (_this.parts[key].name == id.toString()) {
+                        console.log("Found." + key);
+                        var tmp = _this.parts.splice(key, 1);
+                        console.log(_this.parts);
+                    }
                 }
             });
         }
@@ -4202,21 +4255,18 @@ var ProductConfiguratorComponent = /** @class */ (function () {
             this.raycaster.setFromCamera(this.mouse, this.camera);
             // calculate objects intersecting the picking ray
             var intersects = this.raycaster.intersectObjects(this.parts);
-            console.log(this.parts.length);
+            console.log(intersects.length);
             if (intersects.length > 0) {
                 this.controls.enableRotate = false;
-                alert('ola');
-                alert(intersects[0].object.name);
                 this.changeActiveProduct(parseInt(intersects[0].object.name));
                 this.selectedMove = intersects[0].object;
             }
             else {
                 intersects = this.raycaster.intersectObject(this.mesh);
+                console.log(intersects);
                 if (intersects.length > 0) {
-                    if ((this.product.dimensions.height.discrete) == null) {
-                        this.controls.enableRotate = false;
-                        this.selectedScale = intersects[0].object;
-                    }
+                    this.controls.enableRotate = false;
+                    this.selectedScale = intersects[0].object;
                 }
             }
         }
@@ -4224,6 +4274,7 @@ var ProductConfiguratorComponent = /** @class */ (function () {
     ProductConfiguratorComponent.prototype.onMouseMove = function (event) {
         if (this.selectedMove != null) {
             this.mouse.set((event.offsetX / this.renderer.getSize().width) * 2 - 1, -(event.offsetY / this.renderer.getSize().height) * 2 + 1);
+            console.log(this.selectedMove);
             //transform mouse coordinates to real world coordinates
             var vector = new three__WEBPACK_IMPORTED_MODULE_2__["Vector3"](this.mouse.x, this.mouse.y, 0.5);
             vector.unproject(this.camera);
@@ -4258,17 +4309,21 @@ var ProductConfiguratorComponent = /** @class */ (function () {
             if (sizeY < this.product.dimensions.height.min) {
                 sizeY = this.product.dimensions.height.min;
             }
-            if (sizeX <= this.product.dimensions.width.max &&
-                sizeX >= this.product.dimensions.width.min) {
-                //update dimensions
-                guiControls.largura = sizeX;
-                this.selectedScale.scale.x = sizeX / this.selectedScale.geometry.parameters.width;
+            if ((this.product.dimensions.width.discrete) == null) {
+                if (sizeX <= this.product.dimensions.width.max &&
+                    sizeX >= this.product.dimensions.width.min) {
+                    //update dimensions
+                    guiControls.largura = sizeX;
+                    this.selectedScale.scale.x = sizeX / this.selectedScale.geometry.parameters.width;
+                }
             }
-            if (sizeY <= this.product.dimensions.height.max &&
-                sizeY >= this.product.dimensions.height.min) {
-                //update dimensions
-                guiControls.altura = sizeY;
-                this.selectedScale.scale.y = sizeY / this.selectedScale.geometry.parameters.height;
+            if ((this.product.dimensions.height.discrete) == null) {
+                if (sizeY <= this.product.dimensions.height.max &&
+                    sizeY >= this.product.dimensions.height.min) {
+                    //update dimensions
+                    guiControls.altura = sizeY;
+                    this.selectedScale.scale.y = sizeY / this.selectedScale.geometry.parameters.height;
+                }
             }
             //update mouse position
             this.mouse.x = (event.offsetX / this.renderer.getSize().width) * 2 - 1;
@@ -4310,6 +4365,28 @@ var ProductConfiguratorComponent = /** @class */ (function () {
                 guiControlsExtraMaterial = null;
             }
         }
+    };
+    ProductConfiguratorComponent.prototype.devolverTipoProduto = function (largura, altura, profundidade, material, categoria) {
+        if (categoria != null) {
+            var catSplit = categoria.split(" ")[0];
+        }
+        var objeto = null;
+        if (catSplit == "Armários" || catSplit == "Armário") {
+            objeto = this.closet(largura, altura, profundidade, material);
+        }
+        else if (catSplit == "Gavetas" || catSplit == "Gaveta") {
+            objeto = this.drawer(largura, altura, profundidade, material);
+        }
+        else if (catSplit == "Prateleiras" || catSplit == "Prateleira") {
+            objeto = this.shelf(largura, altura, profundidade, material);
+        }
+        else if (catSplit == "Cabides" || catSplit == "Cabide") {
+            objeto = this.cabide(largura, altura, profundidade, material);
+        }
+        else {
+            objeto = this.closet(largura, altura, profundidade, material);
+        }
+        return objeto;
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('rendererContainer'),
@@ -4940,7 +5017,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Ver Encomenda</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n     <!-- State -->\r\n     <mat-form-field>\r\n      <input matInput placeholder=\"Estado da encomenda\" [(ngModel)]=\"state\" readonly>\r\n    </mat-form-field>\r\n\r\n\r\n    <!-- date -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Data da Encomenda\" [(ngModel)]=\"date\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- cidade -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"cidade\" [(ngModel)]=\"cidade\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- latitude -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Latitude\" [(ngModel)]=\"latitude\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- longitude -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"longitude\" [(ngModel)]=\"longitude\" readonly>\r\n    </mat-form-field>\r\n\r\n\r\n    <!-- totalPrice -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Preco\" [(ngModel)]=\"totalPrice\" readonly>\r\n    </mat-form-field>\r\n\r\n    <div *ngFor=\"let product of item\">\r\n\r\n    <!-- Itens Nome -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemNome\" [(ngModel)]=\"product.product.name\" readonly>\r\n    </mat-form-field>\r\n    <br />\r\n    <!-- Itens -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemMaterial\" [(ngModel)]=\"product.product.material\" readonly>\r\n    </mat-form-field>\r\n\r\n    <br />\r\n    <!-- Itens -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemAcabamento\" [(ngModel)]=\"product.product.surfaceFinish\" readonly>\r\n    </mat-form-field>\r\n    <br />\r\n     <!-- Itens -->\r\n     <mat-form-field>\r\n      <input matInput placeholder=\"ItemAltura\" [(ngModel)]=\"product.product.height\" readonly>\r\n    </mat-form-field>\r\n    <br />\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemProfundidade\" [(ngModel)]=\"product.product.depth\" readonly>\r\n    </mat-form-field>\r\n    <br />\r\n\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemLargura\" [(ngModel)]=\"product.product.width\" readonly>\r\n    </mat-form-field>\r\n\r\n\r\n</div>\r\n\r\n\r\n    <div class=\"sic-row\">\r\n      <button type=\"button\" (click)=\"deleteOrder()\" matTooltip=\"Apagar esta Encomenda\" class=\"btn btn-primary btn-md\">Apagar</button>\r\n      <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n    </div>\r\n  </div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Ver Encomenda</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n     <!-- State -->\r\n     <mat-form-field>\r\n      <input matInput placeholder=\"Estado da encomenda\" [(ngModel)]=\"state\" readonly>\r\n    </mat-form-field>\r\n\r\n\r\n    <!-- date -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Data da Encomenda\" [(ngModel)]=\"date\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- cidade -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"cidade\" [(ngModel)]=\"cidade\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- latitude -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Latitude\" [(ngModel)]=\"latitude\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- longitude -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"longitude\" [(ngModel)]=\"longitude\" readonly>\r\n    </mat-form-field>\r\n\r\n\r\n    <!-- totalPrice -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Preco\" [(ngModel)]=\"totalPrice\" readonly>\r\n    </mat-form-field>\r\n\r\n    <div *ngFor=\"let product of item\" class=\"custom-container\">\r\n\r\n    <!-- Itens Nome -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemNome\" [(ngModel)]=\"product.product.name\" readonly>\r\n    </mat-form-field>\r\n   \r\n    <!-- Itens -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemMaterial\" [(ngModel)]=\"product.product.material\" readonly>\r\n    </mat-form-field>\r\n\r\n    \r\n    <!-- Itens -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemAcabamento\" [(ngModel)]=\"product.product.surfaceFinish\" readonly>\r\n    </mat-form-field>\r\n  \r\n     <!-- Itens -->\r\n     <mat-form-field>\r\n      <input matInput placeholder=\"ItemAltura\" [(ngModel)]=\"product.product.height\" readonly>\r\n    </mat-form-field>\r\n   \r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemProfundidade\" [(ngModel)]=\"product.product.depth\" readonly>\r\n    </mat-form-field>\r\n   \r\n\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemLargura\" [(ngModel)]=\"product.product.width\" readonly>\r\n    </mat-form-field>\r\n\r\n\r\n</div>\r\n\r\n\r\n    <div class=\"sic-row\">\r\n      <button type=\"button\" (click)=\"deleteOrder()\" matTooltip=\"Apagar esta Encomenda\" class=\"btn btn-primary btn-md\">Apagar</button>\r\n      <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n    </div>\r\n  </div>\r\n"
 
 /***/ }),
 
@@ -5018,7 +5095,8 @@ var ShowOrdersInfoComponent = /** @class */ (function () {
         });
     };
     ShowOrdersInfoComponent.prototype.back = function () {
-        this.router.navigateByUrl('/orders');
+        var username = this.authservice.getLoggedInUsername();
+        this.router.navigateByUrl("/orders/" + username);
     };
     ShowOrdersInfoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -5102,7 +5180,7 @@ var ShowProductInfoComponent = /** @class */ (function () {
             _this.categoryName = _this.product.category.description;
             _this.materialfinishes = _this.product.materialFinishes;
             var optproducts = _this.product.optionalProducts;
-            if (!optproducts === undefined) {
+            if (!(optproducts === undefined)) {
                 _this.convertParts(optproducts);
             }
             var heightDisc = _this.product.dimensions.height;
@@ -5553,7 +5631,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--Navbar-->\r\n<mdb-navbar SideClass=\"navbar navbar-expand-lg navbar-dark indigo\">\r\n\r\n  <!-- Navbar brand -->\r\n  <mdb-navbar-brand><a class=\"navbar-brand\" routerLink=\"/\">{{title}}</a></mdb-navbar-brand>\r\n\r\n  <!-- Collapsible content -->\r\n  <links>\r\n\r\n    <!-- Links -->\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link waves-light\" mdbWavesEffect routerLink=\"/home\" routerLinkActive=\"active\">Página Inicial</a>\r\n      </li>\r\n\r\n      <!-- Dropdown -->\r\n      <li *ngIf=\"authenticated && !isClient\" class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          BackOffice<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/surfaceFinishes\">Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materials\">Materiais</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materialfinishes\">Materiais Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/categories\">Categorias</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/products\">Produtos</a>\r\n          <div class=\"divider dropdown-divider\"></div>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/collections\">Coleções</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/catalogues\">Catálogos</a>\r\n        </div>\r\n      </li>\r\n      <!-- Dropdown -->\r\n      <li *ngIf=\"authenticated && isClient\" class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          Área de Cliente<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/orders/:username\">As minhas encomendas</a>\r\n          <div class=\"divider dropdown-divider\"></div>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/clientCatalogue\">Catálogo de Produtos Disponíveis</a>\r\n        </div>\r\n      </li>\r\n\r\n    </ul>\r\n    <div class=\"navbar-expand ml-auto navbar-nav\">\r\n      <div *ngIf=\"!authenticated\" class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\" routerLink=\"/signup\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-user-plus\"></i> Registar\r\n        </a>\r\n        <a class=\"nav-item nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-sign-in\"></i> Entrar\r\n        </a>\r\n      </div>\r\n      <div *ngIf=\"authenticated\" class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\">\r\n          Bem-vindo, {{username}}\r\n        </a>\r\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">\r\n          <i class=\"fas fa-sign-out-alt\"></i>Terminar Sessão\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <!-- Links -->\r\n  </links>\r\n  <!-- Collapsible content -->\r\n</mdb-navbar>\r\n<!--/.Navbar-->\r\n"
+module.exports = "<!--Navbar-->\r\n<mdb-navbar SideClass=\"navbar navbar-expand-lg navbar-dark indigo\">\r\n\r\n  <!-- Navbar brand -->\r\n  <mdb-navbar-brand><a class=\"navbar-brand\" routerLink=\"/\">{{title}}</a></mdb-navbar-brand>\r\n\r\n  <!-- Collapsible content -->\r\n  <links>\r\n\r\n    <!-- Links -->\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link waves-light\" mdbWavesEffect routerLink=\"/home\" routerLinkActive=\"active\">Página Inicial</a>\r\n      </li>\r\n\r\n      <!-- Dropdown -->\r\n      <li *ngIf=\"authenticated && !isClient\" class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          BackOffice<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/surfaceFinishes\">Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materials\">Materiais</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materialfinishes\">Materiais Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/categories\">Categorias</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/products\">Produtos</a>\r\n          <div class=\"divider dropdown-divider\"></div>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/collections\">Coleções</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/catalogues\">Catálogos</a>\r\n        </div>\r\n      </li>\r\n      <!-- Dropdown -->\r\n      <li *ngIf=\"authenticated && isClient\" class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          Área de Cliente<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/orders/{{username}}\">As minhas encomendas</a>\r\n          <div class=\"divider dropdown-divider\"></div>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/clientCatalogue\">Catálogo de Produtos Disponíveis</a>\r\n        </div>\r\n      </li>\r\n\r\n    </ul>\r\n    <div class=\"navbar-expand ml-auto navbar-nav\">\r\n      <div *ngIf=\"!authenticated\" class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\" routerLink=\"/signup\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-user-plus\"></i> Registar\r\n        </a>\r\n        <a class=\"nav-item nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-sign-in\"></i> Entrar\r\n        </a>\r\n      </div>\r\n      <div *ngIf=\"authenticated\" class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\">\r\n          Bem-vindo, {{username}}\r\n        </a>\r\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">\r\n          <i class=\"fas fa-sign-out-alt\"></i>Terminar Sessão\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <!-- Links -->\r\n  </links>\r\n  <!-- Collapsible content -->\r\n</mdb-navbar>\r\n<!--/.Navbar-->\r\n"
 
 /***/ }),
 

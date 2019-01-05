@@ -5,6 +5,7 @@ import { Product } from '../model/product';
 import { ProductService } from '../services/product.service';
 import { Category } from '../model/category';
 import { OptionalProducts } from '../model/optional-products';
+import { ActivatedRoute } from '@angular/router';
 
 /**
  * @title Table with selection
@@ -18,7 +19,6 @@ export class SelectPartsDialog {
   displayedColumns: string[] = ['select', 'optional', 'name'/*, 'category'*/];
   dataSource = new MatTableDataSource<Product>();
   chosenParts: OptionalProducts[];
-
   products: Product[] = [];
   selection = new SelectionModel<Product>(true, []);
   boolselection: boolean[];
@@ -26,9 +26,9 @@ export class SelectPartsDialog {
   btnHO : boolean[] = [];
   btnHM : boolean[] = [];
 
-  constructor(private service: ProductService, private bar: MatSnackBar,
+  constructor(private service: ProductService, private bar: MatSnackBar, private route: ActivatedRoute,
     public dialogRef: MatDialogRef<SelectPartsDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: Product[]) { }
+    @Inject(MAT_DIALOG_DATA) public id: number) { }
 
 
   ngOnInit() {
@@ -38,6 +38,12 @@ export class SelectPartsDialog {
   private getProducts(): void {
     this.service.getProducts().subscribe(data => {
       this.products = <Product[]>data;
+      let index: number = this.products.findIndex(p => (p.id == this.id));
+     
+      if (!(index === undefined) && !(index == -1)) {
+        this.products.splice(index, 1);
+      }
+        
       this.dataSource = new MatTableDataSource(this.products);
     }, error => {
       this.bar.open(

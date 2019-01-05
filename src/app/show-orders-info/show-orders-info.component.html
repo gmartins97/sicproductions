@@ -35,33 +35,33 @@
       <input matInput placeholder="Preco" [(ngModel)]="totalPrice" readonly>
     </mat-form-field>
 
-    <div *ngFor="let product of item">
+    <div *ngFor="let product of item" class="custom-container">
 
     <!-- Itens Nome -->
     <mat-form-field>
       <input matInput placeholder="ItemNome" [(ngModel)]="product.product.name" readonly>
     </mat-form-field>
-    <br />
+   
     <!-- Itens -->
     <mat-form-field>
       <input matInput placeholder="ItemMaterial" [(ngModel)]="product.product.material" readonly>
     </mat-form-field>
 
-    <br />
+    
     <!-- Itens -->
     <mat-form-field>
       <input matInput placeholder="ItemAcabamento" [(ngModel)]="product.product.surfaceFinish" readonly>
     </mat-form-field>
-    <br />
+  
      <!-- Itens -->
      <mat-form-field>
       <input matInput placeholder="ItemAltura" [(ngModel)]="product.product.height" readonly>
     </mat-form-field>
-    <br />
+   
     <mat-form-field>
       <input matInput placeholder="ItemProfundidade" [(ngModel)]="product.product.depth" readonly>
     </mat-form-field>
-    <br />
+   
 
     <mat-form-field>
       <input matInput placeholder="ItemLargura" [(ngModel)]="product.product.width" readonly>

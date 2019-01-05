@@ -32,7 +32,6 @@ export class SelectMaterialFinishesDialog {
   private getMaterialFinishes(): void {
     this.matacabService.getMaterialFinishes().subscribe(data => {
       this.materialFinishes = <MaterialFinish[]>data;
-      console.log(this.materialFinishes);
       this.dataSource = new MatTableDataSource(this.materialFinishes);
     }, error => {
       this.bar.open(

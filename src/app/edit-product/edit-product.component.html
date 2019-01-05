@@ -76,8 +76,8 @@
       <br />
       <section class="example-section">
         <mat-radio-group required>
-          <mat-radio-button name="myHeight" (click)="showDivNewAlturaDiscreta()" value="HeightDiscrete">Discreta</mat-radio-button>&ensp;
-          <mat-radio-button name="myHeight" (click)="showDivNewAlturaContinua()" value="HeightContinuous" style="float:right;padding-right:40px;">Contínua</mat-radio-button>
+          <mat-radio-button name="myHeight" [(checked)]="hdisc" (click)="showDivNewAlturaDiscreta()" value="HeightDiscrete">Discreta</mat-radio-button>&ensp;
+          <mat-radio-button name="myHeight" [(checked)]="hcont" (click)="showDivNewAlturaContinua()" value="HeightContinuous" style="float:right;padding-right:40px;">Contínua</mat-radio-button>
         </mat-radio-group>
         <div id="newAlturaContinua" style="display:none;">
           <mat-form-field>
@@ -104,8 +104,8 @@
       <br />
       <section class="example-section">
         <mat-radio-group required>
-          <mat-radio-button name="myWidth" (click)="showDivNewLarguraDiscreta()" value="WidthDiscrete">Discreta</mat-radio-button>
-          <mat-radio-button name="myWidth" (click)="showDivNewLarguraContinua()" value="WidthContinuous" style="float:right;padding-right:40px;">Contínua</mat-radio-button>
+          <mat-radio-button name="myWidth" [(checked)]="wdisc" (click)="showDivNewLarguraDiscreta()" value="WidthDiscrete">Discreta</mat-radio-button>
+          <mat-radio-button name="myWidth" [(checked)]="wcont" (click)="showDivNewLarguraContinua()" value="WidthContinuous" style="float:right;padding-right:40px;">Contínua</mat-radio-button>
         </mat-radio-group>
         <br />
         <div id="newLarguraContinua" style="display:none;">
@@ -133,8 +133,8 @@
       <br />
       <section class="example-section">
         <mat-radio-group id="profgroup">
-          <mat-radio-button name="myDepth" (click)="showDivNewProfundidadeDiscreta()" value="DepthDiscrete">Discreta</mat-radio-button>
-          <mat-radio-button name="myDepth" (click)="showDivNewProfundidadeContinua()" value="DepthContinuous" style="float:right;padding-right:40px;">Contínua</mat-radio-button>
+          <mat-radio-button name="myDepth" [(checked)]="ddisc" (click)="showDivNewProfundidadeDiscreta()" value="DepthDiscrete">Discreta</mat-radio-button>
+          <mat-radio-button name="myDepth" [(checked)]="dcont" (click)="showDivNewProfundidadeContinua()" value="DepthContinuous" style="float:right;padding-right:40px;">Contínua</mat-radio-button>
         </mat-radio-group>
         <br />
         <div id="newProfundidadeContinua" style="display:none;">
