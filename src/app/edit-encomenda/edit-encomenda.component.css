@@ -1,0 +1,92 @@
+#formpequena {
+    width: 86%;
+  }
+  
+  #forminline1 {
+    width: 20%;
+    display: inline-block;
+  }
+  #forminline2 {
+    width: 60%;
+    margin-left: 40px;
+    display: inline-block;
+  }
+  #forminline3 {
+    width: 75%;
+    float: right;
+  }
+  
+  #butpequeno {
+    width: 13%;
+    float: right;
+    height: 50px;
+  }
+  
+  #butpequenoparts {
+    width: 13%;
+    height: auto;
+    float: right;
+  }
+  
+  #espaco {
+    width: 2%;
+  }
+  
+  .basic-container {
+    padding: 30px;
+  }
+  
+  .example-h2 {
+    font-size: 15pt;
+  }
+  
+  .example-h4 {
+    font-size: 10pt;
+  }
+  
+  .example-section {
+    align-content: center;
+    align-items: center;
+    height: 120px;
+  }
+  
+  .example-margin {
+    margin: 0 10px;
+  }
+  
+  .result {
+    width: 30%;
+    float: left;
+    margin-bottom: 10px;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .input-group {
+    display: table;
+    white-space: nowrap;
+    vertical-align: top;
+    width: 100%;
+  }
+  
+    .input-group .form-control {
+      display: table-cell;
+      vertical-align: top;
+      width: 100%;
+    }
+  
+    .input-group .input-group-addon {
+      display: table-cell;
+      width: 1%;
+      vertical-align: top;
+      background: #2f353e;
+      color: #fff;
+      font-size: 1.15rem;
+      line-height: 19px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  

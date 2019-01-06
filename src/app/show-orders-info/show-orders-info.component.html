@@ -3,8 +3,8 @@
   <div class="custom-container">
     <br />
 
-     <!-- State -->
-     <mat-form-field>
+    <!-- State -->
+    <mat-form-field>
       <input matInput placeholder="Estado da encomenda" [(ngModel)]="state" readonly>
     </mat-form-field>
 
@@ -32,43 +32,83 @@
 
     <!-- totalPrice -->
     <mat-form-field>
-      <input matInput placeholder="Preco" [(ngModel)]="totalPrice" readonly>
+      <input matInput placeholder="PrecoTOTAL" [(ngModel)]="totalPrice" readonly>
     </mat-form-field>
 
     <div *ngFor="let product of item" class="custom-container">
 
-    <!-- Itens Nome -->
-    <mat-form-field>
-      <input matInput placeholder="ItemNome" [(ngModel)]="product.product.name" readonly>
-    </mat-form-field>
-   
-    <!-- Itens -->
-    <mat-form-field>
-      <input matInput placeholder="ItemMaterial" [(ngModel)]="product.product.material" readonly>
-    </mat-form-field>
+      <!-- Itens Nome -->
+      <mat-form-field>
+        <input matInput placeholder="ItemNome" [(ngModel)]="product.product.name" readonly>
+      </mat-form-field>
 
-    
-    <!-- Itens -->
-    <mat-form-field>
-      <input matInput placeholder="ItemAcabamento" [(ngModel)]="product.product.surfaceFinish" readonly>
-    </mat-form-field>
-  
-     <!-- Itens -->
-     <mat-form-field>
-      <input matInput placeholder="ItemAltura" [(ngModel)]="product.product.height" readonly>
-    </mat-form-field>
-   
-    <mat-form-field>
-      <input matInput placeholder="ItemProfundidade" [(ngModel)]="product.product.depth" readonly>
-    </mat-form-field>
-   
-
-    <mat-form-field>
-      <input matInput placeholder="ItemLargura" [(ngModel)]="product.product.width" readonly>
-    </mat-form-field>
+      <!-- Itens -->
+      <mat-form-field>
+        <input matInput placeholder="ItemMaterial" [(ngModel)]="product.product.material" readonly>
+      </mat-form-field>
 
 
-</div>
+      <!-- Itens -->
+      <mat-form-field>
+        <input matInput placeholder="ItemAcabamento" [(ngModel)]="product.product.surfaceFinish" readonly>
+      </mat-form-field>
+
+      <!-- Itens -->
+      <mat-form-field>
+        <input matInput placeholder="ItemAltura" [(ngModel)]="product.product.height" readonly>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="ItemProfundidade" [(ngModel)]="product.product.depth" readonly>
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <input matInput placeholder="ItemLargura" [(ngModel)]="product.product.width" readonly>
+      </mat-form-field>
+
+      
+      <mat-form-field>
+          <input matInput placeholder="ItemCategoria" [(ngModel)]="product.product.category" readonly>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="ItemPreco" [(ngModel)]="product.product.price" readonly>
+        </mat-form-field>
+
+    </div>
+
+    <!-- Partes -->
+    <div *ngFor="let part of parts" class="custom-container">
+        <br />
+        <br />
+        <mat-form-field>
+          <input matInput placeholder="PARTE_NOME" [(ngModel)]="part.name" readonly>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="PARTE_MATERIAL" [(ngModel)]="part.material" readonly>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="PARTE_ACABAMENTO" [(ngModel)]="part.surfaceFinish" readonly>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="PARTE_Altura" [(ngModel)]="part.height" readonly>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="PARTE_Profundidade" [(ngModel)]="part.depth" readonly>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="PARTE_Largura" [(ngModel)]="part.width" readonly>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <input matInput placeholder="PARTE_CATEGORIA" [(ngModel)]="part.category" readonly>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="PARTE_PRECO" [(ngModel)]="part.price" readonly>
+          </mat-form-field>
+      </div>>
 
 
     <div class="sic-row">

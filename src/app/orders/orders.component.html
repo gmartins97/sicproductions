@@ -31,9 +31,9 @@
     <!-- Edit Column -->
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef> Editar </th>
-      <td mat-cell *matCellDef="let material; let i = index">
+      <td mat-cell *matCellDef="let i = index">
         <span class="table-remove">
-          <button type="button" (click)="a" matTooltip="Editar esta encomenda" class="btn btn-primary btn-sm">Editar</button>
+          <button type="button" (click)="editOrder(i)" matTooltip="Editar esta encomenda" class="btn btn-primary btn-sm">Editar</button>
         </span>
       </td>
     </ng-container>
@@ -53,7 +53,7 @@
 <div class="container">
   <div class="sic-row">
     <div class="sic-column">
-    </div>
+    </div> 
   </div>
 </div>
-
+<button type="submit" (click)="entregas()" matTooltip="Exemplo Entregas" class="btn btn-primary btn-md">Entregas Exemplo</button>

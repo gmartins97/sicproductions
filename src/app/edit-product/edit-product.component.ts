@@ -229,6 +229,8 @@ export class EditProductComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (!(result === undefined)) {
         this.optionalProducts = result;
+        this.parts = [];
+        this.convertToParts(this.optionalProducts);
       } else {
         this.optionalProducts = [];
         this.parts = [];

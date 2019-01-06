@@ -30,6 +30,12 @@ import { ShowProductInfoComponent } from './show-product-info/show-product-info.
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { OrdersComponent } from './orders/orders.component';
 import { ShowOrdersInfoComponent } from './show-orders-info/show-orders-info.component';
+import { CreateCatalogueComponent } from './create-catalogue/create-catalogue.component';
+import { EditCatalogueComponent } from './edit-catalogue/edit-catalogue.component';
+import { CreateCollectionComponent } from './create-collection/create-collection.component';
+import { EditCollectionComponent } from './edit-collection/edit-collection.component';
+import { ClientCataloguesComponent } from './client-catalogues/client-catalogues.component';
+import { EditEncomendaComponent } from './edit-encomenda/edit-encomenda.component';
 
 
 @NgModule({
@@ -60,7 +66,13 @@ import { ShowOrdersInfoComponent } from './show-orders-info/show-orders-info.com
     ShowProductInfoComponent,
     TermsAndConditionsComponent,
     OrdersComponent,
-    ShowOrdersInfoComponent
+    ShowOrdersInfoComponent,
+    CreateCatalogueComponent,
+    EditCatalogueComponent,
+    CreateCollectionComponent,
+    EditCollectionComponent,
+    ClientCataloguesComponent,
+    EditEncomendaComponent
   ],
   imports: [
     BrowserModule,

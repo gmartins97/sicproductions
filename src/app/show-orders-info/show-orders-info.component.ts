@@ -18,6 +18,8 @@ export class ShowOrdersInfoComponent implements OnInit {
   order: order;
   item: Item[];
   product: orderItem;
+  parts: orderItem[];
+  part: orderItem;
   cidade: string;
   state: string;
   date: Date;
@@ -40,7 +42,7 @@ export class ShowOrdersInfoComponent implements OnInit {
     this.service.getEncomenda(username,id).subscribe(res => {
       this.order = <order>res;
       this.item = this.order.item;
-      console.log(this.item);
+      this.parts= this.order.item[0].product.listProduct;
       this.latitude=this.order.latitude;
       this.longitude=this.order.longitude;
       this.state=this.order.state;
@@ -48,7 +50,6 @@ export class ShowOrdersInfoComponent implements OnInit {
       this.date=this.order.date;
       this.totalPrice=this.order.totalPrice;
 
-      console.log(this.order);
     }, e => {
       if (e.status == 401) {
         this.bar.open(
@@ -69,8 +70,8 @@ export class ShowOrdersInfoComponent implements OnInit {
   deleteOrder(): void {
     this.service.deleteEncomenda(this.idroute).subscribe(
       p => {
-        this.bar.open(`Order removida com sucesso`, '', { duration: 2000 });
-        this.router.navigateByUrl('/orders');
+        this.bar.open(`Encomenda removida com sucesso`, '', { duration: 2000 });
+        
       },
       e => {
         this.bar.open('Ocorreu um erro: ' + e.error, '', { duration: 2000 });

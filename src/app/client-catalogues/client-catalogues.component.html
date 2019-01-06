@@ -1,0 +1,7 @@
+<ul class="list-group">
+  <li *ngFor="let cat of catalogues">
+    <div *ngIf="cat.published">
+      <a [routerLink]="['/clientCatalogue', cat.id]" class="list-group-item">{{cat.name}}</a>
+    </div>
+  </li>
+</ul>

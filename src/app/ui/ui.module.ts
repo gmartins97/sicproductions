@@ -29,7 +29,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { SurfaceFinishService } from '../services/surface-finish.service';
-import { MatSnackBarModule, MatCardModule } from '@angular/material';
+import { MatSnackBarModule, MatCardModule, MatIconModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { MatListModule } from '@angular/material/list';
 import { CreateMaterialComponent } from '../create-material/create-material.component';
 import { EditMaterialComponent } from '../edit-material/edit-material.component';
@@ -54,7 +54,13 @@ import { ShowProductInfoComponent } from '../show-product-info/show-product-info
 import { ProductService } from '../services/product.service';
 import { orderService } from '../services/order.service';
 import { SelectPartsDialog } from '../create-product/select-parts-dialog';
-
+import { CatalogueService } from '../services/catalogue.service';
+import { CreateCatalogueComponent } from '../create-catalogue/create-catalogue.component';
+import { EditCatalogueComponent } from '../edit-catalogue/edit-catalogue.component';
+import { CreateCollectionComponent } from '../create-collection/create-collection.component';
+import { EditCollectionComponent } from '../edit-collection/edit-collection.component';
+import { ClientCataloguesComponent } from '../client-catalogues/client-catalogues.component';
+import { EditEncomendaComponent } from '../edit-encomenda/edit-encomenda.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -77,11 +83,17 @@ const appRoutes: Routes = [
   { path: 'products/edit/:id', component: EditProductComponent, canActivate: [ClientGuard] },
   { path: 'products/show/:id', component: ShowProductInfoComponent, canActivate: [ClientGuard] },
   { path: 'catalogues', component: CatalogueComponent, canActivate:[ClientGuard] },
+  { path: 'catalogues/new', component: CreateCatalogueComponent, canActivate:[ClientGuard] },
+  { path: 'catalogues/edit/:id', component: EditCatalogueComponent, canActivate:[ClientGuard] },
   { path: 'collections', component: CollectionComponent, canActivate:[ClientGuard] },
   { path: 'productConfigurator/configure/:id', component: ProductConfiguratorComponent, canActivate:[AuthGuard] },
-  { path: 'clientCatalogue', component: ClientCatalogueComponent, canActivate:[AuthGuard] },
+  { path: 'collections/new', component: CreateCollectionComponent, canActivate:[ClientGuard] },
+  { path: 'collections/edit/:id', component: EditCollectionComponent, canActivate:[ClientGuard] },
+  { path: 'clientCatalogue/:id', component: ClientCatalogueComponent, canActivate:[AuthGuard] },
+  { path: 'clientCatalogues', component: ClientCataloguesComponent, canActivate:[AuthGuard] },
   { path: 'orders/:username', component: OrdersComponent, canActivate: [AuthGuard] },
   { path: 'orders/show/:id', component: ShowOrdersInfoComponent, canActivate: [AuthGuard] },
+  { path: 'orders/edit/:id', component: EditEncomendaComponent, canActivate: [AuthGuard] },
   { path: 'TermsAndConditions', component: TermsAndConditionsComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
@@ -105,7 +117,9 @@ const appRoutes: Routes = [
     MatRadioModule,
     MatButtonModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatDatepickerModule,
+    MatIconModule
   ],
   imports: [
     MDBBootstrapModule.forRoot(),
@@ -137,15 +151,19 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatProgressSpinnerModule,
     MatRadioModule,
-    MatListModule
+    MatListModule,
+    MatDatepickerModule,
+    MatNativeDateModule 
   ],
   providers: [
     SurfaceFinishService,
     MaterialFinishService,
     MaterialService,
     ProductService,
+    CatalogueService,
     orderService,
-    MatDialog
+    MatDatepickerModule,  
+    MatDialog,
   ],
   entryComponents: [SelectMaterialFinishesDialog, SelectPartsDialog]
 })

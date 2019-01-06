@@ -1,0 +1,29 @@
+<h3 class="card-header text-center font-weight-bold py-4">Editar Encomenda</h3>
+<div class="container">
+  <div class="custom-container">
+    <br />
+
+    
+
+<mat-form-field>
+  <input matInput placeholder="Nome da Cidade" [(ngModel)]="cidade" required>
+</mat-form-field>
+<mat-form-field>
+  <input matInput placeholder="Latitude" [(ngModel)]="latitude" required>
+</mat-form-field>
+<mat-form-field>
+  <input matInput placeholder="Longitude" [(ngModel)]="longitude" required>
+</mat-form-field>
+
+
+
+
+    
+    <div class="sic-row">
+      <button type="button" (click)="confirm()" matTooltip="Confirmar Alterações" class="btn btn-primary btn-md">Confirmar</button>
+      <button type="button" (click)="back()" matTooltip="Cancelar" class="btn btn-light btn-md">Cancelar</button>
+    </div>
+  </div>
+  
+</div>
+

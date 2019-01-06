@@ -1,4 +1,4 @@
-<h3 class="card-header text-center font-weight-bold py-4">Catálogo de Produtos Disponíveis</h3>
+<h3 class="card-header text-center font-weight-bold py-4">{{catalogue.name}}</h3>
 <ul>
   <li *ngFor="let prod of products" id="test">
     <div class="div-sic">
@@ -6,7 +6,7 @@
       <mdb-card>
         <div class="view rgba-white-slight waves-light" mdbWavesEffect>
           <!-- Card img -->
-          <mdb-card-img class="card-img-top" src="https://picsum.photos/544/362/?random{{random()}}" alt=""></mdb-card-img>
+          <mdb-card-img class="card-img-top" src="https://picsum.photos/544/362/?random" alt=""></mdb-card-img>
           <!--<a>
             <div class="mask"></div>
           </a>-->

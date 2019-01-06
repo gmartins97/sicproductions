@@ -401,6 +401,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./terms-and-conditions/terms-and-conditions.component */ "./src/app/terms-and-conditions/terms-and-conditions.component.ts");
 /* harmony import */ var _orders_orders_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./orders/orders.component */ "./src/app/orders/orders.component.ts");
 /* harmony import */ var _show_orders_info_show_orders_info_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./show-orders-info/show-orders-info.component */ "./src/app/show-orders-info/show-orders-info.component.ts");
+/* harmony import */ var _create_catalogue_create_catalogue_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./create-catalogue/create-catalogue.component */ "./src/app/create-catalogue/create-catalogue.component.ts");
+/* harmony import */ var _edit_catalogue_edit_catalogue_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./edit-catalogue/edit-catalogue.component */ "./src/app/edit-catalogue/edit-catalogue.component.ts");
+/* harmony import */ var _create_collection_create_collection_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./create-collection/create-collection.component */ "./src/app/create-collection/create-collection.component.ts");
+/* harmony import */ var _edit_collection_edit_collection_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./edit-collection/edit-collection.component */ "./src/app/edit-collection/edit-collection.component.ts");
+/* harmony import */ var _client_catalogues_client_catalogues_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./client-catalogues/client-catalogues.component */ "./src/app/client-catalogues/client-catalogues.component.ts");
+/* harmony import */ var _edit_encomenda_edit_encomenda_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./edit-encomenda/edit-encomenda.component */ "./src/app/edit-encomenda/edit-encomenda.component.ts");
+
+
+
+
+
+
 
 
 
@@ -466,7 +478,13 @@ var AppModule = /** @class */ (function () {
                 _show_product_info_show_product_info_component__WEBPACK_IMPORTED_MODULE_29__["ShowProductInfoComponent"],
                 _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_30__["TermsAndConditionsComponent"],
                 _orders_orders_component__WEBPACK_IMPORTED_MODULE_31__["OrdersComponent"],
-                _show_orders_info_show_orders_info_component__WEBPACK_IMPORTED_MODULE_32__["ShowOrdersInfoComponent"]
+                _show_orders_info_show_orders_info_component__WEBPACK_IMPORTED_MODULE_32__["ShowOrdersInfoComponent"],
+                _create_catalogue_create_catalogue_component__WEBPACK_IMPORTED_MODULE_33__["CreateCatalogueComponent"],
+                _edit_catalogue_edit_catalogue_component__WEBPACK_IMPORTED_MODULE_34__["EditCatalogueComponent"],
+                _create_collection_create_collection_component__WEBPACK_IMPORTED_MODULE_35__["CreateCollectionComponent"],
+                _edit_collection_edit_collection_component__WEBPACK_IMPORTED_MODULE_36__["EditCollectionComponent"],
+                _client_catalogues_client_catalogues_component__WEBPACK_IMPORTED_MODULE_37__["ClientCataloguesComponent"],
+                _edit_encomenda_edit_encomenda_component__WEBPACK_IMPORTED_MODULE_38__["EditEncomendaComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -491,7 +509,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NhdGFsb2d1ZS9jYXRhbG9ndWUuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "table {\r\n  width: 100%;\r\n}\r\n\r\n.mat-form-field {\r\n  font-size: 14px;\r\n  width: 100%;\r\n}\r\n\r\n#black {\r\n  color: black;\r\n}\r\n\r\n#green {\r\n  color: green;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2F0YWxvZ3VlL2NhdGFsb2d1ZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsWUFBWTtDQUNiOztBQUVEO0VBQ0UsZ0JBQWdCO0VBQ2hCLFlBQVk7Q0FDYjs7QUFFRDtFQUNFLGFBQWE7Q0FDZDs7QUFFRDtFQUNFLGFBQWE7Q0FDZCIsImZpbGUiOiJzcmMvYXBwL2NhdGFsb2d1ZS9jYXRhbG9ndWUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInRhYmxlIHtcclxuICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuLm1hdC1mb3JtLWZpZWxkIHtcclxuICBmb250LXNpemU6IDE0cHg7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcbiNibGFjayB7XHJcbiAgY29sb3I6IGJsYWNrO1xyXG59XHJcblxyXG4jZ3JlZW4ge1xyXG4gIGNvbG9yOiBncmVlbjtcclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -502,7 +520,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  catalogue works!\n</p>\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Catálogos</h3>\r\n<div class=\"example-container container\">\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\r\n  </mat-form-field>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"name\">\r\n      <th mat-header-cell *matHeaderCellDef> Nome </th>\r\n      <td mat-cell *matCellDef=\"let catalogue\"><b>{{catalogue.name}}</b> </td>\r\n    </ng-container>\r\n\r\n    <!-- published Column -->\r\n    <ng-container matColumnDef=\"published\">\r\n      <th mat-header-cell *matHeaderCellDef> Publicado </th>\r\n      <td mat-cell *matCellDef=\"let catalogue\">  <mat-icon id={{catalogue.csscolor}} style=\"padding-left:15px;\">{{catalogue.published}}</mat-icon></td>\r\n    </ng-container>\r\n\r\n    <!-- year Column -->\r\n    <ng-container matColumnDef=\"year\">\r\n      <th mat-header-cell *matHeaderCellDef> Ano </th>\r\n      <td mat-cell *matCellDef=\"let catalogue\"> {{catalogue.year}}</td>\r\n    </ng-container>\r\n\r\n    <!-- products Column -->\r\n    <!--<ng-container matColumnDef=\"products\">\r\n      <th mat-header-cell *matHeaderCellDef> Produtos </th>\r\n      <td mat-cell *matCellDef=\"let catalogue; let in = index\">\r\n        <mat-form-field>\r\n          <mat-select placeholder=\"Produtos\" (click)=\"getProductOfCatalogue(in)\">\r\n            <mat-option *ngFor=\"let product of products\" [value]=\"product\">\r\n              {{product.name}}\r\n            </mat-option>\r\n          </mat-select>\r\n        </mat-form-field>\r\n      </td>\r\n    </ng-container>-->\r\n\r\n    <!-- dopublish Column -->\r\n    <ng-container matColumnDef=\"dopublish\">\r\n      <th mat-header-cell *matHeaderCellDef> Publicação </th>\r\n      <td mat-cell *matCellDef=\"let catalogue; let in = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"publishCatalogue(in)\" matTooltip=\"Publicar este catálogo\" class=\"btn btn-primary btn-sm\">Publicar/Retirar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n\r\n    <!-- Edit Column -->\r\n    <ng-container matColumnDef=\"edit\">\r\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\r\n      <td mat-cell *matCellDef=\"let catalogue; let in = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"editCatalogue(in)\" matTooltip=\"Editar este catálogo\" class=\"btn btn-primary btn-sm\">Editar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n\r\n    <!-- Remove Column -->\r\n    <ng-container matColumnDef=\"remove\">\r\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\r\n      <td mat-cell *matCellDef=\"let in = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"deleteCatalogue(in)\" matTooltip=\"Remover este catálogo\" class=\"btn btn-danger btn-sm\">Remover</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"sic-row\">\r\n    <div class=\"sic-column\">\r\n      <button type=\"button\" (click)=\"addCatalogue()\" matTooltip=\"Criar um novo catálogo\" class=\"btn btn-primary btn-md\">Novo</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -510,20 +528,150 @@ module.exports = "<p>\n  catalogue works!\n</p>\n"
 /*!**************************************************!*\
   !*** ./src/app/catalogue/catalogue.component.ts ***!
   \**************************************************/
-/*! exports provided: CatalogueComponent */
+/*! exports provided: CataloguePrimitive, CatalogueComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CataloguePrimitive", function() { return CataloguePrimitive; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CatalogueComponent", function() { return CatalogueComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_catalogue_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/catalogue.service */ "./src/app/services/catalogue.service.ts");
+/* harmony import */ var _model_catalogue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../model/catalogue */ "./src/app/model/catalogue.ts");
 
+
+
+
+
+
+var CataloguePrimitive = /** @class */ (function () {
+    function CataloguePrimitive() {
+    }
+    return CataloguePrimitive;
+}());
 
 var CatalogueComponent = /** @class */ (function () {
-    function CatalogueComponent() {
+    function CatalogueComponent(router, service, bar) {
+        this.router = router;
+        this.service = service;
+        this.bar = bar;
+        this.displayedColumns = ['position', 'name', 'year', 'published', /*'products',*/ 'dopublish', 'edit', 'remove'];
+        this.realcatalogue = [];
+        this.cataloguesPrimitive = [];
     }
+    CatalogueComponent.prototype.applyFilter = function (filterValue) {
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+    };
     CatalogueComponent.prototype.ngOnInit = function () {
+        this.getCatalogues();
+    };
+    CatalogueComponent.prototype.getCatalogues = function () {
+        var _this = this;
+        this.cataloguesPrimitive = [];
+        this.catalogues = [];
+        this.realcatalogue = [];
+        this.service.getCatalogues().subscribe(function (data) {
+            _this.catalogues = data;
+            for (var _i = 0, _a = _this.catalogues; _i < _a.length; _i++) {
+                var cat = _a[_i];
+                if (cat.type == 0) {
+                    var pub = void 0;
+                    var css = void 0;
+                    cat.published == true ? pub = "check_circle" : pub = "cancel";
+                    cat.published == true ? css = "green" : css = "black";
+                    var catp = { id: cat.id, name: cat.name, year: cat.year, published: pub, csscolor: css };
+                    _this.cataloguesPrimitive.push(catp);
+                    _this.realcatalogue.push(cat);
+                }
+            }
+            _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](_this.cataloguesPrimitive);
+        }, function (error) {
+            if (error.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                _this.bar.open('Ocorreu um erro ao tentar obter os catálogos do servidor...', '', {
+                    duration: 2000,
+                });
+            }
+        });
+    };
+    CatalogueComponent.prototype.addCatalogue = function () {
+        this.router.navigateByUrl("catalogues/new");
+    };
+    CatalogueComponent.prototype.publishCatalogue = function (index) {
+        var _this = this;
+        var id = this.realcatalogue[index].id;
+        var catalogue;
+        var catToPublish;
+        this.service.getCatalogue(id).subscribe(function (res) {
+            catalogue = res;
+            if (catalogue.published == true) {
+                catToPublish = new _model_catalogue__WEBPACK_IMPORTED_MODULE_5__["Catalogue"](catalogue.name, catalogue.year, catalogue.type, false, catalogue.products, catalogue.id);
+            }
+            else {
+                catToPublish = new _model_catalogue__WEBPACK_IMPORTED_MODULE_5__["Catalogue"](catalogue.name, catalogue.year, catalogue.type, true, catalogue.products, catalogue.id);
+            }
+            _this.service.updateCatalogue(id, catToPublish).subscribe(function (res) {
+                _this.bar.open('Sucesso, o catálogo foi publicado.', '', { duration: 2000 });
+                _this.refresh();
+            }, function (e) {
+                if (e.status == 401) {
+                    _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                        duration: 2000,
+                    });
+                }
+                else {
+                    _this.bar.open("Erro: " + e.error, '', {
+                        duration: 2000,
+                    });
+                }
+            });
+        });
+    };
+    CatalogueComponent.prototype.getProductOfCatalogue = function (index) {
+        var _this = this;
+        this.products = [];
+        var id = this.realcatalogue[index].id;
+        var catalogue;
+        this.service.getCatalogue(id).subscribe(function (res) {
+            catalogue = res;
+            console.log(catalogue.products);
+            _this.products = catalogue.products;
+        });
+    };
+    CatalogueComponent.prototype.editCatalogue = function (index) {
+        var id = this.realcatalogue[index].id;
+        this.router.navigateByUrl("catalogues/edit/" + id);
+    };
+    CatalogueComponent.prototype.deleteCatalogue = function (index) {
+        var _this = this;
+        var id = this.realcatalogue[index].id;
+        this.service.deleteCatalogue(id).subscribe(function (cat) {
+            _this.bar.open("Sucesso: o cat\u00E1logo foi eliminado.", '', {
+                duration: 2000,
+            });
+            _this.refresh();
+        }, function (error) {
+            if (error.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                _this.bar.open("Ocorreu um erro ao tentar eliminar o cat\u00E1logo: " + error.error, '', {
+                    duration: 2000,
+                });
+            }
+        });
+    };
+    CatalogueComponent.prototype.refresh = function () {
+        this.getCatalogues();
     };
     CatalogueComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -531,7 +679,7 @@ var CatalogueComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./catalogue.component.html */ "./src/app/catalogue/catalogue.component.html"),
             styles: [__webpack_require__(/*! ./catalogue.component.css */ "./src/app/catalogue/catalogue.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _services_catalogue_service__WEBPACK_IMPORTED_MODULE_4__["CatalogueService"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSnackBar"]])
     ], CatalogueComponent);
     return CatalogueComponent;
 }());
@@ -674,7 +822,7 @@ module.exports = "#test {\r\n  display: inline-block;\r\n  margin: 30px 30px;\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Catálogo de Produtos Disponíveis</h3>\r\n<ul>\r\n  <li *ngFor=\"let prod of products\" id=\"test\">\r\n    <div class=\"div-sic\">\r\n      <!-- Card -->\r\n      <mdb-card>\r\n        <div class=\"view rgba-white-slight waves-light\" mdbWavesEffect>\r\n          <!-- Card img -->\r\n          <mdb-card-img class=\"card-img-top\" src=\"https://picsum.photos/544/362/?random{{random()}}\" alt=\"\"></mdb-card-img>\r\n          <!--<a>\r\n            <div class=\"mask\"></div>\r\n          </a>-->\r\n          <!--Card content-->\r\n          <mdb-card-body>\r\n            <!--Title-->\r\n            <div style=\"text-align: center\">\r\n              <mdb-card-title>\r\n                <h4>{{prod.name}}</h4>\r\n              </mdb-card-title>\r\n              <!--Text-->\r\n\r\n              <mdb-card-text>\r\n                {{collection}}\r\n              </mdb-card-text>\r\n\r\n              <a [routerLink]=\"['/productConfigurator/configure', prod.id]\" class=\"button-front\" mdbBtn color=\"primary\" mdbWavesEffect>Personalizar</a>\r\n              <!--<a mdbBtn (click)=\"console.log('click'); configureProduct(prod.id)\" color=\"primary\" mdbWavesEffect>Personalizar</a>-->\r\n              <!--<div><button type=\"button\" (click)=\"console.log('here'); configureProduct(prod.id)\" matTooltip=\"Configurar este produto\" class=\"btn btn-primary\">Personalizar</button></div>-->\r\n            </div>\r\n          </mdb-card-body>\r\n        </div>\r\n      </mdb-card>\r\n      <!-- Card -->\r\n    </div>\r\n  </li>\r\n</ul>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">{{catalogue.name}}</h3>\r\n<ul>\r\n  <li *ngFor=\"let prod of products\" id=\"test\">\r\n    <div class=\"div-sic\">\r\n      <!-- Card -->\r\n      <mdb-card>\r\n        <div class=\"view rgba-white-slight waves-light\" mdbWavesEffect>\r\n          <!-- Card img -->\r\n          <mdb-card-img class=\"card-img-top\" src=\"https://picsum.photos/544/362/?random\" alt=\"\"></mdb-card-img>\r\n          <!--<a>\r\n            <div class=\"mask\"></div>\r\n          </a>-->\r\n          <!--Card content-->\r\n          <mdb-card-body>\r\n            <!--Title-->\r\n            <div style=\"text-align: center\">\r\n              <mdb-card-title>\r\n                <h4>{{prod.name}}</h4>\r\n              </mdb-card-title>\r\n              <!--Text-->\r\n\r\n              <mdb-card-text>\r\n                {{collection}}\r\n              </mdb-card-text>\r\n\r\n              <a [routerLink]=\"['/productConfigurator/configure', prod.id]\" class=\"button-front\" mdbBtn color=\"primary\" mdbWavesEffect>Personalizar</a>\r\n              <!--<a mdbBtn (click)=\"console.log('click'); configureProduct(prod.id)\" color=\"primary\" mdbWavesEffect>Personalizar</a>-->\r\n              <!--<div><button type=\"button\" (click)=\"console.log('here'); configureProduct(prod.id)\" matTooltip=\"Configurar este produto\" class=\"btn btn-primary\">Personalizar</button></div>-->\r\n            </div>\r\n          </mdb-card-body>\r\n        </div>\r\n      </mdb-card>\r\n      <!-- Card -->\r\n    </div>\r\n  </li>\r\n</ul>\r\n"
 
 /***/ }),
 
@@ -691,7 +839,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
+/* harmony import */ var _services_catalogue_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/catalogue.service */ "./src/app/services/catalogue.service.ts");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 
 
@@ -699,7 +847,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ClientCatalogueComponent = /** @class */ (function () {
-    function ClientCatalogueComponent(router, service, bar) {
+    function ClientCatalogueComponent(route, router, service, bar) {
+        this.route = route;
         this.router = router;
         this.service = service;
         this.bar = bar;
@@ -707,8 +856,14 @@ var ClientCatalogueComponent = /** @class */ (function () {
     }
     ClientCatalogueComponent.prototype.getProducts = function () {
         var _this = this;
-        this.service.getProducts().subscribe(function (data) {
-            _this.products = data;
+        this.route.params.subscribe(function (res) {
+            _this.id = res.id;
+        });
+        this.service.getCatalogue(this.id).subscribe(function (data) {
+            _this.catalogue
+                = data;
+            console.log(_this.catalogue.products);
+            _this.products = _this.catalogue.products;
         }, function (error) {
             if (error.status == 401) {
                 _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
@@ -716,7 +871,7 @@ var ClientCatalogueComponent = /** @class */ (function () {
                 });
             }
             else {
-                _this.bar.open("Ocorreu um erro ao tentar obter os produtos do servidor...", '', {
+                _this.bar.open("Ocorreu um erro ao tentar obter o catalogo do servidor...", '', {
                     duration: 2000,
                 });
             }
@@ -734,9 +889,99 @@ var ClientCatalogueComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./client-catalogue.component.html */ "./src/app/client-catalogue/client-catalogue.component.html"),
             styles: [__webpack_require__(/*! ./client-catalogue.component.css */ "./src/app/client-catalogue/client-catalogue.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_product_service__WEBPACK_IMPORTED_MODULE_3__["ProductService"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSnackBar"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_catalogue_service__WEBPACK_IMPORTED_MODULE_3__["CatalogueService"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSnackBar"]])
     ], ClientCatalogueComponent);
     return ClientCatalogueComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/client-catalogues/client-catalogues.component.css":
+/*!*******************************************************************!*\
+  !*** ./src/app/client-catalogues/client-catalogues.component.css ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NsaWVudC1jYXRhbG9ndWVzL2NsaWVudC1jYXRhbG9ndWVzLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/client-catalogues/client-catalogues.component.html":
+/*!********************************************************************!*\
+  !*** ./src/app/client-catalogues/client-catalogues.component.html ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ul class=\"list-group\">\r\n  <li *ngFor=\"let cat of catalogues\">\r\n    <div *ngIf=\"cat.published\">\r\n      <a [routerLink]=\"['/clientCatalogue', cat.id]\" class=\"list-group-item\">{{cat.name}}</a>\r\n    </div>\r\n  </li>\r\n</ul>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/client-catalogues/client-catalogues.component.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/client-catalogues/client-catalogues.component.ts ***!
+  \******************************************************************/
+/*! exports provided: ClientCataloguesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClientCataloguesComponent", function() { return ClientCataloguesComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_catalogue_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/catalogue.service */ "./src/app/services/catalogue.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+
+
+
+
+
+var ClientCataloguesComponent = /** @class */ (function () {
+    function ClientCataloguesComponent(router, service, bar) {
+        this.router = router;
+        this.service = service;
+        this.bar = bar;
+        this.catalogues = [];
+    }
+    ClientCataloguesComponent.prototype.ngOnInit = function () {
+        this.getCatalogues();
+    };
+    ClientCataloguesComponent.prototype.getCatalogues = function () {
+        var _this = this;
+        this.service.getCatalogues().subscribe(function (data) {
+            var tmp = data;
+            for (var _i = 0, tmp_1 = tmp; _i < tmp_1.length; _i++) {
+                var cat = tmp_1[_i];
+                if (cat.published) {
+                    _this.catalogues.push(cat);
+                }
+            }
+        }, function (error) {
+            if (error.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                _this.bar.open("Ocorreu um erro ao tentar obter os cat\u00E1logos do servidor...", '', {
+                    duration: 2000,
+                });
+            }
+        });
+    };
+    ClientCataloguesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-client-catalogues',
+            template: __webpack_require__(/*! ./client-catalogues.component.html */ "./src/app/client-catalogues/client-catalogues.component.html"),
+            styles: [__webpack_require__(/*! ./client-catalogues.component.css */ "./src/app/client-catalogues/client-catalogues.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_catalogue_service__WEBPACK_IMPORTED_MODULE_3__["CatalogueService"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSnackBar"]])
+    ], ClientCataloguesComponent);
+    return ClientCataloguesComponent;
 }());
 
 
@@ -750,7 +995,7 @@ var ClientCatalogueComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbGxlY3Rpb24vY29sbGVjdGlvbi5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "table {\r\n    width: 100%;\r\n  }\r\n  \r\n  .mat-form-field {\r\n    font-size: 14px;\r\n    width: 100%;\r\n  }\r\n  \r\n  #black {\r\n    color: black;\r\n  }\r\n  \r\n  #green {\r\n    color: green;\r\n  }\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29sbGVjdGlvbi9jb2xsZWN0aW9uLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxZQUFZO0dBQ2I7O0VBRUQ7SUFDRSxnQkFBZ0I7SUFDaEIsWUFBWTtHQUNiOztFQUVEO0lBQ0UsYUFBYTtHQUNkOztFQUVEO0lBQ0UsYUFBYTtHQUNkIiwiZmlsZSI6InNyYy9hcHAvY29sbGVjdGlvbi9jb2xsZWN0aW9uLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0YWJsZSB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICB9XHJcbiAgXHJcbiAgLm1hdC1mb3JtLWZpZWxkIHtcclxuICAgIGZvbnQtc2l6ZTogMTRweDtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gIH1cclxuICBcclxuICAjYmxhY2sge1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG4gIH1cclxuICBcclxuICAjZ3JlZW4ge1xyXG4gICAgY29sb3I6IGdyZWVuO1xyXG4gIH1cclxuICAiXX0= */"
 
 /***/ }),
 
@@ -761,7 +1006,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  collection works!\n</p>\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Coleções</h3>\r\n<div class=\"example-container container\">\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\r\n  </mat-form-field>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"name\">\r\n      <th mat-header-cell *matHeaderCellDef> Nome </th>\r\n      <td mat-cell *matCellDef=\"let collection\"><b>{{collection.name}}</b> </td>\r\n    </ng-container>\r\n    <!-- published Column -->\r\n    <ng-container matColumnDef=\"published\">\r\n      <th mat-header-cell *matHeaderCellDef> Publicado </th>\r\n      <td mat-cell *matCellDef=\"let collection\">  <mat-icon id={{collection.csscolor}} style=\"padding-left:15px;\">{{collection.published}}</mat-icon></td>\r\n    </ng-container>\r\n    <!-- year Column -->\r\n    <ng-container matColumnDef=\"year\">\r\n      <th mat-header-cell *matHeaderCellDef> Ano </th>\r\n      <td mat-cell *matCellDef=\"let collection\"> {{collection.year}}</td>\r\n    </ng-container>\r\n    <!-- products Column -->\r\n    <!--\r\n  <ng-container matColumnDef=\"products\">\r\n    <th mat-header-cell *matHeaderCellDef> Produtos </th>\r\n    <td mat-cell *matCellDef=\"let collection\"> Produtos vao aparecer aqui</td>\r\n  </ng-container>\r\n      -->\r\n    <!-- dopublish Column -->\r\n    <ng-container matColumnDef=\"dopublish\">\r\n      <th mat-header-cell *matHeaderCellDef> Publicação </th>\r\n      <td mat-cell *matCellDef=\"let collection; let in = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"publishCollection(in)\" matTooltip=\"Publicar esta coleção\" class=\"btn btn-primary btn-sm\">Publicar/Retirar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Edit Column -->\r\n    <ng-container matColumnDef=\"edit\">\r\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\r\n      <td mat-cell *matCellDef=\"let collection; let in = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"editCollection(in)\" matTooltip=\"Editar esta coleção\" class=\"btn btn-primary btn-sm\">Editar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Remove Column -->\r\n    <ng-container matColumnDef=\"remove\">\r\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\r\n      <td mat-cell *matCellDef=\"let in = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"deleteCollection(in)\" matTooltip=\"Remover esta coleção\" class=\"btn btn-danger btn-sm\">Remover</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"sic-row\">\r\n    <div class=\"sic-column\">\r\n      <button type=\"button\" (click)=\"addCollection()\" matTooltip=\"Criar uma nova coleção\" class=\"btn btn-primary btn-md\">Novo</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -777,12 +1022,129 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CollectionComponent", function() { return CollectionComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_catalogue_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/catalogue.service */ "./src/app/services/catalogue.service.ts");
+/* harmony import */ var _model_catalogue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../model/catalogue */ "./src/app/model/catalogue.ts");
+
+
+
+
 
 
 var CollectionComponent = /** @class */ (function () {
-    function CollectionComponent() {
+    function CollectionComponent(router, service, bar) {
+        this.router = router;
+        this.service = service;
+        this.bar = bar;
+        this.displayedColumns = ['position', 'name', 'year', 'published', /*'products', */ 'dopublish', 'edit', 'remove'];
+        this.realcollection = [];
+        this.collectionsPrimitive = [];
     }
+    CollectionComponent.prototype.applyFilter = function (filterValue) {
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+    };
     CollectionComponent.prototype.ngOnInit = function () {
+        this.getCollections();
+    };
+    CollectionComponent.prototype.getCollections = function () {
+        var _this = this;
+        this.collectionsPrimitive = [];
+        this.collections = [];
+        this.realcollection = [];
+        this.service.getCatalogues().subscribe(function (data) {
+            _this.collections = data;
+            for (var _i = 0, _a = _this.collections; _i < _a.length; _i++) {
+                var col = _a[_i];
+                if (col.type == 1) {
+                    var pub = void 0;
+                    var css = void 0;
+                    col.published == true ? pub = "check_circle" : pub = "cancel";
+                    col.published == true ? css = "green" : css = "black";
+                    var colp = { id: col.id, name: col.name, year: col.year, published: pub, csscolor: css };
+                    _this.collectionsPrimitive.push(colp);
+                    _this.realcollection.push(col);
+                }
+            }
+            _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](_this.collectionsPrimitive);
+        }, function (error) {
+            if (error.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                _this.bar.open('Ocorreu um erro ao tentar obter as coleções do servidor...', '', {
+                    duration: 2000,
+                });
+            }
+        });
+    };
+    CollectionComponent.prototype.addCollection = function () {
+        this.router.navigateByUrl("collections/new");
+    };
+    CollectionComponent.prototype.publishCollection = function (index) {
+        var _this = this;
+        var id = this.realcollection[index].id;
+        var collection;
+        var colToPublish;
+        this.service.getCatalogue(id).subscribe(function (res) {
+            collection = res;
+            if (collection.published == true) {
+                colToPublish = new _model_catalogue__WEBPACK_IMPORTED_MODULE_5__["Catalogue"](collection.name, collection.year, collection.type, false, collection.products, collection.id);
+            }
+            else {
+                colToPublish = new _model_catalogue__WEBPACK_IMPORTED_MODULE_5__["Catalogue"](collection.name, collection.year, collection.type, true, collection.products, collection.id);
+            }
+            _this.service.updateCatalogue(id, colToPublish).subscribe(function (res) {
+                if (collection.published) {
+                    _this.bar.open('Sucesso, a coleção foi retirada.', '', { duration: 2000 });
+                }
+                else {
+                    _this.bar.open('Sucesso, a coleção foi publicada.', '', { duration: 2000 });
+                }
+                _this.refresh();
+            }, function (e) {
+                if (e.status == 401) {
+                    _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                        duration: 2000,
+                    });
+                }
+                else {
+                    _this.bar.open("Erro: " + e.error, '', {
+                        duration: 2000,
+                    });
+                }
+            });
+        });
+    };
+    CollectionComponent.prototype.editCollection = function (index) {
+        var id = this.realcollection[index].id;
+        this.router.navigateByUrl("collections/edit/" + id);
+    };
+    CollectionComponent.prototype.deleteCollection = function (index) {
+        var _this = this;
+        var id = this.realcollection[index].id;
+        this.service.deleteCatalogue(id).subscribe(function (cat) {
+            _this.bar.open("Sucesso: a cole\u00E7\u00E3o foi eliminada.", '', {
+                duration: 2000,
+            });
+            _this.refresh();
+        }, function (error) {
+            if (error.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                _this.bar.open("Ocorreu um erro ao tentar eliminar a cole\u00E7\u00E3o: " + error.error, '', {
+                    duration: 2000,
+                });
+            }
+        });
+    };
+    CollectionComponent.prototype.refresh = function () {
+        this.getCollections();
     };
     CollectionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -790,9 +1152,157 @@ var CollectionComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./collection.component.html */ "./src/app/collection/collection.component.html"),
             styles: [__webpack_require__(/*! ./collection.component.css */ "./src/app/collection/collection.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _services_catalogue_service__WEBPACK_IMPORTED_MODULE_4__["CatalogueService"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSnackBar"]])
     ], CollectionComponent);
     return CollectionComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/create-catalogue/create-catalogue.component.css":
+/*!*****************************************************************!*\
+  !*** ./src/app/create-catalogue/create-catalogue.component.css ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".example-month-picker .mat-calendar-period-button {\r\n  pointer-events: none;\r\n}\r\n\r\n.example-month-picker .mat-calendar-arrow {\r\n  display: none;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY3JlYXRlLWNhdGFsb2d1ZS9jcmVhdGUtY2F0YWxvZ3VlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxxQkFBcUI7Q0FDdEI7O0FBRUQ7RUFDRSxjQUFjO0NBQ2YiLCJmaWxlIjoic3JjL2FwcC9jcmVhdGUtY2F0YWxvZ3VlL2NyZWF0ZS1jYXRhbG9ndWUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5leGFtcGxlLW1vbnRoLXBpY2tlciAubWF0LWNhbGVuZGFyLXBlcmlvZC1idXR0b24ge1xyXG4gIHBvaW50ZXItZXZlbnRzOiBub25lO1xyXG59XHJcblxyXG4uZXhhbXBsZS1tb250aC1waWNrZXIgLm1hdC1jYWxlbmRhci1hcnJvdyB7XHJcbiAgZGlzcGxheTogbm9uZTtcclxufVxyXG4iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/create-catalogue/create-catalogue.component.html":
+/*!******************************************************************!*\
+  !*** ./src/app/create-catalogue/create-catalogue.component.html ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Novo Catálogo</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"name\" placeholder=\"Nome do Catálogo\" required>\r\n    </mat-form-field>\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"year\" placeholder=\"Ano\" min=0 required>\r\n    </mat-form-field>\r\n\r\n    <mat-form-field>\r\n      <mat-select placeholder=\"Produtos\" [formControl]=\"productsForm\" (selectionChange)=\"updateProductCards()\" multiple>\r\n        <mat-option *ngFor=\"let product of products\" [value]=\"product\">{{product.name}}</mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n\r\n    <div>\r\n      <mat-card *ngFor=\"let product of chosenProducts\" class=\"example-card\" style=\"width:200px;float:left;margin-top:30px;margin-right: 30px;\">\r\n        <mat-card-header style=\"text-align:left;\">\r\n          <mat-card-title style=\"font-size:medium;\">{{product.name}}</mat-card-title>\r\n          <mat-card-subtitle>{{product.category.description}}</mat-card-subtitle>\r\n        </mat-card-header>\r\n        <!-- pode-se colocar uma imagem consoante a categoria do produto: cabide, armario, porta, gaveta -->\r\n        <mat-card-actions>\r\n          <button mat-button style=\"background-color:#e7e7e7\" (click)=\"removeFromChosenProductsList(product)\">Remover</button>\r\n        </mat-card-actions>\r\n      </mat-card>\r\n    </div>\r\n\r\n\r\n    <!-- DATEPICKER -->\r\n    <!--<mat-form-field>\r\n    <input matInput [matDatepicker]=\"picker\" placeholder=\"Ano\" (dateChange)=\"selectYear($event)\">\r\n    <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n    <mat-datepicker #picker startView=\"multi-year\" ></mat-datepicker>\r\n  </mat-form-field>-->\r\n\r\n  </div>\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n  </div>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/create-catalogue/create-catalogue.component.ts":
+/*!****************************************************************!*\
+  !*** ./src/app/create-catalogue/create-catalogue.component.ts ***!
+  \****************************************************************/
+/*! exports provided: CreateCatalogueComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateCatalogueComponent", function() { return CreateCatalogueComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _services_catalogue_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/catalogue.service */ "./src/app/services/catalogue.service.ts");
+/* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
+/* harmony import */ var _model_catalogue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../model/catalogue */ "./src/app/model/catalogue.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+
+
+
+
+
+
+
+
+var CreateCatalogueComponent = /** @class */ (function () {
+    function CreateCatalogueComponent(router, bar, service, prodService) {
+        this.router = router;
+        this.bar = bar;
+        this.service = service;
+        this.prodService = prodService;
+        this.name = "";
+        this.productsForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormControl"]();
+        this.year = (new Date()).getFullYear();
+        this.type = 0;
+        this.published = false;
+        this.date = new _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormControl"](new Date());
+    }
+    CreateCatalogueComponent.prototype.ngOnInit = function () {
+        this.getProducts();
+    };
+    CreateCatalogueComponent.prototype.getProducts = function () {
+        var _this = this;
+        this.prodService.getProducts().subscribe(function (data) {
+            _this.products = data;
+            console.log(_this.products);
+        }, function (error) {
+            _this.bar.open("Ocorreu um erro ao tentar obter os produtos do servidor: " + error.error, '', {
+                duration: 2000,
+            });
+        });
+    };
+    CreateCatalogueComponent.prototype.updateProductCards = function () {
+        this.chosenProducts = this.productsForm.value;
+        console.log(this.chosenProducts);
+    };
+    CreateCatalogueComponent.prototype.removeFromChosenProductsList = function (product) {
+        var index = this.chosenProducts.findIndex(function (p) { return (p.id == product.id); });
+        this.chosenProducts.splice(index, 1);
+        this.productsForm.setValue(this.chosenProducts);
+    };
+    // ONLY FOR DATEPICKER PURPOSE
+    //selectYear(event: MatDatepickerInputEvent<Date>) {
+    //  this.year = event.value.getFullYear();
+    //}
+    CreateCatalogueComponent.prototype.confirm = function () {
+        var _this = this;
+        if (this.name == null || this.name.trim().length == 0) {
+            this.bar.open("Nome do cat\u00E1logo n\u00E3o pode estar vazio.", '', {
+                duration: 2000,
+            });
+            return;
+        }
+        if (this.year == null) {
+            this.bar.open("Ano n\u00E3o pode estar vazio.", '', {
+                duration: 2000,
+            });
+            return;
+        }
+        if (this.year.toString().trim().length != 4) {
+            this.bar.open("Ano deve ter 4 algarismos.", '', {
+                duration: 2000,
+            });
+            return;
+        }
+        var catalogue = new _model_catalogue__WEBPACK_IMPORTED_MODULE_6__["Catalogue"](this.name, this.year, this.type, this.published, this.chosenProducts);
+        console.log('request vai ser:');
+        console.log(catalogue);
+        this.service.createCatalogue(catalogue).subscribe(function (res) {
+            _this.bar.open('Sucesso, o catálogo foi criado.', '', { duration: 2000 });
+            _this.back();
+        }, function (e) {
+            if (e.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                _this.bar.open("Erro: " + e.error, '', {
+                    duration: 2000,
+                });
+            }
+        });
+    };
+    CreateCatalogueComponent.prototype.back = function () {
+        this.router.navigateByUrl('/catalogues');
+    };
+    CreateCatalogueComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-create-catalogue',
+            template: __webpack_require__(/*! ./create-catalogue.component.html */ "./src/app/create-catalogue/create-catalogue.component.html"),
+            providers: [
+                { provide: _angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DATE_LOCALE"], useValue: 'pt-PT' },
+            ],
+            styles: [__webpack_require__(/*! ./create-catalogue.component.css */ "./src/app/create-catalogue/create-catalogue.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"], _services_catalogue_service__WEBPACK_IMPORTED_MODULE_4__["CatalogueService"], _services_product_service__WEBPACK_IMPORTED_MODULE_5__["ProductService"]])
+    ], CreateCatalogueComponent);
+    return CreateCatalogueComponent;
 }());
 
 
@@ -910,6 +1420,143 @@ var CreateCategoryComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"], _services_category_service__WEBPACK_IMPORTED_MODULE_5__["CategoryService"]])
     ], CreateCategoryComponent);
     return CreateCategoryComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/create-collection/create-collection.component.css":
+/*!*******************************************************************!*\
+  !*** ./src/app/create-collection/create-collection.component.css ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NyZWF0ZS1jb2xsZWN0aW9uL2NyZWF0ZS1jb2xsZWN0aW9uLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/create-collection/create-collection.component.html":
+/*!********************************************************************!*\
+  !*** ./src/app/create-collection/create-collection.component.html ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Nova Coleção</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"name\" placeholder=\"Linha estética (Nome)\" required>\r\n    </mat-form-field>\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"year\" placeholder=\"Ano\" min=0 required>\r\n    </mat-form-field>\r\n\r\n    <mat-form-field>\r\n      <mat-select placeholder=\"Produtos\" [formControl]=\"productsForm\" (selectionChange)=\"updateProductCards()\" multiple>\r\n        <mat-option *ngFor=\"let product of products\" [value]=\"product\">{{product.name}}</mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n\r\n    <div>\r\n      <mat-card *ngFor=\"let product of chosenProducts\" class=\"example-card\" style=\"width:200px;float:left;margin-top:30px;margin-right: 30px;\">\r\n        <mat-card-header style=\"text-align:left;\">\r\n          <mat-card-title style=\"font-size:medium;\">{{product.name}}</mat-card-title>\r\n          <mat-card-subtitle>{{product.category.description}}</mat-card-subtitle>\r\n        </mat-card-header>\r\n        <!-- pode-se colocar uma imagem consoante a categoria do produto: cabide, armario, porta, gaveta -->\r\n        <mat-card-actions>\r\n          <button mat-button style=\"background-color:#e7e7e7\" (click)=\"removeFromChosenProductsList(product)\">Remover</button>\r\n        </mat-card-actions>\r\n      </mat-card>\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n  </div>\r\n</div>\r\n\r\n\r\n"
+
+/***/ }),
+
+/***/ "./src/app/create-collection/create-collection.component.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/create-collection/create-collection.component.ts ***!
+  \******************************************************************/
+/*! exports provided: CreateCollectionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateCollectionComponent", function() { return CreateCollectionComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _services_catalogue_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/catalogue.service */ "./src/app/services/catalogue.service.ts");
+/* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
+/* harmony import */ var _model_catalogue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../model/catalogue */ "./src/app/model/catalogue.ts");
+
+
+
+
+
+
+
+
+var CreateCollectionComponent = /** @class */ (function () {
+    function CreateCollectionComponent(router, bar, service, prodService) {
+        this.router = router;
+        this.bar = bar;
+        this.service = service;
+        this.prodService = prodService;
+        this.name = "";
+        this.productsForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]();
+        this.year = (new Date()).getFullYear();
+        this.type = 1;
+        this.published = false;
+        this.date = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](new Date());
+    }
+    CreateCollectionComponent.prototype.ngOnInit = function () {
+        this.getProducts();
+    };
+    CreateCollectionComponent.prototype.getProducts = function () {
+        var _this = this;
+        this.prodService.getProducts().subscribe(function (data) {
+            _this.products = data;
+        }, function (error) {
+            _this.bar.open("Ocorreu um erro ao tentar obter os produtos do servidor: " + error.error, '', {
+                duration: 2000,
+            });
+        });
+    };
+    CreateCollectionComponent.prototype.updateProductCards = function () {
+        this.chosenProducts = this.productsForm.value;
+    };
+    CreateCollectionComponent.prototype.removeFromChosenProductsList = function (product) {
+        var index = this.chosenProducts.findIndex(function (p) { return (p.id == product.id); });
+        this.chosenProducts.splice(index, 1);
+        this.productsForm.setValue(this.chosenProducts);
+    };
+    CreateCollectionComponent.prototype.confirm = function () {
+        var _this = this;
+        if (this.name == null || this.name.trim().length == 0) {
+            this.bar.open("Nome da cole\u00E7\u00E3o n\u00E3o pode estar vazio.", '', {
+                duration: 2000,
+            });
+            return;
+        }
+        if (this.year == null) {
+            this.bar.open("Ano n\u00E3o pode estar vazio.", '', {
+                duration: 2000,
+            });
+            return;
+        }
+        if (this.year.toString().trim().length != 4) {
+            this.bar.open("Ano deve ter 4 algarismos.", '', {
+                duration: 2000,
+            });
+            return;
+        }
+        var collection = new _model_catalogue__WEBPACK_IMPORTED_MODULE_7__["Catalogue"](this.name, this.year, this.type, this.published, this.chosenProducts);
+        this.service.createCatalogue(collection).subscribe(function (res) {
+            _this.bar.open('Sucesso, a coleção foi criada.', '', { duration: 2000 });
+            _this.back();
+        }, function (e) {
+            if (e.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                _this.bar.open("Erro: " + e.error, '', {
+                    duration: 2000,
+                });
+            }
+        });
+    };
+    CreateCollectionComponent.prototype.back = function () {
+        this.router.navigateByUrl('/collections');
+    };
+    CreateCollectionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-create-collection',
+            template: __webpack_require__(/*! ./create-collection.component.html */ "./src/app/create-collection/create-collection.component.html"),
+            styles: [__webpack_require__(/*! ./create-collection.component.css */ "./src/app/create-collection/create-collection.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSnackBar"], _services_catalogue_service__WEBPACK_IMPORTED_MODULE_5__["CatalogueService"], _services_product_service__WEBPACK_IMPORTED_MODULE_6__["ProductService"]])
+    ], CreateCollectionComponent);
+    return CreateCollectionComponent;
 }());
 
 
@@ -1967,6 +2614,176 @@ var CreateSurfaceFinishComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/edit-catalogue/edit-catalogue.component.css":
+/*!*************************************************************!*\
+  !*** ./src/app/edit-catalogue/edit-catalogue.component.css ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2VkaXQtY2F0YWxvZ3VlL2VkaXQtY2F0YWxvZ3VlLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/edit-catalogue/edit-catalogue.component.html":
+/*!**************************************************************!*\
+  !*** ./src/app/edit-catalogue/edit-catalogue.component.html ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Editar Catálogo</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"name\" placeholder=\"Nome do Catálogo\" required>\r\n    </mat-form-field>\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"year\" placeholder=\"Ano\" min=0 required>\r\n    </mat-form-field>\r\n\r\n    <mat-form-field>\r\n      <mat-select placeholder=\"Produtos\" [(formControl)]=\"productsForm\" (selectionChange)=\"updateProductCards()\" multiple>\r\n        <mat-option *ngFor=\"let product of products\" [value]=\"product\">{{product.name}}</mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n\r\n    <div>\r\n      <mat-card *ngFor=\"let product of chosenProducts\" class=\"example-card\" style=\"width:200px;float:left;margin-top:30px;margin-right: 30px;\">\r\n        <mat-card-header style=\"text-align:left;\">\r\n          <mat-card-title style=\"font-size:medium;\">{{product.name}}</mat-card-title>\r\n          <!--<mat-card-subtitle>{{product.category.description}}</mat-card-subtitle>-->\r\n        </mat-card-header>\r\n        <!-- pode-se colocar uma imagem consoante a categoria do produto: cabide, armario, porta, gaveta -->\r\n        <mat-card-actions>\r\n          <button mat-button style=\"background-color:#e7e7e7\" (click)=\"removeFromChosenProductsList(product)\">Remover</button>\r\n        </mat-card-actions>\r\n      </mat-card>\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n  </div>\r\n</div>\r\n\r\n"
+
+/***/ }),
+
+/***/ "./src/app/edit-catalogue/edit-catalogue.component.ts":
+/*!************************************************************!*\
+  !*** ./src/app/edit-catalogue/edit-catalogue.component.ts ***!
+  \************************************************************/
+/*! exports provided: EditCatalogueComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditCatalogueComponent", function() { return EditCatalogueComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _services_catalogue_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/catalogue.service */ "./src/app/services/catalogue.service.ts");
+/* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
+/* harmony import */ var _model_catalogue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../model/catalogue */ "./src/app/model/catalogue.ts");
+
+
+
+
+
+
+
+
+var EditCatalogueComponent = /** @class */ (function () {
+    function EditCatalogueComponent(router, route, bar, service, prodService) {
+        this.router = router;
+        this.route = route;
+        this.bar = bar;
+        this.service = service;
+        this.prodService = prodService;
+        this.chosenProducts = [];
+        this.productsForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]();
+        this.type = 0;
+        this.published = false;
+    }
+    EditCatalogueComponent.prototype.ngOnInit = function () {
+        this.getProducts();
+        this.getCatalogue();
+    };
+    EditCatalogueComponent.prototype.getCatalogue = function () {
+        var _this = this;
+        this.route.params.subscribe(function (res) {
+            _this.id = res.id;
+        });
+        this.service.getCatalogue(this.id).subscribe(function (res) {
+            _this.catalogue = res;
+            _this.name = _this.catalogue.name;
+            _this.year = _this.catalogue.year;
+            _this.published = _this.catalogue.published;
+            _this.updateChosenProducts(_this.catalogue.products);
+        });
+    };
+    EditCatalogueComponent.prototype.updateChosenProducts = function (products) {
+        var ids = [];
+        for (var _i = 0, products_1 = products; _i < products_1.length; _i++) {
+            var p = products_1[_i];
+            ids.push(p.id);
+        }
+        console.log(ids);
+        for (var _a = 0, _b = this.products; _a < _b.length; _a++) {
+            var p = _b[_a];
+            for (var _c = 0, ids_1 = ids; _c < ids_1.length; _c++) {
+                var i = ids_1[_c];
+                if (p.id == i) {
+                    this.chosenProducts.push(p);
+                }
+            }
+        }
+        this.productsForm.setValue(this.chosenProducts);
+    };
+    EditCatalogueComponent.prototype.getProducts = function () {
+        var _this = this;
+        this.prodService.getProducts().subscribe(function (data) {
+            _this.products = data;
+        }, function (error) {
+            _this.bar.open("Ocorreu um erro ao tentar obter os produtos do servidor: " + error.error, '', {
+                duration: 2000,
+            });
+        });
+    };
+    EditCatalogueComponent.prototype.updateProductCards = function () {
+        this.chosenProducts = this.productsForm.value;
+    };
+    EditCatalogueComponent.prototype.removeFromChosenProductsList = function (product) {
+        var index = this.chosenProducts.findIndex(function (p) { return (p.id == product.id); });
+        this.chosenProducts.splice(index, 1);
+        this.productsForm.setValue(this.chosenProducts);
+    };
+    EditCatalogueComponent.prototype.confirm = function () {
+        var _this = this;
+        if (this.name == null || this.name.trim().length == 0) {
+            this.bar.open("Nome do cat\u00E1logo n\u00E3o pode estar vazio.", '', {
+                duration: 2000,
+            });
+            return;
+        }
+        if (this.year == null) {
+            this.bar.open("Ano n\u00E3o pode estar vazio.", '', {
+                duration: 2000,
+            });
+            return;
+        }
+        if (this.year.toString().trim().length != 4) {
+            this.bar.open("Ano deve ter 4 algarismos.", '', {
+                duration: 2000,
+            });
+            return;
+        }
+        var catalogue = new _model_catalogue__WEBPACK_IMPORTED_MODULE_7__["Catalogue"](this.name, this.year, this.type, this.published, this.chosenProducts);
+        console.log('request vai ser:');
+        console.log(catalogue);
+        this.service.updateCatalogue(this.id, catalogue).subscribe(function (res) {
+            _this.bar.open('Sucesso, o catálogo foi atualizado.', '', { duration: 2000 });
+            _this.back();
+        }, function (e) {
+            if (e.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                _this.bar.open("Erro: " + e.error, '', {
+                    duration: 2000,
+                });
+            }
+        });
+    };
+    EditCatalogueComponent.prototype.back = function () {
+        this.router.navigateByUrl('/catalogues');
+    };
+    EditCatalogueComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-edit-catalogue',
+            template: __webpack_require__(/*! ./edit-catalogue.component.html */ "./src/app/edit-catalogue/edit-catalogue.component.html"),
+            styles: [__webpack_require__(/*! ./edit-catalogue.component.css */ "./src/app/edit-catalogue/edit-catalogue.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSnackBar"], _services_catalogue_service__WEBPACK_IMPORTED_MODULE_5__["CatalogueService"], _services_product_service__WEBPACK_IMPORTED_MODULE_6__["ProductService"]])
+    ], EditCatalogueComponent);
+    return EditCatalogueComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/edit-category/edit-category.component.css":
 /*!***********************************************************!*\
   !*** ./src/app/edit-category/edit-category.component.css ***!
@@ -2082,6 +2899,302 @@ var EditCategoryComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_category_service__WEBPACK_IMPORTED_MODULE_3__["CategoryService"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSnackBar"]])
     ], EditCategoryComponent);
     return EditCategoryComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/edit-collection/edit-collection.component.css":
+/*!***************************************************************!*\
+  !*** ./src/app/edit-collection/edit-collection.component.css ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2VkaXQtY29sbGVjdGlvbi9lZGl0LWNvbGxlY3Rpb24uY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/edit-collection/edit-collection.component.html":
+/*!****************************************************************!*\
+  !*** ./src/app/edit-collection/edit-collection.component.html ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Editar Coleção</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"name\" placeholder=\"Linha estética (Nome)\" required>\r\n    </mat-form-field>\r\n    <mat-form-field>\r\n      <input matInput [(ngModel)]=\"year\" placeholder=\"Ano\" min=0 required>\r\n    </mat-form-field>\r\n\r\n    <mat-form-field>\r\n      <mat-select placeholder=\"Produtos\" [(formControl)]=\"productsForm\" (selectionChange)=\"updateProductCards()\" multiple>\r\n        <mat-option *ngFor=\"let product of products\" [value]=\"product\">{{product.name}}</mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n\r\n    <div>\r\n      <mat-card *ngFor=\"let product of chosenProducts\" class=\"example-card\" style=\"width:200px;float:left;margin-top:30px;margin-right: 30px;\">\r\n        <mat-card-header style=\"text-align:left;\">\r\n          <mat-card-title style=\"font-size:medium;\">{{product.name}}</mat-card-title>\r\n          <!--<mat-card-subtitle>{{product.category.description}}</mat-card-subtitle>-->\r\n        </mat-card-header>\r\n        <!-- pode-se colocar uma imagem consoante a categoria do produto: cabide, armario, porta, gaveta -->\r\n        <mat-card-actions>\r\n          <button mat-button style=\"background-color:#e7e7e7\" (click)=\"removeFromChosenProductsList(product)\">Remover</button>\r\n        </mat-card-actions>\r\n      </mat-card>\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"sic-row\">\r\n    <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar\" class=\"btn btn-primary btn-md\">OK</button>\r\n    <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n  </div>\r\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/edit-collection/edit-collection.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/edit-collection/edit-collection.component.ts ***!
+  \**************************************************************/
+/*! exports provided: EditCollectionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditCollectionComponent", function() { return EditCollectionComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _model_catalogue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../model/catalogue */ "./src/app/model/catalogue.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _services_catalogue_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/catalogue.service */ "./src/app/services/catalogue.service.ts");
+/* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
+
+
+
+
+
+
+
+
+var EditCollectionComponent = /** @class */ (function () {
+    function EditCollectionComponent(router, route, bar, service, prodService) {
+        this.router = router;
+        this.route = route;
+        this.bar = bar;
+        this.service = service;
+        this.prodService = prodService;
+        this.chosenProducts = [];
+        this.productsForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]();
+        this.type = 1;
+        this.published = false;
+    }
+    EditCollectionComponent.prototype.ngOnInit = function () {
+        this.getProducts();
+        this.getCollection();
+    };
+    EditCollectionComponent.prototype.getCollection = function () {
+        var _this = this;
+        this.route.params.subscribe(function (res) {
+            _this.id = res.id;
+        });
+        this.service.getCatalogue(this.id).subscribe(function (res) {
+            _this.collection = res;
+            _this.name = _this.collection.name;
+            _this.year = _this.collection.year;
+            _this.published = _this.collection.published;
+            _this.updateChosenProducts(_this.collection.products);
+        });
+    };
+    EditCollectionComponent.prototype.updateChosenProducts = function (products) {
+        var ids = [];
+        for (var _i = 0, products_1 = products; _i < products_1.length; _i++) {
+            var p = products_1[_i];
+            ids.push(p.id);
+        }
+        console.log(ids);
+        for (var _a = 0, _b = this.products; _a < _b.length; _a++) {
+            var p = _b[_a];
+            for (var _c = 0, ids_1 = ids; _c < ids_1.length; _c++) {
+                var i = ids_1[_c];
+                if (p.id == i) {
+                    this.chosenProducts.push(p);
+                }
+            }
+        }
+        this.productsForm.setValue(this.chosenProducts);
+    };
+    EditCollectionComponent.prototype.getProducts = function () {
+        var _this = this;
+        this.prodService.getProducts().subscribe(function (data) {
+            _this.products = data;
+        }, function (error) {
+            _this.bar.open("Ocorreu um erro ao tentar obter os produtos do servidor: " + error.error, '', {
+                duration: 2000,
+            });
+        });
+    };
+    EditCollectionComponent.prototype.updateProductCards = function () {
+        this.chosenProducts = this.productsForm.value;
+    };
+    EditCollectionComponent.prototype.removeFromChosenProductsList = function (product) {
+        var index = this.chosenProducts.findIndex(function (p) { return (p.id == product.id); });
+        this.chosenProducts.splice(index, 1);
+        this.productsForm.setValue(this.chosenProducts);
+    };
+    EditCollectionComponent.prototype.confirm = function () {
+        var _this = this;
+        if (this.name == null || this.name.trim().length == 0) {
+            this.bar.open("O Nome da cole\u00E7\u00E3o n\u00E3o pode estar vazio.", '', {
+                duration: 2000,
+            });
+            return;
+        }
+        if (this.year == null) {
+            this.bar.open("O Ano n\u00E3o pode estar vazio.", '', {
+                duration: 2000,
+            });
+            return;
+        }
+        if (this.year.toString().trim().length != 4) {
+            this.bar.open("O Ano deve ter 4 algarismos.", '', {
+                duration: 2000,
+            });
+            return;
+        }
+        var collection = new _model_catalogue__WEBPACK_IMPORTED_MODULE_2__["Catalogue"](this.name, this.year, this.type, this.published, this.chosenProducts);
+        this.service.updateCatalogue(this.id, collection).subscribe(function (res) {
+            _this.bar.open('Sucesso, a coleção foi atualizada.', '', { duration: 2000 });
+            _this.back();
+        }, function (e) {
+            if (e.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                _this.bar.open("Erro: " + e.error, '', {
+                    duration: 2000,
+                });
+            }
+        });
+    };
+    EditCollectionComponent.prototype.back = function () {
+        this.router.navigateByUrl('/collections');
+    };
+    EditCollectionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-edit-collection',
+            template: __webpack_require__(/*! ./edit-collection.component.html */ "./src/app/edit-collection/edit-collection.component.html"),
+            styles: [__webpack_require__(/*! ./edit-collection.component.css */ "./src/app/edit-collection/edit-collection.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"], _services_catalogue_service__WEBPACK_IMPORTED_MODULE_6__["CatalogueService"], _services_product_service__WEBPACK_IMPORTED_MODULE_7__["ProductService"]])
+    ], EditCollectionComponent);
+    return EditCollectionComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/edit-encomenda/edit-encomenda.component.css":
+/*!*************************************************************!*\
+  !*** ./src/app/edit-encomenda/edit-encomenda.component.css ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "#formpequena {\r\n    width: 86%;\r\n  }\r\n  \r\n  #forminline1 {\r\n    width: 20%;\r\n    display: inline-block;\r\n  }\r\n  \r\n  #forminline2 {\r\n    width: 60%;\r\n    margin-left: 40px;\r\n    display: inline-block;\r\n  }\r\n  \r\n  #forminline3 {\r\n    width: 75%;\r\n    float: right;\r\n  }\r\n  \r\n  #butpequeno {\r\n    width: 13%;\r\n    float: right;\r\n    height: 50px;\r\n  }\r\n  \r\n  #butpequenoparts {\r\n    width: 13%;\r\n    height: auto;\r\n    float: right;\r\n  }\r\n  \r\n  #espaco {\r\n    width: 2%;\r\n  }\r\n  \r\n  .basic-container {\r\n    padding: 30px;\r\n  }\r\n  \r\n  .example-h2 {\r\n    font-size: 15pt;\r\n  }\r\n  \r\n  .example-h4 {\r\n    font-size: 10pt;\r\n  }\r\n  \r\n  .example-section {\r\n    align-content: center;\r\n    align-items: center;\r\n    height: 120px;\r\n  }\r\n  \r\n  .example-margin {\r\n    margin: 0 10px;\r\n  }\r\n  \r\n  .result {\r\n    width: 30%;\r\n    float: left;\r\n    margin-bottom: 10px;\r\n  }\r\n  \r\n  .mat-form-field {\r\n    font-size: 14px;\r\n    width: 100%;\r\n  }\r\n  \r\n  .input-group {\r\n    display: table;\r\n    white-space: nowrap;\r\n    vertical-align: top;\r\n    width: 100%;\r\n  }\r\n  \r\n  .input-group .form-control {\r\n      display: table-cell;\r\n      vertical-align: top;\r\n      width: 100%;\r\n    }\r\n  \r\n  .input-group .input-group-addon {\r\n      display: table-cell;\r\n      width: 1%;\r\n      vertical-align: top;\r\n      background: #2f353e;\r\n      color: #fff;\r\n      font-size: 1.15rem;\r\n      line-height: 19px;\r\n      padding-left: 10px;\r\n      padding-right: 10px;\r\n    }\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZWRpdC1lbmNvbWVuZGEvZWRpdC1lbmNvbWVuZGEuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLFdBQVc7R0FDWjs7RUFFRDtJQUNFLFdBQVc7SUFDWCxzQkFBc0I7R0FDdkI7O0VBQ0Q7SUFDRSxXQUFXO0lBQ1gsa0JBQWtCO0lBQ2xCLHNCQUFzQjtHQUN2Qjs7RUFDRDtJQUNFLFdBQVc7SUFDWCxhQUFhO0dBQ2Q7O0VBRUQ7SUFDRSxXQUFXO0lBQ1gsYUFBYTtJQUNiLGFBQWE7R0FDZDs7RUFFRDtJQUNFLFdBQVc7SUFDWCxhQUFhO0lBQ2IsYUFBYTtHQUNkOztFQUVEO0lBQ0UsVUFBVTtHQUNYOztFQUVEO0lBQ0UsY0FBYztHQUNmOztFQUVEO0lBQ0UsZ0JBQWdCO0dBQ2pCOztFQUVEO0lBQ0UsZ0JBQWdCO0dBQ2pCOztFQUVEO0lBQ0Usc0JBQXNCO0lBQ3RCLG9CQUFvQjtJQUNwQixjQUFjO0dBQ2Y7O0VBRUQ7SUFDRSxlQUFlO0dBQ2hCOztFQUVEO0lBQ0UsV0FBVztJQUNYLFlBQVk7SUFDWixvQkFBb0I7R0FDckI7O0VBRUQ7SUFDRSxnQkFBZ0I7SUFDaEIsWUFBWTtHQUNiOztFQUVEO0lBQ0UsZUFBZTtJQUNmLG9CQUFvQjtJQUNwQixvQkFBb0I7SUFDcEIsWUFBWTtHQUNiOztFQUVDO01BQ0Usb0JBQW9CO01BQ3BCLG9CQUFvQjtNQUNwQixZQUFZO0tBQ2I7O0VBRUQ7TUFDRSxvQkFBb0I7TUFDcEIsVUFBVTtNQUNWLG9CQUFvQjtNQUNwQixvQkFBb0I7TUFDcEIsWUFBWTtNQUNaLG1CQUFtQjtNQUNuQixrQkFBa0I7TUFDbEIsbUJBQW1CO01BQ25CLG9CQUFvQjtLQUNyQiIsImZpbGUiOiJzcmMvYXBwL2VkaXQtZW5jb21lbmRhL2VkaXQtZW5jb21lbmRhLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjZm9ybXBlcXVlbmEge1xyXG4gICAgd2lkdGg6IDg2JTtcclxuICB9XHJcbiAgXHJcbiAgI2Zvcm1pbmxpbmUxIHtcclxuICAgIHdpZHRoOiAyMCU7XHJcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgfVxyXG4gICNmb3JtaW5saW5lMiB7XHJcbiAgICB3aWR0aDogNjAlO1xyXG4gICAgbWFyZ2luLWxlZnQ6IDQwcHg7XHJcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgfVxyXG4gICNmb3JtaW5saW5lMyB7XHJcbiAgICB3aWR0aDogNzUlO1xyXG4gICAgZmxvYXQ6IHJpZ2h0O1xyXG4gIH1cclxuICBcclxuICAjYnV0cGVxdWVubyB7XHJcbiAgICB3aWR0aDogMTMlO1xyXG4gICAgZmxvYXQ6IHJpZ2h0O1xyXG4gICAgaGVpZ2h0OiA1MHB4O1xyXG4gIH1cclxuICBcclxuICAjYnV0cGVxdWVub3BhcnRzIHtcclxuICAgIHdpZHRoOiAxMyU7XHJcbiAgICBoZWlnaHQ6IGF1dG87XHJcbiAgICBmbG9hdDogcmlnaHQ7XHJcbiAgfVxyXG4gIFxyXG4gICNlc3BhY28ge1xyXG4gICAgd2lkdGg6IDIlO1xyXG4gIH1cclxuICBcclxuICAuYmFzaWMtY29udGFpbmVyIHtcclxuICAgIHBhZGRpbmc6IDMwcHg7XHJcbiAgfVxyXG4gIFxyXG4gIC5leGFtcGxlLWgyIHtcclxuICAgIGZvbnQtc2l6ZTogMTVwdDtcclxuICB9XHJcbiAgXHJcbiAgLmV4YW1wbGUtaDQge1xyXG4gICAgZm9udC1zaXplOiAxMHB0O1xyXG4gIH1cclxuICBcclxuICAuZXhhbXBsZS1zZWN0aW9uIHtcclxuICAgIGFsaWduLWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBoZWlnaHQ6IDEyMHB4O1xyXG4gIH1cclxuICBcclxuICAuZXhhbXBsZS1tYXJnaW4ge1xyXG4gICAgbWFyZ2luOiAwIDEwcHg7XHJcbiAgfVxyXG4gIFxyXG4gIC5yZXN1bHQge1xyXG4gICAgd2lkdGg6IDMwJTtcclxuICAgIGZsb2F0OiBsZWZ0O1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMTBweDtcclxuICB9XHJcbiAgXHJcbiAgLm1hdC1mb3JtLWZpZWxkIHtcclxuICAgIGZvbnQtc2l6ZTogMTRweDtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gIH1cclxuICBcclxuICAuaW5wdXQtZ3JvdXAge1xyXG4gICAgZGlzcGxheTogdGFibGU7XHJcbiAgICB3aGl0ZS1zcGFjZTogbm93cmFwO1xyXG4gICAgdmVydGljYWwtYWxpZ246IHRvcDtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gIH1cclxuICBcclxuICAgIC5pbnB1dC1ncm91cCAuZm9ybS1jb250cm9sIHtcclxuICAgICAgZGlzcGxheTogdGFibGUtY2VsbDtcclxuICAgICAgdmVydGljYWwtYWxpZ246IHRvcDtcclxuICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICB9XHJcbiAgXHJcbiAgICAuaW5wdXQtZ3JvdXAgLmlucHV0LWdyb3VwLWFkZG9uIHtcclxuICAgICAgZGlzcGxheTogdGFibGUtY2VsbDtcclxuICAgICAgd2lkdGg6IDElO1xyXG4gICAgICB2ZXJ0aWNhbC1hbGlnbjogdG9wO1xyXG4gICAgICBiYWNrZ3JvdW5kOiAjMmYzNTNlO1xyXG4gICAgICBjb2xvcjogI2ZmZjtcclxuICAgICAgZm9udC1zaXplOiAxLjE1cmVtO1xyXG4gICAgICBsaW5lLWhlaWdodDogMTlweDtcclxuICAgICAgcGFkZGluZy1sZWZ0OiAxMHB4O1xyXG4gICAgICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xyXG4gICAgfVxyXG4gICJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/edit-encomenda/edit-encomenda.component.html":
+/*!**************************************************************!*\
+  !*** ./src/app/edit-encomenda/edit-encomenda.component.html ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Editar Encomenda</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n    \r\n\r\n<mat-form-field>\r\n  <input matInput placeholder=\"Nome da Cidade\" [(ngModel)]=\"cidade\" required>\r\n</mat-form-field>\r\n<mat-form-field>\r\n  <input matInput placeholder=\"Latitude\" [(ngModel)]=\"latitude\" required>\r\n</mat-form-field>\r\n<mat-form-field>\r\n  <input matInput placeholder=\"Longitude\" [(ngModel)]=\"longitude\" required>\r\n</mat-form-field>\r\n\r\n\r\n\r\n\r\n    \r\n    <div class=\"sic-row\">\r\n      <button type=\"button\" (click)=\"confirm()\" matTooltip=\"Confirmar Alterações\" class=\"btn btn-primary btn-md\">Confirmar</button>\r\n      <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Cancelar</button>\r\n    </div>\r\n  </div>\r\n  \r\n</div>\r\n\r\n"
+
+/***/ }),
+
+/***/ "./src/app/edit-encomenda/edit-encomenda.component.ts":
+/*!************************************************************!*\
+  !*** ./src/app/edit-encomenda/edit-encomenda.component.ts ***!
+  \************************************************************/
+/*! exports provided: EditEncomendaComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditEncomendaComponent", function() { return EditEncomendaComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _services_order_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/order.service */ "./src/app/services/order.service.ts");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+
+
+
+
+
+
+var EditEncomendaComponent = /** @class */ (function () {
+    function EditEncomendaComponent(router, route, service, authservice, bar) {
+        this.router = router;
+        this.route = route;
+        this.service = service;
+        this.authservice = authservice;
+        this.bar = bar;
+    }
+    EditEncomendaComponent.prototype.ngOnInit = function () {
+        this.getEncomenda(this.authservice.getLoggedInUsername());
+    };
+    EditEncomendaComponent.prototype.getEncomenda = function (username) {
+        var _this = this;
+        var id;
+        this.route.params.subscribe(function (res) {
+            id = res.id;
+        });
+        this.idroute = id;
+        this.service.getEncomenda(username, id).subscribe(function (res) {
+            _this.order = res;
+            _this.latitude = _this.order.latitude;
+            _this.longitude = _this.order.longitude;
+            _this.cidade = _this.order.cidade;
+            _this.order = res;
+            _this.item = _this.order.item;
+            _this.parts = _this.order.item[0].product.listProduct;
+            _this.state = _this.order.state;
+            _this.date = _this.order.date;
+            _this.totalPrice = _this.order.totalPrice;
+        }, function (e) {
+            if (e.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                _this.bar.open("Ocorreu um erro ao tentar obter o produto escolhido do servidor...", '', {
+                    duration: 2000,
+                });
+            }
+        });
+    };
+    EditEncomendaComponent.prototype.confirm = function () {
+        var _this = this;
+        this.order.cidade = this.cidade;
+        this.order.latitude = this.latitude;
+        this.order.longitude = this.longitude;
+        this.service.updateEncomenda(this.idroute, this.order).subscribe(function (order) {
+            _this.bar.open("Sucesso: a encomenda foi editada com sucesso.", '', {
+                duration: 2000,
+            });
+            _this.back();
+        }, function (error) {
+            if (error.status == 401) {
+                _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
+                    duration: 2000,
+                });
+            }
+            else {
+                _this.bar.open("Erro: " + error.error, '', {
+                    duration: 2000,
+                });
+            }
+        });
+    };
+    EditEncomendaComponent.prototype.back = function () {
+        var username = this.authservice.getLoggedInUsername();
+        this.router.navigateByUrl("/orders/" + username);
+    };
+    EditEncomendaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-edit-encomenda',
+            template: __webpack_require__(/*! ./edit-encomenda.component.html */ "./src/app/edit-encomenda/edit-encomenda.component.html"),
+            styles: [__webpack_require__(/*! ./edit-encomenda.component.css */ "./src/app/edit-encomenda/edit-encomenda.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_order_service__WEBPACK_IMPORTED_MODULE_4__["orderService"], _services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"]])
+    ], EditEncomendaComponent);
+    return EditEncomendaComponent;
 }());
 
 
@@ -2602,6 +3715,8 @@ var EditProductComponent = /** @class */ (function () {
         dialogRef.afterClosed().subscribe(function (result) {
             if (!(result === undefined)) {
                 _this.optionalProducts = result;
+                _this.parts = [];
+                _this.convertToParts(_this.optionalProducts);
             }
             else {
                 _this.optionalProducts = [];
@@ -3521,6 +4636,32 @@ var Material = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/model/catalogue.ts":
+/*!************************************!*\
+  !*** ./src/app/model/catalogue.ts ***!
+  \************************************/
+/*! exports provided: Catalogue */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Catalogue", function() { return Catalogue; });
+var Catalogue = /** @class */ (function () {
+    function Catalogue(name, year, type, published, products, id) {
+        this.id = id;
+        this.name = name;
+        this.year = year;
+        this.type = type;
+        this.published = published;
+        this.products = products;
+    }
+    return Catalogue;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/model/category.ts":
 /*!***********************************!*\
   !*** ./src/app/model/category.ts ***!
@@ -3605,7 +4746,7 @@ var order = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "orderItem", function() { return orderItem; });
 var orderItem = /** @class */ (function () {
-    function orderItem(name, category, material, surfaceFinish, listProduct, height, depth, width) {
+    function orderItem(name, category, material, surfaceFinish, price, listProduct, height, depth, width) {
         this.name = name;
         this.category = category;
         this.material = material;
@@ -3614,6 +4755,7 @@ var orderItem = /** @class */ (function () {
         this.height = height;
         this.depth = depth;
         this.width = width;
+        this.price = price;
     }
     return orderItem;
 }());
@@ -3690,7 +4832,7 @@ module.exports = "/* Structure */\r\ntable {\r\n    width: 100%;\r\n  }\r\n.mat-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Encomendas</h3>\r\n<div class=\"example-container container\">\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\r\n  </mat-form-field>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"name\">\r\n      <th mat-header-cell *matHeaderCellDef> Nome </th>\r\n      <td mat-cell *matCellDef=\"let order\"> {{order.item[0].product.name}} </td>\r\n    </ng-container>\r\n    <!-- Date Column -->\r\n    <ng-container matColumnDef=\"date\">\r\n      <th mat-header-cell *matHeaderCellDef> Date </th>\r\n      <td mat-cell *matCellDef=\"let order\"> {{order.date}} </td>\r\n    </ng-container>\r\n    <!-- Info Column -->\r\n    <ng-container matColumnDef=\"info\">\r\n      <th mat-header-cell *matHeaderCellDef> Mais info </th>\r\n      <td mat-cell *matCellDef=\"let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"showOrder(i)\" matTooltip=\"Saber mais sobre esta encomenda\" class=\"btn btn-info btn-sm\">Mais informações</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Edit Column -->\r\n    <ng-container matColumnDef=\"edit\">\r\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\r\n      <td mat-cell *matCellDef=\"let material; let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"a\" matTooltip=\"Editar esta encomenda\" class=\"btn btn-primary btn-sm\">Editar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Remove Column -->\r\n    <ng-container matColumnDef=\"remove\">\r\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\r\n      <td mat-cell *matCellDef=\"let order; let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"deleteOrder(i)\" matTooltip=\"Remover esta encomenda\" class=\"btn btn-danger btn-sm\">Remover</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"sic-row\">\r\n    <div class=\"sic-column\">\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Encomendas</h3>\r\n<div class=\"example-container container\">\r\n  <mat-form-field>\r\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filtrar\">\r\n  </mat-form-field>\r\n  <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"position\">\r\n      <th mat-header-cell *matHeaderCellDef> # </th>\r\n      <td mat-cell *matCellDef=\"let in = index;\"> {{in+1}} </td>\r\n    </ng-container>\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"name\">\r\n      <th mat-header-cell *matHeaderCellDef> Nome </th>\r\n      <td mat-cell *matCellDef=\"let order\"> {{order.item[0].product.name}} </td>\r\n    </ng-container>\r\n    <!-- Date Column -->\r\n    <ng-container matColumnDef=\"date\">\r\n      <th mat-header-cell *matHeaderCellDef> Date </th>\r\n      <td mat-cell *matCellDef=\"let order\"> {{order.date}} </td>\r\n    </ng-container>\r\n    <!-- Info Column -->\r\n    <ng-container matColumnDef=\"info\">\r\n      <th mat-header-cell *matHeaderCellDef> Mais info </th>\r\n      <td mat-cell *matCellDef=\"let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"showOrder(i)\" matTooltip=\"Saber mais sobre esta encomenda\" class=\"btn btn-info btn-sm\">Mais informações</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Edit Column -->\r\n    <ng-container matColumnDef=\"edit\">\r\n      <th mat-header-cell *matHeaderCellDef> Editar </th>\r\n      <td mat-cell *matCellDef=\"let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"editOrder(i)\" matTooltip=\"Editar esta encomenda\" class=\"btn btn-primary btn-sm\">Editar</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <!-- Remove Column -->\r\n    <ng-container matColumnDef=\"remove\">\r\n      <th mat-header-cell *matHeaderCellDef> Remover </th>\r\n      <td mat-cell *matCellDef=\"let order; let i = index\">\r\n        <span class=\"table-remove\">\r\n          <button type=\"button\" (click)=\"deleteOrder(i)\" matTooltip=\"Remover esta encomenda\" class=\"btn btn-danger btn-sm\">Remover</button>\r\n        </span>\r\n      </td>\r\n    </ng-container>\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"sic-row\">\r\n    <div class=\"sic-column\">\r\n    </div> \r\n  </div>\r\n</div>\r\n<button type=\"submit\" (click)=\"entregas()\" matTooltip=\"Exemplo Entregas\" class=\"btn btn-primary btn-md\">Entregas Exemplo</button>\r\n"
 
 /***/ }),
 
@@ -3709,7 +4851,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _services_order_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/order.service */ "./src/app/services/order.service.ts");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _services_entregas_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/entregas.service */ "./src/app/services/entregas.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+
 
 
 
@@ -3717,11 +4861,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var OrdersComponent = /** @class */ (function () {
-    function OrdersComponent(router, service, bar, authservice) {
+    function OrdersComponent(router, service, bar, authservice, entregasService) {
         this.router = router;
         this.service = service;
         this.bar = bar;
         this.authservice = authservice;
+        this.entregasService = entregasService;
         this.displayedColumns = ['position', 'name', 'date', 'info', 'edit', 'remove'];
     }
     OrdersComponent.prototype.ngOnInit = function () {
@@ -3734,7 +4879,7 @@ var OrdersComponent = /** @class */ (function () {
         var _this = this;
         this.service.getEncomendasUser(username).subscribe(function (data) {
             _this.orders = data;
-            _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatTableDataSource"](_this.orders);
+            _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatTableDataSource"](_this.orders);
         }, function (error) {
             if (error.status == 401) {
                 _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
@@ -3756,10 +4901,24 @@ var OrdersComponent = /** @class */ (function () {
         var id = this.orders[index]._id;
         this.router.navigateByUrl("orders/show/" + id);
     };
+    OrdersComponent.prototype.editOrder = function (index) {
+        var id = this.orders[index]._id;
+        this.router.navigateByUrl("orders/edit/" + id);
+    };
+    OrdersComponent.prototype.entregas = function () {
+        var _this = this;
+        this.entregasService.getEntregas().subscribe(function (data) {
+            alert(JSON.stringify(data));
+        }, function (error) {
+            _this.bar.open('Ocorreu um erro ao tentar obter as entregas do servidor...', '', {
+                duration: 2000,
+            });
+        });
+    };
     OrdersComponent.prototype.deleteOrder = function (index) {
         var _this = this;
         this.service.deleteEncomenda(this.orders[index]._id).subscribe(function (p) {
-            _this.bar.open("Encomenda removido com sucesso", '', { duration: 2000 });
+            _this.bar.open("Encomenda removido com sucesso", '', { duration: 1000 });
             _this.getEncomendas(_this.authservice.getLoggedInUsername());
         }, function (e) {
             _this.bar.open('Ocorreu um erro: ' + e.error, '', { duration: 2000 });
@@ -3771,7 +4930,7 @@ var OrdersComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./orders.component.html */ "./src/app/orders/orders.component.html"),
             styles: [__webpack_require__(/*! ./orders.component.css */ "./src/app/orders/orders.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_order_service__WEBPACK_IMPORTED_MODULE_3__["orderService"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"], _services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_order_service__WEBPACK_IMPORTED_MODULE_3__["orderService"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatSnackBar"], _services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"], _services_entregas_service__WEBPACK_IMPORTED_MODULE_5__["EntregasService"]])
     ], OrdersComponent);
     return OrdersComponent;
 }());
@@ -3862,6 +5021,8 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         this.selectedScale = null;
         this.categoria = "Gavetas";
         this.parts = [];
+        this.idOpcional = 0;
+        this.haOpcs = false;
         this.scene = new three__WEBPACK_IMPORTED_MODULE_2__["Scene"]();
         this.scene.background = null;
         guiControls = new function () {
@@ -3872,6 +5033,7 @@ var ProductConfiguratorComponent = /** @class */ (function () {
             this.material = "";
             this.produtoExtra = [];
             this.materialExtra = [];
+            this.preco = 0;
             this.cidade = "";
             this.latitude = "0000";
             this.longitude = "0000";
@@ -3879,7 +5041,11 @@ var ProductConfiguratorComponent = /** @class */ (function () {
             };
             this.adicionar = function () {
             };
+            this.adicionarProdutosObrigatorios = function () {
+            };
             this.remover = function () {
+            };
+            this.centrarCamera = function () {
             };
             this.nomeProdutoOpcional = " ";
             this.larguraProdutoExtra = 0;
@@ -3905,6 +5071,9 @@ var ProductConfiguratorComponent = /** @class */ (function () {
     };
     ProductConfiguratorComponent.prototype.updateSize = function () {
         var _this = this;
+        if (this.parts.length < 1 && this.haOpcs == true) {
+            this.adicionarProdutosObrigatorios(this.product.optionalProducts);
+        }
         this.scene.remove(this.mesh);
         var tmp = guiControls.material.split(" / ");
         var loader = new three__WEBPACK_IMPORTED_MODULE_2__["TextureLoader"]().load(tmp[3]);
@@ -3918,22 +5087,48 @@ var ProductConfiguratorComponent = /** @class */ (function () {
                     var k = +key;
                     if (k < _this.parts.length) {
                         if (_this.parts[k].name == (_this.optionalProduct.id).toString()) {
-                            console.log("Found." + k);
+                            //console.log("Found." + k);
                             var tmp = _this.parts.splice(k, 1);
-                            console.log(_this.parts);
+                            var tmp1 = _this.order.listProduct.splice(k, 1);
+                            //console.log(this.parts);
                         }
                     }
                 });
+                var tmp_1 = guiControls.materialProdutoExtra.split(" / ");
+                var loader_1 = new three__WEBPACK_IMPORTED_MODULE_2__["TextureLoader"]().load(tmp_1[3]);
+                var material_1 = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ map: loader_1 });
+                var obj = this.devolverTipoProduto(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material_1, this.optionalProduct.category.description);
+                obj.name = (this.optionalProduct.id).toString();
+                this.scene.add(obj);
+                this.parts.push(obj);
+                var newItem = new _model_orderItem__WEBPACK_IMPORTED_MODULE_8__["orderItem"](this.optionalProduct.name, this.optionalProduct.category.description, tmp_1[0], tmp_1[1], tmp_1[2], [], guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, guiControls.larguraProdutoExtra);
+                this.updateExtraItemPrice(newItem, tmp_1[2]);
+                this.order.listProduct.push(newItem);
+                //console.log(this.order.listProduct);
+                //console.log(this.parts);
             }
-            var tmp_1 = guiControls.materialProdutoExtra.split(" / ");
-            var loader_1 = new three__WEBPACK_IMPORTED_MODULE_2__["TextureLoader"]().load(tmp_1[3]);
-            var material_1 = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ map: loader_1 });
-            var obj = this.devolverTipoProduto(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, material_1, this.optionalProduct.category.description);
-            obj.name = (this.optionalProduct.id).toString();
-            this.scene.add(obj);
-            this.parts.push(obj);
         }
+        this.updateOrderItem(guiControls.largura, guiControls.altura, guiControls.profundidade, tmp[0], tmp[1], tmp[2]);
         this.scene.add(this.mesh);
+    };
+    ProductConfiguratorComponent.prototype.updateOrderItem = function (largura, altura, profundidade, material, surfaceFinish, price) {
+        this.order.width = largura;
+        this.order.height = altura;
+        this.order.depth = profundidade;
+        this.order.material = material;
+        this.order.surfaceFinish = surfaceFinish;
+        var areaPrice = 2 * (largura * altura * price + largura * profundidade * price + altura * profundidade * price) / 10000;
+        var priceTmp = 0;
+        for (var _i = 0, _a = this.order.listProduct; _i < _a.length; _i++) {
+            var o = _a[_i];
+            priceTmp += o.price;
+        }
+        this.order.price = priceTmp + areaPrice;
+        guiControls.preco = this.order.price;
+    };
+    ProductConfiguratorComponent.prototype.updateExtraItemPrice = function (item, price) {
+        item.price = 2 * (item.width * item.height * price + item.width * item.depth * price + item.height * item.depth * price) / 10000;
+        console.log("price: " + item.price);
     };
     ProductConfiguratorComponent.prototype.getProduct = function () {
         var _this = this;
@@ -3943,7 +5138,11 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         this.service.getProduct(this.id).subscribe(function (data) {
             _this.product = data;
             guiControls.name = _this.product.name;
+            //console.log(this.order);
             _this.createDatGui();
+            _this.order = new _model_orderItem__WEBPACK_IMPORTED_MODULE_8__["orderItem"](_this.product.name, _this.product.category.description, null, null, 0, [], 0, 0, 0);
+            _this.adicionarProdutosObrigatorios(_this.product.optionalProducts);
+            _this.updateSize();
         }, function (error) {
             if (error.status == 401) {
                 _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
@@ -3969,37 +5168,47 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         var _this = this;
         datGUI = new dat.default.GUI({ width: 300 });
         datGUI.add(guiControls, 'name').name('Name').listen().onChange(function () { _this.updateSize(); });
+        datGUI.add(guiControls, 'preco').name('preco').listen();
         if ((this.product.dimensions.height.discrete) == null) {
+            guiControls.altura = (this.product.dimensions.height.max) - (this.product.dimensions.height.min);
             datGUI.add(guiControls, 'altura', this.product.dimensions.height.min, this.product.dimensions.height.max, 1).name('Altura').listen().onChange(function () { _this.updateSize(); });
         }
         else {
+            guiControls.altura = (this.convertDimensions((this.product.dimensions.height.discrete))[0]);
             datGUI.add(guiControls, 'altura', this.convertDimensions((this.product.dimensions.height.discrete)))
                 .name('Altura').onChange(function () { _this.updateSize(); });
         }
         if ((this.product.dimensions.width.discrete) == null) {
+            guiControls.largura = (this.product.dimensions.width.max) - (this.product.dimensions.width.min);
             datGUI.add(guiControls, 'largura', this.product.dimensions.width.min, this.product.dimensions.width.max, 1).name('Largura').listen().onChange(function () { _this.updateSize(); });
         }
         else {
+            guiControls.largura = (this.convertDimensions((this.product.dimensions.width.discrete))[0]);
             datGUI.add(guiControls, 'largura', this.convertDimensions((this.product.dimensions.width.discrete)))
                 .name('Largura').onChange(function () { _this.updateSize(); });
         }
         if ((this.product.dimensions.depth.discrete) == null) {
+            guiControls.profundidade = (this.product.dimensions.depth.max) - (this.product.dimensions.depth.min);
             datGUI.add(guiControls, 'profundidade', this.product.dimensions.depth.min, this.product.dimensions.depth.max, 1).name('Profundidade').listen().onChange(function () { _this.updateSize(); });
         }
         else {
+            guiControls.profundidade = (this.convertDimensions((this.product.dimensions.depth.discrete))[0]);
             datGUI.add(guiControls, 'profundidade', this.convertDimensions((this.product.dimensions.depth.discrete)))
                 .name('Profundidade').onChange(function () { _this.updateSize(); });
         }
+        guiControls.material = this.getMaterialFinish(this.product.materialFinishes)[0];
         datGUI.add(guiControls, 'material', this.getMaterialFinish(this.product.materialFinishes))
             .name('Material Acabamento').onChange(function () { _this.updateSize(); });
         datGUI.add(guiControls, 'produtoExtra', this.getSubProducts(this.product.optionalProducts))
-            .name('SubProdutos').onChange(function () { _this.updateSize(); });
+            .name('SubProdutos').listen().onChange(function () { _this.changeIDOpcionalAtivo(); });
         datGUI.add(guiControls, 'cidade').name('cidade');
         datGUI.add(guiControls, 'latitude').name('latitude');
         datGUI.add(guiControls, 'longitude').name('longitude');
-        datGUI.add(guiControls, 'adicionar').name("Adicionar Produto").onChange(function () { _this.adicionar(); });
+        datGUI.add(guiControls, 'adicionar').name("Adicionar Produto").onChange(function () { _this.adicionar(_this.idOpcional); });
+        datGUI.add(guiControls, 'adicionarProdutosObrigatorios').name("Adicionar Obrigatórios").onChange(function () { _this.adicionarProdutosObrigatorios(_this.product.optionalProducts); });
+        datGUI.add(guiControls, 'centrarCamera').name("Centrar Camera").onChange(function () { _this.centrarCamera(); });
         datGUI.add(guiControls, 'remover').name("Remover Produto").onChange(function () { _this.removeProduct(_this.optionalProduct.id); });
-        datGUI.add(guiControls, 'encomendar').name("Encomendar Produto").onChange(function () { _this.encomenda(guiControls.name, guiControls.material, guiControls.altura, guiControls.profundidade, guiControls.largura, guiControls.latitude, guiControls.longitude, guiControls.cidade); });
+        datGUI.add(guiControls, 'encomendar').name("Encomendar Produto").onChange(function () { _this.encomenda(guiControls.material, guiControls.cidade, guiControls.latitude, guiControls.longitude); });
     };
     ProductConfiguratorComponent.prototype.animate = function () {
         var _this = this;
@@ -4012,7 +5221,7 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         var closetG = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](width, height, 0);
         var closetM = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({ color: 0x00ff00 });
         closetM.transparent = true;
-        closetM.opacity = 0.2;
+        closetM.opacity = 0.0;
         var closet = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](closetG, closetM);
         var backWallG = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](width, height, thickness);
         var backWall = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](backWallG, material);
@@ -4099,67 +5308,89 @@ var ProductConfiguratorComponent = /** @class */ (function () {
     ProductConfiguratorComponent.prototype.convertDimensions = function (dimensoes) {
         return dimensoes.split(";");
     };
-    ProductConfiguratorComponent.prototype.adicionar = function () {
+    ProductConfiguratorComponent.prototype.adicionar = function (id) {
         var _this = this;
-        var id = guiControls.produtoExtra.split("/")[1];
+        console.log("adicionar ID " + id.toString());
+        //var id = guiControls.produtoExtra.split("/")[1];
         if (this.getProductById(id) != null) {
-            this.limparProdutoOpcionalDatGUI();
-            guiControls.nomeProdutoOpcional = this.optionalProduct.name;
-            guiControlsNomeExtra = datGUI.add(guiControls, 'nomeProdutoOpcional').name('Produto Opcional Selecionado').listen();
-            if ((this.optionalProduct.dimensions.height.discrete) == null) {
-                guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra', this.optionalProduct.dimensions.height.min, this.optionalProduct.dimensions.height.max, 1).name('Altura').listen().onChange(function () { _this.updateSize(); });
+            console.log("nome a procurar + " + this.getProductById(id).id.toString());
+            if ((this.scene.getObjectByName(this.getProductById(id).id.toString()) == null)) {
+                this.limparProdutoOpcionalDatGUI();
+                //console.log("nao crashei");
+                guiControls.nomeProdutoOpcional = this.optionalProduct.name;
+                guiControlsNomeExtra = datGUI.add(guiControls, 'nomeProdutoOpcional').name('Produto Opcional Selecionado').listen();
+                if ((this.optionalProduct.dimensions.height.discrete) == null) {
+                    guiControls.alturaProdutoExtra = (this.optionalProduct.dimensions.height.max) - (this.optionalProduct.dimensions.height.min);
+                    guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra', this.optionalProduct.dimensions.height.min, this.optionalProduct.dimensions.height.max, 1).name('Altura').listen().onChange(function () { _this.updateSize(); });
+                }
+                else {
+                    guiControls.alturaProdutoExtra = (this.convertDimensions((this.optionalProduct.dimensions.height.discrete))[0]);
+                    guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra', this.convertDimensions((this.optionalProduct.dimensions.height.discrete)))
+                        .name('Altura Produto Opcional').onChange(function () { _this.updateSize(); });
+                }
+                if ((this.optionalProduct.dimensions.width.discrete) == null) {
+                    guiControls.larguraProdutoExtra = (this.optionalProduct.dimensions.width.max) - (this.optionalProduct.dimensions.width.min);
+                    guiControlsExtraLargura = datGUI.add(guiControls, 'larguraProdutoExtra', this.optionalProduct.dimensions.width.min, this.optionalProduct.dimensions.width.max, 1).name('Largura').listen().onChange(function () { _this.updateSize(); });
+                }
+                else {
+                    guiControls.larguraProdutoExtra = (this.convertDimensions((this.optionalProduct.dimensions.width.discrete))[0]);
+                    guiControlsExtraLargura = datGUI.add(guiControls, 'larguraProdutoExtra', this.convertDimensions((this.optionalProduct.dimensions.width.discrete)))
+                        .name('Largura Produto Opcional').onChange(function () { _this.updateSize(); });
+                }
+                if ((this.optionalProduct.dimensions.depth.discrete) == null) {
+                    guiControls.profundidadeProdutoExtra = (this.optionalProduct.dimensions.depth.max) - (this.optionalProduct.dimensions.depth.min);
+                    guiControlsExtraProfundidade = datGUI.add(guiControls, 'profundidadeProdutoExtra', this.optionalProduct.dimensions.depth.min, this.optionalProduct.dimensions.depth.max, 1).name('Profundidade').listen().onChange(function () { _this.updateSize(); });
+                }
+                else {
+                    guiControls.profundidadeProdutoExtra = (this.convertDimensions((this.optionalProduct.dimensions.depth.discrete))[0]);
+                    guiControlsExtraProfundidade = datGUI.add(guiControls, 'profundidadeProdutoExtra', this.convertDimensions((this.optionalProduct.dimensions.depth.discrete)))
+                        .name('Profundidade Produto Opcional').onChange(function () { _this.updateSize(); });
+                }
+                guiControls.materialProdutoExtra = this.getMaterialFinish(this.optionalProduct.materialFinishes)[0];
+                guiControlsExtraMaterial = datGUI.add(guiControls, 'materialProdutoExtra', this.getMaterialFinish(this.optionalProduct.materialFinishes))
+                    .name('Material Acabamento Extra').onChange(function () { _this.updateSize(); });
+                var obj = null;
+                if (guiControls.produtoExtra == "Armários") {
+                    obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+                    //console.log("adicionar " + obj);
+                }
+                else if (guiControls.produtoExtra == "Gavetas") {
+                    obj = this.drawer(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+                }
+                else if (guiControls.produtoExtra == "Prateleiras") {
+                    obj = this.shelf(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+                }
+                else {
+                    obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
+                    //console.log(obj.geometry);
+                }
+                obj.name = (this.optionalProduct.id).toString();
+                this.scene.add(obj);
+                this.parts.push(obj);
+                console.log("tamanho parts " + this.parts.length);
+                var newItem = new _model_orderItem__WEBPACK_IMPORTED_MODULE_8__["orderItem"](this.optionalProduct.name, this.optionalProduct.category.description, null, null, 0, [], 0, 0, 0);
+                this.order.listProduct.push(newItem);
+                //console.log(this.order.listProduct);
+                this.updateSize();
             }
             else {
-                guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra', this.convertDimensions((this.optionalProduct.dimensions.height.discrete)))
-                    .name('Altura Produto Opcional').onChange(function () { _this.updateSize(); });
+                alert("Produto já adicionado!");
             }
-            if ((this.optionalProduct.dimensions.width.discrete) == null) {
-                guiControlsExtraLargura = datGUI.add(guiControls, 'larguraProdutoExtra', this.optionalProduct.dimensions.width.min, this.optionalProduct.dimensions.width.max, 1).name('Largura').listen().onChange(function () { _this.updateSize(); });
-            }
-            else {
-                guiControlsExtraLargura = datGUI.add(guiControls, 'larguraProdutoExtra', this.convertDimensions((this.optionalProduct.dimensions.width.discrete)))
-                    .name('Largura Produto Opcional').onChange(function () { _this.updateSize(); });
-            }
-            if ((this.optionalProduct.dimensions.depth.discrete) == null) {
-                guiControlsExtraProfundidade = datGUI.add(guiControls, 'profundidadeProdutoExtra', this.optionalProduct.dimensions.depth.min, this.optionalProduct.dimensions.depth.max, 1).name('Profundidade').listen().onChange(function () { _this.updateSize(); });
-            }
-            else {
-                guiControlsExtraProfundidade = datGUI.add(guiControls, 'profundidadeProdutoExtra', this.convertDimensions((this.optionalProduct.dimensions.depth.discrete)))
-                    .name('Profundidade Produto Opcional').onChange(function () { _this.updateSize(); });
-            }
-            guiControlsExtraMaterial = datGUI.add(guiControls, 'materialProdutoExtra', this.getMaterialFinish(this.optionalProduct.materialFinishes))
-                .name('Material Acabamento Extra').onChange(function () { _this.updateSize(); });
-            var obj = null;
-            if (guiControls.produtoExtra == "Armários") {
-                obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
-                console.log("adicionar " + obj);
-            }
-            else if (guiControls.produtoExtra == "Gavetas") {
-                obj = this.drawer(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
-            }
-            else if (guiControls.produtoExtra == "Prateleiras") {
-                obj = this.shelf(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
-            }
-            else {
-                obj = this.closet(guiControls.larguraProdutoExtra, guiControls.alturaProdutoExtra, guiControls.profundidadeProdutoExtra, "");
-                console.log(obj.geometry);
-            }
-            obj.name = (this.optionalProduct.id).toString();
-            this.scene.add(obj);
-            this.parts.push(obj);
         }
     };
-    ProductConfiguratorComponent.prototype.encomenda = function (name, material, altura, profundidade, largura, latitude, longitude, cidade) {
-        console.log(this.product);
-        var category = this.product.category.description;
-        var list = [];
-        var mataca = material.split(" / ");
-        var productI = new _model_orderItem__WEBPACK_IMPORTED_MODULE_8__["orderItem"](name, category, mataca[0], mataca[1], list, altura, profundidade, largura);
-        var it = new _model_Item__WEBPACK_IMPORTED_MODULE_9__["Item"](productI, parseInt(mataca[2]));
-        var items = [];
-        items.push(it);
-        var ord = new _model_order__WEBPACK_IMPORTED_MODULE_7__["order"](items, parseInt(mataca[2]), latitude, longitude, cidade, this.authservice.getLoggedInUsername());
-        this.serviceorder.createEncomenda(ord).subscribe();
+    ProductConfiguratorComponent.prototype.encomenda = function (material, cidade, latitude, longitude) {
+        if (material && cidade && latitude && longitude) {
+            var mataca = material.split(" / ");
+            var it = new _model_Item__WEBPACK_IMPORTED_MODULE_9__["Item"](this.order, parseInt(mataca[2]));
+            var items = [];
+            items.push(it);
+            var ord = new _model_order__WEBPACK_IMPORTED_MODULE_7__["order"](items, parseInt(mataca[2]), latitude, longitude, cidade, this.authservice.getLoggedInUsername());
+            this.serviceorder.createEncomenda(ord).subscribe();
+            window.alert('Encomenda submetida com sucesso');
+        }
+        else {
+            window.alert('Por favor introduza uma cidade valida');
+        }
     };
     ProductConfiguratorComponent.prototype.getMaterialFinish = function (matsFinish) {
         var ret = [];
@@ -4179,9 +5410,9 @@ var ProductConfiguratorComponent = /** @class */ (function () {
                 var key = +k;
                 if (key < _this.parts.length) {
                     if (_this.parts[key].name == id.toString()) {
-                        console.log("Found." + key);
                         var tmp = _this.parts.splice(key, 1);
-                        console.log(_this.parts);
+                        console.log("tamanho apos corte " + _this.parts.length);
+                        _this.optionalProduct = null;
                     }
                 }
             });
@@ -4189,7 +5420,7 @@ var ProductConfiguratorComponent = /** @class */ (function () {
     };
     ProductConfiguratorComponent.prototype.getSubProducts = function (matsFinish) {
         var ret = [];
-        console.log(matsFinish);
+        //console.log(matsFinish);
         for (var key in matsFinish) {
             var matFinish = matsFinish[key];
             ret.push(matFinish.optional + " / " + matFinish.productId);
@@ -4218,33 +5449,40 @@ var ProductConfiguratorComponent = /** @class */ (function () {
         var _this = this;
         var newProduct = this.getProductById(id);
         if (newProduct != null) {
-            console.log("mudei");
+            console.log("mudei " + newProduct.id);
             this.optionalProduct = newProduct;
             this.limparProdutoOpcionalDatGUI();
-            guiControlsNomeExtra = this.optionalProduct.name;
+            guiControls.nomeProdutoOpcional = newProduct.name;
             guiControlsNomeExtra = datGUI.add(guiControls, 'nomeProdutoOpcional').name('Produto Opcional Selecionado').listen();
-            if ((this.optionalProduct.dimensions.height.discrete) == null) {
-                guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra', this.optionalProduct.dimensions.height.min, this.optionalProduct.dimensions.height.max, 1).name('Altura').listen().onChange(function () { _this.updateSize(); });
+            if ((newProduct.dimensions.height.discrete) == null) {
+                guiControls.alturaProdutoExtra = (newProduct.dimensions.height.max) - (newProduct.dimensions.height.min);
+                guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra', newProduct.dimensions.height.min, newProduct.dimensions.height.max, 1).name('Altura').listen().onChange(function () { _this.updateSize(); });
             }
             else {
-                guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra', this.convertDimensions((this.optionalProduct.dimensions.height.discrete)))
+                guiControls.alturaProdutoExtra = (this.convertDimensions((newProduct.dimensions.height.discrete))[0]);
+                guiControlsExtraAltura = datGUI.add(guiControls, 'alturaProdutoExtra', this.convertDimensions((newProduct.dimensions.height.discrete)))
                     .name('Altura Produto Opcional').onChange(function () { _this.updateSize(); });
             }
-            if ((this.optionalProduct.dimensions.width.discrete) == null) {
-                guiControlsExtraLargura = datGUI.add(guiControls, 'larguraProdutoExtra', this.optionalProduct.dimensions.width.min, this.optionalProduct.dimensions.width.max, 1).name('Largura').listen().onChange(function () { _this.updateSize(); });
+            if ((newProduct.dimensions.width.discrete) == null) {
+                guiControls.larguraProdutoExtra = (newProduct.dimensions.width.max) - (newProduct.dimensions.width.min);
+                guiControlsExtraLargura = datGUI.add(guiControls, 'larguraProdutoExtra', newProduct.dimensions.width.min, newProduct.dimensions.width.max, 1).name('Largura').listen().onChange(function () { _this.updateSize(); });
             }
             else {
-                guiControlsExtraLargura = datGUI.add(guiControls, 'larguraProdutoExtra', this.convertDimensions((this.optionalProduct.dimensions.width.discrete)))
+                guiControls.larguraProdutoExtra = (this.convertDimensions((newProduct.dimensions.width.discrete))[0]);
+                guiControlsExtraLargura = datGUI.add(guiControls, 'larguraProdutoExtra', this.convertDimensions((newProduct.dimensions.width.discrete)))
                     .name('Largura Produto Opcional').onChange(function () { _this.updateSize(); });
             }
-            if ((this.optionalProduct.dimensions.depth.discrete) == null) {
-                guiControlsExtraProfundidade = datGUI.add(guiControls, 'profundidadeProdutoExtra', this.optionalProduct.dimensions.depth.min, this.optionalProduct.dimensions.depth.max, 1).name('Profundidade').listen().onChange(function () { _this.updateSize(); });
+            if ((newProduct.dimensions.depth.discrete) == null) {
+                guiControls.profundidadeProdutoExtra = (newProduct.dimensions.depth.max) - (newProduct.dimensions.depth.min);
+                guiControlsExtraProfundidade = datGUI.add(guiControls, 'profundidadeProdutoExtra', newProduct.dimensions.depth.min, newProduct.dimensions.depth.max, 1).name('Profundidade').listen().onChange(function () { _this.updateSize(); });
             }
             else {
-                guiControlsExtraProfundidade = datGUI.add(guiControls, 'profundidadeProdutoExtra', this.convertDimensions((this.optionalProduct.dimensions.depth.discrete)))
+                guiControls.profundidadeProdutoExtra = (this.convertDimensions((newProduct.dimensions.depth.discrete))[0]);
+                guiControlsExtraProfundidade = datGUI.add(guiControls, 'profundidadeProdutoExtra', this.convertDimensions((newProduct.dimensions.depth.discrete)))
                     .name('Profundidade Produto Opcional').onChange(function () { _this.updateSize(); });
             }
-            guiControlsExtraMaterial = datGUI.add(guiControls, 'materialProdutoExtra', this.getMaterialFinish(this.optionalProduct.materialFinishes))
+            guiControls.materialProdutoExtra = this.getMaterialFinish(newProduct.materialFinishes)[0];
+            guiControlsExtraMaterial = datGUI.add(guiControls, 'materialProdutoExtra', this.getMaterialFinish(newProduct.materialFinishes))
                 .name('Material Acabamento Extra').onChange(function () { _this.updateSize(); });
         }
     };
@@ -4254,8 +5492,9 @@ var ProductConfiguratorComponent = /** @class */ (function () {
             // update the picking ray with the camera and mouse position
             this.raycaster.setFromCamera(this.mouse, this.camera);
             // calculate objects intersecting the picking ray
-            var intersects = this.raycaster.intersectObjects(this.parts);
-            console.log(intersects.length);
+            if (this.parts != null) {
+                var intersects = this.raycaster.intersectObjects(this.parts);
+            }
             if (intersects.length > 0) {
                 this.controls.enableRotate = false;
                 this.changeActiveProduct(parseInt(intersects[0].object.name));
@@ -4263,7 +5502,6 @@ var ProductConfiguratorComponent = /** @class */ (function () {
             }
             else {
                 intersects = this.raycaster.intersectObject(this.mesh);
-                console.log(intersects);
                 if (intersects.length > 0) {
                     this.controls.enableRotate = false;
                     this.selectedScale = intersects[0].object;
@@ -4274,7 +5512,7 @@ var ProductConfiguratorComponent = /** @class */ (function () {
     ProductConfiguratorComponent.prototype.onMouseMove = function (event) {
         if (this.selectedMove != null) {
             this.mouse.set((event.offsetX / this.renderer.getSize().width) * 2 - 1, -(event.offsetY / this.renderer.getSize().height) * 2 + 1);
-            console.log(this.selectedMove);
+            //console.log(this.selectedMove);
             //transform mouse coordinates to real world coordinates
             var vector = new three__WEBPACK_IMPORTED_MODULE_2__["Vector3"](this.mouse.x, this.mouse.y, 0.5);
             vector.unproject(this.camera);
@@ -4325,6 +5563,9 @@ var ProductConfiguratorComponent = /** @class */ (function () {
                     this.selectedScale.scale.y = sizeY / this.selectedScale.geometry.parameters.height;
                 }
             }
+            //update order item
+            var tmp = guiControls.material.split(" / ");
+            this.updateOrderItem(guiControls.largura, guiControls.altura, guiControls.profundidade, tmp[0], tmp[1], tmp[2]);
             //update mouse position
             this.mouse.x = (event.offsetX / this.renderer.getSize().width) * 2 - 1;
             this.mouse.y = -(event.offsetY / this.renderer.getSize().height) * 2 + 1;
@@ -4387,6 +5628,22 @@ var ProductConfiguratorComponent = /** @class */ (function () {
             objeto = this.closet(largura, altura, profundidade, material);
         }
         return objeto;
+    };
+    ProductConfiguratorComponent.prototype.changeIDOpcionalAtivo = function () {
+        this.idOpcional = parseInt(guiControls.produtoExtra.split("/")[1]);
+    };
+    ProductConfiguratorComponent.prototype.centrarCamera = function () {
+        this.controls.reset();
+    };
+    ProductConfiguratorComponent.prototype.adicionarProdutosObrigatorios = function (prodOpcionais) {
+        for (var key in prodOpcionais) {
+            var prod = prodOpcionais[key];
+            if (prod.optional == false) {
+                this.haOpcs = true;
+                console.log("Produto Obrigatório " + prod.productId);
+                this.adicionar(prod.productId);
+            }
+        }
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('rendererContainer'),
@@ -4603,6 +5860,60 @@ var AuthService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/catalogue.service.ts":
+/*!***********************************************!*\
+  !*** ./src/app/services/catalogue.service.ts ***!
+  \***********************************************/
+/*! exports provided: CatalogueService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CatalogueService", function() { return CatalogueService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _generic_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./generic.service */ "./src/app/services/generic.service.ts");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth.service */ "./src/app/services/auth.service.ts");
+
+
+
+
+
+var CatalogueService = /** @class */ (function (_super) {
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](CatalogueService, _super);
+    function CatalogueService(httpClient, authSrv) {
+        return _super.call(this, 'https://siccatalogue.azurewebsites.net/api/catalogue', httpClient, authSrv) || this;
+    }
+    CatalogueService.prototype.getCatalogues = function () {
+        console.log(localStorage.getItem("access_token"));
+        return _super.prototype.getAll.call(this);
+    };
+    CatalogueService.prototype.getCatalogue = function (id) {
+        return _super.prototype.getById.call(this, id);
+    };
+    CatalogueService.prototype.createCatalogue = function (catalogue) {
+        return _super.prototype.create.call(this, catalogue);
+    };
+    CatalogueService.prototype.updateCatalogue = function (id, catalogue) {
+        return _super.prototype.update.call(this, id, catalogue);
+    };
+    CatalogueService.prototype.deleteCatalogue = function (id) {
+        return _super.prototype.delete.call(this, id);
+    };
+    CatalogueService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]])
+    ], CatalogueService);
+    return CatalogueService;
+}(_generic_service__WEBPACK_IMPORTED_MODULE_3__["GenericService"]));
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/category.service.ts":
 /*!**********************************************!*\
   !*** ./src/app/services/category.service.ts ***!
@@ -4649,6 +5960,51 @@ var CategoryService = /** @class */ (function (_super) {
     ], CategoryService);
     return CategoryService;
 }(_generic_service__WEBPACK_IMPORTED_MODULE_3__["GenericService"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/entregas.service.ts":
+/*!**********************************************!*\
+  !*** ./src/app/services/entregas.service.ts ***!
+  \**********************************************/
+/*! exports provided: EntregasService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EntregasService", function() { return EntregasService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auth.service */ "./src/app/services/auth.service.ts");
+
+
+
+
+var EntregasService = /** @class */ (function () {
+    function EntregasService(httpClient, authSrv) {
+        var _this = this;
+        this.httpClient = httpClient;
+        this.headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+            'Content-Type': 'application/json'
+        });
+        this.httpClient.get('https://api.myjson.com/bins/17c5e8').subscribe(function (data) {
+            _this.cidades = data;
+        });
+    }
+    EntregasService.prototype.getEntregas = function () {
+        return this.httpClient.post('http://ec2-18-220-175-183.us-east-2.compute.amazonaws.com:4000/api/CalculateDeliveriesPath', this.cidades, { headers: this.headers });
+    };
+    EntregasService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]])
+    ], EntregasService);
+    return EntregasService;
+}());
 
 
 
@@ -5017,7 +6373,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Ver Encomenda</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n     <!-- State -->\r\n     <mat-form-field>\r\n      <input matInput placeholder=\"Estado da encomenda\" [(ngModel)]=\"state\" readonly>\r\n    </mat-form-field>\r\n\r\n\r\n    <!-- date -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Data da Encomenda\" [(ngModel)]=\"date\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- cidade -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"cidade\" [(ngModel)]=\"cidade\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- latitude -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Latitude\" [(ngModel)]=\"latitude\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- longitude -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"longitude\" [(ngModel)]=\"longitude\" readonly>\r\n    </mat-form-field>\r\n\r\n\r\n    <!-- totalPrice -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Preco\" [(ngModel)]=\"totalPrice\" readonly>\r\n    </mat-form-field>\r\n\r\n    <div *ngFor=\"let product of item\" class=\"custom-container\">\r\n\r\n    <!-- Itens Nome -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemNome\" [(ngModel)]=\"product.product.name\" readonly>\r\n    </mat-form-field>\r\n   \r\n    <!-- Itens -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemMaterial\" [(ngModel)]=\"product.product.material\" readonly>\r\n    </mat-form-field>\r\n\r\n    \r\n    <!-- Itens -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemAcabamento\" [(ngModel)]=\"product.product.surfaceFinish\" readonly>\r\n    </mat-form-field>\r\n  \r\n     <!-- Itens -->\r\n     <mat-form-field>\r\n      <input matInput placeholder=\"ItemAltura\" [(ngModel)]=\"product.product.height\" readonly>\r\n    </mat-form-field>\r\n   \r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemProfundidade\" [(ngModel)]=\"product.product.depth\" readonly>\r\n    </mat-form-field>\r\n   \r\n\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"ItemLargura\" [(ngModel)]=\"product.product.width\" readonly>\r\n    </mat-form-field>\r\n\r\n\r\n</div>\r\n\r\n\r\n    <div class=\"sic-row\">\r\n      <button type=\"button\" (click)=\"deleteOrder()\" matTooltip=\"Apagar esta Encomenda\" class=\"btn btn-primary btn-md\">Apagar</button>\r\n      <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n    </div>\r\n  </div>\r\n"
+module.exports = "<h3 class=\"card-header text-center font-weight-bold py-4\">Ver Encomenda</h3>\r\n<div class=\"container\">\r\n  <div class=\"custom-container\">\r\n    <br />\r\n\r\n    <!-- State -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Estado da encomenda\" [(ngModel)]=\"state\" readonly>\r\n    </mat-form-field>\r\n\r\n\r\n    <!-- date -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Data da Encomenda\" [(ngModel)]=\"date\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- cidade -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"cidade\" [(ngModel)]=\"cidade\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- latitude -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Latitude\" [(ngModel)]=\"latitude\" readonly>\r\n    </mat-form-field>\r\n\r\n    <!-- longitude -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"longitude\" [(ngModel)]=\"longitude\" readonly>\r\n    </mat-form-field>\r\n\r\n\r\n    <!-- totalPrice -->\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"PrecoTOTAL\" [(ngModel)]=\"totalPrice\" readonly>\r\n    </mat-form-field>\r\n\r\n    <div *ngFor=\"let product of item\" class=\"custom-container\">\r\n\r\n      <!-- Itens Nome -->\r\n      <mat-form-field>\r\n        <input matInput placeholder=\"ItemNome\" [(ngModel)]=\"product.product.name\" readonly>\r\n      </mat-form-field>\r\n\r\n      <!-- Itens -->\r\n      <mat-form-field>\r\n        <input matInput placeholder=\"ItemMaterial\" [(ngModel)]=\"product.product.material\" readonly>\r\n      </mat-form-field>\r\n\r\n\r\n      <!-- Itens -->\r\n      <mat-form-field>\r\n        <input matInput placeholder=\"ItemAcabamento\" [(ngModel)]=\"product.product.surfaceFinish\" readonly>\r\n      </mat-form-field>\r\n\r\n      <!-- Itens -->\r\n      <mat-form-field>\r\n        <input matInput placeholder=\"ItemAltura\" [(ngModel)]=\"product.product.height\" readonly>\r\n      </mat-form-field>\r\n\r\n      <mat-form-field>\r\n        <input matInput placeholder=\"ItemProfundidade\" [(ngModel)]=\"product.product.depth\" readonly>\r\n      </mat-form-field>\r\n\r\n\r\n      <mat-form-field>\r\n        <input matInput placeholder=\"ItemLargura\" [(ngModel)]=\"product.product.width\" readonly>\r\n      </mat-form-field>\r\n\r\n      \r\n      <mat-form-field>\r\n          <input matInput placeholder=\"ItemCategoria\" [(ngModel)]=\"product.product.category\" readonly>\r\n        </mat-form-field>\r\n\r\n        <mat-form-field>\r\n          <input matInput placeholder=\"ItemPreco\" [(ngModel)]=\"product.product.price\" readonly>\r\n        </mat-form-field>\r\n\r\n    </div>\r\n\r\n    <!-- Partes -->\r\n    <div *ngFor=\"let part of parts\" class=\"custom-container\">\r\n        <br />\r\n        <br />\r\n        <mat-form-field>\r\n          <input matInput placeholder=\"PARTE_NOME\" [(ngModel)]=\"part.name\" readonly>\r\n        </mat-form-field>\r\n        <mat-form-field>\r\n          <input matInput placeholder=\"PARTE_MATERIAL\" [(ngModel)]=\"part.material\" readonly>\r\n        </mat-form-field>\r\n        <mat-form-field>\r\n          <input matInput placeholder=\"PARTE_ACABAMENTO\" [(ngModel)]=\"part.surfaceFinish\" readonly>\r\n        </mat-form-field>\r\n        <mat-form-field>\r\n          <input matInput placeholder=\"PARTE_Altura\" [(ngModel)]=\"part.height\" readonly>\r\n        </mat-form-field>\r\n        <mat-form-field>\r\n          <input matInput placeholder=\"PARTE_Profundidade\" [(ngModel)]=\"part.depth\" readonly>\r\n        </mat-form-field>\r\n        <mat-form-field>\r\n          <input matInput placeholder=\"PARTE_Largura\" [(ngModel)]=\"part.width\" readonly>\r\n        </mat-form-field>\r\n        \r\n        <mat-form-field>\r\n            <input matInput placeholder=\"PARTE_CATEGORIA\" [(ngModel)]=\"part.category\" readonly>\r\n          </mat-form-field>\r\n\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"PARTE_PRECO\" [(ngModel)]=\"part.price\" readonly>\r\n          </mat-form-field>\r\n      </div>>\r\n\r\n\r\n    <div class=\"sic-row\">\r\n      <button type=\"button\" (click)=\"deleteOrder()\" matTooltip=\"Apagar esta Encomenda\" class=\"btn btn-primary btn-md\">Apagar</button>\r\n      <button type=\"button\" (click)=\"back()\" matTooltip=\"Cancelar\" class=\"btn btn-light btn-md\">Retroceder</button>\r\n    </div>\r\n  </div>\r\n"
 
 /***/ }),
 
@@ -5064,14 +6420,13 @@ var ShowOrdersInfoComponent = /** @class */ (function () {
         this.service.getEncomenda(username, id).subscribe(function (res) {
             _this.order = res;
             _this.item = _this.order.item;
-            console.log(_this.item);
+            _this.parts = _this.order.item[0].product.listProduct;
             _this.latitude = _this.order.latitude;
             _this.longitude = _this.order.longitude;
             _this.state = _this.order.state;
             _this.cidade = _this.order.cidade;
             _this.date = _this.order.date;
             _this.totalPrice = _this.order.totalPrice;
-            console.log(_this.order);
         }, function (e) {
             if (e.status == 401) {
                 _this.bar.open('A sua sessão expirou ou não fez login. Por favor inicie sessão para continuar.', '', {
@@ -5088,8 +6443,7 @@ var ShowOrdersInfoComponent = /** @class */ (function () {
     ShowOrdersInfoComponent.prototype.deleteOrder = function () {
         var _this = this;
         this.service.deleteEncomenda(this.idroute).subscribe(function (p) {
-            _this.bar.open("Order removida com sucesso", '', { duration: 2000 });
-            _this.router.navigateByUrl('/orders');
+            _this.bar.open("Encomenda removida com sucesso", '', { duration: 2000 });
         }, function (e) {
             _this.bar.open('Ocorreu um erro: ' + e.error, '', { duration: 2000 });
         });
@@ -5631,7 +6985,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--Navbar-->\r\n<mdb-navbar SideClass=\"navbar navbar-expand-lg navbar-dark indigo\">\r\n\r\n  <!-- Navbar brand -->\r\n  <mdb-navbar-brand><a class=\"navbar-brand\" routerLink=\"/\">{{title}}</a></mdb-navbar-brand>\r\n\r\n  <!-- Collapsible content -->\r\n  <links>\r\n\r\n    <!-- Links -->\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link waves-light\" mdbWavesEffect routerLink=\"/home\" routerLinkActive=\"active\">Página Inicial</a>\r\n      </li>\r\n\r\n      <!-- Dropdown -->\r\n      <li *ngIf=\"authenticated && !isClient\" class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          BackOffice<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/surfaceFinishes\">Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materials\">Materiais</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materialfinishes\">Materiais Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/categories\">Categorias</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/products\">Produtos</a>\r\n          <div class=\"divider dropdown-divider\"></div>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/collections\">Coleções</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/catalogues\">Catálogos</a>\r\n        </div>\r\n      </li>\r\n      <!-- Dropdown -->\r\n      <li *ngIf=\"authenticated && isClient\" class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          Área de Cliente<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/orders/{{username}}\">As minhas encomendas</a>\r\n          <div class=\"divider dropdown-divider\"></div>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/clientCatalogue\">Catálogo de Produtos Disponíveis</a>\r\n        </div>\r\n      </li>\r\n\r\n    </ul>\r\n    <div class=\"navbar-expand ml-auto navbar-nav\">\r\n      <div *ngIf=\"!authenticated\" class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\" routerLink=\"/signup\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-user-plus\"></i> Registar\r\n        </a>\r\n        <a class=\"nav-item nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-sign-in\"></i> Entrar\r\n        </a>\r\n      </div>\r\n      <div *ngIf=\"authenticated\" class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\">\r\n          Bem-vindo, {{username}}\r\n        </a>\r\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">\r\n          <i class=\"fas fa-sign-out-alt\"></i>Terminar Sessão\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <!-- Links -->\r\n  </links>\r\n  <!-- Collapsible content -->\r\n</mdb-navbar>\r\n<!--/.Navbar-->\r\n"
+module.exports = "<!--Navbar-->\r\n<mdb-navbar SideClass=\"navbar navbar-expand-lg navbar-dark indigo\">\r\n\r\n  <!-- Navbar brand -->\r\n  <mdb-navbar-brand><a class=\"navbar-brand\" routerLink=\"/\">{{title}}</a></mdb-navbar-brand>\r\n\r\n  <!-- Collapsible content -->\r\n  <links>\r\n\r\n    <!-- Links -->\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link waves-light\" mdbWavesEffect routerLink=\"/home\" routerLinkActive=\"active\">Página Inicial</a>\r\n      </li>\r\n\r\n      <!-- Dropdown -->\r\n      <li *ngIf=\"authenticated && !isClient\" class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          BackOffice<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/surfaceFinishes\">Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materials\">Materiais</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/materialfinishes\">Materiais Acabamentos</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/categories\">Categorias</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/products\">Produtos</a>\r\n          <div class=\"divider dropdown-divider\"></div>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/collections\">Coleções</a>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/catalogues\">Catálogos</a>\r\n        </div>\r\n      </li>\r\n      <!-- Dropdown -->\r\n      <li *ngIf=\"authenticated && isClient\" class=\"nav-item dropdown\" dropdown>\r\n        <a dropdownToggle mdbWavesEffect type=\"button\" class=\"nav-link dropdown-toggle waves-light\" mdbWavesEffect>\r\n          Área de Cliente<span class=\"caret\"></span>\r\n        </a>\r\n        <div *dropdownMenu class=\"dropdown-menu dropdown dropdown-primary\" role=\"menu\">\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/orders/{{username}}\">As minhas encomendas</a>\r\n          <div class=\"divider dropdown-divider\"></div>\r\n          <a class=\"dropdown-item waves-light\" mdbWavesEffect routerLink=\"/clientCatalogues\">Catálogos</a>\r\n        </div>\r\n      </li>\r\n\r\n    </ul>\r\n    <div class=\"navbar-expand ml-auto navbar-nav\">\r\n      <div *ngIf=\"!authenticated\" class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\" routerLink=\"/signup\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-user-plus\"></i> Registar\r\n        </a>\r\n        <a class=\"nav-item nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">\r\n          <i class=\"fa fa-sign-in\"></i> Entrar\r\n        </a>\r\n      </div>\r\n      <div *ngIf=\"authenticated\" class=\"navbar-nav\">\r\n        <a class=\"nav-item nav-link\">\r\n          Bem-vindo, {{username}}\r\n        </a>\r\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">\r\n          <i class=\"fas fa-sign-out-alt\"></i>Terminar Sessão\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <!-- Links -->\r\n  </links>\r\n  <!-- Collapsible content -->\r\n</mdb-navbar>\r\n<!--/.Navbar-->\r\n"
 
 /***/ }),
 
@@ -5816,6 +7170,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ../services/product.service */ "./src/app/services/product.service.ts");
 /* harmony import */ var _services_order_service__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ../services/order.service */ "./src/app/services/order.service.ts");
 /* harmony import */ var _create_product_select_parts_dialog__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ../create-product/select-parts-dialog */ "./src/app/create-product/select-parts-dialog.ts");
+/* harmony import */ var _services_catalogue_service__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ../services/catalogue.service */ "./src/app/services/catalogue.service.ts");
+/* harmony import */ var _create_catalogue_create_catalogue_component__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ../create-catalogue/create-catalogue.component */ "./src/app/create-catalogue/create-catalogue.component.ts");
+/* harmony import */ var _edit_catalogue_edit_catalogue_component__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ../edit-catalogue/edit-catalogue.component */ "./src/app/edit-catalogue/edit-catalogue.component.ts");
+/* harmony import */ var _create_collection_create_collection_component__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ../create-collection/create-collection.component */ "./src/app/create-collection/create-collection.component.ts");
+/* harmony import */ var _edit_collection_edit_collection_component__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ../edit-collection/edit-collection.component */ "./src/app/edit-collection/edit-collection.component.ts");
+/* harmony import */ var _client_catalogues_client_catalogues_component__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ../client-catalogues/client-catalogues.component */ "./src/app/client-catalogues/client-catalogues.component.ts");
+/* harmony import */ var _edit_encomenda_edit_encomenda_component__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! ../edit-encomenda/edit-encomenda.component */ "./src/app/edit-encomenda/edit-encomenda.component.ts");
+
+
+
+
+
+
+
 
 
 
@@ -5894,11 +7262,17 @@ var appRoutes = [
     { path: 'products/edit/:id', component: _edit_product_edit_product_component__WEBPACK_IMPORTED_MODULE_47__["EditProductComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
     { path: 'products/show/:id', component: _show_product_info_show_product_info_component__WEBPACK_IMPORTED_MODULE_51__["ShowProductInfoComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
     { path: 'catalogues', component: _catalogue_catalogue_component__WEBPACK_IMPORTED_MODULE_13__["CatalogueComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'catalogues/new', component: _create_catalogue_create_catalogue_component__WEBPACK_IMPORTED_MODULE_56__["CreateCatalogueComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'catalogues/edit/:id', component: _edit_catalogue_edit_catalogue_component__WEBPACK_IMPORTED_MODULE_57__["EditCatalogueComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
     { path: 'collections', component: _collection_collection_component__WEBPACK_IMPORTED_MODULE_14__["CollectionComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
     { path: 'productConfigurator/configure/:id', component: _product_configurator_product_configurator_component__WEBPACK_IMPORTED_MODULE_37__["ProductConfiguratorComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_39__["AuthGuard"]] },
-    { path: 'clientCatalogue', component: _client_catalogue_client_catalogue_component__WEBPACK_IMPORTED_MODULE_41__["ClientCatalogueComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_39__["AuthGuard"]] },
+    { path: 'collections/new', component: _create_collection_create_collection_component__WEBPACK_IMPORTED_MODULE_58__["CreateCollectionComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'collections/edit/:id', component: _edit_collection_edit_collection_component__WEBPACK_IMPORTED_MODULE_59__["EditCollectionComponent"], canActivate: [_guards_client_guard__WEBPACK_IMPORTED_MODULE_40__["ClientGuard"]] },
+    { path: 'clientCatalogue/:id', component: _client_catalogue_client_catalogue_component__WEBPACK_IMPORTED_MODULE_41__["ClientCatalogueComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_39__["AuthGuard"]] },
+    { path: 'clientCatalogues', component: _client_catalogues_client_catalogues_component__WEBPACK_IMPORTED_MODULE_60__["ClientCataloguesComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_39__["AuthGuard"]] },
     { path: 'orders/:username', component: _orders_orders_component__WEBPACK_IMPORTED_MODULE_21__["OrdersComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_39__["AuthGuard"]] },
     { path: 'orders/show/:id', component: _show_orders_info_show_orders_info_component__WEBPACK_IMPORTED_MODULE_22__["ShowOrdersInfoComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_39__["AuthGuard"]] },
+    { path: 'orders/edit/:id', component: _edit_encomenda_edit_encomenda_component__WEBPACK_IMPORTED_MODULE_61__["EditEncomendaComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_39__["AuthGuard"]] },
     { path: 'TermsAndConditions', component: _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_46__["TermsAndConditionsComponent"] },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', redirectTo: '/home', pathMatch: 'full' }
@@ -5925,7 +7299,9 @@ var UiModule = /** @class */ (function () {
                 _angular_material_radio__WEBPACK_IMPORTED_MODULE_4__["MatRadioModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_31__["MatButtonModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_31__["MatCardModule"],
-                _angular_material_list__WEBPACK_IMPORTED_MODULE_32__["MatListModule"]
+                _angular_material_list__WEBPACK_IMPORTED_MODULE_32__["MatListModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_31__["MatDatepickerModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_31__["MatIconModule"]
             ],
             imports: [
                 angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_8__["MDBBootstrapModule"].forRoot(),
@@ -5957,15 +7333,19 @@ var UiModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_31__["MatButtonModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_31__["MatProgressSpinnerModule"],
                 _angular_material_radio__WEBPACK_IMPORTED_MODULE_4__["MatRadioModule"],
-                _angular_material_list__WEBPACK_IMPORTED_MODULE_32__["MatListModule"]
+                _angular_material_list__WEBPACK_IMPORTED_MODULE_32__["MatListModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_31__["MatDatepickerModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_31__["MatNativeDateModule"]
             ],
             providers: [
                 _services_surface_finish_service__WEBPACK_IMPORTED_MODULE_30__["SurfaceFinishService"],
                 _services_material_finish_service__WEBPACK_IMPORTED_MODULE_43__["MaterialFinishService"],
                 _services_material_service__WEBPACK_IMPORTED_MODULE_44__["MaterialService"],
                 _services_product_service__WEBPACK_IMPORTED_MODULE_52__["ProductService"],
+                _services_catalogue_service__WEBPACK_IMPORTED_MODULE_55__["CatalogueService"],
                 _services_order_service__WEBPACK_IMPORTED_MODULE_53__["orderService"],
-                _angular_material_dialog__WEBPACK_IMPORTED_MODULE_48__["MatDialog"]
+                _angular_material__WEBPACK_IMPORTED_MODULE_31__["MatDatepickerModule"],
+                _angular_material_dialog__WEBPACK_IMPORTED_MODULE_48__["MatDialog"],
             ],
             entryComponents: [_create_product_select_material_finish_dialog__WEBPACK_IMPORTED_MODULE_49__["SelectMaterialFinishesDialog"], _create_product_select_parts_dialog__WEBPACK_IMPORTED_MODULE_54__["SelectPartsDialog"]]
         })

@@ -10,7 +10,7 @@ export class orderItem {
   price: number;
 
 
-  constructor(name: string, category: string, material: string, surfaceFinish: string, listProduct: orderItem[],
+  constructor(name: string, category: string, material: string, surfaceFinish: string, price: number, listProduct: orderItem[],
     height: number,  depth: number, width: number) {
 
     this.name = name;
@@ -21,5 +21,6 @@ export class orderItem {
     this.height = height;
     this.depth = depth;
     this.width = width;
+    this.price=price;
   }
 }

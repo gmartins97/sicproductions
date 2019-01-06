@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { orderService } from '../services/order.service';
 import { AuthService } from '../services/auth.service';
+import { EntregasService } from '../services/entregas.service';
 import { order } from '../model/order';
 import {MatTableDataSource, MatSnackBar} from "@angular/material";
 
@@ -16,7 +17,7 @@ export class OrdersComponent implements OnInit {
   orders: order[];
   dataSource: MatTableDataSource<order>;
 
-  constructor(private router: Router, private service: orderService , private bar: MatSnackBar, private authservice: AuthService) { }
+  constructor(private router: Router, private service: orderService , private bar: MatSnackBar, private authservice: AuthService , private entregasService: EntregasService) { }
 
   ngOnInit() {
     this.getEncomendas(this.authservice.getLoggedInUsername());
@@ -58,15 +59,36 @@ export class OrdersComponent implements OnInit {
     this.router.navigateByUrl("orders/show/" + id);
   }
 
+  editOrder(index: number) {
+    let id = this.orders[index]._id;
+    this.router.navigateByUrl("orders/edit/" + id);
+  }
+
+  entregas() {
+    this.entregasService.getEntregas().subscribe(data => {
+      alert(JSON.stringify(data));
+    }, error => {
+      
+        this.bar.open(
+          'Ocorreu um erro ao tentar obter as entregas do servidor...',
+          '', {
+            duration: 2000,
+          });
+      
+    });
+  } 
+
   deleteOrder(index: number): void {
+
     this.service.deleteEncomenda(this.orders[index]._id).subscribe(
       p => {
-        this.bar.open(`Encomenda removido com sucesso`, '', { duration: 2000 });
+        this.bar.open(`Encomenda removido com sucesso`, '', { duration: 1000 });
         this.getEncomendas(this.authservice.getLoggedInUsername());
       },
       e => {
         this.bar.open('Ocorreu um erro: ' + e.error, '', { duration: 2000 });
       });
+
   }
 
 }

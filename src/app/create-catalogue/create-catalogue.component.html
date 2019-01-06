@@ -1,0 +1,44 @@
+<h3 class="card-header text-center font-weight-bold py-4">Novo Catálogo</h3>
+<div class="container">
+  <div class="custom-container">
+    <br />
+    <mat-form-field>
+      <input matInput [(ngModel)]="name" placeholder="Nome do Catálogo" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="year" placeholder="Ano" min=0 required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Produtos" [formControl]="productsForm" (selectionChange)="updateProductCards()" multiple>
+        <mat-option *ngFor="let product of products" [value]="product">{{product.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div>
+      <mat-card *ngFor="let product of chosenProducts" class="example-card" style="width:200px;float:left;margin-top:30px;margin-right: 30px;">
+        <mat-card-header style="text-align:left;">
+          <mat-card-title style="font-size:medium;">{{product.name}}</mat-card-title>
+          <mat-card-subtitle>{{product.category.description}}</mat-card-subtitle>
+        </mat-card-header>
+        <!-- pode-se colocar uma imagem consoante a categoria do produto: cabide, armario, porta, gaveta -->
+        <mat-card-actions>
+          <button mat-button style="background-color:#e7e7e7" (click)="removeFromChosenProductsList(product)">Remover</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+
+    <!-- DATEPICKER -->
+    <!--<mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Ano" (dateChange)="selectYear($event)">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker startView="multi-year" ></mat-datepicker>
+  </mat-form-field>-->
+
+  </div>
+  <div class="sic-row">
+    <button type="button" (click)="confirm()" matTooltip="Confirmar" class="btn btn-primary btn-md">OK</button>
+    <button type="button" (click)="back()" matTooltip="Cancelar" class="btn btn-light btn-md">Retroceder</button>
+  </div>
+</div>
